@@ -12,67 +12,69 @@ class ItemList extends StatelessWidget {
     return Scaffold(
       appBar: CupertinoNavigationBar(
         middle: Text('商品リスト'),
-        leading: StreamBuilder<CartAmount>(
-          stream: bloc.cartAmount,
-          builder: (context, snap) {
-            if (!snap.hasData) {
-              return CupertinoButton(
-                padding: EdgeInsets.zero,
-                child: Text('-'),
-                onPressed: null,
-              );
-            }
-            return CupertinoButton(
-                onPressed: snap.data.isEmpty
-                    ? null
-                    : () {
-                        Navigator.of(context).push(
-                              CupertinoPageRoute(
-                                builder: (context) => CartItems(),
-                                fullscreenDialog: true,
-                              ),
-                            );
-                      },
-                padding: EdgeInsets.zero,
-                child: Text(
-                  snap.data.value,
-                ));
-          },
-        ),
+        leading: buildCartButton(bloc),
       ),
-      body: StreamBuilder<List<ItemHolder>>(
-        stream: bloc.items,
-        builder: (context, snap) {
-          switch (snap.connectionState) {
-            case ConnectionState.none:
-            case ConnectionState.waiting:
-              return Center(child: CircularProgressIndicator());
-            case ConnectionState.active:
-            case ConnectionState.done:
-              return ListView(
-                  padding: EdgeInsets.symmetric(vertical: 8.0),
-                  children: snap.data
-                      .map(
-                        (itemHolder) => ItemCell(
-                              model: ItemCellModelAdd(
-                                itemHolder: itemHolder,
-                                onPressed: itemHolder.remainCount <= 0
-                                    ? null
-                                    : () {
-                                        final bloc = ItemsProvider.of(context);
-                                        bloc.addition.add(
-                                          ItemsAdditionRequest(
-                                              item: itemHolder.item),
-                                        );
-                                      },
-                              ),
-                              key: Key(itemHolder.item.id.toString()),
-                            ),
-                      )
-                      .toList());
-          }
-        },
-      ),
+      body: buildItems(bloc),
     );
   }
+
+  StreamBuilder<List<ItemHolder>> buildItems(ItemsBloc bloc) =>
+      StreamBuilder<List<ItemHolder>>(
+        stream: bloc.items,
+        builder: (context, snap) {
+          if (!snap.hasData) {
+            return Center(child: CircularProgressIndicator());
+          }
+          return ListView(
+              padding: EdgeInsets.symmetric(vertical: 8.0),
+              children: snap.data
+                  .map(
+                    (itemHolder) => ItemCell(
+                          model: ItemCellModelAdd(
+                            itemHolder: itemHolder,
+                            onPressed: itemHolder.remainCount <= 0
+                                ? null
+                                : () {
+                                    final bloc = ItemsProvider.of(context);
+                                    bloc.addition.add(
+                                      ItemsAdditionRequest(
+                                          item: itemHolder.item),
+                                    );
+                                  },
+                          ),
+                          key: Key(itemHolder.item.id.toString()),
+                        ),
+                  )
+                  .toList());
+        },
+      );
+
+  StreamBuilder<CartAmount> buildCartButton(ItemsBloc bloc) =>
+      StreamBuilder<CartAmount>(
+        stream: bloc.cartAmount,
+        builder: (context, snap) {
+          if (!snap.hasData) {
+            return CupertinoButton(
+              padding: EdgeInsets.zero,
+              child: Text('-'),
+              onPressed: null,
+            );
+          }
+          return CupertinoButton(
+              onPressed: snap.data.isEmpty
+                  ? null
+                  : () {
+                      Navigator.of(context).push(
+                            CupertinoPageRoute(
+                              builder: (context) => CartItems(),
+                              fullscreenDialog: true,
+                            ),
+                          );
+                    },
+              padding: EdgeInsets.zero,
+              child: Text(
+                snap.data.value,
+              ));
+        },
+      );
 }

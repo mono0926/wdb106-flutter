@@ -67,54 +67,60 @@ class ItemCell extends StatelessWidget {
   Widget build(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            height: 96.0,
-            child: Row(
-              children: <Widget>[
-                Image.network(
-                  model.itemHolder.item.imageUrl,
-                  fit: BoxFit.cover,
-                ),
-                SizedBox(width: 8.0),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(model.itemHolder.item.title,
-                          style: TextStyle(
-                            fontSize: 18.0,
-                          )),
-                      SizedBox(height: 8.0),
-                      Text('${model.itemHolder.item.price}円+税',
-                          style: TextStyle(
-                            fontSize: 18.0,
-                          )),
-                      SizedBox(height: 8.0),
-                      Text(
-                        model.label,
-                        style: TextStyle(
-                          fontSize: 13.0,
-                          color: Colors.grey[600],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                CupertinoButton(
-                  child: Text(
-                    model.button,
-                    style: TextStyle(color: model.buttonColor(context)),
-                  ),
-                  onPressed: model.onPressed,
-                )
-              ],
-            ),
-          ),
-          Divider(
-            indent: 16.0,
-          ),
+          buildBody(context),
+          Divider(indent: 16.0),
         ],
+      );
+
+  Container buildBody(BuildContext context) => Container(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        height: 96.0,
+        child: Row(
+          children: <Widget>[
+            buildImage(),
+            SizedBox(width: 8.0),
+            buildItemInfo(),
+            buildButton(context)
+          ],
+        ),
+      );
+
+  CupertinoButton buildButton(BuildContext context) => CupertinoButton(
+        child: Text(
+          model.button,
+          style: TextStyle(color: model.buttonColor(context)),
+        ),
+        onPressed: model.onPressed,
+      );
+
+  Expanded buildItemInfo() => Expanded(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(model.itemHolder.item.title,
+                style: TextStyle(
+                  fontSize: 18.0,
+                )),
+            SizedBox(height: 8.0),
+            Text('${model.itemHolder.item.price}円+税',
+                style: TextStyle(
+                  fontSize: 18.0,
+                )),
+            SizedBox(height: 8.0),
+            Text(
+              model.label,
+              style: TextStyle(
+                fontSize: 13.0,
+                color: Colors.grey[600],
+              ),
+            ),
+          ],
+        ),
+      );
+
+  Image buildImage() => Image.network(
+        model.itemHolder.item.imageUrl,
+        fit: BoxFit.cover,
       );
 }
