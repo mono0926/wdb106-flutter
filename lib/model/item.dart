@@ -7,7 +7,6 @@ class Item {
     @required this.title,
     @required this.imageUrl,
     @required this.inventory,
-    this.addedToCart = 0,
   });
 
   final int id;
@@ -15,7 +14,4 @@ class Item {
   final String title;
   final String imageUrl;
   final int inventory;
-  var addedToCart = 0;
-
-  int get remainCount => inventory - addedToCart;
 }

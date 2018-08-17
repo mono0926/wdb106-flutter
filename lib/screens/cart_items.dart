@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wdb106_sample/bloc/items_bloc.dart';
 import 'package:wdb106_sample/bloc/items_provider.dart';
-import 'package:wdb106_sample/model/item.dart';
 import 'package:wdb106_sample/widgets/item_cell.dart';
 
 class CartItems extends StatelessWidget {
@@ -25,11 +25,11 @@ class CartItems extends StatelessWidget {
               height: 55.0,
               color: Colors.grey[300],
               child: Center(
-                child: StreamBuilder<int>(
-                  initialData: 0,
+                child: StreamBuilder<String>(
+                  initialData: '-',
                   stream: bloc.totalPrice,
                   builder: (context, snap) => Text(
-                        '合計金額 ${snap.data}円+税',
+                        snap.data,
                         style: TextStyle(
                           fontSize: 18.0,
                           fontWeight: FontWeight.w600,
@@ -39,7 +39,7 @@ class CartItems extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: StreamBuilder<Map<Item, int>>(
+              child: StreamBuilder<List<ItemHolder>>(
                 stream: bloc.cartItems,
                 builder: (context, snap) {
                   switch (snap.connectionState) {
@@ -50,12 +50,21 @@ class CartItems extends StatelessWidget {
                     case ConnectionState.done:
                       return ListView(
                           padding: EdgeInsets.symmetric(vertical: 8.0),
-                          children: snap.data.entries
+                          children: snap.data
                               .map(
-                                (entry) => ItemCell(
-                                      item: entry.key,
-                                      type: ItemCellType.remove,
-                                      key: Key(entry.key.id.toString()),
+                                (itemHolder) => ItemCell(
+                                      model: ItemCellModelRemove(
+                                        itemHolder: itemHolder,
+                                        onPressed: () {
+                                          final bloc =
+                                              ItemsProvider.of(context);
+                                          bloc.remove.add(
+                                            ItemsRemoveRequest(
+                                                item: itemHolder.item),
+                                          );
+                                        },
+                                      ),
+                                      key: Key(itemHolder.item.id.toString()),
                                     ),
                               )
                               .toList());
