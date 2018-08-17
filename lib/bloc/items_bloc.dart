@@ -54,7 +54,7 @@ class ItemsRemoveRequest {
 
 class ItemsBloc {
   ItemsBloc({@required this.client}) {
-    _refreshController.stream.listen((req) async {
+    _refreshController.listen((req) async {
       final items = await client.response<List<Item>>(ItemListRequest());
       _itemList = items.map((item) => ItemHolder(item: item)).toList();
       _items.sink.add(_itemList);
