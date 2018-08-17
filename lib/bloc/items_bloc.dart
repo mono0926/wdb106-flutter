@@ -15,6 +15,17 @@ class CartAmount {
   });
 }
 
+class TotalPrice {
+  final String value;
+
+  TotalPrice({
+    @required this.value,
+    @required this.price,
+  });
+
+  final int price;
+}
+
 class ItemHolder {
   ItemHolder({
     @required this.item,
@@ -78,7 +89,7 @@ class ItemsBloc {
 
   Stream<List<ItemHolder>> get cartItems => _cartItems.stream;
 
-  Stream<String> get totalPrice => _totalPrice.stream;
+  Stream<TotalPrice> get totalPrice => _totalPrice.stream;
 
   Stream<CartAmount> get cartAmount => _cartAmount.stream;
 
@@ -90,7 +101,9 @@ class ItemsBloc {
 
   final _items = BehaviorSubject<List<ItemHolder>>();
   final _cartItems = BehaviorSubject<List<ItemHolder>>(seedValue: []);
-  final _totalPrice = BehaviorSubject<String>(seedValue: '-');
+  final _totalPrice = BehaviorSubject<TotalPrice>(
+    seedValue: TotalPrice(value: '-', price: 0),
+  );
   final _cartAmount = BehaviorSubject<CartAmount>(
     seedValue: CartAmount(
       value: 'カート(-)',
@@ -105,7 +118,12 @@ class ItemsBloc {
   updateTotalPrice() {
     final int price =
         _itemList.fold(0, (sum, e) => sum + e.item.price * e.addedToCart);
-    _totalPrice.add('合計金額 $price円+税');
+    _totalPrice.add(
+      TotalPrice(
+        value: '合計金額 $price円+税',
+        price: price,
+      ),
+    );
   }
 
   updateCartAmount() {

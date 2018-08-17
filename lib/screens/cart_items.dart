@@ -1,10 +1,41 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wdb106_sample/bloc/items_bloc.dart';
 import 'package:wdb106_sample/bloc/items_provider.dart';
 import 'package:wdb106_sample/widgets/item_cell.dart';
 
-class CartItems extends StatelessWidget {
+class CartItems extends StatefulWidget {
+  @override
+  _CartItemsState createState() => _CartItemsState();
+}
+
+class _CartItemsState extends State<CartItems> {
+  StreamSubscription _streamSubscription;
+
+  @override
+  Widget build(BuildContext context) => _CartItems();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final bloc = ItemsProvider.of(context);
+    _streamSubscription = bloc.totalPrice.listen((data) {
+      if (data.price <= 0) {
+        Navigator.of(context).pop();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _streamSubscription.cancel();
+    super.dispose();
+  }
+}
+
+class _CartItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = ItemsProvider.of(context);
@@ -25,16 +56,20 @@ class CartItems extends StatelessWidget {
               height: 55.0,
               color: Colors.grey[300],
               child: Center(
-                child: StreamBuilder<String>(
-                  initialData: '-',
+                child: StreamBuilder<TotalPrice>(
                   stream: bloc.totalPrice,
-                  builder: (context, snap) => Text(
-                        snap.data,
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                        ),
+                  builder: (context, snap) {
+                    if (!snap.hasData) {
+                      return Text('-');
+                    }
+                    return Text(
+                      snap.data.value,
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w600,
                       ),
+                    );
+                  },
                 ),
               ),
             ),
