@@ -12,7 +12,7 @@ class CartStore {
     _update(item, (cartItem) => cartItem.increase());
   }
 
-  void remove(Item item) {
+  void delete(Item item) {
     _update(item, (cartItem) => cartItem.decrease());
   }
 

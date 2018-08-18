@@ -20,30 +20,9 @@ class CartSummary {
   });
 }
 
-class _ItemsRefreshRequest {}
-
-class ItemsAdditionRequest {
-  final Item item;
-
-  ItemsAdditionRequest({@required this.item});
-}
-
-class ItemsRemoveRequest {
-  final Item item;
-
-  ItemsRemoveRequest({@required this.item});
-}
-
 class ItemsBloc {
   ItemsBloc({@required this.client}) {
-    _refreshController.take(1).listen((req) async {
-      final items = await client.getItems();
-      _itemStore.initialize(items);
-      _items.sink.add(_itemStore.items);
-    });
-
-    _additionController.listen((req) {
-      final item = req.item;
+    _additionController.listen((item) {
       _itemStore.decrease(item);
       _cartStore.add(item);
       _cartItems.sink.add(_cartStore.items);
@@ -51,16 +30,21 @@ class ItemsBloc {
       updateCartSummary();
     });
 
-    _removeController.listen((req) {
-      final item = req.item;
+    _deletionController.listen((item) {
       _itemStore.increase(item);
-      _cartStore.remove(item);
+      _cartStore.delete(item);
       _cartItems.sink.add(_cartStore.items);
       _items.sink.add(_itemStore.items);
       updateCartSummary();
     });
 
-    _refreshController.sink.add(_ItemsRefreshRequest());
+    _getItems();
+  }
+
+  void _getItems() async {
+    final items = await client.getItems();
+    _itemStore.initialize(items);
+    _items.sink.add(_itemStore.items);
   }
 
   final ApiClient client;
@@ -73,9 +57,9 @@ class ItemsBloc {
 
   Stream<CartSummary> get cartSummary => _cartSummary.stream;
 
-  Sink<ItemsAdditionRequest> get addition => _additionController.sink;
+  Sink<Item> get addition => _additionController.sink;
 
-  Sink<ItemsRemoveRequest> get remove => _removeController.sink;
+  Sink<Item> get deletion => _deletionController.sink;
 
   final _items = BehaviorSubject<List<Item>>();
   final _cartItems = BehaviorSubject<List<CartItem>>(seedValue: []);
@@ -87,9 +71,8 @@ class ItemsBloc {
     ),
   );
 
-  final _refreshController = PublishSubject<_ItemsRefreshRequest>();
-  final _additionController = PublishSubject<ItemsAdditionRequest>();
-  final _removeController = PublishSubject<ItemsRemoveRequest>();
+  final _additionController = PublishSubject<Item>();
+  final _deletionController = PublishSubject<Item>();
 
   void updateCartSummary() {
     final quantity = _cartStore.totalQuantity;
@@ -106,9 +89,8 @@ class ItemsBloc {
   void dispose() {
     _items.close();
     _cartItems.close();
-    _refreshController.close();
     _additionController.close();
-    _removeController.close();
+    _deletionController.close();
     _cartSummary.close();
   }
 }

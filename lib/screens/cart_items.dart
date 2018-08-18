@@ -69,9 +69,7 @@ class _CartItems extends StatelessWidget {
                                     item: cartItem.item,
                                     onPressed: () {
                                       final bloc = ItemsProvider.of(context);
-                                      bloc.remove.add(
-                                        ItemsRemoveRequest(item: cartItem.item),
-                                      );
+                                      bloc.deletion.add(cartItem.item);
                                     },
                                     buttonColor: Theme.of(context).errorColor,
                                     buttonLabel: '削除',

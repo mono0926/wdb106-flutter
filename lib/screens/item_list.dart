@@ -37,9 +37,7 @@ class ItemList extends StatelessWidget {
                                 ? null
                                 : () {
                                     final bloc = ItemsProvider.of(context);
-                                    bloc.addition.add(
-                                      ItemsAdditionRequest(item: item),
-                                    );
+                                    bloc.addition.add(item);
                                   },
                             infoLabel: '在庫 ${item.inventory}',
                             buttonLabel: '追加',
