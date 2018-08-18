@@ -32,6 +32,13 @@ class ItemCell extends StatelessWidget {
 
   Widget get horizontalMargin => const SizedBox(width: 8.0);
 
+  TextStyle get textStyleMain => TextStyle(fontSize: 18.0);
+
+  TextStyle get textStyleSub => TextStyle(
+        fontSize: 13.0,
+        color: Colors.grey[600],
+      );
+
   @override
   Widget build(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -69,24 +76,17 @@ class ItemCell extends StatelessWidget {
           children: <Widget>[
             Text(
               model.item.title,
-              style: TextStyle(
-                fontSize: 18.0,
-              ),
+              style: textStyleMain,
             ),
             verticalMargin,
             Text(
               '${model.item.price}円+税',
-              style: TextStyle(
-                fontSize: 18.0,
-              ),
+              style: textStyleMain,
             ),
             verticalMargin,
             Text(
               model.infoLabel,
-              style: TextStyle(
-                fontSize: 13.0,
-                color: Colors.grey[600],
-              ),
+              style: textStyleSub,
             ),
           ],
         ),
