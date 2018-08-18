@@ -13,7 +13,12 @@ class CartStore {
   }
 
   void delete(Item item) {
-    _update(item, (cartItem) => cartItem.decrease());
+    _update(item, (cartItem) {
+      cartItem.decrease();
+      if (cartItem.quantity <= 0) {
+        _items.remove(cartItem);
+      }
+    });
   }
 
   void _update(Item item, Function(CartItem cartItem) transform) {
