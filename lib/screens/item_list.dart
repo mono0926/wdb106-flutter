@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wdb106_sample/bloc/items_bloc.dart';
 import 'package:wdb106_sample/bloc/items_provider.dart';
+import 'package:wdb106_sample/model/item.dart';
 import 'package:wdb106_sample/screens/cart_items.dart';
 import 'package:wdb106_sample/widgets/item_cell.dart';
 
@@ -18,8 +19,8 @@ class ItemList extends StatelessWidget {
     );
   }
 
-  StreamBuilder<List<ItemHolder>> buildItems(ItemsBloc bloc) =>
-      StreamBuilder<List<ItemHolder>>(
+  StreamBuilder<List<Item>> buildItems(ItemsBloc bloc) =>
+      StreamBuilder<List<Item>>(
         stream: bloc.items,
         builder: (context, snap) {
           if (!snap.hasData) {
@@ -29,29 +30,31 @@ class ItemList extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 8.0),
               children: snap.data
                   .map(
-                    (itemHolder) => ItemCell(
-                          model: ItemCellModelAdd(
-                            itemHolder: itemHolder,
-                            onPressed: itemHolder.remainCount <= 0
+                    (item) => ItemCell(
+                          model: ItemCellModel(
+                            item: item,
+                            onPressed: item.inventory <= 0
                                 ? null
                                 : () {
                                     final bloc = ItemsProvider.of(context);
                                     bloc.addition.add(
-                                      ItemsAdditionRequest(
-                                          item: itemHolder.item),
+                                      ItemsAdditionRequest(item: item),
                                     );
                                   },
+                            infoLabel: '在庫 ${item.inventory}',
+                            buttonLabel: '追加',
+                            buttonColor: null,
                           ),
-                          key: Key(itemHolder.item.id.toString()),
+                          key: Key(item.id.toString()),
                         ),
                   )
                   .toList());
         },
       );
 
-  StreamBuilder<CartAmount> buildCartButton(ItemsBloc bloc) =>
-      StreamBuilder<CartAmount>(
-        stream: bloc.cartAmount,
+  StreamBuilder<CartSummary> buildCartButton(ItemsBloc bloc) =>
+      StreamBuilder<CartSummary>(
+        stream: bloc.cartSummary,
         builder: (context, snap) {
           if (!snap.hasData) {
             return CupertinoButton(
@@ -61,7 +64,7 @@ class ItemList extends StatelessWidget {
             );
           }
           return CupertinoButton(
-              onPressed: snap.data.isEmpty
+              onPressed: snap.data.totalPrice == 0
                   ? null
                   : () {
                       Navigator.of(context).push(
@@ -73,7 +76,7 @@ class ItemList extends StatelessWidget {
                     },
               padding: EdgeInsets.zero,
               child: Text(
-                snap.data.value,
+                snap.data.state,
               ));
         },
       );

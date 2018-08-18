@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wdb106_sample/bloc/items_bloc.dart';
 import 'package:wdb106_sample/bloc/items_provider.dart';
+import 'package:wdb106_sample/model/cart_item.dart';
 import 'package:wdb106_sample/widgets/item_cell.dart';
 
 class CartItems extends StatefulWidget {
@@ -21,8 +22,8 @@ class _CartItemsState extends State<CartItems> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     final bloc = ItemsProvider.of(context);
-    _streamSubscription = bloc.totalPrice.listen((data) {
-      if (data.price <= 0) {
+    _streamSubscription = bloc.cartSummary.listen((data) {
+      if (data.totalPrice <= 0) {
         Navigator.of(context).pop();
       }
     });
@@ -50,7 +51,7 @@ class _CartItems extends StatelessWidget {
   }
 
   Expanded buildItems(ItemsBloc bloc) => Expanded(
-        child: StreamBuilder<List<ItemHolder>>(
+        child: StreamBuilder<List<CartItem>>(
           stream: bloc.cartItems,
           builder: (context, snap) {
             switch (snap.connectionState) {
@@ -63,17 +64,19 @@ class _CartItems extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: 8.0),
                     children: snap.data
                         .map(
-                          (itemHolder) => ItemCell(
-                                model: ItemCellModelRemove(
-                                  itemHolder: itemHolder,
-                                  onPressed: () {
-                                    final bloc = ItemsProvider.of(context);
-                                    bloc.remove.add(
-                                      ItemsRemoveRequest(item: itemHolder.item),
-                                    );
-                                  },
-                                ),
-                                key: Key(itemHolder.item.id.toString()),
+                          (cartItem) => ItemCell(
+                                model: ItemCellModel(
+                                    item: cartItem.item,
+                                    onPressed: () {
+                                      final bloc = ItemsProvider.of(context);
+                                      bloc.remove.add(
+                                        ItemsRemoveRequest(item: cartItem.item),
+                                      );
+                                    },
+                                    buttonColor: Theme.of(context).errorColor,
+                                    buttonLabel: '削除',
+                                    infoLabel: '数量 ${cartItem.quantity}'),
+                                key: Key(cartItem.item.id.toString()),
                               ),
                         )
                         .toList());
@@ -86,14 +89,14 @@ class _CartItems extends StatelessWidget {
         height: 55.0,
         color: Colors.grey[300],
         child: Center(
-          child: StreamBuilder<TotalPrice>(
-            stream: bloc.totalPrice,
+          child: StreamBuilder<CartSummary>(
+            stream: bloc.cartSummary,
             builder: (context, snap) {
               if (!snap.hasData) {
                 return Text('-');
               }
               return Text(
-                snap.data.value,
+                snap.data.totalPriceState,
                 style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.w600,

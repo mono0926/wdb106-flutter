@@ -2,43 +2,25 @@ import 'dart:async';
 
 import 'package:meta/meta.dart';
 import 'package:wdb106_sample/model/api.dart';
+import 'package:wdb106_sample/model/cart_item.dart';
+import 'package:wdb106_sample/model/cart_store.dart';
 import 'package:wdb106_sample/model/item.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:wdb106_sample/model/item_store.dart';
 
-class CartAmount {
-  final String value;
-  final bool isEmpty;
+class CartSummary {
+  final String state;
+  final String totalPriceState;
+  final int totalPrice;
 
-  CartAmount({
-    @required this.value,
-    @required this.isEmpty,
+  CartSummary({
+    @required this.state,
+    @required this.totalPriceState,
+    @required this.totalPrice,
   });
 }
 
-class TotalPrice {
-  final String value;
-
-  TotalPrice({
-    @required this.value,
-    @required this.price,
-  });
-
-  final int price;
-}
-
-class ItemHolder {
-  ItemHolder({
-    @required this.item,
-    this.addedToCart = 0,
-  });
-
-  final Item item;
-  var addedToCart = 0;
-
-  int get remainCount => item.inventory - addedToCart;
-}
-
-class ItemsRefreshRequest {}
+class _ItemsRefreshRequest {}
 
 class ItemsAdditionRequest {
   final Item item;
@@ -54,84 +36,69 @@ class ItemsRemoveRequest {
 
 class ItemsBloc {
   ItemsBloc({@required this.client}) {
-    _refreshController.listen((req) async {
+    _refreshController.take(1).listen((req) async {
       final items = await client.getItems();
-      _itemList = items.map((item) => ItemHolder(item: item)).toList();
-      _items.sink.add(_itemList);
+      _itemStore.initialize(items);
+      _items.sink.add(_itemStore.items);
     });
 
     _additionController.listen((req) {
-      _itemList.firstWhere((x) => x.item.id == req.item.id).addedToCart += 1;
-      _cartItems.sink.add(_itemsInCart);
-      _items.sink.add(_itemList);
-      updateTotalPrice();
-      updateCartAmount();
+      final item = req.item;
+      _itemStore.decrease(item);
+      _cartStore.add(item);
+      _cartItems.sink.add(_cartStore.items);
+      _items.sink.add(_itemStore.items);
+      updateCartSummary();
     });
 
     _removeController.listen((req) {
-      _itemList.firstWhere((x) => x.item.id == req.item.id).addedToCart -= 1;
-      _cartItems.sink.add(_itemsInCart);
-      _items.sink.add(_itemList);
-      updateTotalPrice();
-      updateCartAmount();
+      final item = req.item;
+      _itemStore.increase(item);
+      _cartStore.remove(item);
+      _cartItems.sink.add(_cartStore.items);
+      _items.sink.add(_itemStore.items);
+      updateCartSummary();
     });
 
-    refresh.add(ItemsRefreshRequest());
+    _refreshController.sink.add(_ItemsRefreshRequest());
   }
 
   final ApiClient client;
-  var _itemList = <ItemHolder>[];
+  final _itemStore = ItemStore();
+  final _cartStore = CartStore();
 
-  List<ItemHolder> get _itemsInCart =>
-      _itemList.where((holder) => holder.addedToCart > 0).toList();
+  Stream<List<Item>> get items => _items.stream;
 
-  Stream<List<ItemHolder>> get items => _items.stream;
+  Stream<List<CartItem>> get cartItems => _cartItems.stream;
 
-  Stream<List<ItemHolder>> get cartItems => _cartItems.stream;
-
-  Stream<TotalPrice> get totalPrice => _totalPrice.stream;
-
-  Stream<CartAmount> get cartAmount => _cartAmount.stream;
-
-  Sink<ItemsRefreshRequest> get refresh => _refreshController.sink;
+  Stream<CartSummary> get cartSummary => _cartSummary.stream;
 
   Sink<ItemsAdditionRequest> get addition => _additionController.sink;
 
   Sink<ItemsRemoveRequest> get remove => _removeController.sink;
 
-  final _items = BehaviorSubject<List<ItemHolder>>();
-  final _cartItems = BehaviorSubject<List<ItemHolder>>(seedValue: []);
-  final _totalPrice = BehaviorSubject<TotalPrice>(
-    seedValue: TotalPrice(value: '-', price: 0),
-  );
-  final _cartAmount = BehaviorSubject<CartAmount>(
-    seedValue: CartAmount(
-      value: 'カート(-)',
-      isEmpty: true,
+  final _items = BehaviorSubject<List<Item>>();
+  final _cartItems = BehaviorSubject<List<CartItem>>(seedValue: []);
+  final _cartSummary = BehaviorSubject<CartSummary>(
+    seedValue: CartSummary(
+      state: 'カート(-)',
+      totalPrice: 0,
+      totalPriceState: '',
     ),
   );
 
-  final _refreshController = PublishSubject<ItemsRefreshRequest>();
+  final _refreshController = PublishSubject<_ItemsRefreshRequest>();
   final _additionController = PublishSubject<ItemsAdditionRequest>();
   final _removeController = PublishSubject<ItemsRemoveRequest>();
 
-  void updateTotalPrice() {
-    final int price =
-        _itemList.fold(0, (sum, e) => sum + e.item.price * e.addedToCart);
-    _totalPrice.add(
-      TotalPrice(
-        value: '合計金額 $price円+税',
-        price: price,
-      ),
-    );
-  }
-
-  void updateCartAmount() {
-    final count = _itemList.fold(0, (s, e) => s + e.addedToCart);
-    _cartAmount.add(
-      CartAmount(
-        value: 'カート($count)',
-        isEmpty: count == 0,
+  void updateCartSummary() {
+    final quantity = _cartStore.totalQuantity;
+    final int totalPrice = _cartStore.totalPrice;
+    _cartSummary.add(
+      CartSummary(
+        state: 'カート($quantity)',
+        totalPriceState: '合計金額 $totalPrice円+税',
+        totalPrice: totalPrice,
       ),
     );
   }
@@ -142,7 +109,6 @@ class ItemsBloc {
     _refreshController.close();
     _additionController.close();
     _removeController.close();
-    _totalPrice.close();
-    _cartAmount.close();
+    _cartSummary.close();
   }
 }

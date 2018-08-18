@@ -1,58 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/bloc/items_bloc.dart';
+import 'package:wdb106_sample/model/item.dart';
 
-abstract class ItemCellModel {
-  final ItemHolder itemHolder = null;
-  final VoidCallback onPressed = null;
-
-  String get label;
-
-  String get button;
-
-  Color buttonColor(BuildContext context);
-}
-
-class ItemCellModelAdd implements ItemCellModel {
-  @override
-  final ItemHolder itemHolder;
-  @override
+class ItemCellModel {
+  final Item item;
   final VoidCallback onPressed;
+  final String infoLabel;
+  final String buttonLabel;
+  final Color buttonColor;
 
-  ItemCellModelAdd({
-    this.itemHolder,
-    this.onPressed,
+  ItemCellModel({
+    @required this.item,
+    @required this.onPressed,
+    @required this.infoLabel,
+    @required this.buttonLabel,
+    @required this.buttonColor,
   });
-
-  @override
-  String get button => '追加';
-
-  @override
-  String get label => '在庫 ${itemHolder.remainCount}';
-
-  @override
-  Color buttonColor(BuildContext context) => null;
-}
-
-class ItemCellModelRemove implements ItemCellModel {
-  @override
-  final ItemHolder itemHolder;
-  @override
-  final VoidCallback onPressed;
-
-  ItemCellModelRemove({
-    this.itemHolder,
-    this.onPressed,
-  });
-
-  @override
-  String get button => '削除';
-
-  @override
-  String get label => '数量 ${itemHolder.addedToCart}';
-
-  @override
-  Color buttonColor(BuildContext context) => Theme.of(context).errorColor;
 }
 
 class ItemCell extends StatelessWidget {
@@ -87,8 +50,8 @@ class ItemCell extends StatelessWidget {
 
   CupertinoButton buildButton(BuildContext context) => CupertinoButton(
         child: Text(
-          model.button,
-          style: TextStyle(color: model.buttonColor(context)),
+          model.buttonLabel,
+          style: TextStyle(color: model.buttonColor),
         ),
         onPressed: model.onPressed,
       );
@@ -98,18 +61,18 @@ class ItemCell extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(model.itemHolder.item.title,
+            Text(model.item.title,
                 style: TextStyle(
                   fontSize: 18.0,
                 )),
             SizedBox(height: 8.0),
-            Text('${model.itemHolder.item.price}円+税',
+            Text('${model.item.price}円+税',
                 style: TextStyle(
                   fontSize: 18.0,
                 )),
             SizedBox(height: 8.0),
             Text(
-              model.label,
+              model.infoLabel,
               style: TextStyle(
                 fontSize: 13.0,
                 color: Colors.grey[600],
@@ -120,7 +83,7 @@ class ItemCell extends StatelessWidget {
       );
 
   Image buildImage() => Image.network(
-        model.itemHolder.item.imageUrl,
+        model.item.imageUrl,
         fit: BoxFit.cover,
       );
 }
