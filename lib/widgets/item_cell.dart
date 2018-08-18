@@ -26,22 +26,28 @@ class ItemCell extends StatelessWidget {
     @required Key key,
   }) : super(key: key);
 
+  double get indent => 16.0;
+
+  Widget get verticalMargin => const SizedBox(height: 8.0);
+
+  Widget get horizontalMargin => const SizedBox(width: 8.0);
+
   @override
   Widget build(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           buildBody(context),
-          Divider(indent: 16.0),
+          Divider(indent: indent),
         ],
       );
 
   Widget buildBody(BuildContext context) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: EdgeInsets.symmetric(horizontal: indent),
         height: 96.0,
         child: Row(
           children: <Widget>[
             buildImage(),
-            SizedBox(width: 8.0),
+            horizontalMargin,
             buildItemInfo(),
             buildButton(context)
           ],
@@ -67,14 +73,14 @@ class ItemCell extends StatelessWidget {
                 fontSize: 18.0,
               ),
             ),
-            SizedBox(height: 8.0),
+            verticalMargin,
             Text(
               '${model.item.price}円+税',
               style: TextStyle(
                 fontSize: 18.0,
               ),
             ),
-            SizedBox(height: 8.0),
+            verticalMargin,
             Text(
               model.infoLabel,
               style: TextStyle(
