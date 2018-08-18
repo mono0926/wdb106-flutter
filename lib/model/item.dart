@@ -6,8 +6,15 @@ class Item {
     @required this.price,
     @required this.title,
     @required this.imageUrl,
-    this.inventory = 5,
+    @required this.inventory,
   });
+
+  Item.fromJSON(Map<String, dynamic> json)
+      : id = json['id'] as int,
+        price = json['price'] as int,
+        title = json['title'] as String,
+        imageUrl = json['imageUrl'] as String,
+        inventory = json['inventory'] as int;
 
   final int id;
   final int price;

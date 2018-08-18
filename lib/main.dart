@@ -6,8 +6,7 @@ import 'package:wdb106_sample/model/api.dart';
 import 'package:wdb106_sample/screens/item_list.dart';
 
 void main() => runApp(App(
-      itemsBloc:
-          ItemsBloc(client: DummyApiClient(dummyDelay: Duration(seconds: 1))),
+      itemsBloc: ItemsBloc(client: MockyApiClient()),
     ));
 
 class App extends StatelessWidget {

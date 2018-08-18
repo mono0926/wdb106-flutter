@@ -1,13 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wdb106_sample/bloc/items_bloc.dart';
-import 'package:wdb106_sample/model/api.dart';
-import 'package:wdb106_sample/model/item_store.dart';
+
+import '../helper/api.dart';
 
 void main() {
   ItemsBloc target;
 
   setUp(() {
-    target = ItemsBloc(client: DummyApiClient(dummyDelay: Duration.zero));
+    target = ItemsBloc(client: MockApiClient());
   });
 
   tearDown(() {
@@ -16,9 +16,9 @@ void main() {
 
   test('ItemsBloc test', () async {
     var items = await target.items.first;
-    expect(items.length, 5);
+    expect(items.length, 2);
     var item = items.first;
-    expect(item.inventory, 5);
+    expect(item.inventory, 2);
 
     var cartItems = await target.cartItems.first;
     expect(cartItems.length, 0);
@@ -31,26 +31,26 @@ void main() {
     target.addition.add(item);
 
     items = await target.items.first;
-    expect(items.length, 5);
+    expect(items.length, 2);
     item = items.first;
-    expect(item.inventory, 4);
+    expect(item.inventory, 1);
 
     cartItems = await target.cartItems.first;
     expect(cartItems.length, 1);
-    var cartItem = cartItems.first;
+    final cartItem = cartItems.first;
     expect(cartItem.quantity, 1);
 
     cartSummary = await target.cartSummary.first;
-    expect(cartSummary.totalPrice, 1480);
+    expect(cartSummary.totalPrice, 100);
     expect(cartSummary.state, 'カート(1)');
-    expect(cartSummary.totalPriceState, '合計金額 1480円+税');
+    expect(cartSummary.totalPriceState, '合計金額 100円+税');
 
     target.deletion.add(item);
 
     items = await target.items.first;
-    expect(items.length, 5);
+    expect(items.length, 2);
     item = items.first;
-    expect(item.inventory, 5);
+    expect(item.inventory, 2);
 
     cartItems = await target.cartItems.first;
     expect(cartItems.length, 0);

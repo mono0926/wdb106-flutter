@@ -5,7 +5,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:wdb106_sample/bloc/items_bloc.dart';
 
 import 'package:wdb106_sample/main.dart';
-import 'package:wdb106_sample/model/api.dart';
 import 'package:mockito/mockito.dart';
 
 import 'helper/api.dart';

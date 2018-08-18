@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:wdb106_sample/model/item.dart';
 export 'package:wdb106_sample/model/item.dart';
 
