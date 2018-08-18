@@ -2,29 +2,13 @@ import 'dart:async';
 
 import 'package:wdb106_sample/model/item.dart';
 
-abstract class ApiRequest<ResponseType> {
-  ResponseType get response;
-
-  String get path;
-}
-
-class ItemListRequest implements ApiRequest {
-  // TODO: implement path
-  @override
-  String get path => 'items/list';
-
-  // TODO: implement response
-  @override
-  get response => [Item];
-}
-
 abstract class ApiClient {
-  Future<ResponseType> response<ResponseType>(ApiRequest request);
+  Future<List<Item>> getItems();
 }
 
 class DummyApiClient implements ApiClient {
   @override
-  Future<ResponseType> response<ResponseType>(ApiRequest request) async {
+  Future<List<Item>> getItems() async {
     await Future.delayed(Duration(seconds: 1));
     final list = List<int>.generate(5, (i) => i + 1).map((i) {
       final urls = [
@@ -40,9 +24,8 @@ class DummyApiClient implements ApiClient {
         price: 1480,
         title: 'WEB+DB PRESS $num',
         imageUrl: urls[i - 1],
-        inventory: 5,
       );
     }).toList();
-    return list as ResponseType;
+    return list;
   }
 }

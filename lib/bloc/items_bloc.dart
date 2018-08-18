@@ -55,7 +55,7 @@ class ItemsRemoveRequest {
 class ItemsBloc {
   ItemsBloc({@required this.client}) {
     _refreshController.listen((req) async {
-      final items = await client.response<List<Item>>(ItemListRequest());
+      final items = await client.getItems();
       _itemList = items.map((item) => ItemHolder(item: item)).toList();
       _items.sink.add(_itemList);
     });
@@ -115,7 +115,7 @@ class ItemsBloc {
   final _additionController = PublishSubject<ItemsAdditionRequest>();
   final _removeController = PublishSubject<ItemsRemoveRequest>();
 
-  updateTotalPrice() {
+  void updateTotalPrice() {
     final int price =
         _itemList.fold(0, (sum, e) => sum + e.item.price * e.addedToCart);
     _totalPrice.add(
@@ -126,7 +126,7 @@ class ItemsBloc {
     );
   }
 
-  updateCartAmount() {
+  void updateCartAmount() {
     final count = _itemList.fold(0, (s, e) => s + e.addedToCart);
     _cartAmount.add(
       CartAmount(

@@ -6,12 +6,16 @@ class Item {
     @required this.price,
     @required this.title,
     @required this.imageUrl,
-    @required this.inventory,
+    this.inventory = 5,
   });
 
   final int id;
   final int price;
   final String title;
   final String imageUrl;
-  final int inventory;
+  int inventory;
+
+  void increase() => inventory++;
+
+  void decrease() => inventory--;
 }
