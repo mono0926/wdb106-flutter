@@ -12,15 +12,10 @@ class ItemStore {
   }
 
   void increase(Item item) {
-    _update(item, (item) => item.increase());
+    _items[item.id].increase();
   }
 
   void decrease(Item item) {
-    _update(item, (item) => item.decrease());
-  }
-
-  void _update(Item item, Function(Item item) transform) {
-    final target = _items[item.id];
-    transform(target);
+    _items[item.id].decrease();
   }
 }

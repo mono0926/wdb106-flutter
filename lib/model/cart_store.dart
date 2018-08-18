@@ -9,25 +9,19 @@ class CartStore {
   List<CartItem> get items => _items.values.toList();
 
   void add(Item item) {
-    _update(item, (cartItem) => cartItem.increase());
+    var cartItem = _items[item.id];
+    if (cartItem == null) {
+      cartItem = CartItem(item: item);
+      _items[item.id] = cartItem;
+    }
+    cartItem.increase();
   }
 
   void delete(Item item) {
-    _update(item, (cartItem) {
-      cartItem.decrease();
-      if (cartItem.quantity <= 0) {
-        _items.remove(item.id);
-      }
-    });
-  }
-
-  void _update(Item item, Function(CartItem cartItem) transform) {
-    var target = _items[item.id];
-    if (target == null) {
-      target = CartItem(item: item);
-      _items[item.id] = target;
+    final cartItem = _items[item.id]..decrease();
+    if (cartItem.quantity <= 0) {
+      _items.remove(item.id);
     }
-    transform(target);
   }
 
   int get totalPrice =>
