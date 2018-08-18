@@ -5,9 +5,9 @@ import 'package:wdb106_sample/bloc/items_provider.dart';
 import 'package:wdb106_sample/model/api.dart';
 import 'package:wdb106_sample/screens/item_list.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(App());
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
   final bloc = ItemsBloc(client: DummyApiClient());
 
   // This widget is the root of your application.
