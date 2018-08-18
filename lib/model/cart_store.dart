@@ -27,5 +27,5 @@ class CartStore {
   int get totalPrice =>
       _items.values.fold(0, (sum, e) => sum + e.item.price * e.quantity);
 
-  int get totalQuantity => _items.values.fold(0, (s, e) => s + e.quantity);
+  int get totalQuantity => _items.values.fold(0, (sum, e) => sum + e.quantity);
 }
