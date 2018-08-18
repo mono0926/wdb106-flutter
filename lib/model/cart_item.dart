@@ -1,6 +1,8 @@
 import 'package:meta/meta.dart';
 import 'package:wdb106_sample/model/item.dart';
 
+export 'item.dart';
+
 class CartItem {
   final Item item;
   int quantity;

@@ -59,9 +59,9 @@ class ItemsBloc {
   final _cartItems = BehaviorSubject<List<CartItem>>(seedValue: []);
   final _cartSummary = BehaviorSubject<CartSummary>(
     seedValue: CartSummary(
-      state: 'カート(-)',
+      state: 'カート(0)',
       totalPrice: 0,
-      totalPriceState: '',
+      totalPriceState: '合計金額 0円+税',
     ),
   );
   final _additionController = PublishSubject<Item>();

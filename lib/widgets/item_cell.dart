@@ -35,7 +35,7 @@ class ItemCell extends StatelessWidget {
         ],
       );
 
-  Container buildBody(BuildContext context) => Container(
+  Widget buildBody(BuildContext context) => Container(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         height: 96.0,
         child: Row(
@@ -48,7 +48,7 @@ class ItemCell extends StatelessWidget {
         ),
       );
 
-  CupertinoButton buildButton(BuildContext context) => CupertinoButton(
+  Widget buildButton(BuildContext context) => CupertinoButton(
         child: Text(
           model.buttonLabel,
           style: TextStyle(color: model.buttonColor),
@@ -56,7 +56,7 @@ class ItemCell extends StatelessWidget {
         onPressed: model.onPressed,
       );
 
-  Expanded buildItemInfo() => Expanded(
+  Widget buildItemInfo() => Expanded(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +86,7 @@ class ItemCell extends StatelessWidget {
         ),
       );
 
-  Image buildImage() => Image.network(
+  Widget buildImage() => Image.network(
         model.item.imageUrl,
         fit: BoxFit.cover,
       );
