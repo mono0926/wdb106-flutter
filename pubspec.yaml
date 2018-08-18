@@ -10,5 +10,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mockito: 3.0.0-alpha+5
 flutter:
   uses-material-design: true
