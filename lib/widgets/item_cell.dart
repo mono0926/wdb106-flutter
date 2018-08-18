@@ -61,15 +61,19 @@ class ItemCell extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(model.item.title,
-                style: TextStyle(
-                  fontSize: 18.0,
-                )),
+            Text(
+              model.item.title,
+              style: TextStyle(
+                fontSize: 18.0,
+              ),
+            ),
             SizedBox(height: 8.0),
-            Text('${model.item.price}円+税',
-                style: TextStyle(
-                  fontSize: 18.0,
-                )),
+            Text(
+              '${model.item.price}円+税',
+              style: TextStyle(
+                fontSize: 18.0,
+              ),
+            ),
             SizedBox(height: 8.0),
             Text(
               model.infoLabel,

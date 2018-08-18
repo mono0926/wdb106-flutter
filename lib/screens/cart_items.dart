@@ -61,23 +61,24 @@ class _CartItems extends StatelessWidget {
               case ConnectionState.active:
               case ConnectionState.done:
                 return ListView(
-                    padding: EdgeInsets.symmetric(vertical: 8.0),
-                    children: snap.data
-                        .map(
-                          (cartItem) => ItemCell(
-                                model: ItemCellModel(
-                                    item: cartItem.item,
-                                    onPressed: () {
-                                      final bloc = ItemsProvider.of(context);
-                                      bloc.deletion.add(cartItem.item);
-                                    },
-                                    buttonColor: Theme.of(context).errorColor,
-                                    buttonLabel: '削除',
-                                    infoLabel: '数量 ${cartItem.quantity}'),
-                                key: Key(cartItem.item.id.toString()),
-                              ),
-                        )
-                        .toList());
+                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  children: snap.data
+                      .map(
+                        (cartItem) => ItemCell(
+                              model: ItemCellModel(
+                                  item: cartItem.item,
+                                  onPressed: () {
+                                    final bloc = ItemsProvider.of(context);
+                                    bloc.deletion.add(cartItem.item);
+                                  },
+                                  buttonColor: Theme.of(context).errorColor,
+                                  buttonLabel: '削除',
+                                  infoLabel: '数量 ${cartItem.quantity}'),
+                              key: Key(cartItem.item.id.toString()),
+                            ),
+                      )
+                      .toList(),
+                );
             }
           },
         ),

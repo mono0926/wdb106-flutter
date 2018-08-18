@@ -27,26 +27,27 @@ class ItemList extends StatelessWidget {
             return Center(child: CircularProgressIndicator());
           }
           return ListView(
-              padding: EdgeInsets.symmetric(vertical: 8.0),
-              children: snap.data
-                  .map(
-                    (item) => ItemCell(
-                          model: ItemCellModel(
-                            item: item,
-                            onPressed: item.inventory <= 0
-                                ? null
-                                : () {
-                                    final bloc = ItemsProvider.of(context);
-                                    bloc.addition.add(item);
-                                  },
-                            infoLabel: '在庫 ${item.inventory}',
-                            buttonLabel: '追加',
-                            buttonColor: null,
-                          ),
-                          key: Key(item.id.toString()),
+            padding: EdgeInsets.symmetric(vertical: 8.0),
+            children: snap.data
+                .map(
+                  (item) => ItemCell(
+                        model: ItemCellModel(
+                          item: item,
+                          onPressed: item.inventory <= 0
+                              ? null
+                              : () {
+                                  final bloc = ItemsProvider.of(context);
+                                  bloc.addition.add(item);
+                                },
+                          infoLabel: '在庫 ${item.inventory}',
+                          buttonLabel: '追加',
+                          buttonColor: null,
                         ),
-                  )
-                  .toList());
+                        key: Key(item.id.toString()),
+                      ),
+                )
+                .toList(),
+          );
         },
       );
 
@@ -62,20 +63,21 @@ class ItemList extends StatelessWidget {
             );
           }
           return CupertinoButton(
-              onPressed: snap.data.totalPrice == 0
-                  ? null
-                  : () {
-                      Navigator.of(context).push(
-                            CupertinoPageRoute(
-                              builder: (context) => CartItems(),
-                              fullscreenDialog: true,
-                            ),
-                          );
-                    },
-              padding: EdgeInsets.zero,
-              child: Text(
-                snap.data.state,
-              ));
+            onPressed: snap.data.totalPrice == 0
+                ? null
+                : () {
+                    Navigator.of(context).push(
+                          CupertinoPageRoute(
+                            builder: (context) => CartItems(),
+                            fullscreenDialog: true,
+                          ),
+                        );
+                  },
+            padding: EdgeInsets.zero,
+            child: Text(
+              snap.data.state,
+            ),
+          );
         },
       );
 }
