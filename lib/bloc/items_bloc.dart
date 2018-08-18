@@ -27,7 +27,7 @@ class ItemsBloc {
       _cartStore.add(item);
       _cartItems.sink.add(_cartStore.items);
       _items.sink.add(_itemStore.items);
-      updateCartSummary();
+      _updateCartSummary();
     });
 
     _deletionController.listen((item) {
@@ -35,21 +35,13 @@ class ItemsBloc {
       _cartStore.delete(item);
       _cartItems.sink.add(_cartStore.items);
       _items.sink.add(_itemStore.items);
-      updateCartSummary();
+      _updateCartSummary();
     });
 
     _getItems();
   }
 
-  void _getItems() async {
-    final items = await client.getItems();
-    _itemStore.initialize(items);
-    _items.sink.add(_itemStore.items);
-  }
-
   final ApiClient client;
-  final _itemStore = ItemStore();
-  final _cartStore = CartStore();
 
   Stream<List<Item>> get items => _items.stream;
 
@@ -61,6 +53,8 @@ class ItemsBloc {
 
   Sink<Item> get deletion => _deletionController.sink;
 
+  final _itemStore = ItemStore();
+  final _cartStore = CartStore();
   final _items = BehaviorSubject<List<Item>>();
   final _cartItems = BehaviorSubject<List<CartItem>>(seedValue: []);
   final _cartSummary = BehaviorSubject<CartSummary>(
@@ -70,11 +64,18 @@ class ItemsBloc {
       totalPriceState: '',
     ),
   );
-
   final _additionController = PublishSubject<Item>();
   final _deletionController = PublishSubject<Item>();
 
-  void updateCartSummary() {
+  void dispose() {
+    _items.close();
+    _cartItems.close();
+    _additionController.close();
+    _deletionController.close();
+    _cartSummary.close();
+  }
+
+  void _updateCartSummary() {
     final quantity = _cartStore.totalQuantity;
     final int totalPrice = _cartStore.totalPrice;
     _cartSummary.add(
@@ -86,11 +87,9 @@ class ItemsBloc {
     );
   }
 
-  void dispose() {
-    _items.close();
-    _cartItems.close();
-    _additionController.close();
-    _deletionController.close();
-    _cartSummary.close();
+  void _getItems() async {
+    final items = await client.getItems();
+    _itemStore.initialize(items);
+    _items.sink.add(_itemStore.items);
   }
 }
