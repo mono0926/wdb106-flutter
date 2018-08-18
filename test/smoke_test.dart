@@ -8,6 +8,8 @@ import 'package:wdb106_sample/main.dart';
 import 'package:wdb106_sample/model/api.dart';
 import 'package:mockito/mockito.dart';
 
+import 'helper/api.dart';
+
 void main() {
   // See: https://github.com/flutter/flutter/blob/master/packages/flutter/test/widgets/image_headers_test.dart
   final MockHttpClient client = MockHttpClient();
@@ -19,7 +21,7 @@ void main() {
     await HttpOverrides.runZoned(() async {
       await tester.pumpWidget(App(
         itemsBloc: ItemsBloc(
-          client: DummyApiClient(dummyDelay: Duration.zero),
+          client: MockApiClient(),
         ),
       ));
       expect(find.text('商品リスト'), findsOneWidget);
@@ -28,8 +30,8 @@ void main() {
       await tester.pump();
 
       expect(find.text('カート(0)'), findsOneWidget);
-      expect(find.text('WEB+DB PRESS 100'), findsOneWidget);
-      expect(find.text('追加'), findsNWidgets(5));
+      expect(find.text('test1'), findsOneWidget);
+      expect(find.text('追加'), findsNWidgets(2));
 
       // Press 追加 button
       await tester.tap(find.text('追加').first);
