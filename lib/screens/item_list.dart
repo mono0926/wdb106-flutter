@@ -13,14 +13,13 @@ class ItemList extends StatelessWidget {
     return Scaffold(
       appBar: CupertinoNavigationBar(
         middle: Text('商品リスト'),
-        leading: buildCartButton(bloc),
+        leading: _buildCartButton(bloc),
       ),
-      body: buildItems(bloc),
+      body: _buildItems(bloc),
     );
   }
 
-  StreamBuilder<List<Item>> buildItems(ItemsBloc bloc) =>
-      StreamBuilder<List<Item>>(
+  Widget _buildItems(ItemsBloc bloc) => StreamBuilder<List<Item>>(
         stream: bloc.items,
         builder: (context, snap) {
           if (!snap.hasData) {
@@ -51,8 +50,7 @@ class ItemList extends StatelessWidget {
         },
       );
 
-  StreamBuilder<CartSummary> buildCartButton(ItemsBloc bloc) =>
-      StreamBuilder<CartSummary>(
+  Widget _buildCartButton(ItemsBloc bloc) => StreamBuilder<CartSummary>(
         stream: bloc.cartSummary,
         builder: (context, snap) {
           if (!snap.hasData) {

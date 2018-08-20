@@ -41,16 +41,16 @@ class _CartItems extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = ItemsProvider.of(context);
     return Scaffold(
-        appBar: buildNavigationBar(context),
+        appBar: _buildNavigationBar(context),
         body: Column(
           children: <Widget>[
             _buildHeader(bloc),
-            buildItems(bloc),
+            _buildItems(bloc),
           ],
         ));
   }
 
-  Expanded buildItems(ItemsBloc bloc) => Expanded(
+  Widget _buildItems(ItemsBloc bloc) => Expanded(
         child: StreamBuilder<List<CartItem>>(
           stream: bloc.cartItems,
           builder: (context, snap) {
@@ -84,7 +84,7 @@ class _CartItems extends StatelessWidget {
         ),
       );
 
-  Container _buildHeader(ItemsBloc bloc) => Container(
+  Widget _buildHeader(ItemsBloc bloc) => Container(
         height: 55.0,
         color: Colors.grey[300],
         child: Center(
@@ -106,7 +106,7 @@ class _CartItems extends StatelessWidget {
         ),
       );
 
-  CupertinoNavigationBar buildNavigationBar(BuildContext context) =>
+  PreferredSizeWidget _buildNavigationBar(BuildContext context) =>
       CupertinoNavigationBar(
         middle: Text('カート'),
         leading: CupertinoButton(
