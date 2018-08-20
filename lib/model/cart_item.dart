@@ -4,15 +4,17 @@ import 'package:wdb106_sample/model/item.dart';
 export 'item.dart';
 
 class CartItem {
-  final Item item;
-  int quantity;
-
   CartItem({
     @required this.item,
-    this.quantity = 0,
-  });
+    int quantity = 0,
+  }) : _quantity = quantity;
 
-  void increase() => quantity++;
+  final Item item;
+  int _quantity;
 
-  void decrease() => quantity--;
+  int get quantity => _quantity;
+
+  void increase() => _quantity++;
+
+  void decrease() => _quantity--;
 }

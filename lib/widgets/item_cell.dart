@@ -26,35 +26,35 @@ class ItemCell extends StatelessWidget {
     @required Key key,
   }) : super(key: key);
 
-  double get indent => 16.0;
-
-  Widget get verticalMargin => const SizedBox(height: 8.0);
-
-  Widget get horizontalMargin => const SizedBox(width: 8.0);
-
-  TextStyle get textStyleMain => TextStyle(fontSize: 18.0);
-
-  TextStyle get textStyleSub => TextStyle(
-        fontSize: 13.0,
-        color: Colors.grey[600],
-      );
-
   @override
   Widget build(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           _buildBody(context),
-          Divider(indent: indent),
+          Divider(indent: _indent),
         ],
       );
 
+  double get _indent => 16.0;
+
+  Widget get _verticalMargin => const SizedBox(height: 8.0);
+
+  Widget get _horizontalMargin => const SizedBox(width: 8.0);
+
+  TextStyle get _textStyleMain => TextStyle(fontSize: 18.0);
+
+  TextStyle get _textStyleSub => TextStyle(
+        fontSize: 13.0,
+        color: Colors.grey[600],
+      );
+
   Widget _buildBody(BuildContext context) => Container(
-        padding: EdgeInsets.symmetric(horizontal: indent),
+        padding: EdgeInsets.symmetric(horizontal: _indent),
         height: 96.0,
         child: Row(
           children: <Widget>[
             _buildImage(),
-            horizontalMargin,
+            _horizontalMargin,
             _buildItemInfo(),
             _buildButton(context)
           ],
@@ -76,17 +76,17 @@ class ItemCell extends StatelessWidget {
           children: <Widget>[
             Text(
               model.item.title,
-              style: textStyleMain,
+              style: _textStyleMain,
             ),
-            verticalMargin,
+            _verticalMargin,
             Text(
               '${model.item.price}円+税',
-              style: textStyleMain,
+              style: _textStyleMain,
             ),
-            verticalMargin,
+            _verticalMargin,
             Text(
               model.infoLabel,
-              style: textStyleSub,
+              style: _textStyleSub,
             ),
           ],
         ),
