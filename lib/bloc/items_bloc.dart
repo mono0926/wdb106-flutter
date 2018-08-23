@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:meta/meta.dart';
+import 'package:wdb106_sample/bloc/bloc_provider.dart';
 import 'package:wdb106_sample/model/api.dart';
 import 'package:wdb106_sample/model/cart_item.dart';
 import 'package:wdb106_sample/model/cart_store.dart';
@@ -20,7 +21,7 @@ class CartSummary {
   });
 }
 
-class ItemsBloc {
+class ItemsBloc implements BlocBase {
   ItemsBloc({@required this.client}) {
     _additionController.listen((item) {
       _itemStore.decrease(item);
@@ -67,6 +68,7 @@ class ItemsBloc {
   final _additionController = PublishSubject<Item>();
   final _deletionController = PublishSubject<Item>();
 
+  @override
   void dispose() {
     _items.close();
     _cartItems.close();

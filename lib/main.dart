@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wdb106_sample/bloc/bloc_provider.dart';
 import 'package:wdb106_sample/bloc/items_bloc.dart';
-import 'package:wdb106_sample/bloc/items_provider.dart';
 import 'package:wdb106_sample/model/api.dart';
 import 'package:wdb106_sample/screens/item_list.dart';
 
@@ -19,7 +19,7 @@ class App extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) => ItemsProvider(
+  Widget build(BuildContext context) => BlocProvider<ItemsBloc>(
         bloc: itemsBloc,
         child: MaterialApp(
           theme: ThemeData(

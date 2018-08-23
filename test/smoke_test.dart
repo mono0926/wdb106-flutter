@@ -73,7 +73,7 @@ void main() {
       when(request.close())
           .thenAnswer((_) => Future<HttpClientResponse>.value(response));
       when(response.contentLength).thenReturn(kTransparentImage.length);
-      when(response.statusCode).thenReturn(HttpStatus.OK);
+      when(response.statusCode).thenReturn(HttpStatus.ok);
       // ignore: argument_type_not_assignable
       when(response.listen(typed(any))).thenAnswer((invocation) {
         final void Function(List<int>) onData =
