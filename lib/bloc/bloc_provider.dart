@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-abstract class BlocBase {
+abstract class Bloc {
   void dispose();
 }
 
-class BlocProvider<T extends BlocBase> extends InheritedWidget {
+class BlocProvider<T extends Bloc> extends InheritedWidget {
   final T bloc;
 
   BlocProvider({
@@ -16,7 +16,7 @@ class BlocProvider<T extends BlocBase> extends InheritedWidget {
   @override
   bool updateShouldNotify(BlocProvider oldWidget) => oldWidget.bloc != bloc;
 
-  static T of<T extends BlocBase>(BuildContext context) =>
+  static T of<T extends Bloc>(BuildContext context) =>
       (context.inheritFromWidgetOfExactType(_typeOf<BlocProvider<T>>())
               as BlocProvider<T>)
           .bloc;

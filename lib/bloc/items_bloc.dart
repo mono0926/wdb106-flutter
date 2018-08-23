@@ -21,7 +21,7 @@ class CartSummary {
   });
 }
 
-class ItemsBloc implements BlocBase {
+class ItemsBloc implements Bloc {
   ItemsBloc({@required this.client}) {
     _additionController.listen((item) {
       _itemStore.decrease(item);
