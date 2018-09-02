@@ -4,12 +4,12 @@ description: A new Flutter project.
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^0.1.2
-  rxdart: any
+  cupertino_icons: ^0.1.0
+  rxdart: ^0.18.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mockito: 3.0.0-alpha+5
+  mockito: ^3.0.0
 flutter:
   uses-material-design: true
