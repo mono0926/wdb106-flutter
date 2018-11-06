@@ -19,12 +19,12 @@ class ItemCellModel {
 }
 
 class ItemCell extends StatelessWidget {
-  final ItemCellModel model;
-
   const ItemCell({
-    @required this.model,
     @required Key key,
+    @required this.model,
   }) : super(key: key);
+
+  final ItemCellModel model;
 
   @override
   Widget build(BuildContext context) => Column(
@@ -80,7 +80,7 @@ class ItemCell extends StatelessWidget {
             ),
             _verticalMargin,
             Text(
-              '${model.item.price}円+税',
+              model.item.priceWithUnit,
               style: _textStyleMain,
             ),
             _verticalMargin,

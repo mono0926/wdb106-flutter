@@ -24,6 +24,8 @@ class Item {
 
   int get inventory => _inventory;
 
+  String get priceWithUnit => '$price円+税';
+
   void increase() => _inventory++;
 
   void decrease() => _inventory--;
