@@ -9,8 +9,8 @@ class ItemsBlocProvider extends BlocProvider<ItemsBloc> {
   }) : super(
           child: child,
           creator: (context) {
-            final container = ServiceProvider.of(context);
-            return ItemsBloc(client: container.apiClient);
+            final provider = ServiceProvider.of(context);
+            return ItemsBloc(client: provider.apiClient);
           },
         );
 
