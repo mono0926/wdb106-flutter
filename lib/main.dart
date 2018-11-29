@@ -18,9 +18,6 @@ class App extends StatelessWidget {
     return ItemsBlocProvider(
       context: context,
       child: MaterialApp(
-        theme: ThemeData(
-          primaryColor: Colors.white,
-        ),
         home: ItemList(),
       ),
     );
