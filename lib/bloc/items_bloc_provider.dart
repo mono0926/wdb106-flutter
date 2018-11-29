@@ -6,10 +6,9 @@ import 'package:wdb106_sample/model/model_container.dart';
 class ItemsBlocProvider extends BlocProvider<ItemsBloc> {
   ItemsBlocProvider({
     @required Widget child,
-    @required BuildContext context,
   }) : super(
           child: child,
-          creator: () {
+          creator: (context) {
             final container = ModelContainer.of(context);
             return ItemsBloc(client: container.apiClient);
           },

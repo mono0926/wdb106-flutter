@@ -12,6 +12,12 @@ class ModelContainer extends InheritedWidget {
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) => false;
 
-  static ModelContainer of(BuildContext context) =>
-      context.inheritFromWidgetOfExactType(ModelContainer) as ModelContainer;
+//  static ModelContainer of(BuildContext context) =>
+//      context.inheritFromWidgetOfExactType(ModelContainer) as ModelContainer;
+
+  // initState中のcontextからだと上のメソッドを使うと怒られ、
+  // かつ特に変更監視の必要性も無いため。
+  static ModelContainer of(BuildContext context) => context
+      .ancestorInheritedElementForWidgetOfExactType(ModelContainer)
+      .widget as ModelContainer;
 }
