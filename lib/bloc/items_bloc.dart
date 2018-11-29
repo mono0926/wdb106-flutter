@@ -1,12 +1,12 @@
 import 'dart:async';
 
+import 'package:bloc_provider/bloc_provider.dart';
 import 'package:meta/meta.dart';
-import 'package:wdb106_sample/bloc/bloc_provider.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:wdb106_sample/model/api.dart';
 import 'package:wdb106_sample/model/cart_item.dart';
 import 'package:wdb106_sample/model/cart_store.dart';
 import 'package:wdb106_sample/model/item.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:wdb106_sample/model/item_store.dart';
 
 class CartSummary {

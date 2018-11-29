@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/bloc/bloc_provider.dart';
 import 'package:wdb106_sample/bloc/items_bloc.dart';
+import 'package:wdb106_sample/bloc/items_bloc_provider.dart';
 import 'package:wdb106_sample/model/cart_item.dart';
 import 'package:wdb106_sample/widgets/item_cell.dart';
 
@@ -21,7 +21,7 @@ class _CartItemsState extends State<CartItems> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final bloc = BlocProvider.of<ItemsBloc>(context);
+    final bloc = ItemsBlocProvider.of(context);
     _streamSubscription = bloc.cartSummary.listen((data) {
       if (data.totalPrice <= 0) {
         Navigator.of(context).pop();
@@ -39,7 +39,7 @@ class _CartItemsState extends State<CartItems> {
 class _CartItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<ItemsBloc>(context);
+    final bloc = ItemsBlocProvider.of(context);
     return Scaffold(
         appBar: _buildNavigationBar(context),
         body: Column(
@@ -68,8 +68,7 @@ class _CartItems extends StatelessWidget {
                               model: ItemCellModel(
                                   item: cartItem.item,
                                   onPressed: () {
-                                    final bloc =
-                                        BlocProvider.of<ItemsBloc>(context);
+                                    final bloc = ItemsBlocProvider.of(context);
                                     bloc.deletion.add(cartItem.item);
                                   },
                                   buttonColor: Theme.of(context).errorColor,

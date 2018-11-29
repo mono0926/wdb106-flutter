@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/bloc/bloc_provider.dart';
 import 'package:wdb106_sample/bloc/items_bloc.dart';
+import 'package:wdb106_sample/bloc/items_bloc_provider.dart';
 import 'package:wdb106_sample/model/item.dart';
 import 'package:wdb106_sample/screens/cart_items.dart';
 import 'package:wdb106_sample/widgets/item_cell.dart';
@@ -9,7 +9,7 @@ import 'package:wdb106_sample/widgets/item_cell.dart';
 class ItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<ItemsBloc>(context);
+    final bloc = ItemsBlocProvider.of(context);
     return Scaffold(
       appBar: CupertinoNavigationBar(
         middle: Text('商品リスト'),
@@ -35,8 +35,7 @@ class ItemList extends StatelessWidget {
                           onPressed: item.inventory <= 0
                               ? null
                               : () {
-                                  final bloc =
-                                      BlocProvider.of<ItemsBloc>(context);
+                                  final bloc = ItemsBlocProvider.of(context);
                                   bloc.addition.add(item);
                                 },
                           infoLabel: '在庫 ${item.inventory}',
@@ -66,11 +65,11 @@ class ItemList extends StatelessWidget {
                 ? null
                 : () {
                     Navigator.of(context).push(
-                          CupertinoPageRoute(
-                            builder: (context) => CartItems(),
-                            fullscreenDialog: true,
-                          ),
-                        );
+                      CupertinoPageRoute(
+                        builder: (context) => CartItems(),
+                        fullscreenDialog: true,
+                      ),
+                    );
                   },
             padding: EdgeInsets.zero,
             child: Text(

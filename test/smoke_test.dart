@@ -1,22 +1,16 @@
-import 'dart:async';
-import 'dart:io';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:image_test_utils/image_test_utils.dart';
-import 'package:wdb106_sample/bloc/items_bloc.dart';
-
 import 'package:wdb106_sample/main.dart';
-import 'package:mockito/mockito.dart';
+import 'package:wdb106_sample/model/model_container.dart';
 
 import 'helper/api.dart';
 
 void main() {
   testWidgets('Smoke test', (tester) async {
     await provideMockedNetworkImages(() async {
-      await tester.pumpWidget(App(
-        itemsBloc: ItemsBloc(
-          client: MockApiClient(),
-        ),
+      await tester.pumpWidget(ModelContainer(
+        apiClient: MockApiClient(),
+        child: App(),
       ));
       expect(find.text('商品リスト'), findsOneWidget);
       expect(find.text('(　´･‿･｀)'), findsNothing);
