@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:wdb106_sample/model/api.dart';
 
-class ModelContainer extends InheritedWidget {
+class ServiceProvider extends InheritedWidget {
   final ApiClient apiClient;
 
-  ModelContainer({
+  ServiceProvider({
     @required this.apiClient,
     @required Widget child,
   }) : super(child: child);
@@ -17,7 +17,7 @@ class ModelContainer extends InheritedWidget {
 
   // initState中のcontextからだと上のメソッドを使うと怒られ、
   // かつ特に変更監視の必要性も無いため。
-  static ModelContainer of(BuildContext context) => context
-      .ancestorInheritedElementForWidgetOfExactType(ModelContainer)
-      .widget as ModelContainer;
+  static ServiceProvider of(BuildContext context) => context
+      .ancestorInheritedElementForWidgetOfExactType(ServiceProvider)
+      .widget as ServiceProvider;
 }

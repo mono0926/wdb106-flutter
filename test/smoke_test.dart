@@ -1,14 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:image_test_utils/image_test_utils.dart';
 import 'package:wdb106_sample/main.dart';
-import 'package:wdb106_sample/model/model_container.dart';
+import 'package:wdb106_sample/model/service_provider.dart';
 
 import 'helper/api.dart';
 
 void main() {
   testWidgets('Smoke test', (tester) async {
     await provideMockedNetworkImages(() async {
-      await tester.pumpWidget(ModelContainer(
+      await tester.pumpWidget(ServiceProvider(
         apiClient: MockApiClient(),
         child: App(),
       ));
