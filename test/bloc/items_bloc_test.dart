@@ -1,13 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wdb106_sample/bloc/items_bloc.dart';
 
-import '../helper/api.dart';
+import '../helper/fake_api_client.dart';
 
 void main() {
   ItemsBloc target;
 
   setUp(() {
-    target = ItemsBloc(client: MockApiClient());
+    target = ItemsBloc(client: FakeApiClient());
   });
 
   tearDown(() {

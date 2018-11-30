@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:wdb106_sample/model/api.dart';
 import 'package:wdb106_sample/model/item.dart';
 
-class MockApiClient implements ApiClient {
+class FakeApiClient implements ApiClient {
   List<Item> items;
 
-  MockApiClient({this.items}) {
+  FakeApiClient({this.items}) {
     items ??= [
       Item(
         id: 1,
