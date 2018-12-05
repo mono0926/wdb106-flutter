@@ -22,6 +22,9 @@ class _CartItemsState extends State<CartItems> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     final bloc = ItemsBlocProvider.of(context);
+    if (_streamSubscription != null) {
+      _streamSubscription.cancel();
+    }
     _streamSubscription = bloc.cartSummary.listen((data) {
       if (data.totalPrice <= 0) {
         Navigator.of(context).pop();
