@@ -8,7 +8,7 @@ class ItemsBlocProvider extends BlocProvider<ItemsBloc> {
     @required Widget child,
   }) : super(
           child: child,
-          creator: (context) {
+          creator: (context, _bag) {
             final provider = ServiceProvider.of(context);
             return ItemsBloc(client: provider.apiClient);
           },
