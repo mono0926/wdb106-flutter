@@ -19,12 +19,9 @@ class _CartItemsState extends State<CartItems> {
   Widget build(BuildContext context) => _CartItems();
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  void initState() {
+    super.initState();
     final bloc = ItemsBlocProvider.of(context);
-    if (_streamSubscription != null) {
-      _streamSubscription.cancel();
-    }
     _streamSubscription = bloc.cartSummary.listen((data) {
       if (data.totalPrice <= 0) {
         Navigator.of(context).pop();
