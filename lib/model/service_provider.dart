@@ -4,7 +4,7 @@ import 'package:wdb106_sample/model/api.dart';
 class ServiceProvider extends InheritedWidget {
   final ApiClient apiClient;
 
-  ServiceProvider({
+  const ServiceProvider({
     @required this.apiClient,
     @required Widget child,
   }) : super(child: child);

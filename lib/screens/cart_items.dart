@@ -57,11 +57,11 @@ class _CartItems extends StatelessWidget {
             switch (snap.connectionState) {
               case ConnectionState.none:
               case ConnectionState.waiting:
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               case ConnectionState.active:
               case ConnectionState.done:
                 return ListView(
-                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
                   children: snap.data
                       .map(
                         (cartItem) => ItemCell(
@@ -92,11 +92,11 @@ class _CartItems extends StatelessWidget {
             stream: bloc.cartSummary,
             builder: (context, snap) {
               if (!snap.hasData) {
-                return Text('-');
+                return const Text('-');
               }
               return Text(
                 snap.data.totalPriceState,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.w600,
                 ),
@@ -108,9 +108,9 @@ class _CartItems extends StatelessWidget {
 
   PreferredSizeWidget _buildNavigationBar(BuildContext context) =>
       CupertinoNavigationBar(
-        middle: Text('カート'),
+        middle: const Text('カート'),
         leading: CupertinoButton(
-          child: Text('閉じる'),
+          child: const Text('閉じる'),
           padding: EdgeInsets.zero,
           onPressed: () {
             Navigator.of(context).pop();

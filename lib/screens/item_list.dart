@@ -12,7 +12,7 @@ class ItemList extends StatelessWidget {
     final bloc = ItemsBlocProvider.of(context);
     return Scaffold(
       appBar: CupertinoNavigationBar(
-        middle: Text('商品リスト'),
+        middle: const Text('商品リスト'),
         leading: _buildCartButton(bloc),
       ),
       body: _buildItems(bloc),
@@ -23,10 +23,10 @@ class ItemList extends StatelessWidget {
         stream: bloc.items,
         builder: (context, snap) {
           if (!snap.hasData) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
           return ListView(
-            padding: EdgeInsets.symmetric(vertical: 8.0),
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
             children: snap.data
                 .map(
                   (item) => ItemCell(
@@ -54,7 +54,7 @@ class ItemList extends StatelessWidget {
         stream: bloc.cartSummary,
         builder: (context, snap) {
           if (!snap.hasData) {
-            return CupertinoButton(
+            return const CupertinoButton(
               padding: EdgeInsets.zero,
               child: Text('-'),
               onPressed: null,

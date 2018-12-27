@@ -41,7 +41,7 @@ class ItemCell extends StatelessWidget {
 
   Widget get _horizontalMargin => const SizedBox(width: 8.0);
 
-  TextStyle get _textStyleMain => TextStyle(fontSize: 18.0);
+  TextStyle get _textStyleMain => const TextStyle(fontSize: 18.0);
 
   TextStyle get _textStyleSub => TextStyle(
         fontSize: 13.0,
