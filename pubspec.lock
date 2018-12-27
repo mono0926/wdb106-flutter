@@ -28,7 +28,7 @@ packages:
       name: bloc_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.20"
+    version: "0.1.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -298,6 +298,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.2+4"
+  simple_logger:
+    dependency: "direct main"
+    description:
+      name: simple_logger
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.0"
   sky_engine:
     dependency: transitive
     description: flutter
