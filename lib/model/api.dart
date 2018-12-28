@@ -2,12 +2,14 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart';
+import 'package:meta/meta.dart';
 import 'package:wdb106_sample/model/item.dart';
 
 abstract class ApiClient {
   Future<List<Item>> getItems();
 }
 
+@immutable
 class MockyApiClient implements ApiClient {
   final client = Client();
 

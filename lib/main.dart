@@ -5,18 +5,21 @@ import 'package:wdb106_sample/model/api.dart';
 import 'package:wdb106_sample/model/service_provider.dart';
 import 'package:wdb106_sample/screens/item_list.dart';
 
-void main() => runApp(
-      ServiceProvider(
-        apiClient: MockyApiClient(),
-        child: App(),
-      ),
-    );
+void main() {
+  runApp(
+    ServiceProvider(
+      apiClient: MockyApiClient(),
+      child: const App(),
+    ),
+  );
+}
 
 class App extends StatelessWidget {
+  const App();
   @override
   Widget build(BuildContext context) {
     return ItemsBlocProvider(
-      child: MaterialApp(
+      child: const MaterialApp(
         home: ItemList(),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wdb106_sample/model/item.dart';
 
+@immutable
 class ItemCellModel {
   final Item item;
   final VoidCallback onPressed;
@@ -9,7 +10,7 @@ class ItemCellModel {
   final String buttonLabel;
   final Color buttonColor;
 
-  ItemCellModel({
+  const ItemCellModel({
     @required this.item,
     @required this.onPressed,
     @required this.infoLabel,
@@ -19,81 +20,88 @@ class ItemCellModel {
 }
 
 class ItemCell extends StatelessWidget {
-  const ItemCell({
-    @required Key key,
-    @required this.model,
-  }) : super(key: key);
-
   final ItemCellModel model;
 
-  @override
-  Widget build(BuildContext context) => Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          _buildBody(context),
-          Divider(indent: _indent),
-        ],
-      );
-
-  double get _indent => 16.0;
-
-  Widget get _verticalMargin => const SizedBox(height: 8.0);
-
-  Widget get _horizontalMargin => const SizedBox(width: 8.0);
-
-  TextStyle get _textStyleMain => const TextStyle(fontSize: 18.0);
+  static const _indent = 16.0;
+  static const _verticalMargin = SizedBox(height: 8.0);
+  static const _horizontalMargin = SizedBox(width: 8.0);
+  static const _textStyleMain = TextStyle(fontSize: 18.0);
 
   TextStyle get _textStyleSub => TextStyle(
         fontSize: 13.0,
         color: Colors.grey[600],
       );
 
-  Widget _buildBody(BuildContext context) => Container(
-        padding: EdgeInsets.symmetric(horizontal: _indent),
-        height: 96.0,
-        child: Row(
-          children: <Widget>[
-            _buildImage(),
-            _horizontalMargin,
-            _buildItemInfo(),
-            _buildButton(context)
-          ],
-        ),
-      );
+  const ItemCell({
+    @required Key key,
+    @required this.model,
+  }) : super(key: key);
 
-  Widget _buildButton(BuildContext context) => CupertinoButton(
-        child: Text(
-          model.buttonLabel,
-          style: TextStyle(color: model.buttonColor),
-        ),
-        onPressed: model.onPressed,
-      );
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _buildBody(context),
+        const Divider(indent: _indent),
+      ],
+    );
+  }
 
-  Widget _buildItemInfo() => Expanded(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              model.item.title,
-              style: _textStyleMain,
-            ),
-            _verticalMargin,
-            Text(
-              model.item.priceWithUnit,
-              style: _textStyleMain,
-            ),
-            _verticalMargin,
-            Text(
-              model.infoLabel,
-              style: _textStyleSub,
-            ),
-          ],
-        ),
-      );
+  Widget _buildBody(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: _indent),
+      height: 96.0,
+      child: Row(
+        children: [
+          _buildImage(),
+          _horizontalMargin,
+          _buildItemInfo(),
+          _buildButton(context)
+        ],
+      ),
+    );
+  }
 
-  Widget _buildImage() => Image.network(
-        model.item.imageUrl,
-        fit: BoxFit.cover,
-      );
+  Widget _buildImage() {
+    return Image.network(
+      model.item.imageUrl,
+      fit: BoxFit.cover,
+    );
+  }
+
+  Widget _buildItemInfo() {
+    return Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            model.item.title,
+            style: _textStyleMain,
+          ),
+          _verticalMargin,
+          Text(
+            model.item.priceWithUnit,
+            style: _textStyleMain,
+          ),
+          _verticalMargin,
+          Text(
+            model.infoLabel,
+            style: _textStyleSub,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildButton(BuildContext context) {
+    return CupertinoButton(
+      child: Text(
+        model.buttonLabel,
+        style: TextStyle(color: model.buttonColor),
+      ),
+      onPressed: model.onPressed,
+    );
+  }
 }

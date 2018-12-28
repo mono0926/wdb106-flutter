@@ -1,8 +1,10 @@
+import 'package:meta/meta.dart';
 import 'package:wdb106_sample/model/cart_item.dart';
 import 'package:wdb106_sample/model/item.dart';
 
 export 'package:wdb106_sample/model/cart_item.dart';
 
+@immutable
 class CartStore {
   final _items = <int, CartItem>{};
 

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc_provider/bloc_provider.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
@@ -22,6 +20,21 @@ class CartSummary {
 }
 
 class ItemsBloc implements Bloc {
+  final ApiClient client;
+  final _itemStore = ItemStore();
+  final _cartStore = CartStore();
+  final _items = BehaviorSubject<List<Item>>(seedValue: null);
+  final _cartItems = BehaviorSubject<List<CartItem>>(seedValue: []);
+  final _cartSummary = BehaviorSubject<CartSummary>(
+    seedValue: CartSummary(
+      state: 'カート(0)',
+      totalPrice: 0,
+      totalPriceState: '合計金額 0円+税',
+    ),
+  );
+  final _additionController = PublishSubject<Item>();
+  final _deletionController = PublishSubject<Item>();
+
   ItemsBloc({@required this.client}) {
     _additionController.listen((item) {
       _itemStore.decrease(item);
@@ -42,40 +55,11 @@ class ItemsBloc implements Bloc {
     _getItems();
   }
 
-  final ApiClient client;
-
-  Stream<List<Item>> get items => _items.stream;
-
-  Stream<List<CartItem>> get cartItems => _cartItems.stream;
-
-  Stream<CartSummary> get cartSummary => _cartSummary.stream;
-
+  ValueObservable<List<Item>> get items => _items.stream;
+  ValueObservable<List<CartItem>> get cartItems => _cartItems.stream;
+  ValueObservable<CartSummary> get cartSummary => _cartSummary.stream;
   Sink<Item> get addition => _additionController.sink;
-
   Sink<Item> get deletion => _deletionController.sink;
-
-  final _itemStore = ItemStore();
-  final _cartStore = CartStore();
-  final _items = BehaviorSubject<List<Item>>();
-  final _cartItems = BehaviorSubject<List<CartItem>>(seedValue: []);
-  final _cartSummary = BehaviorSubject<CartSummary>(
-    seedValue: CartSummary(
-      state: 'カート(0)',
-      totalPrice: 0,
-      totalPriceState: '合計金額 0円+税',
-    ),
-  );
-  final _additionController = PublishSubject<Item>();
-  final _deletionController = PublishSubject<Item>();
-
-  @override
-  void dispose() {
-    _items.close();
-    _cartItems.close();
-    _additionController.close();
-    _deletionController.close();
-    _cartSummary.close();
-  }
 
   void _updateCartSummary() {
     final quantity = _cartStore.totalQuantity;
@@ -93,5 +77,14 @@ class ItemsBloc implements Bloc {
     final items = await client.getItems();
     _itemStore.initialize(items);
     _items.sink.add(_itemStore.items);
+  }
+
+  @override
+  void dispose() {
+    _items.close();
+    _cartItems.close();
+    _additionController.close();
+    _deletionController.close();
+    _cartSummary.close();
   }
 }
