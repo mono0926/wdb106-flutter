@@ -15,30 +15,30 @@ void main() {
     target = ItemStore();
   });
   test('ItemStore test', () async {
-    expect(target.items.isEmpty, true);
+    expect(target.stocks.isEmpty, true);
 
     target.initialize([item]);
 
-    expect(target.items.length, 1);
-    var itemStored = target.items.first;
+    expect(target.stocks.length, 1);
+    var itemStored = target.stocks.first;
     expect(itemStored.inventory, 1);
 
     target.increase(itemStored);
 
-    expect(target.items.length, 1);
-    itemStored = target.items.first;
+    expect(target.stocks.length, 1);
+    itemStored = target.stocks.first;
     expect(itemStored.inventory, 2);
 
     target.decrease(itemStored);
 
-    expect(target.items.length, 1);
-    itemStored = target.items.first;
+    expect(target.stocks.length, 1);
+    itemStored = target.stocks.first;
     expect(itemStored.inventory, 1);
 
     target.decrease(itemStored);
 
-    expect(target.items.length, 1);
-    itemStored = target.items.first;
+    expect(target.stocks.length, 1);
+    itemStored = target.stocks.first;
     expect(itemStored.inventory, 0);
   });
 }

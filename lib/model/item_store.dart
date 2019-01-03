@@ -1,22 +1,21 @@
-import 'package:wdb106_sample/model/item.dart';
+import 'package:meta/meta.dart';
+import 'package:rxdart/rxdart.dart';
+import 'package:wdb106_sample/model/item_stock.dart';
 
 export 'package:wdb106_sample/model/item.dart';
 
+@immutable
 class ItemStore {
-  var _items = <int, Item>{};
+  final _stocks = BehaviorSubject<List<ItemStock>>();
 
-  List<Item> get items => _items.values.toList();
+  ValueObservable<List<ItemStock>> get stocks => _stocks.stream;
 
-  void initialize(List<Item> items) {
-    assert(_items.isEmpty);
-    _items = Map.fromEntries(items.map((item) => MapEntry(item.id, item)));
+  void update(List<ItemStock> stocks) {
+    _stocks.add(stocks);
   }
 
-  void increase(Item item) {
-    _items[item.id].increase();
-  }
-
-  void decrease(Item item) {
-    _items[item.id].decrease();
+  // TODO: call
+  void dispose() {
+    _stocks.close();
   }
 }

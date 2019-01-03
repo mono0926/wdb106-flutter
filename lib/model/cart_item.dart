@@ -3,16 +3,21 @@ import 'package:wdb106_sample/model/item.dart';
 
 export 'item.dart';
 
+@immutable
 class CartItem {
   final Item item;
-  int _quantity;
+  final int quantity;
 
-  CartItem({
+  const CartItem({
     @required this.item,
-    int quantity = 0,
-  }) : _quantity = quantity;
+    @required this.quantity,
+  });
 
-  int get quantity => _quantity;
-  void increase() => _quantity++;
-  void decrease() => _quantity--;
+  CartItem increased() => _copyWith(quantity: quantity + 1);
+
+  CartItem decreased() => _copyWith(quantity: quantity - 1);
+
+  CartItem _copyWith({int quantity}) {
+    return CartItem(item: item, quantity: quantity);
+  }
 }

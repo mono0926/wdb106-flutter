@@ -1,31 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/model/item.dart';
+import 'package:wdb106_sample/pages/cart_page/cart_bloc_provider.dart';
 import 'package:wdb106_sample/pages/cart_page/cart_page.dart';
+import 'package:wdb106_sample/pages/item_page/item_tile.dart';
+import 'package:wdb106_sample/pages/item_page/item_tile_bloc_provider.dart';
 import 'package:wdb106_sample/pages/item_page/items_bloc.dart';
 import 'package:wdb106_sample/pages/item_page/items_bloc_provider.dart';
-import 'package:wdb106_sample/widgets/item_cell.dart';
 
 class ItemsPage extends StatelessWidget {
   const ItemsPage();
 
-  static Widget withDependencies() => ItemsBlocProvider(
+  static Widget withDependencies() {
+    return ItemsBlocProvider(
+      child: CartBlocProvider(
         child: const ItemsPage(),
-      );
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final bloc = ItemsBlocProvider.of(context);
+    final cartBloc = CartBlocProvider.of(context);
     return Scaffold(
       appBar: CupertinoNavigationBar(
         middle: const Text('商品リスト'),
-        leading: _buildCartButton(bloc),
+        leading: _buildCartButton(cartBloc),
       ),
       body: _buildItems(bloc),
     );
   }
 
-  Widget _buildCartButton(ItemsBloc bloc) {
+  Widget _buildCartButton(CartBloc bloc) {
     return StreamBuilder<CartSummary>(
       initialData: bloc.cartSummary.value,
       stream: bloc.cartSummary,
@@ -36,7 +42,9 @@ class ItemsPage extends StatelessWidget {
               : () {
                   Navigator.of(context).push(
                     CupertinoPageRoute(
-                      builder: (context) => const CartPage(),
+                      builder: (context) {
+                        return CartBlocProvider(child: const CartPage());
+                      },
                       fullscreenDialog: true,
                     ),
                   );
@@ -49,7 +57,7 @@ class ItemsPage extends StatelessWidget {
   }
 
   Widget _buildItems(ItemsBloc bloc) {
-    return StreamBuilder<List<Item>>(
+    return StreamBuilder<List<ItemStock>>(
       initialData: bloc.items.value,
       stream: bloc.items,
       builder: (context, snap) {
@@ -58,25 +66,15 @@ class ItemsPage extends StatelessWidget {
         }
         return ListView(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
-          children: snap.data
-              .map(
-                (item) => ItemCell(
-                      key: Key(item.id.toString()),
-                      model: ItemCellModel(
-                        item: item,
-                        onPressed: item.inventory <= 0
-                            ? null
-                            : () {
-                                final bloc = ItemsBlocProvider.of(context);
-                                bloc.addition.add(item);
-                              },
-                        infoLabel: '在庫 ${item.inventory}',
-                        buttonLabel: '追加',
-                        buttonColor: null,
-                      ),
-                    ),
-              )
-              .toList(),
+          children: snap.data.map(
+            (stock) {
+              final item = stock.item;
+              return ItemTileBlocProvider(
+                stock: stock,
+                child: ItemTile(key: ValueKey(item.id), item: stock.item),
+              );
+            },
+          ).toList(),
         );
       },
     );

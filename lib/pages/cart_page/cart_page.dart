@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wdb106_sample/model/cart_item.dart';
-import 'package:wdb106_sample/pages/item_page/items_bloc.dart';
-import 'package:wdb106_sample/pages/item_page/items_bloc_provider.dart';
+import 'package:wdb106_sample/pages/cart_page/cart_bloc_provider.dart';
 import 'package:wdb106_sample/widgets/item_cell.dart';
 
+// TODO: アニメーション
 class CartPage extends StatefulWidget {
   const CartPage();
   @override
@@ -22,7 +22,7 @@ class _CartPageState extends State<CartPage> {
   @override
   void initState() {
     super.initState();
-    final bloc = ItemsBlocProvider.of(context);
+    final bloc = CartBlocProvider.of(context);
     _streamSubscription = bloc.cartSummary.listen((data) {
       if (data.totalPrice <= 0) {
         Navigator.of(context).pop();
@@ -41,7 +41,7 @@ class _CartItems extends StatelessWidget {
   const _CartItems();
   @override
   Widget build(BuildContext context) {
-    final bloc = ItemsBlocProvider.of(context);
+    final bloc = CartBlocProvider.of(context);
     return Scaffold(
         appBar: _buildNavigationBar(context),
         body: Column(
@@ -52,7 +52,7 @@ class _CartItems extends StatelessWidget {
         ));
   }
 
-  Widget _buildItems(ItemsBloc bloc) {
+  Widget _buildItems(CartBloc bloc) {
     return Expanded(
       child: StreamBuilder<List<CartItem>>(
         initialData: bloc.cartItems.value,
@@ -69,10 +69,11 @@ class _CartItems extends StatelessWidget {
                 children: snap.data
                     .map(
                       (cartItem) => ItemCell(
+                            // TODO: 撤廃
                             model: ItemCellModel(
                                 item: cartItem.item,
                                 onPressed: () {
-                                  final bloc = ItemsBlocProvider.of(context);
+                                  final bloc = CartBlocProvider.of(context);
                                   bloc.deletion.add(cartItem.item);
                                 },
                                 buttonColor: Theme.of(context).errorColor,
@@ -89,7 +90,7 @@ class _CartItems extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(ItemsBloc bloc) {
+  Widget _buildHeader(CartBloc bloc) {
     return Container(
       height: 55.0,
       color: Colors.grey[300],

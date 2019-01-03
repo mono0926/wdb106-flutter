@@ -8,6 +8,8 @@ void main() {
   runApp(
     ServiceProvider(
       apiClient: MockyApiClient(),
+      itemStore: ItemStore(),
+      cartStore: CartStore(),
       child: const App(),
     ),
   );

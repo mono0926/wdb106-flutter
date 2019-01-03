@@ -26,5 +26,5 @@ class FakeApiClient implements ApiClient {
   }
 
   @override
-  Future<List<Item>> getItems() => Future.value(items);
+  Future<List<Item>> getItemStocks() => Future.value(items);
 }
