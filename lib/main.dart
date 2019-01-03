@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wdb106_sample/model/api.dart';
 import 'package:wdb106_sample/model/service_provider.dart';
-import 'package:wdb106_sample/pages/item_page/items_bloc_provider.dart';
 import 'package:wdb106_sample/pages/item_page/items_page.dart';
 
 void main() {
@@ -18,10 +17,8 @@ class App extends StatelessWidget {
   const App();
   @override
   Widget build(BuildContext context) {
-    return ItemsBlocProvider(
-      child: const MaterialApp(
-        home: ItemsPage(),
-      ),
+    return MaterialApp(
+      home: ItemsPage.withDependencies(),
     );
   }
 }

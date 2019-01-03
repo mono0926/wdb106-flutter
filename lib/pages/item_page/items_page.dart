@@ -9,6 +9,10 @@ import 'package:wdb106_sample/widgets/item_cell.dart';
 class ItemsPage extends StatelessWidget {
   const ItemsPage();
 
+  static Widget withDependencies() => ItemsBlocProvider(
+        child: const ItemsPage(),
+      );
+
   @override
   Widget build(BuildContext context) {
     final bloc = ItemsBlocProvider.of(context);
