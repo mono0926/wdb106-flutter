@@ -20,4 +20,12 @@ class Item {
   final String imageUrl;
 
   String get priceWithUnit => '$price円+税';
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Item && runtimeType == other.runtimeType && id == other.id;
+
+  @override
+  int get hashCode => id.hashCode;
 }
