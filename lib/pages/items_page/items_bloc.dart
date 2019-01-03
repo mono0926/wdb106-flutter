@@ -15,12 +15,12 @@ class ItemsBloc implements Bloc {
     @required this.client,
     @required this.itemStore,
   }) {
-    _getItems();
+    _refresh();
   }
 
   ValueObservable<List<ItemStock>> get items => itemStore.stocks;
 
-  void _getItems() async {
+  void _refresh() async {
     itemStore.update(await client.getItemStocks());
   }
 
