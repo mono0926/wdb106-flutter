@@ -34,12 +34,6 @@ class CartStore {
     _items.add(items);
   }
 
-  int get totalPrice =>
-      _items.value.values.fold(0, (sum, e) => sum + e.item.price * e.quantity);
-
-  int get totalQuantity =>
-      _items.value.values.fold(0, (sum, e) => sum + e.quantity);
-
   void dispose() {
     _items.close();
   }

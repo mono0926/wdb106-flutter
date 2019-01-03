@@ -33,9 +33,14 @@ class CartBloc implements Bloc {
     // TODO: pipe?
     _cartStoreSubscription = cartStore.items.listen((items) {
       _cartItems.sink.add(items);
+
+      final totalQuantity = items.fold<int>(0, (sum, e) => sum + e.quantity);
+      final totalPrice =
+          items.fold<int>(0, (sum, e) => sum + e.item.price * e.quantity);
+
       _cartSummary.add(CartSummary(
-        quantity: cartStore.totalQuantity,
-        totalPrice: cartStore.totalPrice,
+        quantity: totalQuantity,
+        totalPrice: totalPrice,
       ));
     });
 

@@ -1,8 +1,8 @@
 import 'package:bloc_provider/bloc_provider.dart';
 import 'package:flutter/widgets.dart';
 import 'package:wdb106_sample/model/service_provider.dart';
-import 'package:wdb106_sample/pages/item_page/item_tile_bloc.dart';
-import 'package:wdb106_sample/pages/item_page/items_bloc.dart';
+import 'package:wdb106_sample/pages/items_page/items_bloc.dart';
+import 'package:wdb106_sample/pages/items_page/tile/item_tile_bloc.dart';
 
 class ItemTileBlocProvider extends BlocProvider<ItemTileBloc> {
   ItemTileBlocProvider({

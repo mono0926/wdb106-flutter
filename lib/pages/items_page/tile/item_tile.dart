@@ -1,11 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wdb106_sample/model/item.dart';
-import 'package:wdb106_sample/pages/item_page/item_tile_bloc_provider.dart';
+import 'package:wdb106_sample/model/item_stock.dart';
+import 'package:wdb106_sample/pages/items_page/tile/item_tile_bloc_provider.dart';
 import 'package:wdb106_sample/widgets/ItemImage.dart';
 import 'package:wdb106_sample/widgets/item_info.dart';
 
 class ItemTile extends StatelessWidget {
+  static Widget withDependencies(ItemStock stock) {
+    final item = stock.item;
+    return ItemTileBlocProvider(
+      stock: stock,
+      child: ItemTile(key: ValueKey(item.id), item: item),
+    );
+  }
+
   static const _indent = 16.0;
 
   final Item item;

@@ -10,15 +10,14 @@ export 'package:wdb106_sample/model/item_store.dart';
 @immutable
 class ServiceProvider extends InheritedWidget {
   final ApiClient apiClient;
-  final ItemStore itemStore;
-  final CartStore cartStore;
+  final itemStore = ItemStore();
+  final cartStore = CartStore();
 
-  const ServiceProvider({
+  ServiceProvider({
+    Key key,
     @required this.apiClient,
-    @required this.itemStore,
-    @required this.cartStore,
     @required Widget child,
-  }) : super(child: child);
+  }) : super(key: key, child: child);
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) => false;

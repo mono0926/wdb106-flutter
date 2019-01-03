@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:wdb106_sample/pages/item_page/items_bloc.dart';
+import 'package:wdb106_sample/pages/items_page/items_bloc.dart';
 
 import '../helper/fake_api_client.dart';
 

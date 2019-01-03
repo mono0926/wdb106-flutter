@@ -2,14 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wdb106_sample/model/api.dart';
 import 'package:wdb106_sample/model/service_provider.dart';
-import 'package:wdb106_sample/pages/item_page/items_page.dart';
+import 'package:wdb106_sample/pages/items_page/items_page.dart';
 
 void main() {
   runApp(
     ServiceProvider(
       apiClient: MockyApiClient(),
-      itemStore: ItemStore(),
-      cartStore: CartStore(),
       child: const App(),
     ),
   );
@@ -19,8 +17,8 @@ class App extends StatelessWidget {
   const App();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ItemsPage.withDependencies(),
+    return const MaterialApp(
+      home: ItemsPage(),
     );
   }
 }
