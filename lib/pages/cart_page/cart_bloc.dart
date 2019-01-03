@@ -5,16 +5,19 @@ import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:wdb106_sample/model/cart_store.dart';
 
+@immutable
 class CartSummary {
   final String state;
   final String totalPriceState;
   final int totalPrice;
 
-  CartSummary({
-    @required this.state,
-    @required this.totalPriceState,
+  const CartSummary({
+    @required int quantity,
     @required this.totalPrice,
-  });
+  })  : state = 'カート($quantity)',
+        totalPriceState = '合計金額 $totalPrice円+税';
+
+  const CartSummary.zero() : this(quantity: 0, totalPrice: 0);
 }
 
 class CartBloc implements Bloc {
@@ -23,18 +26,17 @@ class CartBloc implements Bloc {
   final _cartItems = BehaviorSubject<List<CartItem>>(seedValue: []);
   StreamSubscription _cartStoreSubscription;
   final _cartSummary = BehaviorSubject<CartSummary>(
-    seedValue: CartSummary(
-      state: 'カート(0)',
-      totalPrice: 0,
-      totalPriceState: '合計金額 0円+税',
-    ),
+    seedValue: const CartSummary.zero(),
   );
 
   CartBloc({@required this.cartStore}) {
     // TODO: pipe?
     _cartStoreSubscription = cartStore.items.listen((items) {
       _cartItems.sink.add(items);
-      _updateCartSummary();
+      _cartSummary.add(CartSummary(
+        quantity: cartStore.totalQuantity,
+        totalPrice: cartStore.totalPrice,
+      ));
     });
 
     _deletionController.listen(cartStore.delete);
@@ -44,18 +46,6 @@ class CartBloc implements Bloc {
   ValueObservable<List<CartItem>> get cartItems => _cartItems.stream;
   Stream<Item> get deleted => _deletionController.stream;
   Sink<Item> get deletion => _deletionController.sink;
-
-  void _updateCartSummary() {
-    final quantity = cartStore.totalQuantity;
-    final totalPrice = cartStore.totalPrice;
-    _cartSummary.add(
-      CartSummary(
-        state: 'カート($quantity)',
-        totalPriceState: '合計金額 $totalPrice円+税',
-        totalPrice: totalPrice,
-      ),
-    );
-  }
 
   @override
   void dispose() {
