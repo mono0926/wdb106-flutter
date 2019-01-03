@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc_provider/bloc_provider.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
@@ -26,36 +24,28 @@ class CartSummary {
 class CartBloc implements Bloc {
   final CartStore cartStore;
   final _deletionController = PublishSubject<Item>();
-  StreamSubscription _cartStoreSubscription;
-  final _cartSummary = BehaviorSubject<CartSummary>(
-    seedValue: CartSummary.zero,
-  );
+  final ValueObservable<CartSummary> _cartSummary;
 
-  CartBloc({@required this.cartStore}) {
-    // TODO: pipe?
-    _cartStoreSubscription = cartStore.items.listen((items) {
-      final totalQuantity = items.fold<int>(0, (sum, e) => sum + e.quantity);
-      final totalPrice =
-          items.fold<int>(0, (sum, e) => sum + e.item.price * e.quantity);
-
-      _cartSummary.add(CartSummary(
-        quantity: totalQuantity,
-        totalPrice: totalPrice,
-      ));
-    });
-
+  CartBloc({@required this.cartStore})
+      : _cartSummary = cartStore.items.map<CartSummary>((items) {
+          final totalQuantity =
+              items.fold<int>(0, (sum, e) => sum + e.quantity);
+          final totalPrice =
+              items.fold<int>(0, (sum, e) => sum + e.item.price * e.quantity);
+          return CartSummary(
+            quantity: totalQuantity,
+            totalPrice: totalPrice,
+          );
+        }).shareValue(seedValue: CartSummary.zero) {
     _deletionController.listen(cartStore.delete);
   }
 
-  ValueObservable<CartSummary> get cartSummary => _cartSummary.stream;
+  ValueObservable<CartSummary> get cartSummary => _cartSummary;
   ValueObservable<List<CartItem>> get cartItems => cartStore.items;
-  Stream<Item> get deleted => _deletionController.stream;
   Sink<Item> get deletion => _deletionController.sink;
 
   @override
   void dispose() {
-    _cartSummary.close();
     _deletionController.close();
-    _cartStoreSubscription.cancel();
   }
 }
