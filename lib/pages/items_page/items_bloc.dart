@@ -10,25 +10,21 @@ export 'package:wdb106_sample/model/item_stock.dart';
 class ItemsBloc implements Bloc {
   final ApiClient client;
   final ItemStore itemStore;
-  final _items = BehaviorSubject<List<ItemStock>>();
+  final ValueObservable<List<ItemStock>> _items;
 
   ItemsBloc({
     @required this.client,
     @required this.itemStore,
-  }) {
-    // TODO: pipe or dispose subscription
-    itemStore.stocks.listen(_items.add);
+  }) : _items = itemStore.stocks {
     _getItems();
   }
 
-  ValueObservable<List<ItemStock>> get items => _items.stream;
+  ValueObservable<List<ItemStock>> get items => _items;
 
   void _getItems() async {
     itemStore.update(await client.getItemStocks());
   }
 
   @override
-  void dispose() {
-    _items.close();
-  }
+  void dispose() {}
 }
