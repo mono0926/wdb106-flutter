@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc_provider/bloc_provider.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
@@ -19,11 +21,18 @@ class CartBloc implements Bloc {
   final CartStore cartStore;
   final _deletionController = PublishSubject<Item>();
   final _cartItems = BehaviorSubject<List<CartItem>>(seedValue: []);
-  final _cartSummary = BehaviorSubject<CartSummary>();
+  StreamSubscription _cartStoreSubscription;
+  final _cartSummary = BehaviorSubject<CartSummary>(
+    seedValue: CartSummary(
+      state: 'カート(0)',
+      totalPrice: 0,
+      totalPriceState: '合計金額 0円+税',
+    ),
+  );
 
   CartBloc({@required this.cartStore}) {
     // TODO: pipe?
-    cartStore.items.listen((items) {
+    _cartStoreSubscription = cartStore.items.listen((items) {
       _cartItems.sink.add(items);
       _updateCartSummary();
     });
@@ -38,7 +47,7 @@ class CartBloc implements Bloc {
 
   void _updateCartSummary() {
     final quantity = cartStore.totalQuantity;
-    final int totalPrice = cartStore.totalPrice;
+    final totalPrice = cartStore.totalPrice;
     _cartSummary.add(
       CartSummary(
         state: 'カート($quantity)',
@@ -53,5 +62,6 @@ class CartBloc implements Bloc {
     _cartSummary.close();
     _deletionController.close();
     _cartItems.close();
+    _cartStoreSubscription.cancel();
   }
 }

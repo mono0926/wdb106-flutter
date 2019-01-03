@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wdb106_sample/model/cart_item.dart';
 import 'package:wdb106_sample/pages/cart_page/cart_bloc_provider.dart';
+import 'package:wdb106_sample/pages/cart_page/cart_tile.dart';
 import 'package:wdb106_sample/widgets/item_cell.dart';
 
 // TODO: アニメーション
@@ -23,7 +24,7 @@ class _CartPageState extends State<CartPage> {
   void initState() {
     super.initState();
     final bloc = CartBlocProvider.of(context);
-    _streamSubscription = bloc.cartSummary.listen((data) {
+    _streamSubscription = bloc.cartSummary.skip(1).listen((data) {
       if (data.totalPrice <= 0) {
         Navigator.of(context).pop();
       }
@@ -45,7 +46,7 @@ class _CartItems extends StatelessWidget {
     return Scaffold(
         appBar: _buildNavigationBar(context),
         body: Column(
-          children: <Widget>[
+          children: [
             _buildHeader(bloc),
             _buildItems(bloc),
           ],
@@ -65,24 +66,29 @@ class _CartItems extends StatelessWidget {
             case ConnectionState.active:
             case ConnectionState.done:
               return ListView(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                children: snap.data
-                    .map(
-                      (cartItem) => ItemCell(
-                            // TODO: 撤廃
-                            model: ItemCellModel(
-                                item: cartItem.item,
-                                onPressed: () {
-                                  final bloc = CartBlocProvider.of(context);
-                                  bloc.deletion.add(cartItem.item);
-                                },
-                                buttonColor: Theme.of(context).errorColor,
-                                buttonLabel: '削除',
-                                infoLabel: '数量 ${cartItem.quantity}'),
-                            key: Key(cartItem.item.id.toString()),
-                          ),
-                    )
-                    .toList(),
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                children: snap.data.map(
+                  (cartItem) {
+                    final item = cartItem.item;
+                    return CartTile(
+                      key: ValueKey(item.id),
+                      item: item,
+                    );
+                    return ItemCell(
+                      // TODO: 撤廃
+                      model: ItemCellModel(
+                          item: cartItem.item,
+                          onPressed: () {
+                            final bloc = CartBlocProvider.of(context);
+                            bloc.deletion.add(cartItem.item);
+                          },
+                          buttonColor: Theme.of(context).errorColor,
+                          buttonLabel: '削除',
+                          infoLabel: '数量 ${cartItem.quantity}'),
+                      key: Key(cartItem.item.id.toString()),
+                    );
+                  },
+                ).toList(),
               );
           }
         },
@@ -92,7 +98,7 @@ class _CartItems extends StatelessWidget {
 
   Widget _buildHeader(CartBloc bloc) {
     return Container(
-      height: 55.0,
+      height: 55,
       color: Colors.grey[300],
       child: Center(
         child: StreamBuilder<CartSummary>(
@@ -104,7 +110,7 @@ class _CartItems extends StatelessWidget {
             return Text(
               snap.data.totalPriceState,
               style: const TextStyle(
-                fontSize: 18.0,
+                fontSize: 18,
                 fontWeight: FontWeight.w600,
               ),
             );

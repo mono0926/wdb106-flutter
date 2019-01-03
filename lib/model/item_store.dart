@@ -13,9 +13,4 @@ class ItemStore {
   void update(List<ItemStock> stocks) {
     _stocks.add(stocks);
   }
-
-  // TODO: call
-  void dispose() {
-    _stocks.close();
-  }
 }

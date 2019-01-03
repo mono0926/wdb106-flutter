@@ -23,12 +23,12 @@ class ItemCell extends StatelessWidget {
   final ItemCellModel model;
 
   static const _indent = 16.0;
-  static const _verticalMargin = SizedBox(height: 8.0);
-  static const _horizontalMargin = SizedBox(width: 8.0);
-  static const _textStyleMain = TextStyle(fontSize: 18.0);
+  static const _verticalMargin = SizedBox(height: 8);
+  static const _horizontalMargin = SizedBox(width: 8);
+  static const _textStyleMain = TextStyle(fontSize: 18);
 
   TextStyle get _textStyleSub => TextStyle(
-        fontSize: 13.0,
+        fontSize: 13,
         color: Colors.grey[600],
       );
 
@@ -51,7 +51,7 @@ class ItemCell extends StatelessWidget {
   Widget _buildBody(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: _indent),
-      height: 96.0,
+      height: 96,
       child: Row(
         children: [
           _buildImage(),

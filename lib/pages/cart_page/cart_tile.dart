@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wdb106_sample/model/item.dart';
-import 'package:wdb106_sample/pages/item_page/item_tile_bloc_provider.dart';
+import 'package:wdb106_sample/pages/cart_page/cart_bloc_provider.dart';
 import 'package:wdb106_sample/widgets/ItemImage.dart';
 import 'package:wdb106_sample/widgets/item_info.dart';
 
-class ItemTile extends StatelessWidget {
+class CartTile extends StatelessWidget {
   static const _indent = 16.0;
 
   final Item item;
 
-  const ItemTile({
+  const CartTile({
     @required Key key,
     @required this.item,
   }) : super(key: key);
@@ -38,38 +38,47 @@ class ItemTile extends StatelessWidget {
   }
 
   Widget _buildItemInfo(BuildContext context) {
-    final bloc = ItemTileBlocProvider.of(context);
+    final bloc = CartBlocProvider.of(context);
     final theme = Theme.of(context);
+    final quantity = 0;
     return ItemInfo(
       title: item.title,
       price: item.priceWithUnit,
-      info: StreamBuilder<int>(
-        initialData: bloc.quantity.value,
-        stream: bloc.quantity,
-        builder: (context, snap) {
-          return Text(
-            '在庫 ${snap.data}',
-            style: theme.textTheme.caption,
-          );
-        },
+      info: Text(
+        '数量 ${quantity}',
+        style: theme.textTheme.caption,
       ),
     );
+
+    // TODO:
+
+//    return ItemInfo(
+//      title: item.title,
+//      price: item.priceWithUnit,
+//      info: StreamBuilder<int>(
+//        initialData: bloc.quantity.value,
+//        stream: bloc.quantity,
+//        builder: (context, snap) {
+//          return Text(
+//            '在庫 ${snap.data}',
+//            style: theme.textTheme.caption,
+//          );
+//        },
+//      ),
+//    );
   }
 
   Widget _buildButton(BuildContext context) {
-    final bloc = ItemTileBlocProvider.of(context);
-    return StreamBuilder<int>(
-      initialData: bloc.quantity.value,
-      stream: bloc.quantity,
-      builder: (context, snap) {
-        return CupertinoButton(
-          child: const Text('追加'),
-          onPressed: snap.data <= 0
-              ? null
-              : () {
-                  bloc.additionToCart.add(null);
-                },
-        );
+    return CupertinoButton(
+      child: Text(
+        '削除',
+        style: TextStyle(
+          color: Theme.of(context).errorColor,
+        ),
+      ),
+      onPressed: () {
+        final bloc = CartBlocProvider.of(context);
+        bloc.deletion.add(item);
       },
     );
   }
