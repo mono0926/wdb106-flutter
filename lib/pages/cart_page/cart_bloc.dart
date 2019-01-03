@@ -26,7 +26,6 @@ class CartSummary {
 class CartBloc implements Bloc {
   final CartStore cartStore;
   final _deletionController = PublishSubject<Item>();
-  final _cartItems = BehaviorSubject<List<CartItem>>(seedValue: []);
   StreamSubscription _cartStoreSubscription;
   final _cartSummary = BehaviorSubject<CartSummary>(
     seedValue: CartSummary.zero,
@@ -35,8 +34,6 @@ class CartBloc implements Bloc {
   CartBloc({@required this.cartStore}) {
     // TODO: pipe?
     _cartStoreSubscription = cartStore.items.listen((items) {
-      _cartItems.sink.add(items);
-
       final totalQuantity = items.fold<int>(0, (sum, e) => sum + e.quantity);
       final totalPrice =
           items.fold<int>(0, (sum, e) => sum + e.item.price * e.quantity);
@@ -51,7 +48,7 @@ class CartBloc implements Bloc {
   }
 
   ValueObservable<CartSummary> get cartSummary => _cartSummary.stream;
-  ValueObservable<List<CartItem>> get cartItems => _cartItems.stream;
+  ValueObservable<List<CartItem>> get cartItems => cartStore.items;
   Stream<Item> get deleted => _deletionController.stream;
   Sink<Item> get deletion => _deletionController.sink;
 
@@ -59,7 +56,6 @@ class CartBloc implements Bloc {
   void dispose() {
     _cartSummary.close();
     _deletionController.close();
-    _cartItems.close();
     _cartStoreSubscription.cancel();
   }
 }
