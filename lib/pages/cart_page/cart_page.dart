@@ -2,18 +2,18 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/bloc/items_bloc.dart';
-import 'package:wdb106_sample/bloc/items_bloc_provider.dart';
 import 'package:wdb106_sample/model/cart_item.dart';
+import 'package:wdb106_sample/pages/item_page/items_bloc.dart';
+import 'package:wdb106_sample/pages/item_page/items_bloc_provider.dart';
 import 'package:wdb106_sample/widgets/item_cell.dart';
 
-class CartItems extends StatefulWidget {
-  const CartItems();
+class CartPage extends StatefulWidget {
+  const CartPage();
   @override
-  _CartItemsState createState() => _CartItemsState();
+  _CartPageState createState() => _CartPageState();
 }
 
-class _CartItemsState extends State<CartItems> {
+class _CartPageState extends State<CartPage> {
   StreamSubscription _streamSubscription;
 
   @override

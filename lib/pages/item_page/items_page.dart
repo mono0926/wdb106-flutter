@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/bloc/items_bloc.dart';
-import 'package:wdb106_sample/bloc/items_bloc_provider.dart';
 import 'package:wdb106_sample/model/item.dart';
-import 'package:wdb106_sample/screens/cart_items.dart';
+import 'package:wdb106_sample/pages/cart_page/cart_page.dart';
+import 'package:wdb106_sample/pages/item_page/items_bloc.dart';
+import 'package:wdb106_sample/pages/item_page/items_bloc_provider.dart';
 import 'package:wdb106_sample/widgets/item_cell.dart';
 
-class ItemList extends StatelessWidget {
-  const ItemList();
+class ItemsPage extends StatelessWidget {
+  const ItemsPage();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class ItemList extends StatelessWidget {
               : () {
                   Navigator.of(context).push(
                     CupertinoPageRoute(
-                      builder: (context) => const CartItems(),
+                      builder: (context) => const CartPage(),
                       fullscreenDialog: true,
                     ),
                   );

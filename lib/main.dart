@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/bloc/items_bloc_provider.dart';
 import 'package:wdb106_sample/model/api.dart';
 import 'package:wdb106_sample/model/service_provider.dart';
-import 'package:wdb106_sample/screens/item_list.dart';
+import 'package:wdb106_sample/pages/item_page/items_bloc_provider.dart';
+import 'package:wdb106_sample/pages/item_page/items_page.dart';
 
 void main() {
   runApp(
@@ -20,7 +20,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return ItemsBlocProvider(
       child: const MaterialApp(
-        home: ItemList(),
+        home: ItemsPage(),
       ),
     );
   }
