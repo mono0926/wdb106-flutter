@@ -17,7 +17,10 @@ class CartSummary {
   })  : state = 'カート($quantity)',
         totalPriceState = '合計金額 $totalPrice円+税';
 
-  const CartSummary.zero() : this(quantity: 0, totalPrice: 0);
+  static const zero = CartSummary(
+    quantity: 0,
+    totalPrice: 0,
+  );
 }
 
 class CartBloc implements Bloc {
@@ -26,7 +29,7 @@ class CartBloc implements Bloc {
   final _cartItems = BehaviorSubject<List<CartItem>>(seedValue: []);
   StreamSubscription _cartStoreSubscription;
   final _cartSummary = BehaviorSubject<CartSummary>(
-    seedValue: const CartSummary.zero(),
+    seedValue: CartSummary.zero,
   );
 
   CartBloc({@required this.cartStore}) {
