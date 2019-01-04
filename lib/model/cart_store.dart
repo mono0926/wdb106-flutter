@@ -4,34 +4,32 @@ import 'model.dart';
 
 @immutable
 class CartStore {
-  final _items = BehaviorSubject<Map<int, CartItem>>(seedValue: {});
+  final _items = <int, CartItem>{};
+  final _subject = BehaviorSubject<List<CartItem>>(seedValue: []);
 
-  ValueObservable<List<CartItem>> get items =>
-      _items.stream.map((x) => x.values.toList()).shareValue(seedValue: []);
+  ValueObservable<List<CartItem>> get items => _subject;
 
   void add(Item item) {
-    final items = _items.value;
-    final cartItem = items[item.id] ??
+    final cartItem = _items[item.id] ??
         CartItem(
           item: item,
           quantity: 0,
         );
-    items[item.id] = cartItem.increased();
-    _items.add(items);
+    _items[item.id] = cartItem.increased();
+    _subject.add(_items.values.toList());
   }
 
   void delete(Item item) {
-    final items = _items.value;
-    final cartItem = items[item.id].decreased();
+    final cartItem = _items[item.id].decreased();
     if (cartItem.quantity <= 0) {
-      items.remove(item.id);
+      _items.remove(item.id);
     } else {
-      items[item.id] = cartItem;
+      _items[item.id] = cartItem;
     }
-    _items.add(items);
+    _subject.add(_items.values.toList());
   }
 
   void dispose() {
-    _items.close();
+    _subject.close();
   }
 }

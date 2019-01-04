@@ -10,6 +10,7 @@ class ItemStore {
   ValueObservable<List<ItemStock>> get stocks => _stocks.stream;
 
   void update(List<ItemStock> stocks) {
+    stocks.sort((a, b) => a.item.id.compareTo(b.item.id));
     _stocks.add(stocks);
   }
 }

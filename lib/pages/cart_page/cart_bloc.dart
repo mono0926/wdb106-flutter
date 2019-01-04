@@ -13,6 +13,11 @@ class CartSummary {
   });
 
   static const zero = CartSummary(quantity: 0, totalPrice: 0);
+
+  @override
+  String toString() {
+    return 'CartSummary{quantity: $quantity, totalPrice: $totalPrice}';
+  }
 }
 
 class CartBloc implements Bloc {

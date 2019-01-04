@@ -15,7 +15,7 @@ void main() {
       expect(find.text('商品リスト'), findsOneWidget);
       expect(find.text('(　´･‿･｀)'), findsNothing);
 
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       expect(find.text('カート(0)'), findsOneWidget);
       expect(find.text('test1'), findsOneWidget);

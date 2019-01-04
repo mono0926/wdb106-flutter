@@ -1,22 +1,23 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wdb106_sample/model/entities/cart_item.dart';
+import 'package:wdb106_sample/model/model.dart';
 
 void main() {
   test('CartItem test', () async {
-    final target = CartItem(
+    const target = CartItem(
       item: Item(
         id: 1,
         title: 'test',
         price: 101,
         imageUrl: 'http://example.com',
-        inventory: 1,
       ),
+      quantity: 0,
     );
     expect(target.item.id, 1);
     expect(target.quantity, 0);
-    target.increase();
-    expect(target.quantity, 1);
-    target.decrease();
+    expect(target.increased().quantity, 1);
+    expect(target.quantity, 0);
+    expect(target.increased().decreased().quantity, 0);
     expect(target.quantity, 0);
   });
 }
