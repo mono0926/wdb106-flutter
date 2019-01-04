@@ -10,7 +10,7 @@ class CartStore {
   final _items = BehaviorSubject<Map<int, CartItem>>(seedValue: {});
 
   ValueObservable<List<CartItem>> get items =>
-      _items.stream.map((x) => x.values.toList()).shareValue();
+      _items.stream.map((x) => x.values.toList()).shareValue(seedValue: []);
 
   void add(Item item) {
     final items = _items.value;

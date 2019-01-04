@@ -14,11 +14,6 @@ class CartSummary {
     @required this.totalPrice,
   })  : state = 'カート($quantity)',
         totalPriceState = '合計金額 $totalPrice円+税';
-
-  static const zero = CartSummary(
-    quantity: 0,
-    totalPrice: 0,
-  );
 }
 
 class CartBloc implements Bloc {
@@ -36,7 +31,7 @@ class CartBloc implements Bloc {
             quantity: totalQuantity,
             totalPrice: totalPrice,
           );
-        }).shareValue(seedValue: CartSummary.zero) {
+        }).shareValue() {
     _deletionController.listen(cartStore.delete);
   }
 
