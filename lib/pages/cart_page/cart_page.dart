@@ -50,7 +50,7 @@ class _CartPageState extends State<CartPage> {
         body: Column(
           children: [
             const CartHeader(),
-            Expanded(child: CartItems()),
+            const Expanded(child: CartItems()),
           ],
         ));
   }

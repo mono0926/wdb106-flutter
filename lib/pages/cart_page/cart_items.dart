@@ -3,6 +3,7 @@ import 'package:wdb106_sample/pages/cart_page/cart_bloc_provider.dart';
 import 'package:wdb106_sample/pages/cart_page/cart_tile.dart';
 
 class CartItems extends StatelessWidget {
+  const CartItems();
   @override
   Widget build(BuildContext context) {
     final bloc = CartBlocProvider.of(context);
