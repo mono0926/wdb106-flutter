@@ -9,7 +9,6 @@ class ItemTile extends StatelessWidget {
   static Widget withDependencies(ItemStock stock) {
     final item = stock.item;
     return ItemTileBlocProvider(
-      key: ValueKey(item.id),
       stock: stock,
       child: ItemTile._(item: item),
     );
