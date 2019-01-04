@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wdb106_sample/model/cart_item.dart';
 import 'package:wdb106_sample/model/item.dart';
 import 'package:wdb106_sample/pages/cart_page/cart_bloc_provider.dart';
 import 'package:wdb106_sample/widgets/ItemImage.dart';
@@ -8,11 +9,12 @@ import 'package:wdb106_sample/widgets/item_info.dart';
 class CartTile extends StatelessWidget {
   static const _indent = 16.0;
 
-  final Item item;
+  final CartItem cartItem;
+  Item get item => cartItem.item;
 
   const CartTile({
     @required Key key,
-    @required this.item,
+    @required this.cartItem,
   }) : super(key: key);
 
   @override
@@ -38,34 +40,15 @@ class CartTile extends StatelessWidget {
   }
 
   Widget _buildItemInfo(BuildContext context) {
-    final bloc = CartBlocProvider.of(context);
     final theme = Theme.of(context);
-    final quantity = 0;
     return ItemInfo(
       title: item.title,
       price: item.priceWithUnit,
       info: Text(
-        '数量 ${quantity}',
+        '数量 ${cartItem.quantity}',
         style: theme.textTheme.caption,
       ),
     );
-
-    // TODO:
-
-//    return ItemInfo(
-//      title: item.title,
-//      price: item.priceWithUnit,
-//      info: StreamBuilder<int>(
-//        initialData: bloc.quantity.value,
-//        stream: bloc.quantity,
-//        builder: (context, snap) {
-//          return Text(
-//            '在庫 ${snap.data}',
-//            style: theme.textTheme.caption,
-//          );
-//        },
-//      ),
-//    );
   }
 
   Widget _buildButton(BuildContext context) {

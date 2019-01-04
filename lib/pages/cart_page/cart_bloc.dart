@@ -5,15 +5,17 @@ import 'package:wdb106_sample/model/cart_store.dart';
 
 @immutable
 class CartSummary {
-  final String state;
-  final String totalPriceState;
+  final int quantity;
   final int totalPrice;
+  String get state => 'カート($quantity)';
+  String get totalPriceState => '合計金額 $totalPrice円+税';
 
   const CartSummary({
-    @required int quantity,
+    @required this.quantity,
     @required this.totalPrice,
-  })  : state = 'カート($quantity)',
-        totalPriceState = '合計金額 $totalPrice円+税';
+  });
+
+  static const zero = CartSummary(quantity: 0, totalPrice: 0);
 }
 
 class CartBloc implements Bloc {
@@ -31,7 +33,7 @@ class CartBloc implements Bloc {
             quantity: totalQuantity,
             totalPrice: totalPrice,
           );
-        }).shareValue() {
+        }).shareValue(seedValue: CartSummary.zero) {
     _deletionController.listen(cartStore.delete);
   }
 
