@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wdb106_sample/pages/cart_page/cart_bloc_provider.dart';
 import 'package:wdb106_sample/pages/cart_page/cart_page.dart';
+import 'package:wdb106_sample/widgets/navigation_bar_button.dart';
 
 class CartButton extends StatelessWidget {
   static Widget withDependencies() {
@@ -19,7 +20,8 @@ class CartButton extends StatelessWidget {
       initialData: bloc.cartSummary.value,
       stream: bloc.cartSummary,
       builder: (context, snap) {
-        return CupertinoButton(
+        return NavigationBarButton(
+          text: snap.data.state,
           onPressed: snap.data.totalPrice == 0
               ? null
               : () {
@@ -32,8 +34,6 @@ class CartButton extends StatelessWidget {
                     ),
                   );
                 },
-          padding: EdgeInsets.zero,
-          child: Text(snap.data.state),
         );
       },
     );

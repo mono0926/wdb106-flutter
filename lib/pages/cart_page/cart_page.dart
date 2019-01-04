@@ -2,9 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/model/cart_item.dart';
 import 'package:wdb106_sample/pages/cart_page/cart_bloc_provider.dart';
-import 'package:wdb106_sample/pages/cart_page/cart_tile.dart';
+import 'package:wdb106_sample/pages/cart_page/cart_header.dart';
+import 'package:wdb106_sample/pages/cart_page/cart_items.dart';
+import 'package:wdb106_sample/widgets/widgets.dart';
 
 // TODO: アニメーション
 class CartPage extends StatefulWidget {
@@ -37,70 +38,21 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: _buildNavigationBar(context),
+        appBar: CupertinoNavigationBar(
+          middle: const Text('カート'),
+          leading: NavigationBarButton(
+            text: '閉じる',
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
         body: Column(
           children: [
-            _buildHeader(context),
-            Expanded(child: _buildItems(context)),
+            const CartHeader(),
+            Expanded(child: CartItems()),
           ],
         ));
-  }
-
-  PreferredSizeWidget _buildNavigationBar(BuildContext context) {
-    return CupertinoNavigationBar(
-      middle: const Text('カート'),
-      leading: CupertinoButton(
-        child: const Text('閉じる'),
-        padding: EdgeInsets.zero,
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-      ),
-    );
-  }
-
-  Widget _buildHeader(BuildContext context) {
-    final bloc = CartBlocProvider.of(context);
-    return Container(
-      height: 55,
-      color: Colors.grey[300],
-      child: Center(
-        child: StreamBuilder<CartSummary>(
-          initialData: bloc.cartSummary.value,
-          stream: bloc.cartSummary,
-          builder: (context, snap) {
-            return Text(
-              snap.data.totalPriceState,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-              ),
-            );
-          },
-        ),
-      ),
-    );
-  }
-
-  Widget _buildItems(BuildContext context) {
-    final bloc = CartBlocProvider.of(context);
-    return StreamBuilder<List<CartItem>>(
-      initialData: bloc.cartItems.value,
-      stream: bloc.cartItems,
-      builder: (context, snap) {
-        return ListView(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          children: snap.data.map(
-            (cartItem) {
-              return CartTile(
-                key: ValueKey(cartItem.item.id),
-                cartItem: cartItem,
-              );
-            },
-          ).toList(),
-        );
-      },
-    );
   }
 
   @override

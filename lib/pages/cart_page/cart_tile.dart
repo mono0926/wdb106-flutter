@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:wdb106_sample/model/cart_item.dart';
 import 'package:wdb106_sample/model/item.dart';
 import 'package:wdb106_sample/pages/cart_page/cart_bloc_provider.dart';
-import 'package:wdb106_sample/widgets/ItemImage.dart';
+import 'package:wdb106_sample/widgets/item_image.dart';
 import 'package:wdb106_sample/widgets/item_info.dart';
 
 class CartTile extends StatelessWidget {
