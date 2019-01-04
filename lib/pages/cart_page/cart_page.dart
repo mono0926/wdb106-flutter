@@ -9,7 +9,13 @@ import 'package:wdb106_sample/widgets/item_cell.dart';
 
 // TODO: アニメーション
 class CartPage extends StatefulWidget {
-  const CartPage();
+  static Widget withDependencies() {
+    return CartBlocProvider(
+      child: const CartPage._(),
+    );
+  }
+
+  const CartPage._();
   @override
   _CartPageState createState() => _CartPageState();
 }
@@ -42,61 +48,60 @@ class _CartItems extends StatelessWidget {
   const _CartItems();
   @override
   Widget build(BuildContext context) {
-    final bloc = CartBlocProvider.of(context);
     return Scaffold(
         appBar: _buildNavigationBar(context),
         body: Column(
           children: [
-            _buildHeader(bloc),
-            _buildItems(bloc),
+            _buildHeader(context),
+            Expanded(child: _buildItems(context)),
           ],
         ));
   }
 
-  Widget _buildItems(CartBloc bloc) {
-    return Expanded(
-      child: StreamBuilder<List<CartItem>>(
-        initialData: bloc.cartItems.value,
-        stream: bloc.cartItems,
-        builder: (context, snap) {
-          switch (snap.connectionState) {
-            case ConnectionState.none:
-            case ConnectionState.waiting:
-              return const Center(child: CircularProgressIndicator());
-            case ConnectionState.active:
-            case ConnectionState.done:
-              return ListView(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                children: snap.data.map(
-                  (cartItem) {
-                    final item = cartItem.item;
-                    return CartTile(
-                      key: ValueKey(item.id),
-                      item: item,
-                    );
-                    return ItemCell(
-                      // TODO: 撤廃
-                      model: ItemCellModel(
-                          item: cartItem.item,
-                          onPressed: () {
-                            final bloc = CartBlocProvider.of(context);
-                            bloc.deletion.add(cartItem.item);
-                          },
-                          buttonColor: Theme.of(context).errorColor,
-                          buttonLabel: '削除',
-                          infoLabel: '数量 ${cartItem.quantity}'),
-                      key: Key(cartItem.item.id.toString()),
-                    );
-                  },
-                ).toList(),
-              );
-          }
-        },
-      ),
+  Widget _buildItems(BuildContext context) {
+    final bloc = CartBlocProvider.of(context);
+    return StreamBuilder<List<CartItem>>(
+      initialData: bloc.cartItems.value,
+      stream: bloc.cartItems,
+      builder: (context, snap) {
+        switch (snap.connectionState) {
+          case ConnectionState.none:
+          case ConnectionState.waiting:
+            return const Center(child: CircularProgressIndicator());
+          case ConnectionState.active:
+          case ConnectionState.done:
+            return ListView(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              children: snap.data.map(
+                (cartItem) {
+                  final item = cartItem.item;
+                  return CartTile(
+                    key: ValueKey(item.id),
+                    item: item,
+                  );
+                  return ItemCell(
+                    // TODO: 撤廃
+                    model: ItemCellModel(
+                        item: cartItem.item,
+                        onPressed: () {
+                          final bloc = CartBlocProvider.of(context);
+                          bloc.deletion.add(cartItem.item);
+                        },
+                        buttonColor: Theme.of(context).errorColor,
+                        buttonLabel: '削除',
+                        infoLabel: '数量 ${cartItem.quantity}'),
+                    key: Key(cartItem.item.id.toString()),
+                  );
+                },
+              ).toList(),
+            );
+        }
+      },
     );
   }
 
-  Widget _buildHeader(CartBloc bloc) {
+  Widget _buildHeader(BuildContext context) {
+    final bloc = CartBlocProvider.of(context);
     return Container(
       height: 55,
       color: Colors.grey[300],

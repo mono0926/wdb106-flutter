@@ -5,11 +5,11 @@ import 'package:wdb106_sample/pages/items_page/tile/item_tile.dart';
 class Items extends StatelessWidget {
   static Widget withDependencies() {
     return ItemsBlocProvider(
-      child: const Items(),
+      child: const Items._(),
     );
   }
 
-  const Items();
+  const Items._();
 
   @override
   Widget build(BuildContext context) {

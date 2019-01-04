@@ -6,11 +6,11 @@ import 'package:wdb106_sample/pages/cart_page/cart_page.dart';
 class CartButton extends StatelessWidget {
   static Widget withDependencies() {
     return CartBlocProvider(
-      child: const CartButton(),
+      child: const CartButton._(),
     );
   }
 
-  const CartButton();
+  const CartButton._();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class CartButton extends StatelessWidget {
                   Navigator.of(context).push(
                     CupertinoPageRoute(
                       builder: (context) {
-                        return CartBlocProvider(child: const CartPage());
+                        return CartPage.withDependencies();
                       },
                       fullscreenDialog: true,
                     ),
