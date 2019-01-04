@@ -1,18 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
+import 'package:wdb106_sample/pages/common/cart_bloc_provider.dart';
 
 import '../../widgets/widgets.dart';
-import '../cart_page/cart_bloc_provider.dart';
 import '../cart_page/cart_page.dart';
 
 class CartButton extends StatelessWidget {
-  static Widget withDependencies() {
-    return CartBlocProvider(
-      child: const CartButton._(),
-    );
-  }
-
-  const CartButton._();
+  const CartButton();
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +29,7 @@ class CartButton extends StatelessWidget {
     }
     return () => Navigator.of(context).push(
           CupertinoPageRoute(
-            builder: (context) {
-              return CartPage.withDependencies();
-            },
+            builder: (context) => const CartPage(),
             fullscreenDialog: true,
           ),
         );

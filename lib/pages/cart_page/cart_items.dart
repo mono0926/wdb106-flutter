@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:wdb106_sample/pages/common/cart_bloc_provider.dart';
 
-import 'cart_bloc_provider.dart';
 import 'cart_tile.dart';
 
 class CartItems extends StatelessWidget {

@@ -10,9 +10,9 @@ class ItemsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CupertinoNavigationBar(
-        middle: const Text('商品リスト'),
-        leading: CartButton.withDependencies(),
+      appBar: const CupertinoNavigationBar(
+        middle: Text('商品リスト'),
+        leading: CartButton(),
       ),
       body: Items.withDependencies(),
     );

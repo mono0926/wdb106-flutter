@@ -3,20 +3,14 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wdb106_sample/pages/common/cart_bloc_provider.dart';
 
 import '../../widgets/widgets.dart';
-import 'cart_bloc_provider.dart';
 import 'cart_header.dart';
 import 'cart_items.dart';
 
 class CartPage extends StatefulWidget {
-  static Widget withDependencies() {
-    return CartBlocProvider(
-      child: const CartPage._(),
-    );
-  }
-
-  const CartPage._();
+  const CartPage();
   @override
   _CartPageState createState() => _CartPageState();
 }
@@ -28,8 +22,7 @@ class _CartPageState extends State<CartPage> {
   void initState() {
     super.initState();
     final bloc = CartBlocProvider.of(context);
-    _streamSubscription =
-        bloc.cartSummary.skipWhile((x) => x.totalPrice == 0).listen((data) {
+    _streamSubscription = bloc.cartSummary.listen((data) {
       if (data.totalPrice <= 0) {
         Navigator.of(context).pop();
       }

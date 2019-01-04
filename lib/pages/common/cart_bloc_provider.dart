@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:wdb106_sample/pages/common/cart_bloc.dart';
 
 import '../../model/model.dart';
-import 'cart_bloc.dart';
+
+export 'package:wdb106_sample/pages/common/cart_bloc.dart';
 
 export '../../model/entities/cart_item.dart';
-export 'cart_bloc.dart';
 
 class CartBlocProvider extends BlocProvider<CartBloc> {
   CartBlocProvider({

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wdb106_sample/model/model.dart';
-import 'package:wdb106_sample/pages/cart_page/cart_bloc.dart';
+import 'package:wdb106_sample/pages/common/cart_bloc.dart';
 
 void main() {
   CartStore cartStore;
