@@ -10,7 +10,7 @@ void main() {
     await provideMockedNetworkImages(() async {
       await tester.pumpWidget(ServiceProvider(
         apiClient: FakeApiClient(),
-        child: App(),
+        child: const App(),
       ));
       expect(find.text('商品リスト'), findsOneWidget);
       expect(find.text('(　´･‿･｀)'), findsNothing);
