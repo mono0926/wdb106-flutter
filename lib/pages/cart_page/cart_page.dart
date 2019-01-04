@@ -59,27 +59,6 @@ class _CartPageState extends State<CartPage> {
     );
   }
 
-  Widget _buildItems(BuildContext context) {
-    final bloc = CartBlocProvider.of(context);
-    return StreamBuilder<List<CartItem>>(
-      initialData: bloc.cartItems.value,
-      stream: bloc.cartItems,
-      builder: (context, snap) {
-        return ListView(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          children: snap.data.map(
-            (cartItem) {
-              return CartTile(
-                key: ValueKey(cartItem.item.id),
-                cartItem: cartItem,
-              );
-            },
-          ).toList(),
-        );
-      },
-    );
-  }
-
   Widget _buildHeader(BuildContext context) {
     final bloc = CartBlocProvider.of(context);
     return Container(
@@ -100,6 +79,27 @@ class _CartPageState extends State<CartPage> {
           },
         ),
       ),
+    );
+  }
+
+  Widget _buildItems(BuildContext context) {
+    final bloc = CartBlocProvider.of(context);
+    return StreamBuilder<List<CartItem>>(
+      initialData: bloc.cartItems.value,
+      stream: bloc.cartItems,
+      builder: (context, snap) {
+        return ListView(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          children: snap.data.map(
+            (cartItem) {
+              return CartTile(
+                key: ValueKey(cartItem.item.id),
+                cartItem: cartItem,
+              );
+            },
+          ).toList(),
+        );
+      },
     );
   }
 
