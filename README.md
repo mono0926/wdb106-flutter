@@ -18,8 +18,9 @@
 
 ## コード量比較(あくまで一つの目安)
 
-- [cloc](https://github.com/AlDanial/cloc)で計測したところ、iOSネイティブのfluxサンプルのSwiftコード(Storyboardなどの画面コードは対象外)と比べて、FlutterのDartコード(画面コード込み)だと65%くらいの行数
-  - (iOSネイティブのmvvmサンプルは未実装部分があったので比較する意味無し)
+- [cloc](https://github.com/AlDanial/cloc)で計測したところ、iOSネイティブのfluxサンプルのSwiftコードと比べて、FlutterのDartコードの方が若干少ない
+  - iOSネイティブの方はStoryboardなどの画面コードが別途あるが、Flutterはコードにすべて含まれていることを考慮するとかなりコンパクトに書けている
+  - (iOSネイティブのmvvmサンプルは未実装部分があったので割愛)
 
 ![clocの結果](screen_shots/cloc.png)
 
