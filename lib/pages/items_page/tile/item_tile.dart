@@ -67,17 +67,17 @@ class ItemTile extends StatelessWidget {
 
   Widget _buildButton(BuildContext context) {
     final bloc = ItemTileBlocProvider.of(context);
-    return StreamBuilder<int>(
-      initialData: bloc.quantity.value,
-      stream: bloc.quantity,
+    return StreamBuilder<bool>(
+      initialData: bloc.hasStock.value,
+      stream: bloc.hasStock,
       builder: (context, snap) {
         return CupertinoButton(
           child: const Text('追加'),
-          onPressed: snap.data <= 0
-              ? null
-              : () {
+          onPressed: snap.data
+              ? () {
                   bloc.additionToCart.add(null);
-                },
+                }
+              : null,
         );
       },
     );

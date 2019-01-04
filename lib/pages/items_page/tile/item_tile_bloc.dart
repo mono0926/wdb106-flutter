@@ -1,3 +1,5 @@
+import 'package:wdb106_sample/util/logger.dart';
+
 import '../../../model/model.dart';
 
 class ItemTileBloc implements Bloc {
@@ -6,6 +8,7 @@ class ItemTileBloc implements Bloc {
 
   final ValueObservable<int> _quantity;
   final _additionToCart = PublishSubject<void>();
+  ValueObservable<bool> _hasStock;
 
   ItemTileBloc({
     @required this.stock,
@@ -26,9 +29,16 @@ class ItemTileBloc implements Bloc {
     _additionToCart.listen((_) {
       _cartStore.add(stock.item);
     });
+
+    _hasStock = _quantity
+        .map<bool>((x) => x > 0)
+        .distinct((a, b) => a == b)
+        .doOnData(logger.info)
+        .shareValue(seedValue: false);
   }
 
   ValueObservable<int> get quantity => _quantity;
+  ValueObservable<bool> get hasStock => _hasStock;
   Sink<void> get additionToCart => _additionToCart.sink;
 
   @override
