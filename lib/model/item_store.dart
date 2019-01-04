@@ -1,8 +1,7 @@
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:wdb106_sample/model/item_stock.dart';
 
-export 'package:wdb106_sample/model/item.dart';
+import 'model.dart';
 
 @immutable
 class ItemStore {

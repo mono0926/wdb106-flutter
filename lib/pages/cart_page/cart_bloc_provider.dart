@@ -1,10 +1,10 @@
-import 'package:bloc_provider/bloc_provider.dart';
-import 'package:flutter/widgets.dart';
-import 'package:wdb106_sample/model/service_provider.dart';
-import 'package:wdb106_sample/pages/cart_page/cart_bloc.dart';
+import 'package:flutter/material.dart';
 
-export 'package:wdb106_sample/model/cart_item.dart';
-export 'package:wdb106_sample/pages/cart_page/cart_bloc.dart';
+import '../../model/model.dart';
+import 'cart_bloc.dart';
+
+export '../../model/entities/cart_item.dart';
+export 'cart_bloc.dart';
 
 class CartBlocProvider extends BlocProvider<CartBloc> {
   CartBlocProvider({

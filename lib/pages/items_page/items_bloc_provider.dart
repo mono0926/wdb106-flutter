@@ -1,9 +1,9 @@
-import 'package:bloc_provider/bloc_provider.dart';
 import 'package:flutter/widgets.dart';
-import 'package:wdb106_sample/model/service_provider.dart';
-import 'package:wdb106_sample/pages/items_page/items_bloc.dart';
 
-export 'package:wdb106_sample/model/item_stock.dart';
+import '../../model/model.dart';
+import 'items_bloc.dart';
+
+export 'items_bloc.dart';
 
 class ItemsBlocProvider extends BlocProvider<ItemsBloc> {
   ItemsBlocProvider({

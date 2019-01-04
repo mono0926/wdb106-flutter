@@ -1,11 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:wdb106_sample/model/api.dart';
-import 'package:wdb106_sample/model/cart_store.dart';
-import 'package:wdb106_sample/model/item_store.dart';
 
-export 'package:wdb106_sample/model/api.dart';
-export 'package:wdb106_sample/model/cart_store.dart';
-export 'package:wdb106_sample/model/item_store.dart';
+import 'model.dart';
 
 @immutable
 class ServiceProvider extends InheritedWidget {

@@ -1,13 +1,14 @@
+// TODO: アニメーション
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/pages/cart_page/cart_bloc_provider.dart';
-import 'package:wdb106_sample/pages/cart_page/cart_header.dart';
-import 'package:wdb106_sample/pages/cart_page/cart_items.dart';
-import 'package:wdb106_sample/widgets/widgets.dart';
 
-// TODO: アニメーション
+import '../../widgets/widgets.dart';
+import 'cart_bloc_provider.dart';
+import 'cart_header.dart';
+import 'cart_items.dart';
+
 class CartPage extends StatefulWidget {
   static Widget withDependencies() {
     return CartBlocProvider(

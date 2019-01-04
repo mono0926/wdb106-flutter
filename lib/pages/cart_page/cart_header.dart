@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/pages/cart_page/cart_bloc_provider.dart';
+
+import 'cart_bloc_provider.dart';
 
 class CartHeader extends StatelessWidget {
   const CartHeader();

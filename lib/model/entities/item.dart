@@ -1,4 +1,4 @@
-import 'package:meta/meta.dart';
+import 'entities.dart';
 
 @immutable
 class Item {

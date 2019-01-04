@@ -1,5 +1,4 @@
-import 'package:meta/meta.dart';
-import 'package:wdb106_sample/model/item.dart';
+import 'entities.dart';
 
 @immutable
 class ItemStock {

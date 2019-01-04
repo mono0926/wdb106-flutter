@@ -1,7 +1,4 @@
-import 'package:meta/meta.dart';
-import 'package:wdb106_sample/model/item.dart';
-
-export 'item.dart';
+import 'entities.dart';
 
 @immutable
 class CartItem {

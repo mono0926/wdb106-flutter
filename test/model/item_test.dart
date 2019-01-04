@@ -1,6 +1,7 @@
 import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
-import 'package:wdb106_sample/model/item.dart';
+import 'package:wdb106_sample/model/entities/item.dart';
 
 void main() {
   test('Item test', () async {

@@ -1,10 +1,11 @@
 import 'dart:async';
 
 import 'package:wdb106_sample/model/api.dart';
-import 'package:wdb106_sample/model/item.dart';
+import 'package:wdb106_sample/model/entities/item.dart';
+import 'package:wdb106_sample/model/entities/item_stock.dart';
 
 class FakeApiClient implements ApiClient {
-  List<Item> items;
+  List<ItemStock> items;
 
   FakeApiClient({this.items}) {
     items ??= [

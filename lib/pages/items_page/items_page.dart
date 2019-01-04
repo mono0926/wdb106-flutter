@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/pages/items_page/cart_button.dart';
-import 'package:wdb106_sample/pages/items_page/items.dart';
+
+import 'cart_button.dart';
+import 'items.dart';
 
 class ItemsPage extends StatelessWidget {
   const ItemsPage();

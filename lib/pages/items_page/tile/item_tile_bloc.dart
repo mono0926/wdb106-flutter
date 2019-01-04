@@ -1,8 +1,4 @@
-import 'package:bloc_provider/bloc_provider.dart';
-import 'package:meta/meta.dart';
-import 'package:rxdart/rxdart.dart';
-import 'package:wdb106_sample/model/cart_store.dart';
-import 'package:wdb106_sample/model/item_stock.dart';
+import '../../../model/model.dart';
 
 class ItemTileBloc implements Bloc {
   final ItemStock stock;

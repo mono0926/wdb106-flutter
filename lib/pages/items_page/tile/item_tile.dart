@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/model/item.dart';
-import 'package:wdb106_sample/model/item_stock.dart';
-import 'package:wdb106_sample/pages/items_page/tile/item_tile_bloc_provider.dart';
-import 'package:wdb106_sample/widgets/item_image.dart';
-import 'package:wdb106_sample/widgets/item_info.dart';
+
+import '../../../model/model.dart';
+import '../../../widgets/widgets.dart';
+import 'item_tile_bloc_provider.dart';
 
 class ItemTile extends StatelessWidget {
   static Widget withDependencies(ItemStock stock) {

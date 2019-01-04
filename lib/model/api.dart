@@ -1,9 +1,8 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:meta/meta.dart';
-import 'package:wdb106_sample/model/item_stock.dart';
+
+import 'model.dart';
 
 abstract class ApiClient {
   Future<List<ItemStock>> getItemStocks();

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/model/cart_item.dart';
-import 'package:wdb106_sample/model/item.dart';
-import 'package:wdb106_sample/pages/cart_page/cart_bloc_provider.dart';
-import 'package:wdb106_sample/widgets/item_image.dart';
-import 'package:wdb106_sample/widgets/item_info.dart';
+import 'package:flutter/widgets.dart';
+
+import '../../model/model.dart';
+import '../../widgets/widgets.dart';
+import 'cart_bloc_provider.dart';
 
 class CartTile extends StatelessWidget {
   static const _indent = 16.0;

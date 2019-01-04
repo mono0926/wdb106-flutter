@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/pages/items_page/items_bloc_provider.dart';
-import 'package:wdb106_sample/pages/items_page/tile/item_tile.dart';
+
+import '../../model/model.dart';
+import 'items_bloc_provider.dart';
+import 'tile/item_tile.dart';
 
 class Items extends StatelessWidget {
   static Widget withDependencies() {
