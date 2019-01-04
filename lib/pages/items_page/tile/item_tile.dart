@@ -9,8 +9,9 @@ class ItemTile extends StatelessWidget {
   static Widget withDependencies(ItemStock stock) {
     final item = stock.item;
     return ItemTileBlocProvider(
+      key: ValueKey(item.id),
       stock: stock,
-      child: ItemTile._(key: ValueKey(item.id), item: item),
+      child: ItemTile._(item: item),
     );
   }
 
@@ -19,7 +20,7 @@ class ItemTile extends StatelessWidget {
   final Item item;
 
   const ItemTile._({
-    @required Key key,
+    Key key,
     @required this.item,
   }) : super(key: key);
 

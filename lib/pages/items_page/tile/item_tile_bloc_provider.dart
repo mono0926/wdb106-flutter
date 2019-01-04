@@ -8,9 +8,11 @@ export 'item_tile_bloc.dart';
 
 class ItemTileBlocProvider extends BlocProvider<ItemTileBloc> {
   ItemTileBlocProvider({
+    @required Key key,
     @required ItemStock stock,
     @required Widget child,
   }) : super(
+          key: key,
           child: child,
           creator: (context, _bag) {
             final provider = ServiceProvider.of(context);
