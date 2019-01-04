@@ -8,17 +8,9 @@ void main() {
   runApp(
     ServiceProvider(
       apiClient: MockyApiClient(),
-      child: const App(),
+      child: const MaterialApp(
+        home: ItemsPage(),
+      ),
     ),
   );
-}
-
-class App extends StatelessWidget {
-  const App();
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: ItemsPage(),
-    );
-  }
 }
