@@ -5,6 +5,9 @@ import 'model.dart';
 @immutable
 class CartStore {
   final _items = <int, CartItem>{};
+  List<CartItem> get _sortedItems =>
+      _items.values.toList()..sort((a, b) => a.item.id.compareTo(b.item.id));
+
   final _subject = BehaviorSubject<List<CartItem>>(seedValue: []);
 
   ValueObservable<List<CartItem>> get items => _subject;
@@ -16,7 +19,7 @@ class CartStore {
           quantity: 0,
         );
     _items[item.id] = cartItem.increased();
-    _subject.add(_items.values.toList());
+    _subject.add(_sortedItems);
   }
 
   void delete(Item item) {
@@ -26,7 +29,7 @@ class CartStore {
     } else {
       _items[item.id] = cartItem;
     }
-    _subject.add(_items.values.toList());
+    _subject.add(_sortedItems);
   }
 
   void dispose() {
