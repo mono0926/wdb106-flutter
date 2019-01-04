@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:image_test_utils/image_test_utils.dart';
-import 'package:wdb106_sample/main.dart';
 import 'package:wdb106_sample/model/service_provider.dart';
+import 'package:wdb106_sample/pages/items_page/items_page.dart';
 
 import 'helper/fake_api_client.dart';
 
@@ -10,7 +11,7 @@ void main() {
     await provideMockedNetworkImages(() async {
       await tester.pumpWidget(ServiceProvider(
         apiClient: FakeApiClient(),
-        child: const App(),
+        child: const MaterialApp(home: ItemsPage()),
       ));
       expect(find.text('商品リスト'), findsOneWidget);
       expect(find.text('(　´･‿･｀)'), findsNothing);
@@ -57,3 +58,5 @@ void main() {
     });
   });
 }
+
+class App {}
