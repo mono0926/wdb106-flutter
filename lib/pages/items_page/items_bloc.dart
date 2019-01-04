@@ -2,19 +2,19 @@ import '../../model/model.dart';
 
 class ItemsBloc implements Bloc {
   final ApiClient client;
-  final ItemStore itemStore;
+  final ItemStore _itemStore;
 
   ItemsBloc({
     @required this.client,
-    @required this.itemStore,
-  }) {
+    @required ItemStore itemStore,
+  }) : _itemStore = itemStore {
     _refresh();
   }
 
-  ValueObservable<List<ItemStock>> get items => itemStore.stocks;
+  ValueObservable<List<ItemStock>> get items => _itemStore.stocks;
 
   void _refresh() async {
-    itemStore.update(await client.getItemStocks());
+    _itemStore.update(await client.getItemStocks());
   }
 
   @override

@@ -2,15 +2,16 @@ import '../../../model/model.dart';
 
 class ItemTileBloc implements Bloc {
   final ItemStock stock;
-  final CartStore cartStore;
+  final CartStore _cartStore;
 
   final ValueObservable<int> _quantity;
   final _additionToCart = PublishSubject<void>();
 
   ItemTileBloc({
     @required this.stock,
-    @required this.cartStore,
-  }) : _quantity = cartStore.items
+    @required CartStore cartStore,
+  })  : _cartStore = cartStore,
+        _quantity = cartStore.items
             .map<int>((items) {
               final cartItem = items.firstWhere(
                 (x) => x.item == stock.item,
@@ -23,7 +24,7 @@ class ItemTileBloc implements Bloc {
             .distinct((a, b) => a == b)
             .shareValue(seedValue: 0) {
     _additionToCart.listen((_) {
-      cartStore.add(stock.item);
+      _cartStore.add(stock.item);
     });
   }
 

@@ -3,10 +3,12 @@ import 'package:wdb106_sample/model/model.dart';
 import 'package:wdb106_sample/pages/cart_page/cart_bloc.dart';
 
 void main() {
+  CartStore cartStore;
   CartBloc target;
 
   setUp(() {
-    target = CartBloc(cartStore: CartStore());
+    cartStore = CartStore();
+    target = CartBloc(cartStore: cartStore);
   });
 
   tearDown(() {
@@ -36,9 +38,8 @@ void main() {
       imageUrl: 'imageUrl2',
       price: 300,
     );
-    target.cartStore.add(item1);
-    target.cartStore.add(item1);
-    target.cartStore.add(item2);
+
+    cartStore..add(item1)..add(item1)..add(item2);
 
     cartItems = target.cartItems.value;
     expect(cartItems.length, 2);
