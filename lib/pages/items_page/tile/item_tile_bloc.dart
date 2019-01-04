@@ -1,5 +1,3 @@
-import 'package:wdb106_sample/util/logger.dart';
-
 import '../../../model/model.dart';
 
 class ItemTileBloc implements Bloc {
@@ -33,7 +31,6 @@ class ItemTileBloc implements Bloc {
     _hasStock = _quantity
         .map<bool>((x) => x > 0)
         .distinct((a, b) => a == b)
-        .doOnData(logger.info)
         .shareValue(seedValue: false);
   }
 
