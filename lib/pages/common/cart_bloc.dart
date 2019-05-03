@@ -36,7 +36,7 @@ class CartBloc implements Bloc {
             quantity: totalQuantity,
             totalPrice: totalPrice,
           );
-        }).shareValue(seedValue: CartSummary.zero) {
+        }).shareValueSeeded(CartSummary.zero) {
     _deletionController.listen(_cartStore.delete);
   }
 

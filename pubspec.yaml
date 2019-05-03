@@ -5,8 +5,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.0
-  rxdart: ^0.20.0
-  simple_logger: ^0.4.0
+  rxdart: any
+  simple_logger: any
 
 dev_dependencies:
   flutter_test:

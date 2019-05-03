@@ -23,7 +23,7 @@ class ItemTileBloc implements Bloc {
               return quantity;
             })
             .distinct((a, b) => a == b)
-            .shareValue(seedValue: 0) {
+            .shareValueSeeded(0) {
     _additionToCart.listen((_) {
       _cartStore.add(stock.item);
     });
@@ -31,7 +31,7 @@ class ItemTileBloc implements Bloc {
     _hasStock = _quantity
         .map<bool>((x) => x > 0)
         .distinct((a, b) => a == b)
-        .shareValue(seedValue: false);
+        .shareValueSeeded(false);
   }
 
   ValueObservable<int> get quantity => _quantity;

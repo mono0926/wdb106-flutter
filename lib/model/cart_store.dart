@@ -8,7 +8,7 @@ class CartStore {
   List<CartItem> get _sortedItems =>
       _items.values.toList()..sort((a, b) => a.item.id.compareTo(b.item.id));
 
-  final _subject = BehaviorSubject<List<CartItem>>(seedValue: []);
+  final _subject = BehaviorSubject<List<CartItem>>.seeded([]);
 
   ValueObservable<List<CartItem>> get items => _subject;
 
