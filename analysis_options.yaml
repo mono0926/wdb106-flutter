@@ -6,6 +6,7 @@ analyzer:
 #    todo: warning
   exclude:
     - lib/l10n/messages_*.dart
+    - lib/generated/**
     - ios/**
 
 linter:
