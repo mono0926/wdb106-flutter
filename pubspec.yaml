@@ -1,5 +1,6 @@
 name: wdb106_sample
 description: A new Flutter project.
+version: 1.0.0+1
 
 dependencies:
   flutter:
