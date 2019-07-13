@@ -1,13 +1,6 @@
 import '../../../model/model.dart';
 
 class ItemTileBloc implements Bloc {
-  final ItemStock stock;
-  final CartStore _cartStore;
-
-  final ValueObservable<int> _quantity;
-  final _additionToCart = PublishSubject<void>();
-  ValueObservable<bool> _hasStock;
-
   ItemTileBloc({
     @required this.stock,
     @required CartStore cartStore,
@@ -33,6 +26,13 @@ class ItemTileBloc implements Bloc {
         .distinct((a, b) => a == b)
         .shareValueSeeded(false);
   }
+
+  final ItemStock stock;
+  final CartStore _cartStore;
+
+  final ValueObservable<int> _quantity;
+  final _additionToCart = PublishSubject<void>();
+  ValueObservable<bool> _hasStock;
 
   ValueObservable<int> get quantity => _quantity;
   ValueObservable<bool> get hasStock => _hasStock;

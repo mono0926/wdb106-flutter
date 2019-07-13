@@ -15,8 +15,8 @@ void main() {
     }
     ''';
 
-    final json = jsonDecode(source);
-    final target = ItemStock.fromJSON(json as Map<String, dynamic>);
+    final json = jsonDecode(source) as Map<String, dynamic>;
+    final target = ItemStock.fromJSON(json);
     final item = target.item;
     expect(item.id, 100);
     expect(item.price, 200);

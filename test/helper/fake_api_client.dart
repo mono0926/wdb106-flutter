@@ -5,8 +5,6 @@ import 'package:wdb106_sample/model/entities/item.dart';
 import 'package:wdb106_sample/model/entities/item_stock.dart';
 
 class FakeApiClient implements ApiClient {
-  List<ItemStock> items;
-
   FakeApiClient({this.items}) {
     items ??= [
       const ItemStock(
@@ -27,6 +25,8 @@ class FakeApiClient implements ApiClient {
           ))
     ];
   }
+
+  List<ItemStock> items;
 
   @override
   Future<List<ItemStock>> getItemStocks() => Future.value(items);

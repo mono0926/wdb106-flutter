@@ -5,13 +5,13 @@ import 'items_bloc_provider.dart';
 import 'tile/item_tile.dart';
 
 class Items extends StatelessWidget {
+  const Items._();
+
   static Widget withDependencies() {
     return ItemsBlocProvider(
       child: const Items._(),
     );
   }
-
-  const Items._();
 
   @override
   Widget build(BuildContext context) {

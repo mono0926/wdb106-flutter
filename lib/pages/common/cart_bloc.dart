@@ -2,15 +2,14 @@ import '../../model/model.dart';
 
 @immutable
 class CartSummary {
-  final int quantity;
-  final int totalPrice;
-  String get state => 'カート($quantity)';
-  String get totalPriceState => '合計金額 $totalPrice円+税';
-
   const CartSummary({
     @required this.quantity,
     @required this.totalPrice,
   });
+  final int quantity;
+  final int totalPrice;
+  String get state => 'カート($quantity)';
+  String get totalPriceState => '合計金額 $totalPrice円+税';
 
   static const zero = CartSummary(quantity: 0, totalPrice: 0);
 
@@ -21,10 +20,6 @@ class CartSummary {
 }
 
 class CartBloc implements Bloc {
-  final CartStore _cartStore;
-  final _deletionController = PublishSubject<Item>();
-  final ValueObservable<CartSummary> _cartSummary;
-
   CartBloc({@required CartStore cartStore})
       : _cartStore = cartStore,
         _cartSummary = cartStore.items.map<CartSummary>((items) {
@@ -39,6 +34,10 @@ class CartBloc implements Bloc {
         }).shareValueSeeded(CartSummary.zero) {
     _deletionController.listen(_cartStore.delete);
   }
+
+  final CartStore _cartStore;
+  final _deletionController = PublishSubject<Item>();
+  final ValueObservable<CartSummary> _cartSummary;
 
   ValueObservable<CartSummary> get cartSummary => _cartSummary;
   ValueObservable<List<CartItem>> get cartItems => _cartStore.items;

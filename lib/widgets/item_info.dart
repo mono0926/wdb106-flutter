@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ItemInfo extends StatelessWidget {
-  final String title;
-  final String price;
-  final Widget info;
-
   const ItemInfo({
     Key key,
     this.title,
     this.price,
     this.info,
   }) : super(key: key);
+
+  final String title;
+  final String price;
+  final Widget info;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

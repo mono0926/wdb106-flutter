@@ -6,6 +6,11 @@ import '../../../widgets/widgets.dart';
 import 'item_tile_bloc_provider.dart';
 
 class ItemTile extends StatelessWidget {
+  const ItemTile._({
+    Key key,
+    @required this.item,
+  }) : super(key: key);
+
   static Widget withDependencies(ItemStock stock) {
     final item = stock.item;
     return ItemTileBlocProvider(
@@ -17,11 +22,6 @@ class ItemTile extends StatelessWidget {
   static const _indent = 16.0;
 
   final Item item;
-
-  const ItemTile._({
-    Key key,
-    @required this.item,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

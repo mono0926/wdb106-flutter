@@ -7,15 +7,15 @@ import '../../model/model.dart';
 import '../../widgets/widgets.dart';
 
 class CartTile extends StatelessWidget {
-  static const _indent = 16.0;
-
-  final CartItem cartItem;
-  Item get item => cartItem.item;
-
   const CartTile({
     @required Key key,
     @required this.cartItem,
   }) : super(key: key);
+
+  final CartItem cartItem;
+  Item get item => cartItem.item;
+
+  static const _indent = 16.0;
 
   @override
   Widget build(BuildContext context) {

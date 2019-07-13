@@ -27,8 +27,8 @@ class CartButton extends StatelessWidget {
     if (summary.totalPrice == 0) {
       return null;
     }
-    return () => Navigator.of(context).push(
-          CupertinoPageRoute(
+    return () => Navigator.of(context).push<void>(
+          CupertinoPageRoute<void>(
             builder: (context) => const CartPage(),
             fullscreenDialog: true,
           ),

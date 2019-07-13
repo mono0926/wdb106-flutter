@@ -2,13 +2,13 @@ import 'entities.dart';
 
 @immutable
 class CartItem {
-  final Item item;
-  final int quantity;
-
   const CartItem({
     @required this.item,
     @required this.quantity,
   });
+
+  final Item item;
+  final int quantity;
 
   CartItem increased() => _copyWith(quantity: quantity + 1);
 

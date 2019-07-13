@@ -4,15 +4,15 @@ import 'model.dart';
 
 @immutable
 class ServiceProvider extends InheritedWidget {
-  final ApiClient apiClient;
-  final itemStore = ItemStore();
-  final cartStore = CartStore();
-
   ServiceProvider({
     Key key,
     @required this.apiClient,
     @required Widget child,
   }) : super(key: key, child: child);
+
+  final ApiClient apiClient;
+  final ItemStore itemStore = ItemStore();
+  final CartStore cartStore = CartStore();
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) => false;

@@ -4,13 +4,14 @@ import 'package:http/http.dart';
 
 import 'model.dart';
 
+// ignore: one_member_abstracts
 abstract class ApiClient {
   Future<List<ItemStock>> getItemStocks();
 }
 
 @immutable
 class MockyApiClient implements ApiClient {
-  final client = Client();
+  final Client client = Client();
 
   @override
   Future<List<ItemStock>> getItemStocks() async {

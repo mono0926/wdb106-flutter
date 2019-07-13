@@ -1,4 +1,4 @@
-// TODO: アニメーション
+// TODO(mono): アニメーション
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
@@ -42,9 +42,9 @@ class _CartPageState extends State<CartPage> {
           ),
         ),
         body: Column(
-          children: [
-            const CartHeader(),
-            const Expanded(child: CartItems()),
+          children: const [
+            CartHeader(),
+            Expanded(child: CartItems()),
           ],
         ));
   }
