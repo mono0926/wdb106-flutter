@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:wdb106_sample/model/model.dart';
 
 void main() {
-  test('ItemStock.fromJSON test', () async {
+  test('ItemStock.fromJson test', () async {
     const source = '''
     {
       "id": 100,
@@ -16,7 +16,7 @@ void main() {
     ''';
 
     final json = jsonDecode(source) as Map<String, dynamic>;
-    final target = ItemStock.fromJSON(json);
+    final target = ItemStock.fromJson(json);
     final item = target.item;
     expect(item.id, 100);
     expect(item.price, 200);

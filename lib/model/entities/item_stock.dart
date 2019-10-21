@@ -7,7 +7,7 @@ class ItemStock {
     @required this.quantity,
   });
 
-  ItemStock.fromJSON(Map<String, dynamic> json)
+  ItemStock.fromJson(Map<String, dynamic> json)
       : item = Item.fromJson(json),
         quantity = json['quantity'] as int;
 
