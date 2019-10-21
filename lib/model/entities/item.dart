@@ -8,7 +8,7 @@ class Item {
       @required this.title,
       @required this.imageUrl});
 
-  Item.fromJSON(Map<String, dynamic> json)
+  Item.fromJson(Map<String, dynamic> json)
       : this(
           id: json['id'] as int,
           price: json['price'] as int,

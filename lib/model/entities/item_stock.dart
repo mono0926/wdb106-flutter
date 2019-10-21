@@ -8,7 +8,7 @@ class ItemStock {
   });
 
   ItemStock.fromJSON(Map<String, dynamic> json)
-      : item = Item.fromJSON(json),
+      : item = Item.fromJson(json),
         quantity = json['quantity'] as int;
 
   final Item item;
