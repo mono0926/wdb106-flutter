@@ -2,11 +2,12 @@ import 'entities.dart';
 
 @immutable
 class Item {
-  const Item(
-      {@required this.id,
-      @required this.price,
-      @required this.title,
-      @required this.imageUrl});
+  const Item({
+    @required this.id,
+    @required this.price,
+    @required this.title,
+    @required this.imageUrl,
+  });
 
   Item.fromJson(Map<String, dynamic> json)
       : this(
