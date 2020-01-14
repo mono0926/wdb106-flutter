@@ -22,3 +22,5 @@ doc/api/
 GoogleService-Info.plist
 google-services.json
 /lib/generated
+
+**/ios/Flutter/Flutter.podspec
