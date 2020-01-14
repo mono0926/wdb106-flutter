@@ -37,10 +37,10 @@ class CartBloc implements Bloc {
 
   final CartStore _cartStore;
   final _deletionController = PublishSubject<Item>();
-  final ValueObservable<CartSummary> _cartSummary;
+  final ValueStream<CartSummary> _cartSummary;
 
-  ValueObservable<CartSummary> get cartSummary => _cartSummary;
-  ValueObservable<List<CartItem>> get cartItems => _cartStore.items;
+  ValueStream<CartSummary> get cartSummary => _cartSummary;
+  ValueStream<List<CartItem>> get cartItems => _cartStore.items;
   Sink<Item> get deletion => _deletionController.sink;
 
   @override

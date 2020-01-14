@@ -10,7 +10,7 @@ class CartStore {
 
   final _subject = BehaviorSubject<List<CartItem>>.seeded([]);
 
-  ValueObservable<List<CartItem>> get items => _subject;
+  ValueStream<List<CartItem>> get items => _subject;
 
   void add(Item item) {
     final cartItem = _items[item.id] ??

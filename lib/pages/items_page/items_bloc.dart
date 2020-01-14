@@ -11,9 +11,9 @@ class ItemsBloc implements Bloc {
   final ApiClient client;
   final ItemStore _itemStore;
 
-  ValueObservable<List<ItemStock>> get items => _itemStore.stocks;
+  ValueStream<List<ItemStock>> get items => _itemStore.stocks;
 
-  void _refresh() async {
+  Future<void> _refresh() async {
     _itemStore.update(await client.getItemStocks());
   }
 

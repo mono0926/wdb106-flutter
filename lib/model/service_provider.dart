@@ -17,7 +17,7 @@ class ServiceProvider extends InheritedWidget {
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) => false;
 
-  static ServiceProvider of(BuildContext context) => context
-      .ancestorInheritedElementForWidgetOfExactType(ServiceProvider)
-      .widget as ServiceProvider;
+  static ServiceProvider of(BuildContext context) =>
+      context.getElementForInheritedWidgetOfExactType<ServiceProvider>().widget
+          as ServiceProvider;
 }

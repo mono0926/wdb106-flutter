@@ -7,7 +7,7 @@ import 'model.dart';
 class ItemStore {
   final _stocks = BehaviorSubject<List<ItemStock>>();
 
-  ValueObservable<List<ItemStock>> get stocks => _stocks.stream;
+  ValueStream<List<ItemStock>> get stocks => _stocks.stream;
 
   void update(List<ItemStock> stocks) {
     stocks.sort((a, b) => a.item.id.compareTo(b.item.id));

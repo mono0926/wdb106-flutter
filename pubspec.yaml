@@ -5,15 +5,17 @@ version: 1.0.0+1
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^0.1.0
+  cupertino_icons: any
   rxdart: any
   simple_logger: any
+  bloc_provider: any
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mockito: ^3.0.0
-  image_test_utils: ^1.0.0
-  bloc_provider:
+  mockito: any
+  image_test_utils: any
+  pedantic_mono: any
+
 flutter:
   uses-material-design: true

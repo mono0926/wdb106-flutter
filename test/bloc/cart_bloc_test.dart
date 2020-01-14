@@ -48,7 +48,7 @@ void main() {
 
     cartSummary = await target.cartSummary
         .firstWhere((s) => s.totalPrice == 500)
-        .timeout(Duration(milliseconds: 1));
+        .timeout(const Duration(milliseconds: 1));
     expect(cartSummary.state, 'カート(3)');
     expect(cartSummary.totalPriceState, '合計金額 500円+税');
 
@@ -70,7 +70,7 @@ void main() {
 
     cartSummary = await target.cartSummary
         .firstWhere((s) => s.totalPrice == 300)
-        .timeout(Duration(milliseconds: 1));
+        .timeout(const Duration(milliseconds: 1));
     expect(cartSummary.state, 'カート(1)');
     expect(cartSummary.totalPriceState, '合計金額 300円+税');
   });

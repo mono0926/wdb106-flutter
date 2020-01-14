@@ -30,12 +30,12 @@ class ItemTileBloc implements Bloc {
   final ItemStock stock;
   final CartStore _cartStore;
 
-  final ValueObservable<int> _quantity;
+  final ValueStream<int> _quantity;
   final _additionToCart = PublishSubject<void>();
-  ValueObservable<bool> _hasStock;
+  ValueStream<bool> _hasStock;
 
-  ValueObservable<int> get quantity => _quantity;
-  ValueObservable<bool> get hasStock => _hasStock;
+  ValueStream<int> get quantity => _quantity;
+  ValueStream<bool> get hasStock => _hasStock;
   Sink<void> get additionToCart => _additionToCart.sink;
 
   @override
