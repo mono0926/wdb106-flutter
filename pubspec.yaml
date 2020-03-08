@@ -4,10 +4,9 @@ version: 1.0.0+1
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons:
+  bloc_provider:
   rxdart:
   simple_logger:
-  bloc_provider:
 dev_dependencies:
   flutter_test:
     sdk: flutter
