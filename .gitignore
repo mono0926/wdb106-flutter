@@ -5,6 +5,7 @@ build/
 *.xcsettings
 
 .flutter-plugins
+.flutter-plugins-dependencies
 flutter_export_environment.sh
 
 # Android Studio
