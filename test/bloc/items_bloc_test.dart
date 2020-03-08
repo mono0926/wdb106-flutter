@@ -1,14 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wdb106_sample/model/model.dart';
-import 'package:wdb106_sample/pages/items_page/items_bloc.dart';
+import 'package:wdb106_sample/pages/items_page/items_controller/items_controller.dart';
 
 import '../helper/fake_api_client.dart';
 
 void main() {
-  ItemsBloc target;
+  ItemsController target;
 
   setUp(() {
-    target = ItemsBloc(
+    target = ItemsController(
       client: FakeApiClient(),
       itemStore: ItemStore(),
     );

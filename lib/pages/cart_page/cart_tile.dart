@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:wdb106_sample/pages/common/cart_bloc_provider.dart';
-
-import '../../model/model.dart';
-import '../../widgets/widgets.dart';
+import 'package:provider/provider.dart';
+import 'package:wdb106_sample/model/model.dart';
+import 'package:wdb106_sample/pages/common/cart_controller/cart_controller.dart';
+import 'package:wdb106_sample/widgets/widgets.dart';
 
 class CartTile extends StatelessWidget {
   const CartTile({
@@ -60,8 +60,7 @@ class CartTile extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        final bloc = CartBlocProvider.of(context);
-        bloc.deletion.add(item);
+        context.read<CartController>().delete(item);
       },
     );
   }

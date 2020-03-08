@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:wdb106_sample/pages/common/cart_bloc_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:wdb106_sample/pages/common/common.dart';
 
 import 'cart_tile.dart';
 
@@ -7,23 +8,17 @@ class CartItems extends StatelessWidget {
   const CartItems();
   @override
   Widget build(BuildContext context) {
-    final bloc = CartBlocProvider.of(context);
-    return StreamBuilder<List<CartItem>>(
-      initialData: bloc.cartItems.value,
-      stream: bloc.cartItems,
-      builder: (context, snap) {
-        return ListView(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          children: snap.data.map(
-            (cartItem) {
-              return CartTile(
-                key: ValueKey(cartItem.item.id),
-                cartItem: cartItem,
-              );
-            },
-          ).toList(),
-        );
-      },
+    final items = context.select((CartState s) => s.items);
+    return ListView(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      children: items.map(
+        (cartItem) {
+          return CartTile(
+            key: ValueKey(cartItem.item.id),
+            cartItem: cartItem,
+          );
+        },
+      ).toList(),
     );
   }
 }

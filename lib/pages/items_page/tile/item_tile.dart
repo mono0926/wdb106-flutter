@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../../model/model.dart';
-import '../../../widgets/widgets.dart';
-import 'item_tile_bloc_provider.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:wdb106_sample/model/model.dart';
+import 'package:wdb106_sample/pages/items_page/tile/item_tile_controller.dart';
+import 'package:wdb106_sample/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class ItemTile extends StatelessWidget {
   const ItemTile._({
@@ -11,10 +12,10 @@ class ItemTile extends StatelessWidget {
     @required this.item,
   }) : super(key: key);
 
-  static Widget withDependencies(ItemStock stock) {
+  static Widget wrapped(ItemStock stock) {
     final item = stock.item;
-    return ItemTileBlocProvider(
-      stock: stock,
+    return StateNotifierProvider<ItemTileController, ItemTileState>(
+      create: (context) => ItemTileController(stock: stock)..initialize(),
       child: ItemTile._(item: item),
     );
   }
@@ -46,39 +47,23 @@ class ItemTile extends StatelessWidget {
   }
 
   Widget _buildItemInfo(BuildContext context) {
-    final bloc = ItemTileBlocProvider.of(context);
     final theme = Theme.of(context);
     return ItemInfo(
       title: item.title,
       price: item.priceWithUnit,
-      info: StreamBuilder<int>(
-        initialData: bloc.quantity.value,
-        stream: bloc.quantity,
-        builder: (context, snap) {
-          return Text(
-            '在庫 ${snap.data}',
-            style: theme.textTheme.caption,
-          );
-        },
+      info: Text(
+        '在庫 ${context.select((ItemTileState s) => s.quantity)}',
+        style: theme.textTheme.caption,
       ),
     );
   }
 
   Widget _buildButton(BuildContext context) {
-    final bloc = ItemTileBlocProvider.of(context);
-    return StreamBuilder<bool>(
-      initialData: bloc.hasStock.value,
-      stream: bloc.hasStock,
-      builder: (context, snap) {
-        return CupertinoButton(
-          child: const Text('追加'),
-          onPressed: snap.data
-              ? () {
-                  bloc.additionToCart.add(null);
-                }
-              : null,
-        );
-      },
+    final controller = context.watch<ItemTileController>();
+    final hasStock = context.select((ItemTileState s) => s.hasStock);
+    return CupertinoButton(
+      child: const Text('追加'),
+      onPressed: hasStock ? controller.addToCart : null,
     );
   }
 }

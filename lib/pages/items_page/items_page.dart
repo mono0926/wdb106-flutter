@@ -14,7 +14,7 @@ class ItemsPage extends StatelessWidget {
         middle: Text('商品リスト'),
         leading: CartButton(),
       ),
-      body: Items.withDependencies(),
+      body: Items.wrapped(),
     );
   }
 }

@@ -1,14 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wdb106_sample/model/model.dart';
-import 'package:wdb106_sample/pages/common/cart_bloc.dart';
+import 'package:wdb106_sample/pages/common/cart_controller/cart_controller.dart';
 
 void main() {
   CartStore cartStore;
-  CartBloc target;
+  CartController target;
 
   setUp(() {
     cartStore = CartStore();
-    target = CartBloc(cartStore: cartStore);
+    target = CartController(cartStore: cartStore);
   });
 
   tearDown(() {

@@ -1,37 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:provider/provider.dart';
+import 'package:wdb106_sample/pages/items_page/items_controller/items_state.dart';
 
-import '../../model/model.dart';
-import 'items_bloc_provider.dart';
+import 'items_controller/items_controller.dart';
 import 'tile/item_tile.dart';
 
 class Items extends StatelessWidget {
   const Items._();
 
-  static Widget withDependencies() {
-    return ItemsBlocProvider(
+  static Widget wrapped() {
+    return StateNotifierProvider<ItemsController, ItemsState>(
+      create: (context) => ItemsController(),
       child: const Items._(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final bloc = ItemsBlocProvider.of(context);
-    return StreamBuilder<List<ItemStock>>(
-      initialData: bloc.items.value,
-      stream: bloc.items,
-      builder: (context, snap) {
-        if (!snap.hasData) {
-          return const Center(child: CircularProgressIndicator());
-        }
-        return ListView(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          children: snap.data
-              .map(
-                ItemTile.withDependencies,
-              )
-              .toList(),
-        );
-      },
-    );
+    return context.select((ItemsState s) => s.isLoading)
+        ? const Center(child: CircularProgressIndicator())
+        : ListView(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            children: context
+                .select((ItemsState s) => s.stocks)
+                .map(
+                  ItemTile.wrapped,
+                )
+                .toList(),
+          );
   }
 }

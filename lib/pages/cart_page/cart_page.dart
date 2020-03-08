@@ -1,14 +1,14 @@
 // TODO(mono): アニメーション
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/pages/common/cart_bloc_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:wdb106_sample/pages/common/cart_controller/cart_controller.dart';
 
 import '../../widgets/widgets.dart';
 import 'cart_header.dart';
 import 'cart_items.dart';
 
+// TODO(mono): Statelessにする
 class CartPage extends StatefulWidget {
   const CartPage();
   @override
@@ -16,14 +16,14 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  StreamSubscription _streamSubscription;
+  VoidCallback _removeListener;
 
   @override
   void initState() {
     super.initState();
-    final bloc = CartBlocProvider.of(context);
-    _streamSubscription = bloc.cartSummary.listen((data) {
-      if (data.totalPrice <= 0) {
+    final controller = context.read<CartController>();
+    _removeListener = controller.addListener((state) {
+      if (state.summary.totalPrice <= 0) {
         Navigator.of(context).pop();
       }
     });
@@ -51,7 +51,7 @@ class _CartPageState extends State<CartPage> {
 
   @override
   void dispose() {
-    _streamSubscription.cancel();
+    _removeListener();
     super.dispose();
   }
 }
