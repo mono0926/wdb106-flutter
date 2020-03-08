@@ -28,12 +28,6 @@ class ItemsController extends StateNotifier<ItemsState> with LocatorMixin {
   }
 
   @override
-  void update(T Function<T>() watch) {
-    // TODO: implement update
-    super.update(watch);
-  }
-
-  @override
   void dispose() {
     _sb.dispose();
 
