@@ -10,7 +10,15 @@ class ItemTileController extends StateNotifier<ItemTileState>
     with LocatorMixin {
   ItemTileController({
     @required this.stock,
-  }) : super(ItemTileState()) {
+  }) : super(ItemTileState());
+
+  final ItemStock stock;
+  final _sb = SubscriptionHolder();
+
+  CartStore get _cartStore => read();
+
+  Future<void> initialize() async {
+    await Future.microtask(() {});
     _sb.add(
       _cartStore.items.listen((items) {
         final cartItem = items.firstWhere(
@@ -24,11 +32,6 @@ class ItemTileController extends StateNotifier<ItemTileState>
       }),
     );
   }
-
-  final ItemStock stock;
-  final _sb = SubscriptionHolder();
-
-  CartStore get _cartStore => read();
 
   void addToCart() => _cartStore.add(stock.item);
 

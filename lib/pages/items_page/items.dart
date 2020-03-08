@@ -11,7 +11,7 @@ class Items extends StatelessWidget {
 
   static Widget wrapped() {
     return StateNotifierProvider<ItemsController, ItemsState>(
-      create: (context) => ItemsController(),
+      create: (context) => ItemsController()..initialize(),
       child: const Items._(),
     );
   }

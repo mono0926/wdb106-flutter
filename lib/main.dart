@@ -14,7 +14,7 @@ void main() => runApp(
           Provider(create: (context) => ItemStore()),
           Provider(create: (context) => CartStore()),
           StateNotifierProvider<CartController, CartState>(
-            create: (context) => CartController(),
+            create: (context) => CartController()..initialize(),
           ),
         ],
         child: const App(),
