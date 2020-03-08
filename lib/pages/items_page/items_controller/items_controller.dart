@@ -8,16 +8,18 @@ export 'items_state.dart';
 
 class ItemsController extends StateNotifier<ItemsState> with LocatorMixin {
   ItemsController() : super(const ItemsState()) {
-    _refresh();
+    Future.microtask(() {
+      _refresh();
 
-    _sb.add(
-      _itemStore.stocks.listen(
-        (stocks) => state = state.copyWith(
-          stocks: stocks,
-          isLoading: false,
+      _sb.add(
+        _itemStore.stocks.listen(
+          (stocks) => state = state.copyWith(
+            stocks: stocks,
+            isLoading: false,
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   final _sb = SubscriptionHolder();

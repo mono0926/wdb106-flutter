@@ -11,18 +11,20 @@ class ItemTileController extends StateNotifier<ItemTileState>
   ItemTileController({
     @required this.stock,
   }) : super(ItemTileState()) {
-    _sb.add(
-      _cartStore.items.listen((items) {
-        final cartItem = items.firstWhere(
-          (x) => x.item == stock.item,
-          orElse: () => null,
-        );
-        final cartItemQuantity = cartItem?.quantity ?? 0;
-        state = state.copyWith(
-          quantity: stock.quantity - cartItemQuantity,
-        );
-      }),
-    );
+    Future.microtask(() {
+      _sb.add(
+        _cartStore.items.listen((items) {
+          final cartItem = items.firstWhere(
+            (x) => x.item == stock.item,
+            orElse: () => null,
+          );
+          final cartItemQuantity = cartItem?.quantity ?? 0;
+          state = state.copyWith(
+            quantity: stock.quantity - cartItemQuantity,
+          );
+        }),
+      );
+    });
   }
 
   final ItemStock stock;

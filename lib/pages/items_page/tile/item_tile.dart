@@ -15,7 +15,7 @@ class ItemTile extends StatelessWidget {
   static Widget wrapped(ItemStock stock) {
     final item = stock.item;
     return StateNotifierProvider<ItemTileController, ItemTileState>(
-      create: (context) => ItemTileController(stock: stock)..initialize(),
+      create: (context) => ItemTileController(stock: stock),
       child: ItemTile._(item: item),
     );
   }
