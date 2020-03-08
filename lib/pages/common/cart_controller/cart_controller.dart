@@ -10,32 +10,33 @@ class CartController extends StateNotifier<CartState> with LocatorMixin {
   CartController()
       : super(CartState(
           summary: CartSummary(),
-        )) {
-    Future.microtask(() {
-      _sh.add(
-        _cartStore.items.listen((items) {
-          state = state.copyWith(
-            items: items,
-            summary: state.summary.copyWith(
-              quantity: items.fold<int>(
-                0,
-                (sum, e) => sum + e.quantity,
-              ),
-              totalPrice: items.fold<int>(
-                0,
-                (sum, e) => sum + e.item.price * e.quantity,
-              ),
-            ),
-          );
-        }),
-      );
-    });
-  }
+        ));
 
   CartStore get _cartStore => read();
   final _sh = SubscriptionHolder();
 
   void delete(Item item) => _cartStore.delete(item);
+
+  @override
+  void initState() {
+    _sh.add(
+      _cartStore.items.listen((items) {
+        state = state.copyWith(
+          items: items,
+          summary: state.summary.copyWith(
+            quantity: items.fold<int>(
+              0,
+              (sum, e) => sum + e.quantity,
+            ),
+            totalPrice: items.fold<int>(
+              0,
+              (sum, e) => sum + e.item.price * e.quantity,
+            ),
+          ),
+        );
+      }),
+    );
+  }
 
   @override
   void dispose() {
