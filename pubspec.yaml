@@ -1,21 +1,18 @@
 name: wdb106_sample
 description: A new Flutter project.
 version: 1.0.0+1
-
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: any
-  rxdart: any
-  simple_logger: any
-  bloc_provider: any
-
+  cupertino_icons:
+  rxdart:
+  simple_logger:
+  bloc_provider:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mockito: any
-  image_test_utils: any
-  pedantic_mono: any
-
+  mockito:
+  image_test_utils:
+  pedantic_mono:
 flutter:
   uses-material-design: true
