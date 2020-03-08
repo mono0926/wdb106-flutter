@@ -12,7 +12,7 @@ class ItemTileController extends StateNotifier<ItemTileState>
     @required this.stock,
   }) : super(ItemTileState()) {
     Future.microtask(() {
-      _sb.add(
+      _sh.add(
         _cartStore.items.listen((items) {
           final cartItem = items.firstWhere(
             (x) => x.item == stock.item,
@@ -28,7 +28,7 @@ class ItemTileController extends StateNotifier<ItemTileState>
   }
 
   final ItemStock stock;
-  final _sb = SubscriptionHolder();
+  final _sh = SubscriptionHolder();
 
   CartStore get _cartStore => read();
 
@@ -36,7 +36,7 @@ class ItemTileController extends StateNotifier<ItemTileState>
 
   @override
   void dispose() {
-    _sb.dispose();
+    _sh.dispose();
 
     super.dispose();
   }

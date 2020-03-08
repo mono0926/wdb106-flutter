@@ -11,7 +11,7 @@ class ItemsController extends StateNotifier<ItemsState> with LocatorMixin {
     Future.microtask(() {
       _refresh();
 
-      _sb.add(
+      _sh.add(
         _itemStore.stocks.listen(
           (stocks) => state = state.copyWith(
             stocks: stocks,
@@ -22,7 +22,7 @@ class ItemsController extends StateNotifier<ItemsState> with LocatorMixin {
     });
   }
 
-  final _sb = SubscriptionHolder();
+  final _sh = SubscriptionHolder();
 
   ApiClient get _client => read();
   ItemStore get _itemStore => read();
@@ -33,7 +33,7 @@ class ItemsController extends StateNotifier<ItemsState> with LocatorMixin {
 
   @override
   void dispose() {
-    _sb.dispose();
+    _sh.dispose();
 
     super.dispose();
   }

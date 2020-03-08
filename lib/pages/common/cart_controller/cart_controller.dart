@@ -12,7 +12,7 @@ class CartController extends StateNotifier<CartState> with LocatorMixin {
           summary: CartSummary(),
         )) {
     Future.microtask(() {
-      _sb.add(
+      _sh.add(
         _cartStore.items.listen((items) {
           state = state.copyWith(
             items: items,
@@ -33,13 +33,13 @@ class CartController extends StateNotifier<CartState> with LocatorMixin {
   }
 
   CartStore get _cartStore => read();
-  final _sb = SubscriptionHolder();
+  final _sh = SubscriptionHolder();
 
   void delete(Item item) => _cartStore.delete(item);
 
   @override
   void dispose() {
-    _sb.dispose();
+    _sh.dispose();
 
     super.dispose();
   }
