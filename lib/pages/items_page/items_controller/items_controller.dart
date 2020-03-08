@@ -7,16 +7,9 @@ import 'items_state.dart';
 export 'items_state.dart';
 
 class ItemsController extends StateNotifier<ItemsState> with LocatorMixin {
-  ItemsController() : super(const ItemsState());
+  ItemsController() : super(const ItemsState()) {
+    _refresh();
 
-  final _sb = SubscriptionHolder();
-
-  ApiClient get _client => read();
-  ItemStore get _itemStore => read();
-
-  Future<void> initialize() async {
-    await Future.microtask(() {});
-    _itemStore.update(await _client.getItemStocks());
     _sb.add(
       _itemStore.stocks.listen(
         (stocks) => state = state.copyWith(
@@ -25,6 +18,15 @@ class ItemsController extends StateNotifier<ItemsState> with LocatorMixin {
         ),
       ),
     );
+  }
+
+  final _sb = SubscriptionHolder();
+
+  ApiClient get _client => read();
+  ItemStore get _itemStore => read();
+
+  Future<void> _refresh() async {
+    _itemStore.update(await _client.getItemStocks());
   }
 
   @override
