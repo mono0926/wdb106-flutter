@@ -17,7 +17,7 @@ class CartButton extends StatelessWidget {
           ? null
           : () => Navigator.of(context).push<void>(
                 CupertinoPageRoute<void>(
-                  builder: (context) => const CartPage(),
+                  builder: (context) => CartPage.wrapped(),
                   fullscreenDialog: true,
                 ),
               ),

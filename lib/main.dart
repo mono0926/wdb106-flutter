@@ -8,6 +8,7 @@ import 'app.dart';
 void main() => runApp(
       MultiProvider(
         providers: [
+          Provider(create: (context) => GlobalKey<NavigatorState>()),
           Provider<ApiClient>(create: (context) => MockyApiClient()),
           StateNotifierProvider<ItemsController, ItemsState>(
             create: (context) => ItemsController(),

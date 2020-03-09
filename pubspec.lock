@@ -163,7 +163,7 @@ packages:
     source: hosted
     version: "1.3.3"
   disposable_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: disposable_provider
       url: "https://pub.dartlang.org"

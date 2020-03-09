@@ -4,6 +4,7 @@ version: 1.0.0+1
 dependencies:
   flutter:
     sdk: flutter
+  disposable_provider:
   flutter_state_notifier:
   freezed_annotation:
   mono_kit:
