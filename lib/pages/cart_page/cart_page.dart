@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wdb106_sample/model/model.dart';
+import 'package:wdb106_sample/widgets/widgets.dart';
 
-import '../../widgets/widgets.dart';
 import 'cart_header.dart';
 import 'cart_items.dart';
 
