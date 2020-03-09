@@ -15,14 +15,15 @@ abstract class CartState with _$CartState {
 
   @late
   CartSummary get summary => CartSummary(
-      quantity: itemMap.values.fold<int>(
-        0,
-        (sum, e) => sum + e.quantity,
-      ),
-      totalPrice: itemMap.values.fold<int>(
-        0,
-        (sum, e) => sum + e.item.price * e.quantity,
-      ));
+        quantity: itemMap.values.fold<int>(
+          0,
+          (sum, e) => sum + e.quantity,
+        ),
+        totalPrice: itemMap.values.fold<int>(
+          0,
+          (sum, e) => sum + e.item.price * e.quantity,
+        ),
+      );
 }
 
 @freezed
