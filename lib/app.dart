@@ -8,7 +8,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      key: context.watch<GlobalKey<NavigatorState>>(),
+      navigatorKey: context.watch(),
       home: const ItemsPage(),
     );
   }
