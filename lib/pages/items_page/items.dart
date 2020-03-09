@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
-import 'package:wdb106_sample/pages/items_page/items_controller/items_state.dart';
+import 'package:wdb106_sample/model/model.dart';
 
-import 'items_controller/items_controller.dart';
 import 'tile/item_tile.dart';
 
 class Items extends StatelessWidget {
-  const Items._();
-
-  static Widget wrapped() {
-    return StateNotifierProvider<ItemsController, ItemsState>(
-      create: (context) => ItemsController(),
-      child: const Items._(),
-    );
-  }
+  const Items();
 
   @override
   Widget build(BuildContext context) {

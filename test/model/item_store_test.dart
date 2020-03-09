@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:wdb106_sample/model/item_store.dart';
+import 'package:wdb106_sample/model/items_store/items_store.dart';
 import 'package:wdb106_sample/model/model.dart';
 
 void main() {
-  ItemStore target;
+  ItemsController target;
   const item = ItemStock(
       item: Item(
         id: 1,
@@ -14,7 +14,7 @@ void main() {
       quantity: 1);
 
   setUp(() {
-    target = ItemStore();
+    target = ItemsController();
   });
   test('ItemStore test', () async {
     expect(target.stocks.value, null);

@@ -10,7 +10,7 @@ void main() {
   setUp(() {
     target = ItemsController(
       client: FakeApiClient(),
-      itemStore: ItemStore(),
+      itemStore: ItemsController(),
     );
   });
 

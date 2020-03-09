@@ -3,4 +3,4 @@ export 'package:rxdart/rxdart.dart';
 export 'api.dart';
 export 'cart_store.dart';
 export 'entities/entities.dart';
-export 'item_store.dart';
+export 'items_controller/items_controller.dart';
