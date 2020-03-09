@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
-import 'package:wdb106_sample/pages/common/cart_controller/cart_controller.dart';
 import 'package:provider/provider.dart';
+import 'package:wdb106_sample/model/model.dart';
 
 import '../../widgets/widgets.dart';
 import '../cart_page/cart_page.dart';

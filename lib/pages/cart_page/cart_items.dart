@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:wdb106_sample/pages/common/common.dart';
+import 'package:wdb106_sample/model/model.dart';
 
 import 'cart_tile.dart';
 
