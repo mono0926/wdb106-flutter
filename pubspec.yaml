@@ -18,6 +18,7 @@ dev_dependencies:
   build_runner:
   freezed:
   image_test_utils:
+  json_serializable:
   mockito:
   pedantic_mono:
 flutter:

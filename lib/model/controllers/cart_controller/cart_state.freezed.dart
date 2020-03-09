@@ -52,14 +52,15 @@ class _$_CartState implements _CartState {
     if (_didsummary == false) {
       _didsummary = true;
       _summary = CartSummary(
-          quantity: itemMap.values.fold<int>(
-            0,
-            (sum, e) => sum + e.quantity,
-          ),
-          totalPrice: itemMap.values.fold<int>(
-            0,
-            (sum, e) => sum + e.item.price * e.quantity,
-          ));
+        quantity: itemMap.values.fold<int>(
+          0,
+          (sum, e) => sum + e.quantity,
+        ),
+        totalPrice: itemMap.values.fold<int>(
+          0,
+          (sum, e) => sum + e.item.price * e.quantity,
+        ),
+      );
     }
     return _summary;
   }
