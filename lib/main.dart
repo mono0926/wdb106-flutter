@@ -12,7 +12,6 @@ void main() => runApp(
           StateNotifierProvider<ItemsController, ItemsState>(
             create: (context) => ItemsController(),
           ),
-          Provider(create: (context) => CartStore()),
           StateNotifierProvider<CartController, CartState>(
             create: (context) => CartController(),
           ),

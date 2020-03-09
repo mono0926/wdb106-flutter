@@ -8,7 +8,7 @@ class CartItems extends StatelessWidget {
   const CartItems();
   @override
   Widget build(BuildContext context) {
-    final items = context.select((CartState s) => s.items);
+    final items = context.select((CartState s) => s.sortedItems);
     return ListView(
       padding: const EdgeInsets.symmetric(vertical: 8),
       children: items.map(

@@ -5,10 +5,24 @@ part 'cart_state.freezed.dart';
 
 @freezed
 abstract class CartState with _$CartState {
-  const factory CartState({
-    @required CartSummary summary,
-    @Default(<CartItem>[]) List<CartItem> items,
+  factory CartState({
+    @Default(<int, CartItem>{}) Map<int, CartItem> itemMap,
   }) = _CartState;
+
+  @late
+  List<CartItem> get sortedItems =>
+      itemMap.values.toList()..sort((a, b) => a.item.id.compareTo(b.item.id));
+
+  @late
+  CartSummary get summary => CartSummary(
+      quantity: itemMap.values.fold<int>(
+        0,
+        (sum, e) => sum + e.quantity,
+      ),
+      totalPrice: itemMap.values.fold<int>(
+        0,
+        (sum, e) => sum + e.item.price * e.quantity,
+      ));
 }
 
 @freezed

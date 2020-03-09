@@ -8,21 +8,17 @@ part of 'cart_state.dart';
 // **************************************************************************
 
 mixin _$CartState {
-  CartSummary get summary;
-  List<CartItem> get items;
+  Map<int, CartItem> get itemMap;
 
-  CartState copyWith({CartSummary summary, List<CartItem> items});
+  CartState copyWith({Map<int, CartItem> itemMap});
 }
 
 class _$CartStateTearOff {
   const _$CartStateTearOff();
 
-  _CartState call(
-      {@required CartSummary summary,
-      List<CartItem> items = const <CartItem>[]}) {
+  _CartState call({Map<int, CartItem> itemMap = const <int, CartItem>{}}) {
     return _CartState(
-      summary: summary,
-      items: items,
+      itemMap: itemMap,
     );
   }
 }
@@ -30,60 +26,80 @@ class _$CartStateTearOff {
 const $CartState = _$CartStateTearOff();
 
 class _$_CartState implements _CartState {
-  const _$_CartState({@required this.summary, this.items = const <CartItem>[]})
-      : assert(summary != null);
+  _$_CartState({this.itemMap = const <int, CartItem>{}});
+
+  @JsonKey(defaultValue: const <int, CartItem>{})
+  @override
+  final Map<int, CartItem> itemMap;
+  bool _didsortedItems = false;
+  List<CartItem> _sortedItems;
 
   @override
-  final CartSummary summary;
-  @JsonKey(defaultValue: const <CartItem>[])
+  List<CartItem> get sortedItems {
+    if (_didsortedItems == false) {
+      _didsortedItems = true;
+      _sortedItems = itemMap.values.toList()
+        ..sort((a, b) => a.item.id.compareTo(b.item.id));
+    }
+    return _sortedItems;
+  }
+
+  bool _didsummary = false;
+  CartSummary _summary;
+
   @override
-  final List<CartItem> items;
+  CartSummary get summary {
+    if (_didsummary == false) {
+      _didsummary = true;
+      _summary = CartSummary(
+          quantity: itemMap.values.fold<int>(
+            0,
+            (sum, e) => sum + e.quantity,
+          ),
+          totalPrice: itemMap.values.fold<int>(
+            0,
+            (sum, e) => sum + e.item.price * e.quantity,
+          ));
+    }
+    return _summary;
+  }
 
   @override
   String toString() {
-    return 'CartState(summary: $summary, items: $items)';
+    return 'CartState(itemMap: $itemMap, sortedItems: $sortedItems, summary: $summary)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _CartState &&
-            (identical(other.summary, summary) ||
-                const DeepCollectionEquality()
-                    .equals(other.summary, summary)) &&
-            (identical(other.items, items) ||
-                const DeepCollectionEquality().equals(other.items, items)));
+            (identical(other.itemMap, itemMap) ||
+                const DeepCollectionEquality().equals(other.itemMap, itemMap)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(summary) ^
-      const DeepCollectionEquality().hash(items);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(itemMap);
 
   @override
   _$_CartState copyWith({
-    Object summary = freezed,
-    Object items = freezed,
+    Object itemMap = freezed,
   }) {
     return _$_CartState(
-      summary: summary == freezed ? this.summary : summary as CartSummary,
-      items: items == freezed ? this.items : items as List<CartItem>,
+      itemMap:
+          itemMap == freezed ? this.itemMap : itemMap as Map<int, CartItem>,
     );
   }
 }
 
 abstract class _CartState implements CartState {
-  const factory _CartState(
-      {@required CartSummary summary, List<CartItem> items}) = _$_CartState;
+  factory _CartState({Map<int, CartItem> itemMap}) = _$_CartState;
 
   @override
-  CartSummary get summary;
-  @override
-  List<CartItem> get items;
+  Map<int, CartItem> get itemMap;
 
   @override
-  _CartState copyWith({CartSummary summary, List<CartItem> items});
+  _CartState copyWith({Map<int, CartItem> itemMap});
 }
 
 mixin _$CartSummary {

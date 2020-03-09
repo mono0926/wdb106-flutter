@@ -1,4 +1,4 @@
-import 'package:mono_kit/mono_kit.dart';
+import 'package:flutter/foundation.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:wdb106_sample/model/model.dart';
 
@@ -13,31 +13,29 @@ class ItemTileController extends StateNotifier<ItemTileState>
   }) : super(ItemTileState());
 
   final ItemStock stock;
-  final _sh = SubscriptionHolder();
+  VoidCallback _cartControllerRemoveListener;
 
-  CartStore get _cartStore => read();
-
-  void addToCart() => _cartStore.add(stock.item);
+  CartController get _cartController => read();
 
   @override
   void initState() {
-    _sh.add(
-      _cartStore.items.listen((items) {
-        final cartItem = items.firstWhere(
-          (x) => x.item == stock.item,
-          orElse: () => null,
-        );
-        final cartItemQuantity = cartItem?.quantity ?? 0;
-        state = state.copyWith(
-          quantity: stock.quantity - cartItemQuantity,
-        );
-      }),
-    );
+    _cartControllerRemoveListener = _cartController.addListener((cartState) {
+      final cartItem = cartState.sortedItems.firstWhere(
+        (x) => x.item == stock.item,
+        orElse: () => null,
+      );
+      final cartItemQuantity = cartItem?.quantity ?? 0;
+      state = state.copyWith(
+        quantity: stock.quantity - cartItemQuantity,
+      );
+    });
   }
+
+  void addToCart() => _cartController.add(stock.item);
 
   @override
   void dispose() {
-    _sh.dispose();
+    _cartControllerRemoveListener();
 
     super.dispose();
   }
