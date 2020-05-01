@@ -26,3 +26,4 @@ google-services.json
 /lib/generated
 
 **/ios/Flutter/Flutter.podspec
+**/ios/Flutter/.last_build_id
