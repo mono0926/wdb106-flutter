@@ -8,7 +8,7 @@ dependencies:
   flutter_state_notifier:
   freezed_annotation:
   mono_kit: ^0.14.0-dev
-  provider:
+  provider: ^4.1.0-dev
   rxdart:
   simple_logger:
   state_notifier:

@@ -7,19 +7,9 @@ part of 'item.dart';
 // FreezedGenerator
 // **************************************************************************
 
+T _$identity<T>(T value) => value;
 Item _$ItemFromJson(Map<String, dynamic> json) {
   return _Item.fromJson(json);
-}
-
-mixin _$Item {
-  int get id;
-  int get price;
-  String get title;
-  String get imageUrl;
-
-  Item copyWith({int id, int price, String title, String imageUrl});
-
-  Map<String, dynamic> toJson();
 }
 
 class _$ItemTearOff {
@@ -39,7 +29,78 @@ class _$ItemTearOff {
   }
 }
 
+// ignore: unused_element
 const $Item = _$ItemTearOff();
+
+mixin _$Item {
+  int get id;
+  int get price;
+  String get title;
+  String get imageUrl;
+
+  Map<String, dynamic> toJson();
+  $ItemCopyWith<Item> get copyWith;
+}
+
+abstract class $ItemCopyWith<$Res> {
+  factory $ItemCopyWith(Item value, $Res Function(Item) then) =
+      _$ItemCopyWithImpl<$Res>;
+  $Res call({int id, int price, String title, String imageUrl});
+}
+
+class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
+  _$ItemCopyWithImpl(this._value, this._then);
+
+  final Item _value;
+  // ignore: unused_field
+  final $Res Function(Item) _then;
+
+  @override
+  $Res call({
+    Object id = freezed,
+    Object price = freezed,
+    Object title = freezed,
+    Object imageUrl = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: id == freezed ? _value.id : id as int,
+      price: price == freezed ? _value.price : price as int,
+      title: title == freezed ? _value.title : title as String,
+      imageUrl: imageUrl == freezed ? _value.imageUrl : imageUrl as String,
+    ));
+  }
+}
+
+abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
+  factory _$ItemCopyWith(_Item value, $Res Function(_Item) then) =
+      __$ItemCopyWithImpl<$Res>;
+  @override
+  $Res call({int id, int price, String title, String imageUrl});
+}
+
+class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
+    implements _$ItemCopyWith<$Res> {
+  __$ItemCopyWithImpl(_Item _value, $Res Function(_Item) _then)
+      : super(_value, (v) => _then(v as _Item));
+
+  @override
+  _Item get _value => super._value as _Item;
+
+  @override
+  $Res call({
+    Object id = freezed,
+    Object price = freezed,
+    Object title = freezed,
+    Object imageUrl = freezed,
+  }) {
+    return _then(_Item(
+      id: id == freezed ? _value.id : id as int,
+      price: price == freezed ? _value.price : price as int,
+      title: title == freezed ? _value.title : title as String,
+      imageUrl: imageUrl == freezed ? _value.imageUrl : imageUrl as String,
+    ));
+  }
+}
 
 @JsonSerializable()
 class _$_Item with DiagnosticableTreeMixin implements _Item {
@@ -64,6 +125,7 @@ class _$_Item with DiagnosticableTreeMixin implements _Item {
   final String title;
   @override
   final String imageUrl;
+
   bool _didpriceWithUnit = false;
   String _priceWithUnit;
 
@@ -117,19 +179,8 @@ class _$_Item with DiagnosticableTreeMixin implements _Item {
       const DeepCollectionEquality().hash(imageUrl);
 
   @override
-  _$_Item copyWith({
-    Object id = freezed,
-    Object price = freezed,
-    Object title = freezed,
-    Object imageUrl = freezed,
-  }) {
-    return _$_Item(
-      id: id == freezed ? this.id : id as int,
-      price: price == freezed ? this.price : price as int,
-      title: title == freezed ? this.title : title as String,
-      imageUrl: imageUrl == freezed ? this.imageUrl : imageUrl as String,
-    );
-  }
+  _$ItemCopyWith<_Item> get copyWith =>
+      __$ItemCopyWithImpl<_Item>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -154,7 +205,6 @@ abstract class _Item implements Item {
   String get title;
   @override
   String get imageUrl;
-
   @override
-  _Item copyWith({int id, int price, String title, String imageUrl});
+  _$ItemCopyWith<_Item> get copyWith;
 }

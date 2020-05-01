@@ -7,11 +7,7 @@ part of 'item_tile_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
-mixin _$ItemTileState {
-  int get quantity;
-
-  ItemTileState copyWith({int quantity});
-}
+T _$identity<T>(T value) => value;
 
 class _$ItemTileStateTearOff {
   const _$ItemTileStateTearOff();
@@ -23,14 +19,76 @@ class _$ItemTileStateTearOff {
   }
 }
 
+// ignore: unused_element
 const $ItemTileState = _$ItemTileStateTearOff();
 
+mixin _$ItemTileState {
+  int get quantity;
+
+  $ItemTileStateCopyWith<ItemTileState> get copyWith;
+}
+
+abstract class $ItemTileStateCopyWith<$Res> {
+  factory $ItemTileStateCopyWith(
+          ItemTileState value, $Res Function(ItemTileState) then) =
+      _$ItemTileStateCopyWithImpl<$Res>;
+  $Res call({int quantity});
+}
+
+class _$ItemTileStateCopyWithImpl<$Res>
+    implements $ItemTileStateCopyWith<$Res> {
+  _$ItemTileStateCopyWithImpl(this._value, this._then);
+
+  final ItemTileState _value;
+  // ignore: unused_field
+  final $Res Function(ItemTileState) _then;
+
+  @override
+  $Res call({
+    Object quantity = freezed,
+  }) {
+    return _then(_value.copyWith(
+      quantity: quantity == freezed ? _value.quantity : quantity as int,
+    ));
+  }
+}
+
+abstract class _$ItemTileStateCopyWith<$Res>
+    implements $ItemTileStateCopyWith<$Res> {
+  factory _$ItemTileStateCopyWith(
+          _ItemTileState value, $Res Function(_ItemTileState) then) =
+      __$ItemTileStateCopyWithImpl<$Res>;
+  @override
+  $Res call({int quantity});
+}
+
+class __$ItemTileStateCopyWithImpl<$Res>
+    extends _$ItemTileStateCopyWithImpl<$Res>
+    implements _$ItemTileStateCopyWith<$Res> {
+  __$ItemTileStateCopyWithImpl(
+      _ItemTileState _value, $Res Function(_ItemTileState) _then)
+      : super(_value, (v) => _then(v as _ItemTileState));
+
+  @override
+  _ItemTileState get _value => super._value as _ItemTileState;
+
+  @override
+  $Res call({
+    Object quantity = freezed,
+  }) {
+    return _then(_ItemTileState(
+      quantity: quantity == freezed ? _value.quantity : quantity as int,
+    ));
+  }
+}
+
 class _$_ItemTileState implements _ItemTileState {
-  _$_ItemTileState({this.quantity = 0});
+  _$_ItemTileState({this.quantity = 0}) : assert(quantity != null);
 
   @JsonKey(defaultValue: 0)
   @override
   final int quantity;
+
   bool _didhasStock = false;
   bool _hasStock;
 
@@ -62,13 +120,8 @@ class _$_ItemTileState implements _ItemTileState {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(quantity);
 
   @override
-  _$_ItemTileState copyWith({
-    Object quantity = freezed,
-  }) {
-    return _$_ItemTileState(
-      quantity: quantity == freezed ? this.quantity : quantity as int,
-    );
-  }
+  _$ItemTileStateCopyWith<_ItemTileState> get copyWith =>
+      __$ItemTileStateCopyWithImpl<_ItemTileState>(this, _$identity);
 }
 
 abstract class _ItemTileState implements ItemTileState {
@@ -76,7 +129,6 @@ abstract class _ItemTileState implements ItemTileState {
 
   @override
   int get quantity;
-
   @override
-  _ItemTileState copyWith({int quantity});
+  _$ItemTileStateCopyWith<_ItemTileState> get copyWith;
 }

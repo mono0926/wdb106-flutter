@@ -7,12 +7,7 @@ part of 'items_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
-mixin _$ItemsState {
-  List<ItemStock> get stocks;
-  bool get isLoading;
-
-  ItemsState copyWith({List<ItemStock> stocks, bool isLoading});
-}
+T _$identity<T>(T value) => value;
 
 class _$ItemsStateTearOff {
   const _$ItemsStateTearOff();
@@ -26,11 +21,76 @@ class _$ItemsStateTearOff {
   }
 }
 
+// ignore: unused_element
 const $ItemsState = _$ItemsStateTearOff();
+
+mixin _$ItemsState {
+  List<ItemStock> get stocks;
+  bool get isLoading;
+
+  $ItemsStateCopyWith<ItemsState> get copyWith;
+}
+
+abstract class $ItemsStateCopyWith<$Res> {
+  factory $ItemsStateCopyWith(
+          ItemsState value, $Res Function(ItemsState) then) =
+      _$ItemsStateCopyWithImpl<$Res>;
+  $Res call({List<ItemStock> stocks, bool isLoading});
+}
+
+class _$ItemsStateCopyWithImpl<$Res> implements $ItemsStateCopyWith<$Res> {
+  _$ItemsStateCopyWithImpl(this._value, this._then);
+
+  final ItemsState _value;
+  // ignore: unused_field
+  final $Res Function(ItemsState) _then;
+
+  @override
+  $Res call({
+    Object stocks = freezed,
+    Object isLoading = freezed,
+  }) {
+    return _then(_value.copyWith(
+      stocks: stocks == freezed ? _value.stocks : stocks as List<ItemStock>,
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+    ));
+  }
+}
+
+abstract class _$ItemsStateCopyWith<$Res> implements $ItemsStateCopyWith<$Res> {
+  factory _$ItemsStateCopyWith(
+          _ItemsState value, $Res Function(_ItemsState) then) =
+      __$ItemsStateCopyWithImpl<$Res>;
+  @override
+  $Res call({List<ItemStock> stocks, bool isLoading});
+}
+
+class __$ItemsStateCopyWithImpl<$Res> extends _$ItemsStateCopyWithImpl<$Res>
+    implements _$ItemsStateCopyWith<$Res> {
+  __$ItemsStateCopyWithImpl(
+      _ItemsState _value, $Res Function(_ItemsState) _then)
+      : super(_value, (v) => _then(v as _ItemsState));
+
+  @override
+  _ItemsState get _value => super._value as _ItemsState;
+
+  @override
+  $Res call({
+    Object stocks = freezed,
+    Object isLoading = freezed,
+  }) {
+    return _then(_ItemsState(
+      stocks: stocks == freezed ? _value.stocks : stocks as List<ItemStock>,
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+    ));
+  }
+}
 
 class _$_ItemsState implements _ItemsState {
   const _$_ItemsState(
-      {this.stocks = const <ItemStock>[], this.isLoading = true});
+      {this.stocks = const <ItemStock>[], this.isLoading = true})
+      : assert(stocks != null),
+        assert(isLoading != null);
 
   @JsonKey(defaultValue: const <ItemStock>[])
   @override
@@ -62,15 +122,8 @@ class _$_ItemsState implements _ItemsState {
       const DeepCollectionEquality().hash(isLoading);
 
   @override
-  _$_ItemsState copyWith({
-    Object stocks = freezed,
-    Object isLoading = freezed,
-  }) {
-    return _$_ItemsState(
-      stocks: stocks == freezed ? this.stocks : stocks as List<ItemStock>,
-      isLoading: isLoading == freezed ? this.isLoading : isLoading as bool,
-    );
-  }
+  _$ItemsStateCopyWith<_ItemsState> get copyWith =>
+      __$ItemsStateCopyWithImpl<_ItemsState>(this, _$identity);
 }
 
 abstract class _ItemsState implements ItemsState {
@@ -81,7 +134,6 @@ abstract class _ItemsState implements ItemsState {
   List<ItemStock> get stocks;
   @override
   bool get isLoading;
-
   @override
-  _ItemsState copyWith({List<ItemStock> stocks, bool isLoading});
+  _$ItemsStateCopyWith<_ItemsState> get copyWith;
 }
