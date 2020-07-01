@@ -1,18 +1,21 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:wdb106_sample/model/model.dart';
 
+import '../../../main.dart';
 import 'items_state.dart';
 
 export 'items_state.dart';
 
-class ItemsController extends StateNotifier<ItemsState> with LocatorMixin {
-  ItemsController() : super(const ItemsState());
+class ItemsController extends StateNotifier<ItemsState> {
+  ItemsController(this._ref) : super(const ItemsState()) {
+    _load();
+  }
 
-  ApiClient get _client => read();
+  final ProviderReference _ref;
 
-  @override
-  Future<void> initState() async {
-    final stocks = await _client.getItemStocks();
+  Future<void> _load() async {
+    final stocks = await _ref.read(apiClient).getItemStocks();
     state = state.copyWith(
       stocks: stocks,
       isLoading: false,

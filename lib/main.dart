@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_state_notifier/flutter_state_notifier.dart';
-import 'package:provider/provider.dart';
 import 'package:wdb106_sample/model/model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app.dart';
 
+final navigatorKeyProvider = Provider((ref) => GlobalKey<NavigatorState>());
+final itemsProvider = StateNotifierProvider((ref) => ItemsController(ref));
+final cartProvider = StateNotifierProvider((ref) => CartController());
+final apiClient = Provider((ref) => MockyApiClient());
+//final cartSummary = Computed((read) => read(cartProvider.state).summary);
+
 void main() => runApp(
-      MultiProvider(
-        providers: [
-          Provider(create: (context) => GlobalKey<NavigatorState>()),
-          Provider<ApiClient>(create: (context) => MockyApiClient()),
-          StateNotifierProvider<ItemsController, ItemsState>(
-            create: (context) => ItemsController(),
-          ),
-          StateNotifierProvider<CartController, CartState>(
-            create: (context) => CartController(),
-          ),
-        ],
-        child: const App(),
+      const ProviderScope(
+        child: App(),
       ),
     );
