@@ -1,31 +1,38 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
 import 'package:wdb106_sample/pages/items_page/tile/item_tile_controller.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
-import 'package:provider/provider.dart';
 
-class ItemTile extends StatelessWidget {
+final itemTileProvider =
+    StateNotifierProviderFamily<ItemTileController, ItemStock>(
+  (ref, stock) => ItemTileController(
+    ref,
+    stock: stock,
+  ),
+);
+
+class ItemTile extends HookWidget {
   const ItemTile._({
     Key key,
-    @required this.item,
+    @required this.stock,
   }) : super(key: key);
 
   static Widget wrapped(ItemStock stock) {
-    final item = stock.item;
-    return StateNotifierProvider<ItemTileController, ItemTileState>(
-      create: (context) => ItemTileController(stock: stock),
-      child: ItemTile._(item: item),
+    return ProviderScope(
+      child: ItemTile._(stock: stock),
     );
   }
 
   static const _indent = 16.0;
 
-  final Item item;
+  final ItemStock stock;
 
   @override
   Widget build(BuildContext context) {
+    final item = stock.item;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -47,23 +54,24 @@ class ItemTile extends StatelessWidget {
   }
 
   Widget _buildItemInfo(BuildContext context) {
+    final item = stock.item;
     final theme = Theme.of(context);
     return ItemInfo(
       title: item.title,
       price: item.priceWithUnit,
       info: Text(
-        '在庫 ${context.select((ItemTileState s) => s.quantity)}',
+        '在庫 ${useProvider(itemTileProvider(stock).state).quantity}',
         style: theme.textTheme.caption,
       ),
     );
   }
 
   Widget _buildButton(BuildContext context) {
-    final controller = context.watch<ItemTileController>();
-    final hasStock = context.select((ItemTileState s) => s.hasStock);
     return CupertinoButton(
       child: const Text('追加'),
-      onPressed: hasStock ? controller.addToCart : null,
+      onPressed: useProvider(itemTileProvider(stock).state).hasStock
+          ? useProvider(itemTileProvider(stock)).addToCart
+          : null,
     );
   }
 }
