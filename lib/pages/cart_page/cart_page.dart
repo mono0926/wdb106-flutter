@@ -2,23 +2,25 @@
 import 'package:disposable_provider/disposable_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:state_notifier/state_notifier.dart';
-import 'package:wdb106_sample/model/model.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
+import 'package:wdb106_sample/main.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
-import 'package:provider/provider.dart' hide Locator;
 
 import 'cart_header.dart';
 import 'cart_items.dart';
 
-class CartPage extends StatelessWidget {
-  const CartPage._({Key key}) : super(key: key);
+// TODO(mono): DisposableProvider作りたい
+// ignore: top_level_function_literal_block
+final provider = AutoDisposeProvider((ref) {
+  final c = _Controller(ref);
+  ref.onDispose(c.dispose);
+  return c;
+});
 
-  static Widget wrapped() {
-    return DisposableProvider(
-      create: (context) => _Controller(read: context.read),
-      child: const CartPage._(),
-    );
-  }
+class CartPage extends HookWidget {
+  const CartPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class CartPage extends StatelessWidget {
         middle: const Text('カート'),
         leading: NavigationBarButton(
           text: '閉じる',
-          onPressed: context.watch<_Controller>().pop,
+          onPressed: useProvider(provider).pop,
         ),
       ),
       body: Column(
@@ -41,23 +43,19 @@ class CartPage extends StatelessWidget {
 }
 
 class _Controller with Disposable {
-  _Controller({@required this.read}) {
-    _removeListener = _cartController.addListener((state) {
+  _Controller(this._ref) {
+    // TODO(mono): addListener不要？
+    _removeListener = _ref.read(cartProvider).addListener((state) {
       if (state.summary.totalPrice <= 0) {
         pop();
       }
     });
   }
-
-  final Locator read;
-
-  CartController get _cartController => read();
-  NavigatorState get navigator =>
-      read<GlobalKey<NavigatorState>>().currentState;
+  final ProviderReference _ref;
 
   VoidCallback _removeListener;
 
-  void pop() => navigator.pop();
+  void pop() => _ref.read(navigatorKeyProvider).currentState.pop();
 
   @override
   void dispose() {

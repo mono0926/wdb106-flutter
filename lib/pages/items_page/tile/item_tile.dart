@@ -7,7 +7,7 @@ import 'package:wdb106_sample/pages/items_page/tile/item_tile_controller.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
 final itemTileProvider =
-    StateNotifierProviderFamily<ItemTileController, ItemStock>(
+    AutoDisposeStateNotifierProviderFamily<ItemTileController, ItemStock>(
   (ref, stock) => ItemTileController(
     ref,
     stock: stock,
@@ -15,17 +15,10 @@ final itemTileProvider =
 );
 
 class ItemTile extends HookWidget {
-  const ItemTile._({
+  const ItemTile({
     Key key,
     @required this.stock,
   }) : super(key: key);
-
-  static Widget wrapped(ItemStock stock) {
-    return ProviderScope(
-      child: ItemTile._(stock: stock),
-    );
-  }
-
   static const _indent = 16.0;
 
   final ItemStock stock;
