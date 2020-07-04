@@ -98,10 +98,11 @@ class __$ItemStockCopyWithImpl<$Res> extends _$ItemStockCopyWithImpl<$Res>
   }
 }
 
-class _$_ItemStock with DiagnosticableTreeMixin implements _ItemStock {
-  const _$_ItemStock({@required this.item, @required this.quantity})
+class _$_ItemStock extends _ItemStock with DiagnosticableTreeMixin {
+  _$_ItemStock({@required this.item, @required this.quantity})
       : assert(item != null),
-        assert(quantity != null);
+        assert(quantity != null),
+        super._();
 
   @override
   final Item item;
@@ -144,8 +145,9 @@ class _$_ItemStock with DiagnosticableTreeMixin implements _ItemStock {
       __$ItemStockCopyWithImpl<_ItemStock>(this, _$identity);
 }
 
-abstract class _ItemStock implements ItemStock {
-  const factory _ItemStock({@required Item item, @required int quantity}) =
+abstract class _ItemStock extends ItemStock {
+  _ItemStock._() : super._();
+  factory _ItemStock({@required Item item, @required int quantity}) =
       _$_ItemStock;
 
   @override

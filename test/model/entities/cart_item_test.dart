@@ -4,7 +4,7 @@ import 'package:wdb106_sample/model/model.dart';
 
 void main() {
   test('CartItem test', () async {
-    const target = CartItem(
+    final target = CartItem(
       item: Item(
         id: 1,
         title: 'test',

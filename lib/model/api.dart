@@ -16,12 +16,7 @@ class ApiClient {
     );
     final json =
         (await jsonDecode(result.body) as List).cast<Map<String, dynamic>>();
-    final list = json
-        .map((j) => ItemStock(
-              item: Item.fromJson(j),
-              quantity: j['quantity'] as int,
-            ))
-        .toList();
+    final list = json.map(ItemStock.fromJson).toList();
     return list;
   }
 }

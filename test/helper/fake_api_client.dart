@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:http/src/client.dart';
 import 'package:wdb106_sample/model/api.dart';
 import 'package:wdb106_sample/model/entities/item/item.dart';
 import 'package:wdb106_sample/model/entities/item_stock/item_stock.dart';
