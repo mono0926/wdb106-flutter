@@ -79,9 +79,10 @@ class __$CartStateCopyWithImpl<$Res> extends _$CartStateCopyWithImpl<$Res>
   }
 }
 
-class _$_CartState implements _CartState {
+class _$_CartState extends _CartState {
   _$_CartState({this.itemMap = const <int, CartItem>{}})
-      : assert(itemMap != null);
+      : assert(itemMap != null),
+        super._();
 
   @JsonKey(defaultValue: const <int, CartItem>{})
   @override
@@ -143,7 +144,8 @@ class _$_CartState implements _CartState {
       __$CartStateCopyWithImpl<_CartState>(this, _$identity);
 }
 
-abstract class _CartState implements CartState {
+abstract class _CartState extends CartState {
+  _CartState._() : super._();
   factory _CartState({Map<int, CartItem> itemMap}) = _$_CartState;
 
   @override

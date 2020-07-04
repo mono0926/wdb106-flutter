@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:wdb106_sample/model/entities/cart_item.dart';
+import 'package:wdb106_sample/model/entities/cart_item/cart_item.dart';
 import 'package:wdb106_sample/model/model.dart';
 
 void main() {
   test('CartItem test', () async {
-    const target = CartItem(
+    final target = CartItem(
       item: Item(
         id: 1,
         title: 'test',

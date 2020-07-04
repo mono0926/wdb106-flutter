@@ -4,14 +4,11 @@ version: 1.0.0+1
 dependencies:
   flutter:
     sdk: flutter
-  disposable_provider:
-  flutter_state_notifier:
   freezed_annotation:
-  mono_kit: ^0.14.0-dev
-  provider: ^4.1.0-dev
-  rxdart:
+  hooks_riverpod:
+  flutter_hooks:
   simple_logger:
-  state_notifier:
+  disposable_provider:
 dev_dependencies:
   flutter_test:
     sdk: flutter

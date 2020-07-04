@@ -86,11 +86,11 @@ class __$ItemsStateCopyWithImpl<$Res> extends _$ItemsStateCopyWithImpl<$Res>
   }
 }
 
-class _$_ItemsState implements _ItemsState {
-  const _$_ItemsState(
-      {this.stocks = const <ItemStock>[], this.isLoading = true})
+class _$_ItemsState extends _ItemsState {
+  _$_ItemsState({this.stocks = const <ItemStock>[], this.isLoading = true})
       : assert(stocks != null),
-        assert(isLoading != null);
+        assert(isLoading != null),
+        super._();
 
   @JsonKey(defaultValue: const <ItemStock>[])
   @override
@@ -99,9 +99,23 @@ class _$_ItemsState implements _ItemsState {
   @override
   final bool isLoading;
 
+  bool _did_map = false;
+  Map<int, ItemStock> __map;
+
+  @override
+  Map<int, ItemStock> get _map {
+    if (_did_map == false) {
+      _did_map = true;
+      __map = Map.fromEntries(
+        stocks.map((s) => MapEntry(s.item.id, s)),
+      );
+    }
+    return __map;
+  }
+
   @override
   String toString() {
-    return 'ItemsState(stocks: $stocks, isLoading: $isLoading)';
+    return 'ItemsState(stocks: $stocks, isLoading: $isLoading, _map: $_map)';
   }
 
   @override
@@ -126,9 +140,9 @@ class _$_ItemsState implements _ItemsState {
       __$ItemsStateCopyWithImpl<_ItemsState>(this, _$identity);
 }
 
-abstract class _ItemsState implements ItemsState {
-  const factory _ItemsState({List<ItemStock> stocks, bool isLoading}) =
-      _$_ItemsState;
+abstract class _ItemsState extends ItemsState {
+  _ItemsState._() : super._();
+  factory _ItemsState({List<ItemStock> stocks, bool isLoading}) = _$_ItemsState;
 
   @override
   List<ItemStock> get stocks;
