@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:wdb106_sample/model/entities/cart_item.dart';
+import 'package:wdb106_sample/model/entities/cart_item/cart_item.dart';
 import 'package:wdb106_sample/model/model.dart';
 
 void main() {
