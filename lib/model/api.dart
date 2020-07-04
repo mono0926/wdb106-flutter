@@ -7,12 +7,11 @@ import 'model.dart';
 
 final apiClient = Provider((ref) => ApiClient());
 
-@immutable
 class ApiClient {
-  final Client client = Client();
+  final Client _client = Client();
 
   Future<List<ItemStock>> getItemStocks() async {
-    final result = await client.get(
+    final result = await _client.get(
       'http://www.mocky.io/v2/5c2df3b92f00008e2f175350',
     );
     final json =
