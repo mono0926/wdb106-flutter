@@ -14,7 +14,7 @@ class ItemInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textStyleMain = theme.textTheme.subhead;
+    final textStyleMain = theme.textTheme.subtitle1;
     return Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -1,25 +1,22 @@
 import 'dart:convert';
 
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart';
 
 import 'model.dart';
 
-// ignore: one_member_abstracts
-abstract class ApiClient {
-  Future<List<ItemStock>> getItemStocks();
-}
+final apiClientProvider = Provider((ref) => ApiClient());
 
-@immutable
-class MockyApiClient implements ApiClient {
-  final Client client = Client();
+class ApiClient {
+  final Client _client = Client();
 
-  @override
   Future<List<ItemStock>> getItemStocks() async {
-    final result =
-        await client.get('http://www.mocky.io/v2/5c2df3b92f00008e2f175350');
+    final result = await _client.get(
+      'http://www.mocky.io/v2/5c2df3b92f00008e2f175350',
+    );
     final json =
         (await jsonDecode(result.body) as List).cast<Map<String, dynamic>>();
-    final list = json.map((j) => ItemStock.fromJson(j)).toList();
+    final list = json.map(ItemStock.fromJson).toList();
     return list;
   }
 }

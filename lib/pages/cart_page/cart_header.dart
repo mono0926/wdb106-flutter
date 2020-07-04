@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/pages/common/cart_bloc_provider.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:wdb106_sample/model/model.dart';
 
-class CartHeader extends StatelessWidget {
+class CartHeader extends HookWidget {
   const CartHeader();
 
   @override
   Widget build(BuildContext context) {
-    final bloc = CartBlocProvider.of(context);
+    final totalPrice = useProvider(
+      cartProvider.state.select((s) => s.summary.totalPriceState),
+    );
     return Container(
       height: 55,
       color: Colors.grey[300],
       child: Center(
-        child: StreamBuilder<CartSummary>(
-          initialData: bloc.cartSummary.value,
-          stream: bloc.cartSummary,
-          builder: (context, snap) {
-            return Text(
-              snap.data.totalPriceState,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-              ),
-            );
-          },
+        child: Text(
+          totalPrice,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
     );

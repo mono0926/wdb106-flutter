@@ -4,15 +4,19 @@ version: 1.0.0+1
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons:
-  rxdart:
+  freezed_annotation:
+  hooks_riverpod:
+  flutter_hooks:
   simple_logger:
-  bloc_provider:
+  disposable_provider:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mockito:
+  build_runner:
+  freezed:
   image_test_utils:
+  json_serializable:
+  mockito:
   pedantic_mono:
 flutter:
   uses-material-design: true

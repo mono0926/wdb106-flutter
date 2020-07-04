@@ -1,57 +1,76 @@
 // TODO(mono): アニメーション
-import 'dart:async';
-
+import 'package:disposable_provider/disposable_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/pages/common/cart_bloc_provider.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:wdb106_sample/model/model.dart';
+import 'package:wdb106_sample/providers/providers.dart';
+import 'package:wdb106_sample/widgets/widgets.dart';
 
-import '../../widgets/widgets.dart';
 import 'cart_header.dart';
-import 'cart_items.dart';
+import 'cart_tile.dart';
 
-class CartPage extends StatefulWidget {
-  const CartPage();
-  @override
-  _CartPageState createState() => _CartPageState();
-}
+// TODO(mono): DisposableProvider作りたい
+// ignore: top_level_function_literal_block
+final provider = AutoDisposeProvider((ref) {
+  final c = _Controller(ref);
+  ref.onDispose(c.dispose);
+  return c;
+});
 
-class _CartPageState extends State<CartPage> {
-  StreamSubscription _streamSubscription;
-
-  @override
-  void initState() {
-    super.initState();
-    final bloc = CartBlocProvider.of(context);
-    _streamSubscription = bloc.cartSummary.listen((data) {
-      if (data.totalPrice <= 0) {
-        Navigator.of(context).pop();
-      }
-    });
-  }
+class CartPage extends HookWidget {
+  const CartPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CupertinoNavigationBar(
-          middle: const Text('カート'),
-          leading: NavigationBarButton(
-            text: '閉じる',
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
+      appBar: CupertinoNavigationBar(
+        middle: const Text('カート'),
+        leading: NavigationBarButton(
+          text: '閉じる',
+          onPressed: useProvider(provider).pop,
         ),
-        body: Column(
-          children: const [
-            CartHeader(),
-            Expanded(child: CartItems()),
-          ],
-        ));
+      ),
+      body: Column(
+        children: const [
+          CartHeader(),
+          Expanded(child: _ListView()),
+        ],
+      ),
+    );
   }
+}
+
+class _ListView extends HookWidget {
+  const _ListView();
+  @override
+  Widget build(BuildContext context) {
+    final items = useProvider(cartProvider.state.select((s) => s.sortedItems));
+    return ListView.builder(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      itemCount: items.length,
+      itemBuilder: (_, index) => CartTile(cartItem: items[index]),
+    );
+  }
+}
+
+class _Controller with Disposable {
+  _Controller(this._ref) {
+    _removeListener = _ref.read(cartProvider).addListener((state) {
+      if (state.summary.totalPrice <= 0) {
+        pop();
+      }
+    });
+  }
+  final ProviderReference _ref;
+
+  VoidCallback _removeListener;
+
+  void pop() => _ref.read(navigatorKeyProvider).currentState.pop();
 
   @override
   void dispose() {
-    _streamSubscription.cancel();
-    super.dispose();
+    _removeListener();
   }
 }

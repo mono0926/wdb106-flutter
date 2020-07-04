@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:wdb106_sample/model/api.dart';
-import 'package:wdb106_sample/model/service_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app.dart';
 
-void main() {
-  runApp(ServiceProvider(
-    apiClient: MockyApiClient(),
-    child: const App(),
-  ));
-}
+void main() => runApp(
+      const ProviderScope(
+        child: App(),
+      ),
+    );
