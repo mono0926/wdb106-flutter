@@ -29,16 +29,15 @@ class _ListView extends HookWidget {
   Widget build(BuildContext context) {
     final isLoading =
         useProvider(itemsProvider.state.select((s) => s.isLoading));
-    final stocks = useProvider(itemsProvider.state.select((s) => s.stocks));
+    final ids = useProvider(
+            itemsProvider.state.select((s) => s.stocks.map((s) => s.item.id)))
+        .toList();
     return isLoading
         ? const Center(child: CircularProgressIndicator())
-        : ListView(
+        : ListView.builder(
             padding: const EdgeInsets.symmetric(vertical: 8),
-            children: stocks
-                .map((stock) => ItemTile(
-                      id: stock.item.id,
-                    ))
-                .toList(),
+            itemCount: ids.length,
+            itemBuilder: (_, index) => ItemTile(id: ids[index]),
           );
   }
 }

@@ -9,7 +9,7 @@ import 'package:wdb106_sample/providers/providers.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
 import 'cart_header.dart';
-import 'cart_items.dart';
+import 'cart_tile.dart';
 
 // TODO(mono): DisposableProvider作りたい
 // ignore: top_level_function_literal_block
@@ -35,9 +35,21 @@ class CartPage extends HookWidget {
       body: Column(
         children: const [
           CartHeader(),
-          Expanded(child: CartItems()),
+          Expanded(child: _ListView()),
         ],
       ),
+    );
+  }
+}
+
+class _ListView extends HookWidget {
+  const _ListView();
+  @override
+  Widget build(BuildContext context) {
+    final items = useProvider(cartProvider.state).sortedItems;
+    return ListView(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      children: items.map((cartItem) => CartTile(cartItem: cartItem)).toList(),
     );
   }
 }
