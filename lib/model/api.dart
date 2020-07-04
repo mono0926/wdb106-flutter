@@ -1,8 +1,11 @@
 import 'dart:convert';
 
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart';
 
 import 'model.dart';
+
+final apiClient = Provider((ref) => MockyApiClient());
 
 // ignore: one_member_abstracts
 abstract class ApiClient {

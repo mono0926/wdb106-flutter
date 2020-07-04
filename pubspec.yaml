@@ -5,12 +5,11 @@ dependencies:
   flutter:
     sdk: flutter
   freezed_annotation:
-  mono_kit: ^0.16.0-dev
-  riverpod:
   hooks_riverpod:
   rxdart:
   simple_logger:
   flutter_hooks:
+  disposable_provider:
 dev_dependencies:
   flutter_test:
     sdk: flutter

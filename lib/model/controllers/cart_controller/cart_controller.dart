@@ -1,9 +1,12 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:wdb106_sample/model/model.dart';
 
 import 'cart_state.dart';
 
 export 'cart_state.dart';
+
+final cartProvider = StateNotifierProvider((ref) => CartController());
 
 class CartController extends StateNotifier<CartState> with LocatorMixin {
   CartController() : super(CartState());
