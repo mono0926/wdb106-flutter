@@ -1,20 +1,19 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'entities.dart';
 
-@immutable
-class CartItem {
-  const CartItem({
-    @required this.item,
-    @required this.quantity,
-  });
+part 'cart_item.freezed.dart';
 
-  final Item item;
-  final int quantity;
+@freezed
+abstract class CartItem implements _$CartItem {
+  factory CartItem({
+    @required Item item,
+    @required int quantity,
+  }) = _CartItem;
 
-  CartItem increased() => _copyWith(quantity: quantity + 1);
+  CartItem._();
 
-  CartItem decreased() => _copyWith(quantity: quantity - 1);
+  CartItem increased() => copyWith(quantity: quantity + 1);
 
-  CartItem _copyWith({int quantity}) {
-    return CartItem(item: item, quantity: quantity);
-  }
+  CartItem decreased() => copyWith(quantity: quantity - 1);
 }

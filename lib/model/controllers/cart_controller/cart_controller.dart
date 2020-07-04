@@ -30,7 +30,7 @@ class CartController extends StateNotifier<CartState> {
       itemMap: {
         ...state.itemMap,
         item.id: state.itemMap[item.id].decreased(),
-      },
+      }..removeWhere((key, value) => value.quantity <= 0),
     );
   }
 }
