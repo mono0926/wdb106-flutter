@@ -8,12 +8,15 @@ class CartHeader extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final totalPrice = useProvider(
+      cartProvider.state.select((s) => s.summary.totalPriceState),
+    );
     return Container(
       height: 55,
       color: Colors.grey[300],
       child: Center(
         child: Text(
-          useProvider(cartProvider.state).summary.totalPriceState,
+          totalPrice,
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600,

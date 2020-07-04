@@ -46,10 +46,11 @@ class _ListView extends HookWidget {
   const _ListView();
   @override
   Widget build(BuildContext context) {
-    final items = useProvider(cartProvider.state).sortedItems;
-    return ListView(
+    final items = useProvider(cartProvider.state.select((s) => s.sortedItems));
+    return ListView.builder(
       padding: const EdgeInsets.symmetric(vertical: 8),
-      children: items.map((cartItem) => CartTile(cartItem: cartItem)).toList(),
+      itemCount: items.length,
+      itemBuilder: (_, index) => CartTile(cartItem: items[index]),
     );
   }
 }
