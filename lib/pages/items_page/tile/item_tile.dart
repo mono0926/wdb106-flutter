@@ -69,8 +69,9 @@ class _AddButton extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = useProvider(itemTileProviders(id));
-    final hasStock =
-        useProvider(itemTileProviders(id).state.select((s) => s.hasStock));
+    final hasStock = useProvider(
+      itemTileProviders(id).state.select((s) => s.hasStock),
+    );
     return CupertinoButton(
       child: const Text('追加'),
       onPressed: hasStock ? controller.addToCart : null,

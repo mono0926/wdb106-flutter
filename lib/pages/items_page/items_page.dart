@@ -30,8 +30,8 @@ class _ListView extends HookWidget {
     final isLoading =
         useProvider(itemsProvider.state.select((s) => s.isLoading));
     final ids = useProvider(
-            itemsProvider.state.select((s) => s.stocks.map((s) => s.item.id)))
-        .toList();
+      itemsProvider.state.select((s) => s.stocks.map((s) => s.item.id)),
+    ).toList();
     return isLoading
         ? const Center(child: CircularProgressIndicator())
         : ListView.builder(

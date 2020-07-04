@@ -12,7 +12,8 @@ class CartButton extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final isEmpty = useProvider(
-        cartProvider.state.select((s) => s.summary.totalPrice == 0));
+      cartProvider.state.select((s) => s.summary.totalPrice == 0),
+    );
     return NavigationBarButton(
       text: useProvider(cartProvider.state.select((s) => s.summary.state)),
       onPressed: isEmpty
