@@ -44,7 +44,6 @@ class CartPage extends HookWidget {
 
 class _Controller with Disposable {
   _Controller(this._ref) {
-    // TODO(mono): addListener不要？
     _removeListener = _ref.read(cartProvider).addListener((state) {
       if (state.summary.totalPrice <= 0) {
         pop();
