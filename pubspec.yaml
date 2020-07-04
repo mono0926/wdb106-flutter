@@ -6,9 +6,8 @@ dependencies:
     sdk: flutter
   freezed_annotation:
   hooks_riverpod:
-  rxdart:
-  simple_logger:
   flutter_hooks:
+  simple_logger:
   disposable_provider:
 dev_dependencies:
   flutter_test:
