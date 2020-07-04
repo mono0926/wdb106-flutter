@@ -7,13 +7,14 @@ import '../../helper/fake_api_client.dart';
 void main() {
   ItemsController target;
   final item = ItemStock(
-      item: Item(
-        id: 1,
-        title: 'test',
-        price: 101,
-        imageUrl: 'http://example.com',
-      ),
-      quantity: 1);
+    item: Item(
+      id: 1,
+      title: 'test',
+      price: 101,
+      imageUrl: 'http://example.com',
+    ),
+    quantity: 1,
+  );
 
   setUp(() {
     final owner = ProviderStateOwner(
@@ -25,7 +26,7 @@ void main() {
     );
     target = ItemsController(owner.ref);
   });
-  test('ItemStore test', () async {
+  test('ItemsController test', () async {
     final stocks = target.debugState.stocks;
     expect(stocks.length, 1);
     expect(stocks.first.quantity, 1);

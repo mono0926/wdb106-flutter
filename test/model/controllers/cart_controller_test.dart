@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:wdb106_sample/model/model.dart';
 
 void main() {
-  test('CartStore test', () async {
+  test('CartController test', () async {
     final target = CartController();
     expect(target.debugState.sortedItems, isEmpty);
     var summary = target.debugState.summary;
