@@ -4,10 +4,12 @@ import 'package:wdb106_sample/model/model.dart';
 part 'cart_state.freezed.dart';
 
 @freezed
-abstract class CartState with _$CartState {
+abstract class CartState implements _$CartState {
   factory CartState({
     @Default(<int, CartItem>{}) Map<int, CartItem> itemMap,
   }) = _CartState;
+
+  CartState._();
 
   @late
   List<CartItem> get sortedItems =>
@@ -23,6 +25,11 @@ abstract class CartState with _$CartState {
           0,
           (sum, e) => sum + e.item.price * e.quantity,
         ),
+      );
+
+  CartItem cartItem(Item item) => sortedItems.firstWhere(
+        (cartItem) => cartItem.item == item,
+        orElse: () => null,
       );
 }
 

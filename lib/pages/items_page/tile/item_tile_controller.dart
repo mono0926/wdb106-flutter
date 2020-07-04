@@ -10,25 +10,25 @@ export 'item_tile_state.dart';
 class ItemTileController extends StateNotifier<ItemTileState> {
   ItemTileController(
     this._ref, {
-    @required this.stock,
+    @required this.id,
   }) : super(ItemTileState()) {
-    _cartControllerRemoveListener =
-        _ref.read(cartProvider).addListener((cartState) {
-      final cartItem = cartState.sortedItems.firstWhere(
-        (x) => x.item == stock.item,
-        orElse: () => null,
-      );
-      final cartItemQuantity = cartItem?.quantity ?? 0;
-      state = state.copyWith(
-        quantity: stock.quantity - cartItemQuantity,
-      );
-    });
+    _cartControllerRemoveListener = _ref.read(cartProvider).addListener(
+      (cartState) {
+        final cartItem = cartState.cartItem(stock.item);
+        final cartItemQuantity = cartItem?.quantity ?? 0;
+        state = state.copyWith(
+          quantity: stock.quantity - cartItemQuantity,
+        );
+      },
+    );
   }
 
   final ProviderReference _ref;
 
-  final ItemStock stock;
+  final int id;
   VoidCallback _cartControllerRemoveListener;
+
+  ItemStock get stock => _ref.read(itemsProvider).state.stock(id);
 
   void addToCart() => _ref.read(cartProvider).add(stock.item);
 

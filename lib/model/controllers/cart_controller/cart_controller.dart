@@ -8,28 +8,29 @@ export 'cart_state.dart';
 
 final cartProvider = StateNotifierProvider((ref) => CartController());
 
-class CartController extends StateNotifier<CartState> with LocatorMixin {
+class CartController extends StateNotifier<CartState> {
   CartController() : super(CartState());
 
   void add(Item item) {
-    final itemMap = Map<int, CartItem>.from(state.itemMap);
-    final cartItem = itemMap[item.id] ??
-        CartItem(
-          item: item,
-          quantity: 0,
-        );
-    itemMap[item.id] = cartItem.increased();
-    state = state.copyWith(itemMap: itemMap);
+    state = state.copyWith(
+      itemMap: {
+        ...state.itemMap,
+        item.id: (state.itemMap[item.id] ??
+                CartItem(
+                  item: item,
+                  quantity: 0,
+                ))
+            .increased(),
+      },
+    );
   }
 
   void delete(Item item) {
-    final itemMap = Map<int, CartItem>.from(state.itemMap);
-    final cartItem = itemMap[item.id].decreased();
-    if (cartItem.quantity <= 0) {
-      itemMap.remove(item.id);
-    } else {
-      itemMap[item.id] = cartItem;
-    }
-    state = state.copyWith(itemMap: itemMap);
+    state = state.copyWith(
+      itemMap: {
+        ...state.itemMap,
+        item.id: state.itemMap[item.id].decreased(),
+      },
+    );
   }
 }
