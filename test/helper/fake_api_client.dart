@@ -4,7 +4,7 @@ import 'package:wdb106_sample/model/api.dart';
 import 'package:wdb106_sample/model/entities/item/item.dart';
 import 'package:wdb106_sample/model/entities/item_stock/item_stock.dart';
 
-class FakeApiClient implements ApiClient {
+class FakeApiClient implements ApiClient2 {
   FakeApiClient({this.items}) {
     items ??= [
       const ItemStock(

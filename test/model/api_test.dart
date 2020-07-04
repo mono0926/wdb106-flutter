@@ -3,7 +3,7 @@ import 'package:wdb106_sample/model/api.dart';
 
 void main() {
   test('api test', () async {
-    final target = MockyApiClient();
+    final target = ApiClient();
     final stocks = await target.getItemStocks();
     expect(stocks.length, 5);
     final stock = stocks.first;
