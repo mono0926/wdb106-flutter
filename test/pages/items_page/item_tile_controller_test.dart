@@ -36,7 +36,7 @@ void main() {
         completer.complete();
       }
     });
-    await completer.future;
+    await completer.future.timeout(const Duration(milliseconds: 1));
   });
   test('ItemTileController test', () async {
     final target = ItemTileController(ref, id: stock.item.id);
