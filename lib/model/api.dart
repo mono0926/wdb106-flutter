@@ -5,7 +5,7 @@ import 'package:http/http.dart';
 
 import 'model.dart';
 
-final apiClient = Provider((ref) => ApiClient());
+final apiClientProvider = Provider((ref) => ApiClient());
 
 class ApiClient {
   final Client _client = Client();
