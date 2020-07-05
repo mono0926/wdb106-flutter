@@ -4,3 +4,6 @@ analyzer:
   exclude:
     - lib/**/*.g.dart
     - lib/**/*.freezed.dart
+linter:
+  rules:
+    top_level_function_literal_block: false
