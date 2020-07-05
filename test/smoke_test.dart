@@ -9,14 +9,16 @@ import 'helper/fake_api_client.dart';
 void main() {
   testWidgets('Smoke test', (tester) async {
     await provideMockedNetworkImages(() async {
-      await tester.pumpWidget(ProviderScope(
-        overrides: [
-          apiClientProvider.overrideAs(
-            Provider((ref) => FakeApiClient()),
-          ),
-        ],
-        child: const App(),
-      ));
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            apiClientProvider.overrideAs(
+              Provider((ref) => FakeApiClient()),
+            ),
+          ],
+          child: const App(),
+        ),
+      );
       expect(find.text('商品リスト'), findsOneWidget);
       expect(find.text('(　´･‿･｀)'), findsNothing);
 
