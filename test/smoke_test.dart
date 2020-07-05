@@ -4,7 +4,7 @@ import 'package:image_test_utils/image_test_utils.dart';
 import 'package:wdb106_sample/app.dart';
 import 'package:wdb106_sample/model/model.dart';
 
-import 'helper/fake_api_client.dart';
+import 'helper/dummy_items.dart';
 
 void main() {
   testWidgets('Smoke test', (tester) async {
@@ -12,8 +12,8 @@ void main() {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
-            apiClientProvider.overrideAs(
-              Provider((ref) => FakeApiClient()),
+            itemsFetcher.debugOverrideWithValue(
+              AsyncValue.data(dummyItems),
             ),
           ],
           child: const App(),

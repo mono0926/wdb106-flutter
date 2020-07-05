@@ -2,8 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
 
-import '../../helper/fake_api_client.dart';
-
 void main() {
   ItemsController target;
   final item = ItemStock(
@@ -19,9 +17,7 @@ void main() {
   setUp(() {
     final owner = ProviderStateOwner(
       overrides: [
-        apiClientProvider.overrideAs(
-          Provider((ref) => FakeApiClient(items: [item])),
-        ),
+        itemsFetcher.debugOverrideWithValue(AsyncValue.data([item])),
       ],
     );
     target = ItemsController(owner.ref);

@@ -5,8 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
 import 'package:wdb106_sample/pages/items_page/tile/item_tile_controller.dart';
 
-import '../../helper/fake_api_client.dart';
-
 void main() {
   ProviderStateOwner owner;
   ProviderReference ref;
@@ -22,9 +20,7 @@ void main() {
   setUp(() async {
     owner = ProviderStateOwner(
       overrides: [
-        apiClientProvider.overrideAs(
-          Provider((ref) => FakeApiClient(items: [stock])),
-        ),
+        itemsFetcher.debugOverrideWithValue(AsyncValue.data([stock])),
       ],
     );
     ref = owner.ref;

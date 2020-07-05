@@ -1,10 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/model/api.dart';
 
 void main() {
   test('api test', () async {
-    final target = ApiClient();
-    final stocks = await target.getItemStocks();
+    final owner = ProviderStateOwner();
+    final stocks = await owner.ref.read(itemsFetcher);
     expect(stocks.length, 5);
     final stock = stocks.first;
     final item = stock.item;
