@@ -59,7 +59,7 @@ class CartTile extends HookWidget {
         ),
       ),
       onPressed: () {
-        cartProvider.read(context).delete(item);
+        context.read(cartProvider).delete(item);
       },
     );
   }

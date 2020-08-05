@@ -17,7 +17,7 @@ class ItemsController extends StateNotifier<ItemsState> {
 
   Future<void> _load() async {
     state = state.copyWith(
-      stocks: await _ref.read(itemsFetcher),
+      stocks: await _ref.read(itemsFetcher.future),
       isLoading: false,
     );
   }

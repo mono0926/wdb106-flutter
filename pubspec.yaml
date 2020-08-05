@@ -5,7 +5,7 @@ dependencies:
   flutter:
     sdk: flutter
   freezed_annotation:
-  hooks_riverpod:
+  hooks_riverpod: ^0.6.0-dev
   flutter_hooks:
   simple_logger:
   disposable_provider:

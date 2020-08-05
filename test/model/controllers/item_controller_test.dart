@@ -15,12 +15,13 @@ void main() {
   );
 
   setUp(() {
-    final owner = ProviderStateOwner(
+    final container = ProviderContainer(
       overrides: [
-        itemsFetcher.debugOverrideWithValue(AsyncValue.data([item])),
+        itemsFetcher.overrideWithValue(AsyncValue.data([item])),
       ],
     );
-    target = ItemsController(owner.ref);
+    final provider = Provider((ref) => ref);
+    target = ItemsController(container.read(provider));
   });
   test('ItemsController test', () async {
     final stocks = target.debugState.stocks;

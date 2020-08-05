@@ -6,7 +6,7 @@ import 'package:wdb106_sample/model/model.dart';
 import 'package:wdb106_sample/pages/items_page/tile/item_tile_controller.dart';
 
 void main() {
-  ProviderStateOwner owner;
+  ProviderContainer container;
   ProviderReference ref;
   final stock = ItemStock(
     item: Item(
@@ -18,12 +18,13 @@ void main() {
     quantity: 1,
   );
   setUp(() async {
-    owner = ProviderStateOwner(
+    container = ProviderContainer(
       overrides: [
-        itemsFetcher.debugOverrideWithValue(AsyncValue.data([stock])),
+        itemsFetcher.overrideWithValue(AsyncValue.data([stock])),
       ],
     );
-    ref = owner.ref;
+    final provider = Provider((ref) => ref);
+    ref = container.read(provider);
     // Wait for items loaded
     final itemsController = ref.read(itemsProvider);
     final completer = Completer<void>();
