@@ -9,10 +9,10 @@ export 'item_tile_state.dart';
 
 class ItemTileController extends StateNotifier<ItemTileState> {
   ItemTileController(
-    this._ref, {
+    this._read, {
     @required this.id,
   }) : super(ItemTileState()) {
-    _cartControllerRemoveListener = _ref.read(cartProvider).addListener(
+    _cartControllerRemoveListener = _read(cartProvider).addListener(
       (cartState) {
         final cartItem = cartState.cartItem(stock.item);
         final cartItemQuantity = cartItem?.quantity ?? 0;
@@ -23,14 +23,14 @@ class ItemTileController extends StateNotifier<ItemTileState> {
     );
   }
 
-  final ProviderReference _ref;
+  final Reader _read;
 
   final int id;
   VoidCallback _cartControllerRemoveListener;
 
-  ItemStock get stock => _ref.read(itemsProvider).state.stock(id);
+  ItemStock get stock => _read(itemsProvider).state.stock(id);
 
-  void addToCart() => _ref.read(cartProvider).add(stock.item);
+  void addToCart() => _read(cartProvider).add(stock.item);
 
   @override
   void dispose() {

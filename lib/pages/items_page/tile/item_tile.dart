@@ -10,7 +10,7 @@ import 'package:wdb106_sample/widgets/widgets.dart';
 final itemTileProviders =
     AutoDisposeStateNotifierProviderFamily<ItemTileController, int>(
         (ref, id) => ItemTileController(
-              ref,
+              ref.read,
               id: id,
             ));
 

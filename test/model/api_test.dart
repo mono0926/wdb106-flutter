@@ -4,8 +4,8 @@ import 'package:wdb106_sample/model/api.dart';
 
 void main() {
   test('api test', () async {
-    final owner = ProviderStateOwner();
-    final stocks = await owner.ref.read(itemsFetcher);
+    final container = ProviderContainer();
+    final stocks = await container.read(itemsFetcher.future);
     expect(stocks.length, 5);
     final stock = stocks.first;
     final item = stock.item;

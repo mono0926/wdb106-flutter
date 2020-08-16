@@ -12,7 +12,7 @@ void main() {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
-            itemsFetcher.debugOverrideWithValue(
+            itemsFetcher.overrideWithValue(
               AsyncValue.data(dummyItems),
             ),
           ],
