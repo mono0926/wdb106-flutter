@@ -20,8 +20,7 @@ void main() {
         itemsFetcher.overrideWithValue(AsyncValue.data([item])),
       ],
     );
-    final provider = Provider((ref) => ref);
-    target = ItemsController(container.read(provider));
+    target = container.read(itemsProvider);
   });
   test('ItemsController test', () async {
     final stocks = target.debugState.stocks;

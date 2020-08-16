@@ -14,7 +14,7 @@ import 'cart_tile.dart';
 // TODO(mono): DisposableProvider作りたい
 // ignore: top_level_function_literal_block
 final provider = AutoDisposeProvider((ref) {
-  final c = _Controller(ref);
+  final c = _Controller(ref.read);
   ref.onDispose(c.dispose);
   return c;
 });
@@ -56,18 +56,18 @@ class _ListView extends HookWidget {
 }
 
 class _Controller with Disposable {
-  _Controller(this._ref) {
-    _removeListener = _ref.read(cartProvider).addListener((state) {
+  _Controller(this._read) {
+    _removeListener = _read(cartProvider).addListener((state) {
       if (state.summary.totalPrice <= 0) {
         pop();
       }
     });
   }
-  final ProviderReference _ref;
+  final Reader _read;
 
   VoidCallback _removeListener;
 
-  void pop() => _ref.read(navigatorKeyProvider).currentState.pop();
+  void pop() => _read(navigatorKeyProvider).currentState.pop();
 
   @override
   void dispose() {

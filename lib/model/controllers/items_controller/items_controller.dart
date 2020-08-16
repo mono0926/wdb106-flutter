@@ -6,18 +6,18 @@ import 'items_state.dart';
 
 export 'items_state.dart';
 
-final itemsProvider = StateNotifierProvider((ref) => ItemsController(ref));
+final itemsProvider = StateNotifierProvider((ref) => ItemsController(ref.read));
 
 class ItemsController extends StateNotifier<ItemsState> {
-  ItemsController(this._ref) : super(ItemsState()) {
+  ItemsController(this._read) : super(ItemsState()) {
     _load();
   }
 
-  final ProviderReference _ref;
+  final Reader _read;
 
   Future<void> _load() async {
     state = state.copyWith(
-      stocks: await _ref.read(itemsFetcher.future),
+      stocks: await _read(itemsFetcher.future),
       isLoading: false,
     );
   }

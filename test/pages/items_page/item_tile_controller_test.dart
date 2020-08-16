@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
-import 'package:wdb106_sample/pages/items_page/tile/item_tile_controller.dart';
+import 'package:wdb106_sample/pages/items_page/tile/item_tile.dart';
 
 void main() {
   ProviderContainer container;
@@ -36,7 +36,7 @@ void main() {
     await completer.future.timeout(const Duration(milliseconds: 1));
   });
   test('ItemTileController test', () async {
-    final target = ItemTileController(ref, id: stock.item.id);
+    final target = container.read(itemTileProviders(stock.item.id));
     expect(target.debugState.quantity, 1);
     expect(target.debugState.hasStock, isTrue);
 
