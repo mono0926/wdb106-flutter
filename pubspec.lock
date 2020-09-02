@@ -133,7 +133,7 @@ packages:
       name: code_builder
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.4.0"
+    version: "3.4.1"
   collection:
     dependency: transitive
     description:
@@ -208,14 +208,14 @@ packages:
       name: flutter_hooks
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.1"
+    version: "0.13.2"
   flutter_riverpod:
     dependency: transitive
     description:
       name: flutter_riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.1"
+    version: "0.9.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -227,7 +227,7 @@ packages:
       name: freezed
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.11.5"
+    version: "0.11.6"
   freezed_annotation:
     dependency: "direct main"
     description:
@@ -255,7 +255,7 @@ packages:
       name: hooks_riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.1"
+    version: "0.9.1"
   html:
     dependency: transitive
     description:
@@ -318,7 +318,7 @@ packages:
       name: json_serializable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.4.0"
+    version: "3.4.1"
   logging:
     dependency: transitive
     description:
@@ -423,7 +423,7 @@ packages:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.3.2"
+    version: "4.3.2+1"
   pub_semver:
     dependency: transitive
     description:
@@ -451,7 +451,7 @@ packages:
       name: riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.1"
+    version: "0.8.0"
   shelf:
     dependency: transitive
     description:
@@ -568,7 +568,7 @@ packages:
       name: test
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.16.0-nullsafety.1"
+    version: "1.16.0-nullsafety.2"
   test_api:
     dependency: transitive
     description:
@@ -582,7 +582,7 @@ packages:
       name: test_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.12-nullsafety.1"
+    version: "0.3.12-nullsafety.2"
   timing:
     dependency: transitive
     description:
