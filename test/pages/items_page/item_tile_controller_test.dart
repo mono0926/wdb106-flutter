@@ -27,13 +27,10 @@ void main() {
     ref = container.read(provider);
     // Wait for items loaded
     final itemsController = ref.read(itemsProvider);
-    final completer = Completer<void>();
-    itemsController.addListener((state) {
-      if (!state.isLoading) {
-        completer.complete();
-      }
-    });
-    await completer.future.timeout(const Duration(milliseconds: 1));
+    await expectLater(
+      itemsController.stream.map((s) => s.isLoading).first,
+      completion(false),
+    );
   });
   test('ItemTileController test', () async {
     final target = container.read(itemTileProviders(stock.item.id));
