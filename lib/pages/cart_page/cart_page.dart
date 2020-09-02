@@ -13,7 +13,7 @@ import 'cart_tile.dart';
 
 // TODO(mono): DisposableProvider作りたい
 // ignore: top_level_function_literal_block
-final provider = AutoDisposeProvider((ref) {
+final provider = Provider.autoDispose((ref) {
   final c = _Controller(ref.read);
   ref.onDispose(c.dispose);
   return c;
