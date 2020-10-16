@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_tile_state.dart';
 
@@ -9,9 +9,11 @@ part of 'item_tile_state.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ItemTileStateTearOff {
   const _$ItemTileStateTearOff();
 
+// ignore: unused_element
   _ItemTileState call({int quantity = 0}) {
     return _ItemTileState(
       quantity: quantity,
@@ -19,15 +21,18 @@ class _$ItemTileStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemTileState = _$ItemTileStateTearOff();
 
+/// @nodoc
 mixin _$ItemTileState {
   int get quantity;
 
   $ItemTileStateCopyWith<ItemTileState> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemTileStateCopyWith<$Res> {
   factory $ItemTileStateCopyWith(
           ItemTileState value, $Res Function(ItemTileState) then) =
@@ -35,6 +40,7 @@ abstract class $ItemTileStateCopyWith<$Res> {
   $Res call({int quantity});
 }
 
+/// @nodoc
 class _$ItemTileStateCopyWithImpl<$Res>
     implements $ItemTileStateCopyWith<$Res> {
   _$ItemTileStateCopyWithImpl(this._value, this._then);
@@ -53,6 +59,7 @@ class _$ItemTileStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$ItemTileStateCopyWith<$Res>
     implements $ItemTileStateCopyWith<$Res> {
   factory _$ItemTileStateCopyWith(
@@ -62,6 +69,7 @@ abstract class _$ItemTileStateCopyWith<$Res>
   $Res call({int quantity});
 }
 
+/// @nodoc
 class __$ItemTileStateCopyWithImpl<$Res>
     extends _$ItemTileStateCopyWithImpl<$Res>
     implements _$ItemTileStateCopyWith<$Res> {
@@ -82,6 +90,7 @@ class __$ItemTileStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ItemTileState implements _ItemTileState {
   _$_ItemTileState({this.quantity = 0}) : assert(quantity != null);
 

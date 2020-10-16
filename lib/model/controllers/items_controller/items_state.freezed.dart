@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'items_state.dart';
 
@@ -9,9 +9,11 @@ part of 'items_state.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ItemsStateTearOff {
   const _$ItemsStateTearOff();
 
+// ignore: unused_element
   _ItemsState call(
       {List<ItemStock> stocks = const <ItemStock>[], bool isLoading = true}) {
     return _ItemsState(
@@ -21,9 +23,11 @@ class _$ItemsStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemsState = _$ItemsStateTearOff();
 
+/// @nodoc
 mixin _$ItemsState {
   List<ItemStock> get stocks;
   bool get isLoading;
@@ -31,6 +35,7 @@ mixin _$ItemsState {
   $ItemsStateCopyWith<ItemsState> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemsStateCopyWith<$Res> {
   factory $ItemsStateCopyWith(
           ItemsState value, $Res Function(ItemsState) then) =
@@ -38,6 +43,7 @@ abstract class $ItemsStateCopyWith<$Res> {
   $Res call({List<ItemStock> stocks, bool isLoading});
 }
 
+/// @nodoc
 class _$ItemsStateCopyWithImpl<$Res> implements $ItemsStateCopyWith<$Res> {
   _$ItemsStateCopyWithImpl(this._value, this._then);
 
@@ -57,6 +63,7 @@ class _$ItemsStateCopyWithImpl<$Res> implements $ItemsStateCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$ItemsStateCopyWith<$Res> implements $ItemsStateCopyWith<$Res> {
   factory _$ItemsStateCopyWith(
           _ItemsState value, $Res Function(_ItemsState) then) =
@@ -65,6 +72,7 @@ abstract class _$ItemsStateCopyWith<$Res> implements $ItemsStateCopyWith<$Res> {
   $Res call({List<ItemStock> stocks, bool isLoading});
 }
 
+/// @nodoc
 class __$ItemsStateCopyWithImpl<$Res> extends _$ItemsStateCopyWithImpl<$Res>
     implements _$ItemsStateCopyWith<$Res> {
   __$ItemsStateCopyWithImpl(
@@ -86,6 +94,7 @@ class __$ItemsStateCopyWithImpl<$Res> extends _$ItemsStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ItemsState extends _ItemsState {
   _$_ItemsState({this.stocks = const <ItemStock>[], this.isLoading = true})
       : assert(stocks != null),

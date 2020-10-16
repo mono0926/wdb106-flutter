@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'cart_state.dart';
 
@@ -9,9 +9,11 @@ part of 'cart_state.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$CartStateTearOff {
   const _$CartStateTearOff();
 
+// ignore: unused_element
   _CartState call({Map<int, CartItem> itemMap = const <int, CartItem>{}}) {
     return _CartState(
       itemMap: itemMap,
@@ -19,21 +21,25 @@ class _$CartStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CartState = _$CartStateTearOff();
 
+/// @nodoc
 mixin _$CartState {
   Map<int, CartItem> get itemMap;
 
   $CartStateCopyWith<CartState> get copyWith;
 }
 
+/// @nodoc
 abstract class $CartStateCopyWith<$Res> {
   factory $CartStateCopyWith(CartState value, $Res Function(CartState) then) =
       _$CartStateCopyWithImpl<$Res>;
   $Res call({Map<int, CartItem> itemMap});
 }
 
+/// @nodoc
 class _$CartStateCopyWithImpl<$Res> implements $CartStateCopyWith<$Res> {
   _$CartStateCopyWithImpl(this._value, this._then);
 
@@ -52,6 +58,7 @@ class _$CartStateCopyWithImpl<$Res> implements $CartStateCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$CartStateCopyWith<$Res> implements $CartStateCopyWith<$Res> {
   factory _$CartStateCopyWith(
           _CartState value, $Res Function(_CartState) then) =
@@ -60,6 +67,7 @@ abstract class _$CartStateCopyWith<$Res> implements $CartStateCopyWith<$Res> {
   $Res call({Map<int, CartItem> itemMap});
 }
 
+/// @nodoc
 class __$CartStateCopyWithImpl<$Res> extends _$CartStateCopyWithImpl<$Res>
     implements _$CartStateCopyWith<$Res> {
   __$CartStateCopyWithImpl(_CartState _value, $Res Function(_CartState) _then)
@@ -79,6 +87,7 @@ class __$CartStateCopyWithImpl<$Res> extends _$CartStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_CartState extends _CartState {
   _$_CartState({this.itemMap = const <int, CartItem>{}})
       : assert(itemMap != null),
@@ -154,9 +163,11 @@ abstract class _CartState extends CartState {
   _$CartStateCopyWith<_CartState> get copyWith;
 }
 
+/// @nodoc
 class _$CartSummaryTearOff {
   const _$CartSummaryTearOff();
 
+// ignore: unused_element
   _CartSummary call({int quantity = 0, int totalPrice = 0}) {
     return _CartSummary(
       quantity: quantity,
@@ -165,9 +176,11 @@ class _$CartSummaryTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CartSummary = _$CartSummaryTearOff();
 
+/// @nodoc
 mixin _$CartSummary {
   int get quantity;
   int get totalPrice;
@@ -175,6 +188,7 @@ mixin _$CartSummary {
   $CartSummaryCopyWith<CartSummary> get copyWith;
 }
 
+/// @nodoc
 abstract class $CartSummaryCopyWith<$Res> {
   factory $CartSummaryCopyWith(
           CartSummary value, $Res Function(CartSummary) then) =
@@ -182,6 +196,7 @@ abstract class $CartSummaryCopyWith<$Res> {
   $Res call({int quantity, int totalPrice});
 }
 
+/// @nodoc
 class _$CartSummaryCopyWithImpl<$Res> implements $CartSummaryCopyWith<$Res> {
   _$CartSummaryCopyWithImpl(this._value, this._then);
 
@@ -201,6 +216,7 @@ class _$CartSummaryCopyWithImpl<$Res> implements $CartSummaryCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$CartSummaryCopyWith<$Res>
     implements $CartSummaryCopyWith<$Res> {
   factory _$CartSummaryCopyWith(
@@ -210,6 +226,7 @@ abstract class _$CartSummaryCopyWith<$Res>
   $Res call({int quantity, int totalPrice});
 }
 
+/// @nodoc
 class __$CartSummaryCopyWithImpl<$Res> extends _$CartSummaryCopyWithImpl<$Res>
     implements _$CartSummaryCopyWith<$Res> {
   __$CartSummaryCopyWithImpl(
@@ -231,6 +248,7 @@ class __$CartSummaryCopyWithImpl<$Res> extends _$CartSummaryCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_CartSummary implements _CartSummary {
   _$_CartSummary({this.quantity = 0, this.totalPrice = 0})
       : assert(quantity != null),

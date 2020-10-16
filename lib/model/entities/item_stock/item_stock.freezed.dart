@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_stock.dart';
 
@@ -9,9 +9,11 @@ part of 'item_stock.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ItemStockTearOff {
   const _$ItemStockTearOff();
 
+// ignore: unused_element
   _ItemStock call({@required Item item, @required int quantity}) {
     return _ItemStock(
       item: item,
@@ -20,9 +22,11 @@ class _$ItemStockTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemStock = _$ItemStockTearOff();
 
+/// @nodoc
 mixin _$ItemStock {
   Item get item;
   int get quantity;
@@ -30,6 +34,7 @@ mixin _$ItemStock {
   $ItemStockCopyWith<ItemStock> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemStockCopyWith<$Res> {
   factory $ItemStockCopyWith(ItemStock value, $Res Function(ItemStock) then) =
       _$ItemStockCopyWithImpl<$Res>;
@@ -38,6 +43,7 @@ abstract class $ItemStockCopyWith<$Res> {
   $ItemCopyWith<$Res> get item;
 }
 
+/// @nodoc
 class _$ItemStockCopyWithImpl<$Res> implements $ItemStockCopyWith<$Res> {
   _$ItemStockCopyWithImpl(this._value, this._then);
 
@@ -67,6 +73,7 @@ class _$ItemStockCopyWithImpl<$Res> implements $ItemStockCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$ItemStockCopyWith<$Res> implements $ItemStockCopyWith<$Res> {
   factory _$ItemStockCopyWith(
           _ItemStock value, $Res Function(_ItemStock) then) =
@@ -78,6 +85,7 @@ abstract class _$ItemStockCopyWith<$Res> implements $ItemStockCopyWith<$Res> {
   $ItemCopyWith<$Res> get item;
 }
 
+/// @nodoc
 class __$ItemStockCopyWithImpl<$Res> extends _$ItemStockCopyWithImpl<$Res>
     implements _$ItemStockCopyWith<$Res> {
   __$ItemStockCopyWithImpl(_ItemStock _value, $Res Function(_ItemStock) _then)
@@ -98,6 +106,7 @@ class __$ItemStockCopyWithImpl<$Res> extends _$ItemStockCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ItemStock extends _ItemStock with DiagnosticableTreeMixin {
   _$_ItemStock({@required this.item, @required this.quantity})
       : assert(item != null),

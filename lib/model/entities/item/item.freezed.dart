@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item.dart';
 
@@ -12,9 +12,11 @@ Item _$ItemFromJson(Map<String, dynamic> json) {
   return _Item.fromJson(json);
 }
 
+/// @nodoc
 class _$ItemTearOff {
   const _$ItemTearOff();
 
+// ignore: unused_element
   _Item call(
       {@required int id,
       @required int price,
@@ -27,11 +29,18 @@ class _$ItemTearOff {
       imageUrl: imageUrl,
     );
   }
+
+// ignore: unused_element
+  Item fromJson(Map<String, Object> json) {
+    return Item.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $Item = _$ItemTearOff();
 
+/// @nodoc
 mixin _$Item {
   int get id;
   int get price;
@@ -42,12 +51,14 @@ mixin _$Item {
   $ItemCopyWith<Item> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemCopyWith<$Res> {
   factory $ItemCopyWith(Item value, $Res Function(Item) then) =
       _$ItemCopyWithImpl<$Res>;
   $Res call({int id, int price, String title, String imageUrl});
 }
 
+/// @nodoc
 class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
   _$ItemCopyWithImpl(this._value, this._then);
 
@@ -71,6 +82,7 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
   factory _$ItemCopyWith(_Item value, $Res Function(_Item) then) =
       __$ItemCopyWithImpl<$Res>;
@@ -78,6 +90,7 @@ abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
   $Res call({int id, int price, String title, String imageUrl});
 }
 
+/// @nodoc
 class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
     implements _$ItemCopyWith<$Res> {
   __$ItemCopyWithImpl(_Item _value, $Res Function(_Item) _then)
@@ -103,6 +116,8 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_Item with DiagnosticableTreeMixin implements _Item {
   _$_Item(
       {@required this.id,
