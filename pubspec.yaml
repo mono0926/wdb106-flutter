@@ -15,6 +15,9 @@ dev_dependencies:
   build_runner:
   freezed:
   image_test_utils:
+    git:
+      url: https://github.com/mono0926/image_test_utils.git
+      ref: add-compressionState
   json_serializable:
   mockito:
   pedantic_mono:

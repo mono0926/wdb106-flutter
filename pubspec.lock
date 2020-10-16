@@ -273,9 +273,11 @@ packages:
   image_test_utils:
     dependency: "direct dev"
     description:
-      name: image_test_utils
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: add-compressionState
+      resolved-ref: "00995e6f10bd71ef3f9067ecd39c23ee8db708ec"
+      url: "https://github.com/mono0926/image_test_utils.git"
+    source: git
     version: "1.0.0"
   io:
     dependency: transitive
