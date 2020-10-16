@@ -10,12 +10,12 @@ final itemsProvider = StateNotifierProvider((ref) => ItemsController(ref.read));
 
 class ItemsController extends StateNotifier<ItemsState> {
   ItemsController(this._read) : super(ItemsState()) {
-    Future(() async {
+    () async {
       state = state.copyWith(
         stocks: await _read(itemsFetcher.future),
         isLoading: false,
       );
-    });
+    }();
   }
 
   final Reader _read;
