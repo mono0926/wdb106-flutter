@@ -9,6 +9,7 @@ dependencies:
   flutter_hooks:
   simple_logger:
   disposable_provider:
+  http:
 dev_dependencies:
   flutter_test:
     sdk: flutter
