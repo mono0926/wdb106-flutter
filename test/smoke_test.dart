@@ -1,3 +1,4 @@
+// image_test_utilsが非対応で、かつmockitoの追従が難しかったので
 // @dart=2.11
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
