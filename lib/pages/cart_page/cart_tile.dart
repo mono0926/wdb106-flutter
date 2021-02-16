@@ -8,7 +8,7 @@ import 'package:wdb106_sample/widgets/widgets.dart';
 
 class CartTile extends HookWidget {
   CartTile({
-    @required this.cartItem,
+    required this.cartItem,
   }) : super(key: ValueKey(cartItem.item.id));
 
   final CartItem cartItem;

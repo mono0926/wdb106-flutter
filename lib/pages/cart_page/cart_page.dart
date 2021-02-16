@@ -14,7 +14,7 @@ final _shouldPop = Provider.autoDispose(
 );
 
 class CartPage extends HookWidget {
-  const CartPage({Key key}) : super(key: key);
+  const CartPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

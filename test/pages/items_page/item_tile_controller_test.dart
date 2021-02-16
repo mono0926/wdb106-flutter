@@ -4,7 +4,7 @@ import 'package:wdb106_sample/model/model.dart';
 import 'package:wdb106_sample/pages/items_page/tile/item_tile.dart';
 
 void main() {
-  ProviderContainer container;
+  late ProviderContainer container;
   ProviderReference ref;
   final stock = ItemStock(
     item: Item(

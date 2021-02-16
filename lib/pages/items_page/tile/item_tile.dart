@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wdb106_sample/model/model.dart';
 import 'package:wdb106_sample/pages/items_page/tile/item_tile_controller.dart';
 import 'package:wdb106_sample/util/logger.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
@@ -15,7 +14,7 @@ final itemTileProviders = StateNotifierProvider.autoDispose
 
 class ItemTile extends HookWidget {
   ItemTile({
-    @required this.id,
+    required this.id,
   }) : super(key: ValueKey(id));
 
   final int id;
@@ -59,8 +58,8 @@ class ItemTile extends HookWidget {
 
 class _AddButton extends HookWidget {
   const _AddButton({
-    Key key,
-    @required this.id,
+    Key? key,
+    required this.id,
   }) : super(key: key);
 
   final int id;

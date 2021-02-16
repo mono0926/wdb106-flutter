@@ -29,7 +29,7 @@ class CartController extends StateNotifier<CartState> {
     state = state.copyWith(
       itemMap: {
         ...state.itemMap,
-        item.id: state.itemMap[item.id].decreased(),
+        item.id: state.itemMap[item.id]!.decreased(),
       }..removeWhere((key, value) => value.quantity <= 0),
     );
   }

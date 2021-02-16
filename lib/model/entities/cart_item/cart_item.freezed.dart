@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'cart_item.dart';
 
@@ -13,8 +13,7 @@ T _$identity<T>(T value) => value;
 class _$CartItemTearOff {
   const _$CartItemTearOff();
 
-// ignore: unused_element
-  _CartItem call({@required Item item, @required int quantity}) {
+  _CartItem call({required Item item, required int quantity}) {
     return _CartItem(
       item: item,
       quantity: quantity,
@@ -23,7 +22,6 @@ class _$CartItemTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $CartItem = _$CartItemTearOff();
 
 /// @nodoc
@@ -31,6 +29,7 @@ mixin _$CartItem {
   Item get item;
   int get quantity;
 
+  @JsonKey(ignore: true)
   $CartItemCopyWith<CartItem> get copyWith;
 }
 
@@ -53,8 +52,8 @@ class _$CartItemCopyWithImpl<$Res> implements $CartItemCopyWith<$Res> {
 
   @override
   $Res call({
-    Object item = freezed,
-    Object quantity = freezed,
+    Object? item = freezed,
+    Object? quantity = freezed,
   }) {
     return _then(_value.copyWith(
       item: item == freezed ? _value.item : item as Item,
@@ -64,9 +63,6 @@ class _$CartItemCopyWithImpl<$Res> implements $CartItemCopyWith<$Res> {
 
   @override
   $ItemCopyWith<$Res> get item {
-    if (_value.item == null) {
-      return null;
-    }
     return $ItemCopyWith<$Res>(_value.item, (value) {
       return _then(_value.copyWith(item: value));
     });
@@ -95,8 +91,8 @@ class __$CartItemCopyWithImpl<$Res> extends _$CartItemCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object item = freezed,
-    Object quantity = freezed,
+    Object? item = freezed,
+    Object? quantity = freezed,
   }) {
     return _then(_CartItem(
       item: item == freezed ? _value.item : item as Item,
@@ -107,10 +103,7 @@ class __$CartItemCopyWithImpl<$Res> extends _$CartItemCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_CartItem extends _CartItem {
-  _$_CartItem({@required this.item, @required this.quantity})
-      : assert(item != null),
-        assert(quantity != null),
-        super._();
+  _$_CartItem({required this.item, required this.quantity}) : super._();
 
   @override
   final Item item;
@@ -139,6 +132,7 @@ class _$_CartItem extends _CartItem {
       const DeepCollectionEquality().hash(item) ^
       const DeepCollectionEquality().hash(quantity);
 
+  @JsonKey(ignore: true)
   @override
   _$CartItemCopyWith<_CartItem> get copyWith =>
       __$CartItemCopyWithImpl<_CartItem>(this, _$identity);
@@ -146,13 +140,13 @@ class _$_CartItem extends _CartItem {
 
 abstract class _CartItem extends CartItem {
   _CartItem._() : super._();
-  factory _CartItem({@required Item item, @required int quantity}) =
-      _$_CartItem;
+  factory _CartItem({required Item item, required int quantity}) = _$_CartItem;
 
   @override
   Item get item;
   @override
   int get quantity;
   @override
+  @JsonKey(ignore: true)
   _$CartItemCopyWith<_CartItem> get copyWith;
 }

@@ -7,8 +7,8 @@ part 'cart_item.freezed.dart';
 @freezed
 abstract class CartItem implements _$CartItem {
   factory CartItem({
-    @required Item item,
-    @required int quantity,
+    required Item item,
+    required int quantity,
   }) = _CartItem;
 
   CartItem._();

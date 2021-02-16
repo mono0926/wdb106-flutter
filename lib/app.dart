@@ -6,7 +6,7 @@ import 'package:wdb106_sample/providers/providers.dart';
 import 'pages/items_page/items_page.dart';
 
 class App extends HookWidget {
-  const App({Key key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

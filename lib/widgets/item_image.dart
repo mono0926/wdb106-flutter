@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 class ItemImage extends StatelessWidget {
   const ItemImage({
-    Key key,
-    this.imageUrl,
+    Key? key,
+    required this.imageUrl,
   }) : super(key: key);
 
   final String imageUrl;

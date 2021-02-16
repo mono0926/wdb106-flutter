@@ -12,10 +12,9 @@ abstract class ItemsState implements _$ItemsState {
 
   ItemsState._();
 
-  @late
-  Map<int, ItemStock> get _map => Map.fromEntries(
-        stocks.map((s) => MapEntry(s.item.id, s)),
-      );
+  late final Map<int, ItemStock> _map = Map.fromEntries(
+    stocks.map((s) => MapEntry(s.item.id, s)),
+  );
 
-  ItemStock stock(int id) => _map[id];
+  ItemStock stock(int id) => _map[id]!;
 }

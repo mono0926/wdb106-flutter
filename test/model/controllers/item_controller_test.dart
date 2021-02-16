@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
 
 void main() {
-  ItemsController target;
+  late ItemsController target;
   final item = ItemStock(
     item: Item(
       id: 1,

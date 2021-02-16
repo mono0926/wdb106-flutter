@@ -11,25 +11,22 @@ abstract class CartState implements _$CartState {
 
   CartState._();
 
-  @late
-  List<CartItem> get sortedItems =>
-      itemMap.values.toList()..sort((a, b) => a.item.id.compareTo(b.item.id));
+  late final List<CartItem> sortedItems = itemMap.values.toList()
+    ..sort((a, b) => a.item.id.compareTo(b.item.id));
 
-  @late
-  CartSummary get summary => CartSummary(
-        quantity: itemMap.values.fold<int>(
-          0,
-          (sum, e) => sum + e.quantity,
-        ),
-        totalPrice: itemMap.values.fold<int>(
-          0,
-          (sum, e) => sum + e.item.price * e.quantity,
-        ),
-      );
+  late final summary = CartSummary(
+    quantity: itemMap.values.fold<int>(
+      0,
+      (sum, e) => sum + e.quantity,
+    ),
+    totalPrice: itemMap.values.fold<int>(
+      0,
+      (sum, e) => sum + e.item.price * e.quantity,
+    ),
+  );
 
-  CartItem cartItem(Item item) => sortedItems.firstWhere(
+  CartItem? cartItem(Item item) => sortedItems.firstWhereOrNull(
         (cartItem) => cartItem.item == item,
-        orElse: () => null,
       );
 }
 
@@ -39,9 +36,8 @@ abstract class CartSummary with _$CartSummary {
     @Default(0) int quantity,
     @Default(0) int totalPrice,
   }) = _CartSummary;
+  CartSummary._();
 
-  @late
-  String get state => 'カート($quantity)';
-  @late
-  String get totalPriceState => '合計金額 $totalPrice円+税';
+  late final state = 'カート($quantity)';
+  late final totalPriceState = '合計金額 $totalPrice円+税';
 }

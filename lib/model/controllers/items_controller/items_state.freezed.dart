@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'items_state.dart';
 
@@ -13,7 +13,6 @@ T _$identity<T>(T value) => value;
 class _$ItemsStateTearOff {
   const _$ItemsStateTearOff();
 
-// ignore: unused_element
   _ItemsState call(
       {List<ItemStock> stocks = const <ItemStock>[], bool isLoading = true}) {
     return _ItemsState(
@@ -24,7 +23,6 @@ class _$ItemsStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ItemsState = _$ItemsStateTearOff();
 
 /// @nodoc
@@ -32,6 +30,7 @@ mixin _$ItemsState {
   List<ItemStock> get stocks;
   bool get isLoading;
 
+  @JsonKey(ignore: true)
   $ItemsStateCopyWith<ItemsState> get copyWith;
 }
 
@@ -53,8 +52,8 @@ class _$ItemsStateCopyWithImpl<$Res> implements $ItemsStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object stocks = freezed,
-    Object isLoading = freezed,
+    Object? stocks = freezed,
+    Object? isLoading = freezed,
   }) {
     return _then(_value.copyWith(
       stocks: stocks == freezed ? _value.stocks : stocks as List<ItemStock>,
@@ -84,8 +83,8 @@ class __$ItemsStateCopyWithImpl<$Res> extends _$ItemsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object stocks = freezed,
-    Object isLoading = freezed,
+    Object? stocks = freezed,
+    Object? isLoading = freezed,
   }) {
     return _then(_ItemsState(
       stocks: stocks == freezed ? _value.stocks : stocks as List<ItemStock>,
@@ -97,9 +96,7 @@ class __$ItemsStateCopyWithImpl<$Res> extends _$ItemsStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_ItemsState extends _ItemsState {
   _$_ItemsState({this.stocks = const <ItemStock>[], this.isLoading = true})
-      : assert(stocks != null),
-        assert(isLoading != null),
-        super._();
+      : super._();
 
   @JsonKey(defaultValue: const <ItemStock>[])
   @override
@@ -108,23 +105,9 @@ class _$_ItemsState extends _ItemsState {
   @override
   final bool isLoading;
 
-  bool _did_map = false;
-  Map<int, ItemStock> __map;
-
-  @override
-  Map<int, ItemStock> get _map {
-    if (_did_map == false) {
-      _did_map = true;
-      __map = Map.fromEntries(
-        stocks.map((s) => MapEntry(s.item.id, s)),
-      );
-    }
-    return __map;
-  }
-
   @override
   String toString() {
-    return 'ItemsState(stocks: $stocks, isLoading: $isLoading, _map: $_map)';
+    return 'ItemsState(stocks: $stocks, isLoading: $isLoading)';
   }
 
   @override
@@ -144,6 +127,7 @@ class _$_ItemsState extends _ItemsState {
       const DeepCollectionEquality().hash(stocks) ^
       const DeepCollectionEquality().hash(isLoading);
 
+  @JsonKey(ignore: true)
   @override
   _$ItemsStateCopyWith<_ItemsState> get copyWith =>
       __$ItemsStateCopyWithImpl<_ItemsState>(this, _$identity);
@@ -158,5 +142,6 @@ abstract class _ItemsState extends ItemsState {
   @override
   bool get isLoading;
   @override
+  @JsonKey(ignore: true)
   _$ItemsStateCopyWith<_ItemsState> get copyWith;
 }

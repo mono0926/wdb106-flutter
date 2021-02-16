@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item.dart';
 
@@ -16,12 +16,11 @@ Item _$ItemFromJson(Map<String, dynamic> json) {
 class _$ItemTearOff {
   const _$ItemTearOff();
 
-// ignore: unused_element
   _Item call(
-      {@required int id,
-      @required int price,
-      @required String title,
-      @required String imageUrl}) {
+      {required int id,
+      required int price,
+      required String title,
+      required String imageUrl}) {
     return _Item(
       id: id,
       price: price,
@@ -30,14 +29,12 @@ class _$ItemTearOff {
     );
   }
 
-// ignore: unused_element
   Item fromJson(Map<String, Object> json) {
     return Item.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $Item = _$ItemTearOff();
 
 /// @nodoc
@@ -48,6 +45,7 @@ mixin _$Item {
   String get imageUrl;
 
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $ItemCopyWith<Item> get copyWith;
 }
 
@@ -68,10 +66,10 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
-    Object price = freezed,
-    Object title = freezed,
-    Object imageUrl = freezed,
+    Object? id = freezed,
+    Object? price = freezed,
+    Object? title = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as int,
@@ -101,10 +99,10 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object price = freezed,
-    Object title = freezed,
-    Object imageUrl = freezed,
+    Object? id = freezed,
+    Object? price = freezed,
+    Object? title = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_Item(
       id: id == freezed ? _value.id : id as int,
@@ -118,16 +116,13 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
 @JsonSerializable()
 
 /// @nodoc
-class _$_Item with DiagnosticableTreeMixin implements _Item {
+class _$_Item extends _Item with DiagnosticableTreeMixin {
   _$_Item(
-      {@required this.id,
-      @required this.price,
-      @required this.title,
-      @required this.imageUrl})
-      : assert(id != null),
-        assert(price != null),
-        assert(title != null),
-        assert(imageUrl != null);
+      {required this.id,
+      required this.price,
+      required this.title,
+      required this.imageUrl})
+      : super._();
 
   factory _$_Item.fromJson(Map<String, dynamic> json) =>
       _$_$_ItemFromJson(json);
@@ -141,21 +136,9 @@ class _$_Item with DiagnosticableTreeMixin implements _Item {
   @override
   final String imageUrl;
 
-  bool _didpriceWithUnit = false;
-  String _priceWithUnit;
-
-  @override
-  String get priceWithUnit {
-    if (_didpriceWithUnit == false) {
-      _didpriceWithUnit = true;
-      _priceWithUnit = '$price円+税';
-    }
-    return _priceWithUnit;
-  }
-
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Item(id: $id, price: $price, title: $title, imageUrl: $imageUrl, priceWithUnit: $priceWithUnit)';
+    return 'Item(id: $id, price: $price, title: $title, imageUrl: $imageUrl)';
   }
 
   @override
@@ -166,8 +149,7 @@ class _$_Item with DiagnosticableTreeMixin implements _Item {
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('price', price))
       ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('imageUrl', imageUrl))
-      ..add(DiagnosticsProperty('priceWithUnit', priceWithUnit));
+      ..add(DiagnosticsProperty('imageUrl', imageUrl));
   }
 
   @override
@@ -193,6 +175,7 @@ class _$_Item with DiagnosticableTreeMixin implements _Item {
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(imageUrl);
 
+  @JsonKey(ignore: true)
   @override
   _$ItemCopyWith<_Item> get copyWith =>
       __$ItemCopyWithImpl<_Item>(this, _$identity);
@@ -203,12 +186,13 @@ class _$_Item with DiagnosticableTreeMixin implements _Item {
   }
 }
 
-abstract class _Item implements Item {
+abstract class _Item extends Item {
+  _Item._() : super._();
   factory _Item(
-      {@required int id,
-      @required int price,
-      @required String title,
-      @required String imageUrl}) = _$_Item;
+      {required int id,
+      required int price,
+      required String title,
+      required String imageUrl}) = _$_Item;
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 
@@ -221,5 +205,6 @@ abstract class _Item implements Item {
   @override
   String get imageUrl;
   @override
+  @JsonKey(ignore: true)
   _$ItemCopyWith<_Item> get copyWith;
 }

@@ -8,7 +8,7 @@ import 'cart_button.dart';
 import 'tile/item_tile.dart';
 
 class ItemsPage extends StatelessWidget {
-  const ItemsPage({Key key}) : super(key: key);
+  const ItemsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

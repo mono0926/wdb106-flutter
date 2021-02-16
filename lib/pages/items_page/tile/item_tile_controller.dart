@@ -10,7 +10,7 @@ export 'item_tile_state.dart';
 class ItemTileController extends StateNotifier<ItemTileState> {
   ItemTileController(
     this._read, {
-    @required this.id,
+    required this.id,
   }) : super(ItemTileState()) {
     _cartControllerRemoveListener = _read(cartProvider).addListener(
       (cartState) {
@@ -26,7 +26,7 @@ class ItemTileController extends StateNotifier<ItemTileState> {
   final Reader _read;
 
   final int id;
-  VoidCallback _cartControllerRemoveListener;
+  late final VoidCallback _cartControllerRemoveListener;
 
   ItemStock get stock => _read(itemsProvider).state.stock(id);
 

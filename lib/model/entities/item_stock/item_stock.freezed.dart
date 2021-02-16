@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_stock.dart';
 
@@ -13,8 +13,7 @@ T _$identity<T>(T value) => value;
 class _$ItemStockTearOff {
   const _$ItemStockTearOff();
 
-// ignore: unused_element
-  _ItemStock call({@required Item item, @required int quantity}) {
+  _ItemStock call({required Item item, required int quantity}) {
     return _ItemStock(
       item: item,
       quantity: quantity,
@@ -23,7 +22,6 @@ class _$ItemStockTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ItemStock = _$ItemStockTearOff();
 
 /// @nodoc
@@ -31,6 +29,7 @@ mixin _$ItemStock {
   Item get item;
   int get quantity;
 
+  @JsonKey(ignore: true)
   $ItemStockCopyWith<ItemStock> get copyWith;
 }
 
@@ -53,8 +52,8 @@ class _$ItemStockCopyWithImpl<$Res> implements $ItemStockCopyWith<$Res> {
 
   @override
   $Res call({
-    Object item = freezed,
-    Object quantity = freezed,
+    Object? item = freezed,
+    Object? quantity = freezed,
   }) {
     return _then(_value.copyWith(
       item: item == freezed ? _value.item : item as Item,
@@ -64,9 +63,6 @@ class _$ItemStockCopyWithImpl<$Res> implements $ItemStockCopyWith<$Res> {
 
   @override
   $ItemCopyWith<$Res> get item {
-    if (_value.item == null) {
-      return null;
-    }
     return $ItemCopyWith<$Res>(_value.item, (value) {
       return _then(_value.copyWith(item: value));
     });
@@ -96,8 +92,8 @@ class __$ItemStockCopyWithImpl<$Res> extends _$ItemStockCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object item = freezed,
-    Object quantity = freezed,
+    Object? item = freezed,
+    Object? quantity = freezed,
   }) {
     return _then(_ItemStock(
       item: item == freezed ? _value.item : item as Item,
@@ -108,10 +104,7 @@ class __$ItemStockCopyWithImpl<$Res> extends _$ItemStockCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_ItemStock extends _ItemStock with DiagnosticableTreeMixin {
-  _$_ItemStock({@required this.item, @required this.quantity})
-      : assert(item != null),
-        assert(quantity != null),
-        super._();
+  _$_ItemStock({required this.item, required this.quantity}) : super._();
 
   @override
   final Item item;
@@ -149,6 +142,7 @@ class _$_ItemStock extends _ItemStock with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(item) ^
       const DeepCollectionEquality().hash(quantity);
 
+  @JsonKey(ignore: true)
   @override
   _$ItemStockCopyWith<_ItemStock> get copyWith =>
       __$ItemStockCopyWithImpl<_ItemStock>(this, _$identity);
@@ -156,7 +150,7 @@ class _$_ItemStock extends _ItemStock with DiagnosticableTreeMixin {
 
 abstract class _ItemStock extends ItemStock {
   _ItemStock._() : super._();
-  factory _ItemStock({@required Item item, @required int quantity}) =
+  factory _ItemStock({required Item item, required int quantity}) =
       _$_ItemStock;
 
   @override
@@ -164,5 +158,6 @@ abstract class _ItemStock extends ItemStock {
   @override
   int get quantity;
   @override
+  @JsonKey(ignore: true)
   _$ItemStockCopyWith<_ItemStock> get copyWith;
 }

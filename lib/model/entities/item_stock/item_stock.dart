@@ -8,8 +8,8 @@ part 'item_stock.freezed.dart';
 @freezed
 abstract class ItemStock implements _$ItemStock {
   factory ItemStock({
-    @required Item item,
-    @required int quantity,
+    required Item item,
+    required int quantity,
   }) = _ItemStock;
 
   ItemStock._();

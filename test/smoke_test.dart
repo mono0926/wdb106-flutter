@@ -1,5 +1,7 @@
+// @dart=2.11
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:image_test_utils/image_test_utils.dart';
 import 'package:wdb106_sample/app.dart';
 import 'package:wdb106_sample/model/model.dart';
