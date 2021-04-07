@@ -52,15 +52,15 @@ class CartTile extends HookWidget {
 
   Widget _buildButton(BuildContext context) {
     return CupertinoButton(
+      onPressed: () {
+        context.read(cartProvider.notifier).delete(item);
+      },
       child: Text(
         '削除',
         style: TextStyle(
           color: Theme.of(context).errorColor,
         ),
       ),
-      onPressed: () {
-        context.read(cartProvider).delete(item);
-      },
     );
   }
 }

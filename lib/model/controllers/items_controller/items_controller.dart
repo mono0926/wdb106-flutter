@@ -6,7 +6,9 @@ import 'items_state.dart';
 
 export 'items_state.dart';
 
-final itemsProvider = StateNotifierProvider((ref) => ItemsController(ref.read));
+final itemsProvider = StateNotifierProvider<ItemsController, ItemsState>(
+  (ref) => ItemsController(ref.read),
+);
 
 class ItemsController extends StateNotifier<ItemsState> {
   ItemsController(this._read) : super(ItemsState()) {

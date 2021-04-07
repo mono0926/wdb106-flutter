@@ -14,9 +14,9 @@ class NavigationBarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
-      child: child,
       onPressed: onPressed,
       padding: EdgeInsets.zero,
+      child: child,
     );
   }
 }

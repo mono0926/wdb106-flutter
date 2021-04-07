@@ -12,7 +12,7 @@ class ItemTileController extends StateNotifier<ItemTileState> {
     this._read, {
     required this.id,
   }) : super(ItemTileState()) {
-    _cartControllerRemoveListener = _read(cartProvider).addListener(
+    _cartControllerRemoveListener = _read(cartProvider.notifier).addListener(
       (cartState) {
         final cartItem = cartState.cartItem(stock.item);
         final cartItemQuantity = cartItem?.quantity ?? 0;
@@ -28,9 +28,9 @@ class ItemTileController extends StateNotifier<ItemTileState> {
   final int id;
   late final VoidCallback _cartControllerRemoveListener;
 
-  ItemStock get stock => _read(itemsProvider).state.stock(id);
+  ItemStock get stock => _read(itemsProvider).stock(id);
 
-  void addToCart() => _read(cartProvider).add(stock.item);
+  void addToCart() => _read(cartProvider.notifier).add(stock.item);
 
   @override
   void dispose() {

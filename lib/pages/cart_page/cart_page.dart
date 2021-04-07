@@ -10,7 +10,7 @@ import 'cart_header.dart';
 import 'cart_tile.dart';
 
 final _shouldPop = Provider.autoDispose(
-  (ref) => ref.watch(cartProvider.state).summary.totalPrice <= 0,
+  (ref) => ref.watch(cartProvider).summary.totalPrice <= 0,
 );
 
 class CartPage extends HookWidget {
@@ -49,7 +49,7 @@ class _ListView extends HookWidget {
   const _ListView();
   @override
   Widget build(BuildContext context) {
-    final items = useProvider(cartProvider.state.select((s) => s.sortedItems));
+    final items = useProvider(cartProvider.select((s) => s.sortedItems));
     return ListView.builder(
       padding: const EdgeInsets.symmetric(vertical: 8),
       itemCount: items.length,

@@ -24,14 +24,14 @@ void main() {
     final provider = Provider((ref) => ref);
     ref = container.read(provider);
     // Wait for items loaded
-    final itemsController = ref.read(itemsProvider);
+    final itemsController = ref.read(itemsProvider.notifier);
     await expectLater(
       itemsController.stream.map((s) => s.isLoading).first,
       completion(false),
     );
   });
   test('ItemTileController test', () async {
-    final target = container.read(itemTileProviders(stock.item.id));
+    final target = container.read(itemTileProviders(stock.item.id).notifier);
     expect(target.debugState.quantity, 1);
     expect(target.debugState.hasStock, isTrue);
 

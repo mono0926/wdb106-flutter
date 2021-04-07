@@ -7,10 +7,11 @@ import 'package:wdb106_sample/util/logger.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
 final itemTileProviders = StateNotifierProvider.autoDispose
-    .family<ItemTileController, int>((ref, id) => ItemTileController(
-          ref.read,
-          id: id,
-        ));
+    .family<ItemTileController, ItemTileState, int>(
+        (ref, id) => ItemTileController(
+              ref.read,
+              id: id,
+            ));
 
 class ItemTile extends HookWidget {
   ItemTile({
@@ -23,9 +24,9 @@ class ItemTile extends HookWidget {
   Widget build(BuildContext context) {
     logger.info('build');
     const indent = 16.0;
-    final item = useProvider(itemTileProviders(id)).stock.item;
+    final item = useProvider(itemTileProviders(id).notifier).stock.item;
     final quantity = useProvider(
-      itemTileProviders(id).state.select((s) => s.quantity),
+      itemTileProviders(id).select((s) => s.quantity),
     );
     final theme = Theme.of(context);
     return Column(
@@ -66,13 +67,13 @@ class _AddButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = useProvider(itemTileProviders(id));
+    final controller = useProvider(itemTileProviders(id).notifier);
     final hasStock = useProvider(
-      itemTileProviders(id).state.select((s) => s.hasStock),
+      itemTileProviders(id).select((s) => s.hasStock),
     );
     return CupertinoButton(
-      child: const Text('追加'),
       onPressed: hasStock ? controller.addToCart : null,
+      child: const Text('追加'),
     );
   }
 }

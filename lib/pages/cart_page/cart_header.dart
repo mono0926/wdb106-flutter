@@ -9,7 +9,7 @@ class CartHeader extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final totalPrice = useProvider(
-      cartProvider.state.select((s) => s.summary.totalPriceState),
+      cartProvider.select((s) => s.summary.totalPriceState),
     );
     return Container(
       height: 55,
