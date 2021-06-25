@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'item_tile_state.dart';
 
@@ -8,6 +8,9 @@ part of 'item_tile_state.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 class _$ItemTileStateTearOff {
@@ -25,10 +28,11 @@ const $ItemTileState = _$ItemTileStateTearOff();
 
 /// @nodoc
 mixin _$ItemTileState {
-  int get quantity;
+  int get quantity => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ItemTileStateCopyWith<ItemTileState> get copyWith;
+  $ItemTileStateCopyWith<ItemTileState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -53,7 +57,10 @@ class _$ItemTileStateCopyWithImpl<$Res>
     Object? quantity = freezed,
   }) {
     return _then(_value.copyWith(
-      quantity: quantity == freezed ? _value.quantity : quantity as int,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -84,12 +91,16 @@ class __$ItemTileStateCopyWithImpl<$Res>
     Object? quantity = freezed,
   }) {
     return _then(_ItemTileState(
-      quantity: quantity == freezed ? _value.quantity : quantity as int,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_ItemTileState extends _ItemTileState {
   _$_ItemTileState({this.quantity = 0}) : super._();
 
@@ -122,12 +133,13 @@ class _$_ItemTileState extends _ItemTileState {
 }
 
 abstract class _ItemTileState extends ItemTileState {
-  _ItemTileState._() : super._();
   factory _ItemTileState({int quantity}) = _$_ItemTileState;
+  _ItemTileState._() : super._();
 
   @override
-  int get quantity;
+  int get quantity => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ItemTileStateCopyWith<_ItemTileState> get copyWith;
+  _$ItemTileStateCopyWith<_ItemTileState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

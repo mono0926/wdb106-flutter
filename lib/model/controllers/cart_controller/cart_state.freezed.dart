@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'cart_state.dart';
 
@@ -8,6 +8,9 @@ part of 'cart_state.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 class _$CartStateTearOff {
@@ -25,10 +28,11 @@ const $CartState = _$CartStateTearOff();
 
 /// @nodoc
 mixin _$CartState {
-  Map<int, CartItem> get itemMap;
+  Map<int, CartItem> get itemMap => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CartStateCopyWith<CartState> get copyWith;
+  $CartStateCopyWith<CartState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -51,8 +55,10 @@ class _$CartStateCopyWithImpl<$Res> implements $CartStateCopyWith<$Res> {
     Object? itemMap = freezed,
   }) {
     return _then(_value.copyWith(
-      itemMap:
-          itemMap == freezed ? _value.itemMap : itemMap as Map<int, CartItem>,
+      itemMap: itemMap == freezed
+          ? _value.itemMap
+          : itemMap // ignore: cast_nullable_to_non_nullable
+              as Map<int, CartItem>,
     ));
   }
 }
@@ -80,13 +86,16 @@ class __$CartStateCopyWithImpl<$Res> extends _$CartStateCopyWithImpl<$Res>
     Object? itemMap = freezed,
   }) {
     return _then(_CartState(
-      itemMap:
-          itemMap == freezed ? _value.itemMap : itemMap as Map<int, CartItem>,
+      itemMap: itemMap == freezed
+          ? _value.itemMap
+          : itemMap // ignore: cast_nullable_to_non_nullable
+              as Map<int, CartItem>,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_CartState extends _CartState {
   _$_CartState({this.itemMap = const <int, CartItem>{}}) : super._();
 
@@ -118,14 +127,15 @@ class _$_CartState extends _CartState {
 }
 
 abstract class _CartState extends CartState {
-  _CartState._() : super._();
   factory _CartState({Map<int, CartItem> itemMap}) = _$_CartState;
+  _CartState._() : super._();
 
   @override
-  Map<int, CartItem> get itemMap;
+  Map<int, CartItem> get itemMap => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CartStateCopyWith<_CartState> get copyWith;
+  _$CartStateCopyWith<_CartState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -145,11 +155,12 @@ const $CartSummary = _$CartSummaryTearOff();
 
 /// @nodoc
 mixin _$CartSummary {
-  int get quantity;
-  int get totalPrice;
+  int get quantity => throw _privateConstructorUsedError;
+  int get totalPrice => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CartSummaryCopyWith<CartSummary> get copyWith;
+  $CartSummaryCopyWith<CartSummary> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -174,8 +185,14 @@ class _$CartSummaryCopyWithImpl<$Res> implements $CartSummaryCopyWith<$Res> {
     Object? totalPrice = freezed,
   }) {
     return _then(_value.copyWith(
-      quantity: quantity == freezed ? _value.quantity : quantity as int,
-      totalPrice: totalPrice == freezed ? _value.totalPrice : totalPrice as int,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPrice: totalPrice == freezed
+          ? _value.totalPrice
+          : totalPrice // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -206,13 +223,20 @@ class __$CartSummaryCopyWithImpl<$Res> extends _$CartSummaryCopyWithImpl<$Res>
     Object? totalPrice = freezed,
   }) {
     return _then(_CartSummary(
-      quantity: quantity == freezed ? _value.quantity : quantity as int,
-      totalPrice: totalPrice == freezed ? _value.totalPrice : totalPrice as int,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPrice: totalPrice == freezed
+          ? _value.totalPrice
+          : totalPrice // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_CartSummary extends _CartSummary {
   _$_CartSummary({this.quantity = 0, this.totalPrice = 0}) : super._();
 
@@ -253,14 +277,15 @@ class _$_CartSummary extends _CartSummary {
 }
 
 abstract class _CartSummary extends CartSummary {
-  _CartSummary._() : super._();
   factory _CartSummary({int quantity, int totalPrice}) = _$_CartSummary;
+  _CartSummary._() : super._();
 
   @override
-  int get quantity;
+  int get quantity => throw _privateConstructorUsedError;
   @override
-  int get totalPrice;
+  int get totalPrice => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CartSummaryCopyWith<_CartSummary> get copyWith;
+  _$CartSummaryCopyWith<_CartSummary> get copyWith =>
+      throw _privateConstructorUsedError;
 }
