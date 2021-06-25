@@ -6,7 +6,7 @@ import '../entities.dart';
 part 'item_stock.freezed.dart';
 
 @freezed
-abstract class ItemStock implements _$ItemStock {
+class ItemStock with _$ItemStock {
   factory ItemStock({
     required Item item,
     required int quantity,

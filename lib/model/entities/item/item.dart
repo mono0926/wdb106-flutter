@@ -5,7 +5,7 @@ part 'item.freezed.dart';
 part 'item.g.dart';
 
 @freezed
-abstract class Item with _$Item {
+class Item with _$Item {
   factory Item({
     required int id,
     required int price,

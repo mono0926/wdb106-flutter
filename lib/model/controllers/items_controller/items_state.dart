@@ -4,7 +4,7 @@ import 'package:wdb106_sample/model/model.dart';
 part 'items_state.freezed.dart';
 
 @freezed
-abstract class ItemsState implements _$ItemsState {
+class ItemsState with _$ItemsState {
   factory ItemsState({
     @Default(<ItemStock>[]) List<ItemStock> stocks,
     @Default(true) bool isLoading,

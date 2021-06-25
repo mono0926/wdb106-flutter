@@ -4,7 +4,7 @@ import 'package:wdb106_sample/model/model.dart';
 part 'cart_state.freezed.dart';
 
 @freezed
-abstract class CartState implements _$CartState {
+class CartState with _$CartState {
   factory CartState({
     @Default(<int, CartItem>{}) Map<int, CartItem> itemMap,
   }) = _CartState;
@@ -31,7 +31,7 @@ abstract class CartState implements _$CartState {
 }
 
 @freezed
-abstract class CartSummary with _$CartSummary {
+class CartSummary with _$CartSummary {
   factory CartSummary({
     @Default(0) int quantity,
     @Default(0) int totalPrice,

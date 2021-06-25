@@ -5,7 +5,7 @@ import '../entities.dart';
 part 'cart_item.freezed.dart';
 
 @freezed
-abstract class CartItem implements _$CartItem {
+class CartItem with _$CartItem {
   factory CartItem({
     required Item item,
     required int quantity,
