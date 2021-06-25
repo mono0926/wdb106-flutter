@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:wdb106_sample/model/model.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'item_tile_state.dart';
 
