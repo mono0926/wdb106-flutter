@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/pages/items_page/tile/item_tile_controller.dart';
 import 'package:wdb106_sample/util/logger.dart';
@@ -13,7 +12,7 @@ final itemTileProviders = StateNotifierProvider.autoDispose
               id: id,
             ));
 
-class ItemTile extends HookWidget {
+class ItemTile extends ConsumerWidget {
   ItemTile({
     required this.id,
   }) : super(key: ValueKey(id));
@@ -21,11 +20,11 @@ class ItemTile extends HookWidget {
   final int id;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     logger.info('build');
     const indent = 16.0;
-    final item = useProvider(itemTileProviders(id).notifier).stock.item;
-    final quantity = useProvider(
+    final item = ref.watch(itemTileProviders(id).notifier).stock.item;
+    final quantity = ref.watch(
       itemTileProviders(id).select((s) => s.quantity),
     );
     final theme = Theme.of(context);
@@ -57,7 +56,7 @@ class ItemTile extends HookWidget {
   }
 }
 
-class _AddButton extends HookWidget {
+class _AddButton extends ConsumerWidget {
   const _AddButton({
     Key? key,
     required this.id,
@@ -66,9 +65,9 @@ class _AddButton extends HookWidget {
   final int id;
 
   @override
-  Widget build(BuildContext context) {
-    final controller = useProvider(itemTileProviders(id).notifier);
-    final hasStock = useProvider(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.watch(itemTileProviders(id).notifier);
+    final hasStock = ref.watch(
       itemTileProviders(id).select((s) => s.hasStock),
     );
     return CupertinoButton(

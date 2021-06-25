@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
 
@@ -22,16 +21,15 @@ class ItemsPage extends StatelessWidget {
   }
 }
 
-class _ListView extends HookWidget {
+class _ListView extends ConsumerWidget {
   const _ListView();
 
   @override
-  Widget build(BuildContext context) {
-    final isLoading =
-        useProvider(itemsProvider.select((s) => s.isLoading));
-    final ids = useProvider(
-      itemsProvider.select((s) => s.stocks.map((s) => s.item.id)),
-    ).toList();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isLoading = ref.watch(itemsProvider.select((s) => s.isLoading));
+    final ids = ref
+        .watch(itemsProvider.select((s) => s.stocks.map((s) => s.item.id)))
+        .toList();
     return isLoading
         ? const Center(child: CircularProgressIndicator())
         : ListView.builder(

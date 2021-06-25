@@ -4,9 +4,8 @@ version: 1.0.0+1
 dependencies:
   flutter:
     sdk: flutter
-  flutter_hooks:
   freezed_annotation:
-  hooks_riverpod:
+  hooks_riverpod: '>=1.0.0-0'
   http:
   simple_logger:
 dev_dependencies:

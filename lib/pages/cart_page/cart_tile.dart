@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
-class CartTile extends HookWidget {
+class CartTile extends ConsumerWidget {
   CartTile({
     required this.cartItem,
   }) : super(key: ValueKey(cartItem.item.id));
@@ -17,7 +16,8 @@ class CartTile extends HookWidget {
   static const _indent = 16.0;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -28,39 +28,30 @@ class CartTile extends HookWidget {
             children: [
               ItemImage(imageUrl: item.imageUrl),
               const SizedBox(width: 8),
-              _buildItemInfo(context),
-              _buildButton(context)
+              ItemInfo(
+                title: item.title,
+                price: item.priceWithUnit,
+                info: Text(
+                  '数量 ${cartItem.quantity}',
+                  style: theme.textTheme.caption,
+                ),
+              ),
+              CupertinoButton(
+                onPressed: () {
+                  ref.read(cartProvider.notifier).delete(item);
+                },
+                child: Text(
+                  '削除',
+                  style: TextStyle(
+                    color: Theme.of(context).errorColor,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
         const Divider(indent: _indent),
       ],
-    );
-  }
-
-  Widget _buildItemInfo(BuildContext context) {
-    final theme = Theme.of(context);
-    return ItemInfo(
-      title: item.title,
-      price: item.priceWithUnit,
-      info: Text(
-        '数量 ${cartItem.quantity}',
-        style: theme.textTheme.caption,
-      ),
-    );
-  }
-
-  Widget _buildButton(BuildContext context) {
-    return CupertinoButton(
-      onPressed: () {
-        context.read(cartProvider.notifier).delete(item);
-      },
-      child: Text(
-        '削除',
-        style: TextStyle(
-          color: Theme.of(context).errorColor,
-        ),
-      ),
     );
   }
 }

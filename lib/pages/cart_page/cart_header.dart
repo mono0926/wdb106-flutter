@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
 
-class CartHeader extends HookWidget {
+class CartHeader extends ConsumerWidget {
   const CartHeader();
 
   @override
-  Widget build(BuildContext context) {
-    final totalPrice = useProvider(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final totalPrice = ref.watch(
       cartProvider.select((s) => s.summary.totalPriceState),
     );
     return Container(
