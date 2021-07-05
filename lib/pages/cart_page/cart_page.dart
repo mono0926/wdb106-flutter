@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
-import 'package:wdb106_sample/util/logger.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
 import 'cart_header.dart';
