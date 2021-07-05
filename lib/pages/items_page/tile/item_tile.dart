@@ -21,7 +21,6 @@ class ItemTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    logger.info('build');
     const indent = 16.0;
     final item = ref.watch(itemTileProviders(id).notifier).stock.item;
     final quantity = ref.watch(
