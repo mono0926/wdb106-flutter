@@ -27,11 +27,12 @@ class _ListView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isLoading = ref.watch(itemsProvider.select((s) => s.isLoading));
-    final ids = ref
-        .watch(itemsProvider.select((s) => s.stocks.map((s) => s.item.id)))
-        .toList();
-    return isLoading
+    final idsAsync = ref.watch(
+      itemsFetcher.select(
+          (s) => s.whenData((stocks) => stocks.map((s) => s.item.id).toList())),
+    );
+    final ids = idsAsync.data?.value;
+    return ids == null
         ? const Center(child: CircularProgressIndicator())
         : ListView.builder(
             padding: const EdgeInsets.symmetric(vertical: 8),

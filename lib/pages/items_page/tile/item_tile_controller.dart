@@ -28,7 +28,9 @@ class ItemTileController extends StateNotifier<ItemTileState> {
   final int id;
   late final VoidCallback _cartControllerRemoveListener;
 
-  ItemStock get stock => _read(itemsProvider).stock(id);
+  ItemStock get stock => (_read(itemsFetcher).data?.value ?? []).firstWhere(
+        (s) => s.item.id == id,
+      );
 
   void addToCart() => _read(cartProvider.notifier).add(stock.item);
 
