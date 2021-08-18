@@ -4,13 +4,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/pages/items_page/tile/item_tile_controller.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
-final itemTileProviders = StateNotifierProvider.autoDispose
-    .family<ItemTileController, ItemTileState, int>(
-        (ref, id) => ItemTileController(
-              ref.read,
-              id: id,
-            ));
-
 class ItemTile extends ConsumerWidget {
   ItemTile({
     required this.id,

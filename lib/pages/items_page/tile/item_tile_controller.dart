@@ -7,6 +7,13 @@ import 'item_tile_state.dart';
 
 export 'item_tile_state.dart';
 
+final itemTileProviders = StateNotifierProvider.autoDispose
+    .family<ItemTileController, ItemTileState, int>(
+        (ref, id) => ItemTileController(
+              ref.read,
+              id: id,
+            ));
+
 class ItemTileController extends StateNotifier<ItemTileState> {
   ItemTileController(
     this._read, {
