@@ -1,40 +1,40 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
+
+import '../../helper/dummy_items.dart';
 
 void main() {
   test('CartController test', () async {
-    final target = CartController();
-    expect(target.debugState.sortedItems, isEmpty);
-    var summary = target.debugState.summary;
+    final container = ProviderContainer(overrides: [
+      itemStocksProvider.overrideWithValue(
+        AsyncValue.data(dummyItems),
+      ),
+    ]);
+    final target = container.read(cartController.notifier);
+    var summary = container.read(cartSummaryProvider);
+    expect(target.debugState.sortedItemIds, isEmpty);
     expect(summary.state, 'カート(0)');
     expect(summary.totalPriceState, '合計金額 0円+税');
 
-    final item = Item(
-      id: 1,
-      title: 'test',
-      price: 101,
-      imageUrl: 'http://example.com',
-    );
-
-    expect(target.debugState.sortedItems, isEmpty);
-    summary = target.debugState.summary;
+    expect(target.debugState.sortedItemIds, isEmpty);
+    summary = container.read(cartSummaryProvider);
     expect(summary.state, 'カート(0)');
     expect(summary.totalPriceState, '合計金額 0円+税');
 
-    target.add(item);
+    target.add('1');
 
-    expect(target.debugState.sortedItems.length, 1);
-    final cartItem = target.debugState.sortedItems.first;
-    expect(cartItem.item, item);
-    expect(cartItem.quantity, 1);
-    summary = target.debugState.summary;
+    expect(target.debugState.sortedItemIds.length, 1);
+    final cartItemId = target.debugState.sortedItemIds.first;
+    expect(cartItemId, '1');
+    summary = container.read(cartSummaryProvider);
     expect(summary.state, 'カート(1)');
-    expect(summary.totalPriceState, '合計金額 101円+税');
+    expect(summary.totalPriceState, '合計金額 100円+税');
 
-    target.delete(item);
+    target.delete('1');
 
-    expect(target.debugState.sortedItems, isEmpty);
-    summary = target.debugState.summary;
+    expect(target.debugState.sortedItemIds, isEmpty);
+    summary = container.read(cartSummaryProvider);
     expect(summary.state, 'カート(0)');
     expect(summary.totalPriceState, '合計金額 0円+税');
   });

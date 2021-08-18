@@ -8,17 +8,13 @@ import 'package:wdb106_sample/widgets/widgets.dart';
 import 'cart_header.dart';
 import 'cart_tile.dart';
 
-final _shouldPop = Provider.autoDispose(
-  (ref) => ref.watch(cartProvider.select((s) => s.summary.totalPrice <= 0)),
-);
-
 class CartPage extends ConsumerWidget {
   const CartPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     void pop() => Navigator.of(context).pop();
-    ref.listen<bool>(_shouldPop, (shouldPop) {
+    ref.listen<bool>(cartEmptyProvider, (shouldPop) {
       pop();
     });
     return Scaffold(
@@ -43,11 +39,11 @@ class _ListView extends ConsumerWidget {
   const _ListView();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final items = ref.watch(cartProvider.select((s) => s.sortedItems));
+    final ids = ref.watch(cartController.select((s) => s.sortedItemIds));
     return ListView.builder(
       padding: const EdgeInsets.symmetric(vertical: 8),
-      itemCount: items.length,
-      itemBuilder: (_, index) => CartTile(cartItem: items[index]),
+      itemCount: ids.length,
+      itemBuilder: (_, index) => CartTile(id: ids[index]),
     );
   }
 }

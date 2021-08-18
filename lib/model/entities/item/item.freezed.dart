@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'item.dart';
 
@@ -21,7 +22,7 @@ class _$ItemTearOff {
   const _$ItemTearOff();
 
   _Item call(
-      {required int id,
+      {required String id,
       required int price,
       required String title,
       required String imageUrl}) {
@@ -43,7 +44,7 @@ const $Item = _$ItemTearOff();
 
 /// @nodoc
 mixin _$Item {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
@@ -57,7 +58,7 @@ mixin _$Item {
 abstract class $ItemCopyWith<$Res> {
   factory $ItemCopyWith(Item value, $Res Function(Item) then) =
       _$ItemCopyWithImpl<$Res>;
-  $Res call({int id, int price, String title, String imageUrl});
+  $Res call({String id, int price, String title, String imageUrl});
 }
 
 /// @nodoc
@@ -79,7 +80,7 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -101,7 +102,7 @@ abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
   factory _$ItemCopyWith(_Item value, $Res Function(_Item) then) =
       __$ItemCopyWithImpl<$Res>;
   @override
-  $Res call({int id, int price, String title, String imageUrl});
+  $Res call({String id, int price, String title, String imageUrl});
 }
 
 /// @nodoc
@@ -124,7 +125,7 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -151,11 +152,10 @@ class _$_Item extends _Item with DiagnosticableTreeMixin {
       required this.imageUrl})
       : super._();
 
-  factory _$_Item.fromJson(Map<String, dynamic> json) =>
-      _$_$_ItemFromJson(json);
+  factory _$_Item.fromJson(Map<String, dynamic> json) => _$$_ItemFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   final int price;
   @override
@@ -209,13 +209,13 @@ class _$_Item extends _Item with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ItemToJson(this);
+    return _$$_ItemToJson(this);
   }
 }
 
 abstract class _Item extends Item {
   factory _Item(
-      {required int id,
+      {required String id,
       required int price,
       required String title,
       required String imageUrl}) = _$_Item;
@@ -224,7 +224,7 @@ abstract class _Item extends Item {
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @override
   int get price => throw _privateConstructorUsedError;
   @override

@@ -1,33 +1,17 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:wdb106_sample/model/model.dart';
 
 part 'cart_state.freezed.dart';
 
 @freezed
 class CartState with _$CartState {
   factory CartState({
-    @Default(<int, CartItem>{}) Map<int, CartItem> itemMap,
+    @Default(<String, int>{}) Map<String, int> itemMap,
   }) = _CartState;
 
   CartState._();
 
-  late final List<CartItem> sortedItems = itemMap.values.toList()
-    ..sort((a, b) => a.item.id.compareTo(b.item.id));
-
-  late final summary = CartSummary(
-    quantity: itemMap.values.fold<int>(
-      0,
-      (sum, e) => sum + e.quantity,
-    ),
-    totalPrice: itemMap.values.fold<int>(
-      0,
-      (sum, e) => sum + e.item.price * e.quantity,
-    ),
-  );
-
-  CartItem? cartItem(Item item) => sortedItems.firstWhereOrNull(
-        (cartItem) => cartItem.item == item,
-      );
+  late final List<String> sortedItemIds = itemMap.keys.toList()
+    ..sort((a, b) => a.compareTo(b));
 }
 
 @freezed

@@ -8,7 +8,7 @@ class CartHeader extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final totalPrice = ref.watch(
-      cartProvider.select((s) => s.summary.totalPriceState),
+      cartSummaryProvider.select((s) => s.totalPriceState),
     );
     return Container(
       height: 55,

@@ -7,17 +7,19 @@ import 'package:wdb106_sample/widgets/widgets.dart';
 
 class CartTile extends ConsumerWidget {
   CartTile({
-    required this.cartItem,
-  }) : super(key: ValueKey(cartItem.item.id));
+    required this.id,
+  }) : super(key: ValueKey(id));
 
-  final CartItem cartItem;
-  Item get item => cartItem.item;
+  final String id;
 
   static const _indent = 16.0;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
+    final item = ref.watch(itemsProviders(id).select((s) => s.data!.value));
+    final quantity =
+        ref.watch(cartController.select((s) => s.itemMap[id] ?? 0));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -32,13 +34,13 @@ class CartTile extends ConsumerWidget {
                 title: item.title,
                 price: item.priceWithUnit,
                 info: Text(
-                  '数量 ${cartItem.quantity}',
+                  '数量 $quantity',
                   style: theme.textTheme.caption,
                 ),
               ),
               CupertinoButton(
                 onPressed: () {
-                  ref.read(cartProvider.notifier).delete(item);
+                  ref.read(cartController.notifier).delete(item.id);
                 },
                 child: Text(
                   '削除',

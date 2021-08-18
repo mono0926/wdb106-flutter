@@ -1,15 +1,15 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wdb106_sample/model/items_fetcher.dart';
+import 'package:wdb106_sample/model/item_stocks_provider.dart';
 
 void main() {
   test('items fetcher test', () async {
     final container = ProviderContainer();
-    final stocks = await container.read(itemsFetcher.future);
+    final stocks = await container.read(itemStocksProvider.future);
     expect(stocks.length, 5);
     final stock = stocks.first;
     final item = stock.item;
-    expect(item.id, 100);
+    expect(item.id, '100');
     expect(item.price, 1480);
     expect(item.title, 'WEB+DB PRESS 100');
     expect(item.imageUrl,

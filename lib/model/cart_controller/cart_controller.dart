@@ -6,33 +6,57 @@ import 'cart_state.dart';
 
 export 'cart_state.dart';
 
-final cartProvider = StateNotifierProvider<CartController, CartState>(
-  (ref) => CartController(),
+final cartEmptyProvider = Provider(
+  (ref) => ref.watch(cartSummaryProvider.select((s) => s.quantity <= 0)),
+);
+
+final cartSummaryProvider = Provider((ref) {
+  final itemMap = ref.watch(itemMapProvider).data?.value ?? {};
+  final cartMap = ref.watch(cartController.select((s) => s.itemMap));
+
+  return CartSummary(
+    quantity: cartMap.values.fold<int>(
+      0,
+      (sum, quantity) {
+        return sum + quantity;
+      },
+    ),
+    totalPrice: cartMap.keys.fold<int>(
+      0,
+      (sum, id) {
+        final item = itemMap[id]!;
+        final quantity = cartMap[id]!;
+        return sum + item.price * quantity;
+      },
+    ),
+  );
+});
+
+final cartController = StateNotifierProvider<CartController, CartState>(
+  (ref) => CartController(ref.read),
 );
 
 class CartController extends StateNotifier<CartState> {
-  CartController() : super(CartState());
+  CartController(this._read) : super(CartState());
 
-  void add(Item item) {
+  final Reader _read;
+
+  void add(String id) {
+    final item = _read(itemsProviders(id)).data!.value;
     state = state.copyWith(
       itemMap: {
         ...state.itemMap,
-        item.id: (state.itemMap[item.id] ??
-                CartItem(
-                  item: item,
-                  quantity: 0,
-                ))
-            .increased(),
+        item.id: (state.itemMap[item.id] ?? 0) + 1,
       },
     );
   }
 
-  void delete(Item item) {
+  void delete(String id) {
     state = state.copyWith(
       itemMap: {
         ...state.itemMap,
-        item.id: state.itemMap[item.id]!.decreased(),
-      }..removeWhere((key, value) => value.quantity <= 0),
+        id: state.itemMap[id]! - 1,
+      }..removeWhere((key, quantity) => quantity <= 0),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:wdb106_sample/model/model.dart';
 import 'package:wdb106_sample/pages/cart_page/cart_page.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
-import 'tile/item_tile.dart';
+import 'item_tile.dart';
 
 class ItemsPage extends StatelessWidget {
   const ItemsPage({Key? key}) : super(key: key);
@@ -27,10 +27,7 @@ class _ListView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final idsAsync = ref.watch(
-      itemsFetcher.select(
-          (s) => s.whenData((stocks) => stocks.map((s) => s.item.id).toList())),
-    );
+    final idsAsync = ref.watch(itemIdsProvider);
     final ids = idsAsync.data?.value;
     return ids == null
         ? const Center(child: CircularProgressIndicator())
@@ -47,11 +44,9 @@ class _CartButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isEmpty = ref.watch(
-      cartProvider.select((s) => s.summary.totalPrice == 0),
-    );
+    final isEmpty = ref.watch(cartEmptyProvider);
     return NavigationBarButton(
-      text: ref.watch(cartProvider.select((s) => s.summary.state)),
+      text: ref.watch(cartSummaryProvider.select((s) => s.state)),
       onPressed: isEmpty
           ? null
           : () => Navigator.of(context).push<void>(
