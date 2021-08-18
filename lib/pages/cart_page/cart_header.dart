@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
 
 class CartHeader extends ConsumerWidget {
-  const CartHeader();
+  const CartHeader({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

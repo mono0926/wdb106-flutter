@@ -6,7 +6,7 @@ import 'package:wdb106_sample/pages/cart_page/cart_page.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
 class CartButton extends ConsumerWidget {
-  const CartButton();
+  const CartButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
