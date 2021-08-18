@@ -7,7 +7,7 @@ void main() {
   test('ItemStock.fromJson test', () async {
     const source = '''
     {
-      "id": 100,
+      "id": "100",
       "price": 200,
       "title": "test",
       "imageUrl": "https://mono0926.com/images/love_logo.png",
@@ -18,7 +18,7 @@ void main() {
     final json = jsonDecode(source) as Map<String, dynamic>;
     final target = ItemStock.fromJson(json);
     final item = target.item;
-    expect(item.id, 100);
+    expect(item.id, '100');
     expect(item.price, 200);
     expect(item.title, 'test');
     expect(item.imageUrl, 'https://mono0926.com/images/love_logo.png');

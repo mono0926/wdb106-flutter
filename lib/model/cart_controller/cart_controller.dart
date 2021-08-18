@@ -51,11 +51,11 @@ class CartController extends StateNotifier<CartState> {
     );
   }
 
-  void delete(Item item) {
+  void delete(String id) {
     state = state.copyWith(
       itemMap: {
         ...state.itemMap,
-        item.id: state.itemMap[item.id]! - 1,
+        id: state.itemMap[id]! - 1,
       }..removeWhere((key, quantity) => quantity <= 0),
     );
   }

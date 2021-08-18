@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:wdb106_sample/model/model.dart';
 
 part 'cart_state.freezed.dart';
 

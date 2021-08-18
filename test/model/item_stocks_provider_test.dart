@@ -9,7 +9,7 @@ void main() {
     expect(stocks.length, 5);
     final stock = stocks.first;
     final item = stock.item;
-    expect(item.id, 100);
+    expect(item.id, '100');
     expect(item.price, 1480);
     expect(item.title, 'WEB+DB PRESS 100');
     expect(item.imageUrl,
