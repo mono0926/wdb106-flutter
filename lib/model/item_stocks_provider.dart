@@ -5,12 +5,13 @@ import 'package:http/http.dart';
 
 import 'model.dart';
 
-final _client = Client();
+final httpClientProvider = Provider((ref) => Client());
 
 final itemStocksProvider = FutureProvider((ref) async {
-  final result = await _client.get(
-    Uri.parse('https://run.mocky.io/v3/6ee7295a-065b-4014-9040-db533ad1389c'),
-  );
+  final result = await ref.watch(httpClientProvider).get(
+        Uri.parse(
+            'https://run.mocky.io/v3/6ee7295a-065b-4014-9040-db533ad1389c'),
+      );
   final json =
       (await jsonDecode(result.body) as List).cast<Map<String, dynamic>>();
   final list = json.map(ItemStock.fromJson).toList();
