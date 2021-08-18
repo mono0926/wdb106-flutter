@@ -9,7 +9,7 @@ import 'cart_header.dart';
 import 'cart_tile.dart';
 
 final _shouldPop = Provider.autoDispose(
-  (ref) => ref.watch(cartProvider.select((s) => s.summary.totalPrice <= 0)),
+  (ref) => ref.watch(cartController.select((s) => s.summary.totalPrice <= 0)),
 );
 
 class CartPage extends ConsumerWidget {
@@ -43,7 +43,7 @@ class _ListView extends ConsumerWidget {
   const _ListView();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final items = ref.watch(cartProvider.select((s) => s.sortedItems));
+    final items = ref.watch(cartController.select((s) => s.sortedItems));
     return ListView.builder(
       padding: const EdgeInsets.symmetric(vertical: 8),
       itemCount: items.length,

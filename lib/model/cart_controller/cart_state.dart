@@ -6,7 +6,7 @@ part 'cart_state.freezed.dart';
 @freezed
 class CartState with _$CartState {
   factory CartState({
-    @Default(<int, CartItem>{}) Map<int, CartItem> itemMap,
+    @Default(<String, CartItem>{}) Map<String, CartItem> itemMap,
   }) = _CartState;
 
   CartState._();

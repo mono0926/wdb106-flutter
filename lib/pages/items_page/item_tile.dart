@@ -9,7 +9,7 @@ class ItemTile extends ConsumerWidget {
     required this.id,
   }) : super(key: ValueKey(id));
 
-  final int id;
+  final String id;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -55,18 +55,14 @@ class _AddButton extends ConsumerWidget {
     required this.id,
   }) : super(key: key);
 
-  final int id;
+  final String id;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.watch(cartProvider.notifier);
     final hasStock = ref.watch(hasStockProviders(id)).data!.value;
     return CupertinoButton(
-      onPressed: hasStock
-          ? () {
-              ref.read(cartProvider.notifier).add(id);
-            }
-          : null,
+      onPressed:
+          hasStock ? () => ref.read(cartController.notifier).add(id) : null,
       child: const Text('追加'),
     );
   }

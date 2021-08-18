@@ -45,10 +45,10 @@ class _CartButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isEmpty = ref.watch(
-      cartProvider.select((s) => s.summary.totalPrice == 0),
+      cartController.select((s) => s.summary.totalPrice == 0),
     );
     return NavigationBarButton(
-      text: ref.watch(cartProvider.select((s) => s.summary.state)),
+      text: ref.watch(cartController.select((s) => s.summary.state)),
       onPressed: isEmpty
           ? null
           : () => Navigator.of(context).push<void>(

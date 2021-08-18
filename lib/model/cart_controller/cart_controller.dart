@@ -6,16 +6,16 @@ import 'cart_state.dart';
 
 export 'cart_state.dart';
 
-final cartProvider = StateNotifierProvider<CartController, CartState>(
+final cartController = StateNotifierProvider<CartController, CartState>(
   (ref) => CartController(ref.read),
 );
 
 class CartController extends StateNotifier<CartState> {
   CartController(this._read) : super(CartState());
 
-  Reader _read;
+  final Reader _read;
 
-  void add(int id) {
+  void add(String id) {
     final item = _read(itemsProviders(id)).data!.value;
     state = state.copyWith(
       itemMap: {
