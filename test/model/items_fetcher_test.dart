@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wdb106_sample/model/api.dart';
+import 'package:wdb106_sample/model/items_fetcher.dart';
 
 void main() {
-  test('api test', () async {
+  test('items fetcher test', () async {
     final container = ProviderContainer();
     final stocks = await container.read(itemsFetcher.future);
     expect(stocks.length, 5);
