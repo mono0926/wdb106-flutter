@@ -1,11 +1,9 @@
 import 'dart:convert';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:http/http.dart';
+import 'package:wdb106_sample/providers/providers.dart';
 
 import 'model.dart';
-
-final httpClientProvider = Provider((ref) => Client());
 
 final itemStocksProvider = FutureProvider((ref) async {
   final result = await ref.watch(httpClientProvider).get(
