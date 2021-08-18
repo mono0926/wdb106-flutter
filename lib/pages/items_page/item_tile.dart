@@ -19,7 +19,8 @@ class ItemTile extends ConsumerWidget {
         .whenData((stock) => stock.item)
         .data!
         .value;
-    final quantity = ref.watch(itemQuantityProviders(id));
+    final quantity =
+        ref.watch(itemQuantityProviders(id).select((s) => s.data!.value));
     final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -6,6 +6,32 @@ import 'cart_state.dart';
 
 export 'cart_state.dart';
 
+final cartEmptyProvider = Provider(
+  (ref) => ref.watch(cartSummaryProvider.select((s) => s.quantity <= 0)),
+);
+
+final cartSummaryProvider = Provider((ref) {
+  final itemMap = ref.watch(itemMapProvider).data?.value ?? {};
+  final cartMap = ref.watch(cartController.select((s) => s.itemMap));
+
+  return CartSummary(
+    quantity: cartMap.values.fold<int>(
+      0,
+      (sum, quantity) {
+        return sum + quantity;
+      },
+    ),
+    totalPrice: cartMap.keys.fold<int>(
+      0,
+      (sum, id) {
+        final item = itemMap[id]!;
+        final quantity = cartMap[id]!;
+        return sum + item.price * quantity;
+      },
+    ),
+  );
+});
+
 final cartController = StateNotifierProvider<CartController, CartState>(
   (ref) => CartController(ref.read),
 );
@@ -20,12 +46,7 @@ class CartController extends StateNotifier<CartState> {
     state = state.copyWith(
       itemMap: {
         ...state.itemMap,
-        item.id: (state.itemMap[item.id] ??
-                CartItem(
-                  item: item,
-                  quantity: 0,
-                ))
-            .increased(),
+        item.id: (state.itemMap[item.id] ?? 0) + 1,
       },
     );
   }
@@ -34,8 +55,8 @@ class CartController extends StateNotifier<CartState> {
     state = state.copyWith(
       itemMap: {
         ...state.itemMap,
-        item.id: state.itemMap[item.id]!.decreased(),
-      }..removeWhere((key, value) => value.quantity <= 0),
+        item.id: state.itemMap[item.id]! - 1,
+      }..removeWhere((key, quantity) => quantity <= 0),
     );
   }
 }

@@ -17,8 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$CartStateTearOff {
   const _$CartStateTearOff();
 
-  _CartState call(
-      {Map<String, CartItem> itemMap = const <String, CartItem>{}}) {
+  _CartState call({Map<String, int> itemMap = const <String, int>{}}) {
     return _CartState(
       itemMap: itemMap,
     );
@@ -30,7 +29,7 @@ const $CartState = _$CartStateTearOff();
 
 /// @nodoc
 mixin _$CartState {
-  Map<String, CartItem> get itemMap => throw _privateConstructorUsedError;
+  Map<String, int> get itemMap => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CartStateCopyWith<CartState> get copyWith =>
@@ -41,7 +40,7 @@ mixin _$CartState {
 abstract class $CartStateCopyWith<$Res> {
   factory $CartStateCopyWith(CartState value, $Res Function(CartState) then) =
       _$CartStateCopyWithImpl<$Res>;
-  $Res call({Map<String, CartItem> itemMap});
+  $Res call({Map<String, int> itemMap});
 }
 
 /// @nodoc
@@ -60,7 +59,7 @@ class _$CartStateCopyWithImpl<$Res> implements $CartStateCopyWith<$Res> {
       itemMap: itemMap == freezed
           ? _value.itemMap
           : itemMap // ignore: cast_nullable_to_non_nullable
-              as Map<String, CartItem>,
+              as Map<String, int>,
     ));
   }
 }
@@ -71,7 +70,7 @@ abstract class _$CartStateCopyWith<$Res> implements $CartStateCopyWith<$Res> {
           _CartState value, $Res Function(_CartState) then) =
       __$CartStateCopyWithImpl<$Res>;
   @override
-  $Res call({Map<String, CartItem> itemMap});
+  $Res call({Map<String, int> itemMap});
 }
 
 /// @nodoc
@@ -91,7 +90,7 @@ class __$CartStateCopyWithImpl<$Res> extends _$CartStateCopyWithImpl<$Res>
       itemMap: itemMap == freezed
           ? _value.itemMap
           : itemMap // ignore: cast_nullable_to_non_nullable
-              as Map<String, CartItem>,
+              as Map<String, int>,
     ));
   }
 }
@@ -99,11 +98,11 @@ class __$CartStateCopyWithImpl<$Res> extends _$CartStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CartState extends _CartState {
-  _$_CartState({this.itemMap = const <String, CartItem>{}}) : super._();
+  _$_CartState({this.itemMap = const <String, int>{}}) : super._();
 
-  @JsonKey(defaultValue: const <String, CartItem>{})
+  @JsonKey(defaultValue: const <String, int>{})
   @override
-  final Map<String, CartItem> itemMap;
+  final Map<String, int> itemMap;
 
   @override
   String toString() {
@@ -129,11 +128,11 @@ class _$_CartState extends _CartState {
 }
 
 abstract class _CartState extends CartState {
-  factory _CartState({Map<String, CartItem> itemMap}) = _$_CartState;
+  factory _CartState({Map<String, int> itemMap}) = _$_CartState;
   _CartState._() : super._();
 
   @override
-  Map<String, CartItem> get itemMap => throw _privateConstructorUsedError;
+  Map<String, int> get itemMap => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$CartStateCopyWith<_CartState> get copyWith =>
