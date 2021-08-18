@@ -11,7 +11,7 @@ final cartEmptyProvider = Provider(
 );
 
 final cartSummaryProvider = Provider((ref) {
-  final itemMap = ref.watch(itemMapProvider).data?.value ?? {};
+  final itemMap = ref.watch(itemMapProvider);
   final cartMap = ref.watch(cartController.select((s) => s.itemMap));
 
   return CartSummary(
@@ -33,20 +33,17 @@ final cartSummaryProvider = Provider((ref) {
 });
 
 final cartController = StateNotifierProvider<CartController, CartState>(
-  (ref) => CartController(ref.read),
+  (ref) => CartController(),
 );
 
 class CartController extends StateNotifier<CartState> {
-  CartController(this._read) : super(CartState());
-
-  final Reader _read;
+  CartController() : super(CartState());
 
   void add(String id) {
-    final item = _read(itemsProviders(id)).data!.value;
     state = state.copyWith(
       itemMap: {
         ...state.itemMap,
-        item.id: (state.itemMap[item.id] ?? 0) + 1,
+        id: (state.itemMap[id] ?? 0) + 1,
       },
     );
   }

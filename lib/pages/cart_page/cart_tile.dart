@@ -17,7 +17,7 @@ class CartTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
-    final item = ref.watch(itemsProviders(id).select((s) => s.data!.value));
+    final item = ref.watch(itemsProviders(id))!;
     final quantity =
         ref.watch(cartController.select((s) => s.itemMap[id] ?? 0));
     return Column(

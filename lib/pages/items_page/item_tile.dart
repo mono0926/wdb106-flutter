@@ -14,13 +14,8 @@ class ItemTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     const indent = 16.0;
-    final item = ref
-        .watch(itemStockProviders(id))
-        .whenData((stock) => stock.item)
-        .data!
-        .value;
-    final quantity =
-        ref.watch(itemQuantityProviders(id).select((s) => s.data!.value));
+    final item = ref.watch(itemsProviders(id))!;
+    final quantity = ref.watch(itemQuantityProviders(id));
     final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -60,7 +55,7 @@ class _AddButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final hasStock = ref.watch(hasStockProviders(id)).data!.value;
+    final hasStock = ref.watch(hasStockProviders(id));
     return CupertinoButton(
       onPressed:
           hasStock ? () => ref.read(cartController.notifier).add(id) : null,
