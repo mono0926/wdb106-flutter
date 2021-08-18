@@ -18,12 +18,12 @@ void main() {
   setUp(() async {
     container = ProviderContainer(
       overrides: [
-        itemsFetcher.overrideWithValue(AsyncValue.data([stock])),
+        itemStocksFetcher.overrideWithValue(AsyncValue.data([stock])),
       ],
     );
     final provider = Provider((ref) => ref);
     ref = container.read(provider);
-    await ref.read(itemsFetcher.future);
+    await ref.read(itemStocksFetcher.future);
   });
   test('ItemTileController test', () async {
     final target = container.read(itemTileProviders(stock.item.id).notifier);

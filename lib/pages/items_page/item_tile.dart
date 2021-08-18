@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wdb106_sample/pages/items_page/tile/item_tile_controller.dart';
+import 'package:wdb106_sample/model/model.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
 class ItemTile extends ConsumerWidget {
@@ -14,10 +14,12 @@ class ItemTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     const indent = 16.0;
-    final item = ref.watch(itemTileProviders(id).notifier).stock.item;
-    final quantity = ref.watch(
-      itemTileProviders(id).select((s) => s.quantity),
-    );
+    final item = ref
+        .watch(itemStockProviders(id))
+        .whenData((stock) => stock.item)
+        .data!
+        .value;
+    final quantity = ref.watch(itemQuantityProviders(id));
     final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -57,12 +59,14 @@ class _AddButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.watch(itemTileProviders(id).notifier);
-    final hasStock = ref.watch(
-      itemTileProviders(id).select((s) => s.hasStock),
-    );
+    final controller = ref.watch(cartProvider.notifier);
+    final hasStock = ref.watch(hasStockProviders(id)).data!.value;
     return CupertinoButton(
-      onPressed: hasStock ? controller.addToCart : null,
+      onPressed: hasStock
+          ? () {
+              ref.read(cartProvider.notifier).add(id);
+            }
+          : null,
       child: const Text('追加'),
     );
   }
