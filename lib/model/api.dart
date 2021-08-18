@@ -7,7 +7,6 @@ import 'model.dart';
 
 final _client = Client();
 
-// ignore: top_level_function_literal_block
 final itemsFetcher = FutureProvider((ref) async {
   final result = await _client.get(
     Uri.parse('https://www.mocky.io/v2/5c2df3b92f00008e2f175350'),
