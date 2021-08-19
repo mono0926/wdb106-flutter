@@ -7,28 +7,32 @@ import 'cart_state.dart';
 export 'cart_state.dart';
 
 final cartEmptyProvider = Provider(
-  (ref) => ref.watch(cartSummaryProvider.select((s) => s.quantity <= 0)),
+  (ref) => ref.watch(cartTotalQuantityProvider.select((s) => s <= 0)),
 );
 
-final cartSummaryProvider = Provider((ref) {
+final cartTotalQuantityProvider = Provider((ref) {
+  return ref.watch(cartController.select((s) => s.itemMap)).values.fold<int>(
+    0,
+    (sum, quantity) {
+      return sum + quantity;
+    },
+  );
+});
+
+final cartTotalPriceLabelProvider = Provider(
+  (ref) => '合計金額 ${ref.watch(cartTotalPriceProvider)}円+税',
+);
+
+final cartTotalPriceProvider = Provider((ref) {
   final itemMap = ref.watch(itemMapProvider);
   final cartMap = ref.watch(cartController.select((s) => s.itemMap));
-
-  return CartSummary(
-    quantity: cartMap.values.fold<int>(
-      0,
-      (sum, quantity) {
-        return sum + quantity;
-      },
-    ),
-    totalPrice: cartMap.keys.fold<int>(
-      0,
-      (sum, id) {
-        final item = itemMap[id]!;
-        final quantity = cartMap[id]!;
-        return sum + item.price * quantity;
-      },
-    ),
+  return cartMap.keys.fold<int>(
+    0,
+    (sum, id) {
+      final item = itemMap[id]!;
+      final quantity = cartMap[id]!;
+      return sum + item.price * quantity;
+    },
   );
 });
 

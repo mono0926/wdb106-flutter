@@ -13,15 +13,3 @@ class CartState with _$CartState {
   late final List<String> sortedItemIds = itemMap.keys.toList()
     ..sort((a, b) => a.compareTo(b));
 }
-
-@freezed
-class CartSummary with _$CartSummary {
-  factory CartSummary({
-    @Default(0) int quantity,
-    @Default(0) int totalPrice,
-  }) = _CartSummary;
-  CartSummary._();
-
-  late final state = 'カート($quantity)';
-  late final totalPriceState = '合計金額 $totalPrice円+税';
-}
