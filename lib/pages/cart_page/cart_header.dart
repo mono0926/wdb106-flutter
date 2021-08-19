@@ -7,13 +7,12 @@ class CartHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final totalPrice = ref.watch(cartTotalPriceLabelProvider);
     return Container(
       height: 55,
       color: Colors.grey[300],
       child: Center(
         child: Text(
-          totalPrice,
+          ref.watch(cartTotalPriceLabelProvider),
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600,

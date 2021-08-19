@@ -18,7 +18,6 @@ class CartTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final item = ref.watch(itemsProviders(id))!;
-    final quantity = ref.watch(cartQuantityProviders(id));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -33,7 +32,7 @@ class CartTile extends ConsumerWidget {
                 title: item.title,
                 price: item.priceWithUnit,
                 info: Text(
-                  '数量 $quantity',
+                  '数量 ${ref.watch(cartQuantityProviders(id))}',
                   style: theme.textTheme.caption,
                 ),
               ),

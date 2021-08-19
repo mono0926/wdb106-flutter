@@ -26,17 +26,16 @@ class _ListView extends ConsumerWidget {
   const _ListView();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final idsAsync = ref.watch(itemIdsProvider);
-    final ids = idsAsync.data?.value;
-    return ids == null
-        ? const Center(child: CircularProgressIndicator())
-        : ListView.builder(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            itemCount: ids.length,
-            itemBuilder: (_, index) => ItemTile(id: ids[index]),
+  Widget build(BuildContext context, WidgetRef ref) =>
+      ref.watch(itemIdsProvider).when(
+            data: (ids) => ListView.builder(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              itemCount: ids.length,
+              itemBuilder: (_, index) => ItemTile(id: ids[index]),
+            ),
+            loading: () => const Center(child: CircularProgressIndicator()),
+            error: (e, _) => throw e,
           );
-  }
 }
 
 class _CartButton extends ConsumerWidget {
@@ -44,12 +43,11 @@ class _CartButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isEmpty = ref.watch(cartEmptyProvider);
     return NavigationBarButton(
       text: ref.watch(
         cartTotalQuantityProvider.select((quantity) => 'カート($quantity)'),
       ),
-      onPressed: isEmpty
+      onPressed: ref.watch(cartEmptyProvider)
           ? null
           : () => Navigator.of(context).push<void>(
                 CupertinoPageRoute<void>(
