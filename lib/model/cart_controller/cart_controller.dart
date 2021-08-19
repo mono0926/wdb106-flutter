@@ -32,6 +32,10 @@ final cartSummaryProvider = Provider((ref) {
   );
 });
 
+final cartQuantityProviders = Provider.family<int, String>(
+  (ref, id) => ref.watch(cartController.select((s) => s.itemMap[id] ?? 0)),
+);
+
 final cartController = StateNotifierProvider<CartController, CartState>(
   (ref) => CartController(),
 );

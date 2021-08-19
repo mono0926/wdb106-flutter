@@ -18,8 +18,7 @@ class CartTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final item = ref.watch(itemsProviders(id))!;
-    final quantity =
-        ref.watch(cartController.select((s) => s.itemMap[id] ?? 0));
+    final quantity = ref.watch(cartQuantityProviders(id));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
