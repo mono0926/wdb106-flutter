@@ -34,7 +34,7 @@ class _ListView extends ConsumerWidget {
               itemBuilder: (_, index) => ItemTile(id: ids[index]),
             ),
             loading: () => const Center(child: CircularProgressIndicator()),
-            error: (e, _) => throw e,
+            error: (e, _) => throw AssertionError(e),
           );
 }
 
