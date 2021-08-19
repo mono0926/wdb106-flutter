@@ -12,30 +12,22 @@ void main() {
       ),
     ]);
     final target = container.read(cartController.notifier);
-    var summary = container.read(cartSummaryProvider);
-    expect(target.debugState.sortedItemIds, isEmpty);
-    expect(summary.state, 'カート(0)');
-    expect(summary.totalPriceState, '合計金額 0円+税');
-
-    expect(target.debugState.sortedItemIds, isEmpty);
-    summary = container.read(cartSummaryProvider);
-    expect(summary.state, 'カート(0)');
-    expect(summary.totalPriceState, '合計金額 0円+税');
+    expect(container.read(cartEmptyProvider), isTrue);
+    expect(container.read(cartTotalQuantityProvider), 0);
+    expect(container.read(cartTotalPriceLabelProvider), '合計金額 0円+税');
 
     target.add('1');
 
-    expect(target.debugState.sortedItemIds.length, 1);
-    final cartItemId = target.debugState.sortedItemIds.first;
-    expect(cartItemId, '1');
-    summary = container.read(cartSummaryProvider);
-    expect(summary.state, 'カート(1)');
-    expect(summary.totalPriceState, '合計金額 100円+税');
+    expect(container.read(cartEmptyProvider), isFalse);
+    expect(container.read(cartTotalQuantityProvider), 1);
+    expect(container.read(cartItemIdsProvider).first, '1');
+    expect(container.read(cartTotalQuantityProvider), 1);
+    expect(container.read(cartTotalPriceLabelProvider), '合計金額 100円+税');
 
     target.delete('1');
 
-    expect(target.debugState.sortedItemIds, isEmpty);
-    summary = container.read(cartSummaryProvider);
-    expect(summary.state, 'カート(0)');
-    expect(summary.totalPriceState, '合計金額 0円+税');
+    expect(container.read(cartEmptyProvider), isTrue);
+    expect(container.read(cartTotalQuantityProvider), 0);
+    expect(container.read(cartTotalPriceLabelProvider), '合計金額 0円+税');
   });
 }
