@@ -39,7 +39,7 @@ class _ListView extends ConsumerWidget {
   const _ListView();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ids = ref.watch(cartController.select((s) => s.sortedItemIds));
+    final ids = ref.watch(cartItemIdsProvider);
     return ListView.builder(
       padding: const EdgeInsets.symmetric(vertical: 8),
       itemCount: ids.length,

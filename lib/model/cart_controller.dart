@@ -2,16 +2,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:wdb106_sample/model/model.dart';
 
-import 'cart_state.dart';
-
-export 'cart_state.dart';
-
 final cartEmptyProvider = Provider(
   (ref) => ref.watch(cartTotalQuantityProvider.select((s) => s <= 0)),
 );
 
 final cartTotalQuantityProvider = Provider((ref) {
-  return ref.watch(cartController.select((s) => s.itemMap)).values.fold<int>(
+  return ref.watch(cartController).values.fold<int>(
     0,
     (sum, quantity) {
       return sum + quantity;
@@ -25,7 +21,7 @@ final cartTotalPriceLabelProvider = Provider(
 
 final cartTotalPriceProvider = Provider((ref) {
   final itemMap = ref.watch(itemMapProvider);
-  final cartMap = ref.watch(cartController.select((s) => s.itemMap));
+  final cartMap = ref.watch(cartController);
   return cartMap.keys.fold<int>(
     0,
     (sum, id) {
@@ -37,31 +33,34 @@ final cartTotalPriceProvider = Provider((ref) {
 });
 
 final cartQuantityProviders = Provider.family<int, String>(
-  (ref, id) => ref.watch(cartController.select((s) => s.itemMap[id] ?? 0)),
+  (ref, id) => ref.watch(cartController.select((s) => s[id] ?? 0)),
 );
 
-final cartController = StateNotifierProvider<CartController, CartState>(
+final cartItemIdsProvider = Provider(
+  (ref) =>
+      ref.watch(cartController).keys.toList()..sort((a, b) => a.compareTo(b)),
+);
+
+final cartController = StateNotifierProvider<CartController, CartMap>(
   (ref) => CartController(),
 );
 
-class CartController extends StateNotifier<CartState> {
-  CartController() : super(CartState());
+typedef CartMap = Map<String, int>;
+
+class CartController extends StateNotifier<CartMap> {
+  CartController() : super({});
 
   void add(String id) {
-    state = state.copyWith(
-      itemMap: {
-        ...state.itemMap,
-        id: (state.itemMap[id] ?? 0) + 1,
-      },
-    );
+    state = {
+      ...state,
+      id: (state[id] ?? 0) + 1,
+    };
   }
 
   void delete(String id) {
-    state = state.copyWith(
-      itemMap: {
-        ...state.itemMap,
-        id: state.itemMap[id]! - 1,
-      }..removeWhere((key, quantity) => quantity <= 0),
-    );
+    state = {
+      ...state,
+      id: state[id]! - 1,
+    }..removeWhere((key, quantity) => quantity <= 0);
   }
 }
