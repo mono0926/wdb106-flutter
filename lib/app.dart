@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wdb106_sample/providers/providers.dart';
+import 'package:wdb106_sample/util/util.dart';
 
 import 'pages/items_page/items_page.dart';
 

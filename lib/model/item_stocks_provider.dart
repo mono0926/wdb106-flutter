@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wdb106_sample/providers/providers.dart';
+import 'package:wdb106_sample/util/util.dart';
 
 import 'model.dart';
 
