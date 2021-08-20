@@ -35,13 +35,13 @@ final itemIdsProvider = Provider(
       .whenData((stocks) => stocks.map((stock) => stock.item.id).toList()),
 );
 
-final itemStockProviders = Provider.family<ItemStock?, String>(
-    (ref, id) => ref.watch(itemStockMapProvider)[id]);
+final itemStockProviders =
+    Provider.family((ref, String id) => ref.watch(itemStockMapProvider)[id]);
 
-final itemsProviders = Provider.family<Item?, String>(
-    (ref, id) => ref.watch(itemStockProviders(id))?.item);
+final itemsProviders = Provider.family(
+    (ref, String id) => ref.watch(itemStockProviders(id))?.item);
 
-final itemQuantityProviders = Provider.family<int, String>((ref, id) {
+final itemQuantityProviders = Provider.family((ref, String id) {
   final stock = ref.watch(itemStockProviders(id));
   if (stock == null) {
     return 0;
@@ -51,6 +51,6 @@ final itemQuantityProviders = Provider.family<int, String>((ref, id) {
   return stock.quantity - cartItemQuantity;
 });
 
-final hasStockProviders = Provider.family<bool, String>(
-  (ref, id) => ref.watch(itemQuantityProviders(id)) > 0,
+final hasStockProviders = Provider.family(
+  (ref, String id) => ref.watch(itemQuantityProviders(id)) > 0,
 );
