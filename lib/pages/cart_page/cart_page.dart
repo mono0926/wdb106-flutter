@@ -14,7 +14,7 @@ class CartPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     void pop() => Navigator.of(context).pop();
-    ref.listen<bool>(cartEmptyProvider, (shouldPop) {
+    ref.listen<bool>(cartEmptyProvider, (_, shouldPop) {
       pop();
     });
     return Scaffold(

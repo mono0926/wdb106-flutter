@@ -17,7 +17,7 @@ final itemStocksProvider = FutureProvider((ref) async {
 });
 
 final itemStockMapProvider = Provider((ref) {
-  final stocks = ref.watch(itemStocksProvider).data?.value ?? [];
+  final stocks = ref.watch(itemStocksProvider).value ?? [];
   return Map.fromEntries(stocks.map((stock) {
     return MapEntry(stock.item.id, stock);
   }));

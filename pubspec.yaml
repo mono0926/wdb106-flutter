@@ -5,7 +5,7 @@ dependencies:
   flutter:
     sdk: flutter
   freezed_annotation:
-  hooks_riverpod: '>=1.0.0-0'
+  hooks_riverpod:
   http:
   simple_logger:
 dev_dependencies:
