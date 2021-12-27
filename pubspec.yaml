@@ -5,6 +5,7 @@ dependencies:
   flutter:
     sdk: flutter
   freezed_annotation:
+  go_router:
   hooks_riverpod:
   http:
   meta:

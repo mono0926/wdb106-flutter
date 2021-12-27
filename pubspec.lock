@@ -214,6 +214,11 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   freezed:
     dependency: "direct dev"
     description:
@@ -242,6 +247,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.2"
+  go_router:
+    dependency: "direct main"
+    description:
+      name: go_router
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.5.7"
   graphs:
     dependency: transitive
     description:
@@ -370,6 +382,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
+  path_to_regexp:
+    dependency: transitive
+    description:
+      name: path_to_regexp
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.0"
   pedantic_mono:
     dependency: "direct dev"
     description:
