@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
 import 'package:wdb106_sample/pages/cart_page/cart_page.dart';
+import 'package:wdb106_sample/router.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
 import 'item_tile.dart';
@@ -48,12 +49,7 @@ class _CartButton extends ConsumerWidget {
       ),
       onPressed: ref.watch(cartEmptyProvider)
           ? null
-          : () => Navigator.of(context).push<void>(
-                CupertinoPageRoute<void>(
-                  builder: (context) => const CartPage(),
-                  fullscreenDialog: true,
-                ),
-              ),
+          : () => ref.watch(routerProvider).push(CartPage.routeName),
     );
   }
 }

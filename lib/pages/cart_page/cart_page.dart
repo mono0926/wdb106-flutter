@@ -10,6 +10,8 @@ import 'cart_tile.dart';
 class CartPage extends ConsumerWidget {
   const CartPage({Key? key}) : super(key: key);
 
+  static const routeName = '/cart';
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     void pop() => Navigator.of(context).pop();
