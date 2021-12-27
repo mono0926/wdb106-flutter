@@ -49,7 +49,7 @@ class _CartButton extends ConsumerWidget {
       ),
       onPressed: ref.watch(cartEmptyProvider)
           ? null
-          : () => ref.watch(routerProvider).push(CartPage.routeName),
+          : () => ref.watch(routerProvider).go('/${CartPage.routeName}'),
     );
   }
 }

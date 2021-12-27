@@ -8,15 +8,17 @@ final routerProvider = Provider(
   (ref) => GoRouter(
     routes: [
       GoRoute(
-          path: '/',
-          builder: (context, state) => const ItemsPage(),
-          routes: []),
-      GoRoute(
-        path: CartPage.routeName,
-        pageBuilder: (context, state) => const CupertinoPage(
-          fullscreenDialog: true,
-          child: CartPage(),
-        ),
+        path: '/',
+        builder: (context, state) => const ItemsPage(),
+        routes: [
+          GoRoute(
+            path: CartPage.routeName,
+            pageBuilder: (context, state) => const CupertinoPage(
+              fullscreenDialog: true,
+              child: CartPage(),
+            ),
+          ),
+        ],
       ),
     ],
   ),
