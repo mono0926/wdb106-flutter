@@ -1,6 +1,9 @@
 name: wdb106_sample
 description: A new Flutter project.
 version: 1.0.0+1
+environment:
+  sdk: '>=2.16.0'
+  flutter: '>=2.10.0'
 dependencies:
   flutter:
     sdk: flutter
@@ -24,6 +27,3 @@ dev_dependencies:
   pedantic_mono:
 flutter:
   uses-material-design: true
-environment:
-  sdk: '>=2.15.0'
-  flutter: '>=2.8.0'
