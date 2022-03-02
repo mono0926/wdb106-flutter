@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ItemStock _$ItemStockFromJson(Map<String, dynamic> json) {
-  return _ItemStock.fromJson(json);
-}
-
 /// @nodoc
 class _$ItemStockTearOff {
   const _$ItemStockTearOff();
@@ -27,10 +23,6 @@ class _$ItemStockTearOff {
       item: item,
       quantity: quantity,
     );
-  }
-
-  ItemStock fromJson(Map<String, Object?> json) {
-    return ItemStock.fromJson(json);
   }
 }
 
@@ -42,7 +34,6 @@ mixin _$ItemStock {
   Item get item => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ItemStockCopyWith<ItemStock> get copyWith =>
       throw _privateConstructorUsedError;
@@ -130,12 +121,9 @@ class __$ItemStockCopyWithImpl<$Res> extends _$ItemStockCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_ItemStock extends _ItemStock with DiagnosticableTreeMixin {
   _$_ItemStock({required this.item, required this.quantity}) : super._();
-
-  factory _$_ItemStock.fromJson(Map<String, dynamic> json) =>
-      _$$_ItemStockFromJson(json);
 
   @override
   final Item item;
@@ -175,20 +163,12 @@ class _$_ItemStock extends _ItemStock with DiagnosticableTreeMixin {
   @override
   _$ItemStockCopyWith<_ItemStock> get copyWith =>
       __$ItemStockCopyWithImpl<_ItemStock>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_ItemStockToJson(this);
-  }
 }
 
 abstract class _ItemStock extends ItemStock {
   factory _ItemStock({required Item item, required int quantity}) =
       _$_ItemStock;
   _ItemStock._() : super._();
-
-  factory _ItemStock.fromJson(Map<String, dynamic> json) =
-      _$_ItemStock.fromJson;
 
   @override
   Item get item;
