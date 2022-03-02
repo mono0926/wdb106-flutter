@@ -8,7 +8,7 @@ void main() {
   test('CartController test', () async {
     final container = ProviderContainer(
       overrides: [
-        itemStocksProvider.overrideWithValue(
+        itemStocks.overrideWithValue(
           AsyncValue.data(dummyItems),
         ),
       ],

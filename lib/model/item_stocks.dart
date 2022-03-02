@@ -5,7 +5,7 @@ import 'package:wdb106_sample/util/util.dart';
 
 import 'model.dart';
 
-final itemStocksProvider = FutureProvider((ref) async {
+final itemStocks = FutureProvider((ref) async {
   final result = await ref.watch(httpClientProvider).get(
         Uri.parse(
           'https://run.mocky.io/v3/6ee7295a-065b-4014-9040-db533ad1389c',
@@ -17,7 +17,7 @@ final itemStocksProvider = FutureProvider((ref) async {
 });
 
 final itemStockMapProvider = Provider((ref) {
-  final stocks = ref.watch(itemStocksProvider).value ?? [];
+  final stocks = ref.watch(itemStocks).value ?? [];
   return Map.fromEntries(
     stocks.map((stock) {
       return MapEntry(stock.item.id, stock);
@@ -33,7 +33,7 @@ final itemMapProvider = Provider(
 
 final itemIdsProvider = Provider(
   (ref) => ref
-      .watch(itemStocksProvider)
+      .watch(itemStocks)
       .whenData((stocks) => stocks.map((stock) => stock.item.id).toList()),
 );
 

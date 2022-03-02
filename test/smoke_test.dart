@@ -15,7 +15,7 @@ void main() {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
-            itemStocksProvider.overrideWithValue(
+            itemStocks.overrideWithValue(
               AsyncValue.data(dummyItems),
             ),
           ],
