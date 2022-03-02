@@ -36,7 +36,7 @@ class CartTile extends ConsumerWidget {
               ),
               CupertinoButton(
                 onPressed: () {
-                  ref.read(cartController.notifier).delete(item.id);
+                  ref.read(cartMapProvider.notifier).delete(item.id);
                 },
                 child: Text(
                   '削除',

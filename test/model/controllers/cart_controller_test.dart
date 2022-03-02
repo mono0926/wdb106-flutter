@@ -11,7 +11,7 @@ void main() {
         AsyncValue.data(dummyItems),
       ),
     ]);
-    final target = container.read(cartController.notifier);
+    final target = container.read(cartMapProvider.notifier);
     expect(container.read(cartEmptyProvider), isTrue);
     expect(container.read(cartTotalQuantityProvider), 0);
     expect(container.read(cartTotalPriceLabelProvider), '合計金額 0円+税');

@@ -47,7 +47,7 @@ final itemQuantityProviders = Provider.family((ref, String id) {
     return 0;
   }
   final item = stock.item;
-  final cartItemQuantity = ref.watch(cartController)[item.id] ?? 0;
+  final cartItemQuantity = ref.watch(cartMapProvider)[item.id] ?? 0;
   return stock.quantity - cartItemQuantity;
 });
 

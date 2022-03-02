@@ -6,7 +6,7 @@ final cartEmptyProvider = Provider(
 );
 
 final cartTotalQuantityProvider = Provider((ref) {
-  return ref.watch(cartController).values.fold<int>(
+  return ref.watch(cartMapProvider).values.fold<int>(
     0,
     (sum, quantity) {
       return sum + quantity;
@@ -20,7 +20,7 @@ final cartTotalPriceLabelProvider = Provider(
 
 final cartTotalPriceProvider = Provider((ref) {
   final itemMap = ref.watch(itemMapProvider);
-  final cartMap = ref.watch(cartController);
+  final cartMap = ref.watch(cartMapProvider);
   return cartMap.keys.fold<int>(
     0,
     (sum, id) {
@@ -32,22 +32,22 @@ final cartTotalPriceProvider = Provider((ref) {
 });
 
 final cartQuantityProviders = Provider.family<int, String>(
-  (ref, id) => ref.watch(cartController.select((s) => s[id] ?? 0)),
+  (ref, id) => ref.watch(cartMapProvider.select((s) => s[id] ?? 0)),
 );
 
 final cartItemIdsProvider = Provider(
   (ref) =>
-      ref.watch(cartController).keys.toList()..sort((a, b) => a.compareTo(b)),
+      ref.watch(cartMapProvider).keys.toList()..sort((a, b) => a.compareTo(b)),
 );
 
-final cartController = StateNotifierProvider<CartController, CartMap>(
-  (ref) => CartController(),
+final cartMapProvider = StateNotifierProvider<CartNotifier, CartMap>(
+  (ref) => CartNotifier(),
 );
 
 typedef CartMap = Map<String, int>;
 
-class CartController extends StateNotifier<CartMap> {
-  CartController() : super({});
+class CartNotifier extends StateNotifier<CartMap> {
+  CartNotifier() : super({});
 
   void add(String id) {
     state = {
