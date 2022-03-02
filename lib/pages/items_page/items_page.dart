@@ -26,16 +26,16 @@ class _ListView extends ConsumerWidget {
   const _ListView();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) =>
-      ref.watch(itemIdsProvider).when(
-            data: (ids) => ListView.builder(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              itemCount: ids.length,
-              itemBuilder: (_, index) => ItemTile(id: ids[index]),
-            ),
-            loading: () => const Center(child: CircularProgressIndicator()),
-            error: (e, _) => throw AssertionError(e),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ids = ref.watch(itemIdsProvider).value;
+    return ids == null
+        ? const Center(child: CircularProgressIndicator())
+        : ListView.builder(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            itemCount: ids.length,
+            itemBuilder: (_, index) => ItemTile(id: ids[index]),
           );
+  }
 }
 
 class _CartButton extends ConsumerWidget {
