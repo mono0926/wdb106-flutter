@@ -14,7 +14,7 @@ class ItemStock with _$ItemStock {
 
   ItemStock._();
 
-  static ItemStock fromJson(Map<String, dynamic> json) => ItemStock(
+  factory ItemStock.fromJson(Map<String, dynamic> json) => ItemStock(
         item: Item.fromJson(json),
         quantity: json['quantity'] as int,
       );
