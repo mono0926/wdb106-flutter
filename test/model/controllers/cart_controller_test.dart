@@ -6,11 +6,13 @@ import '../../helper/dummy_items.dart';
 
 void main() {
   test('CartController test', () async {
-    final container = ProviderContainer(overrides: [
-      itemStocksProvider.overrideWithValue(
-        AsyncValue.data(dummyItems),
-      ),
-    ]);
+    final container = ProviderContainer(
+      overrides: [
+        itemStocksProvider.overrideWithValue(
+          AsyncValue.data(dummyItems),
+        ),
+      ],
+    );
     final target = container.read(cartMapProvider.notifier);
     expect(container.read(cartEmptyProvider), isTrue);
     expect(container.read(cartTotalQuantityProvider), 0);

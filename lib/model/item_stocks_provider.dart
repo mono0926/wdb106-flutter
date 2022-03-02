@@ -8,7 +8,8 @@ import 'model.dart';
 final itemStocksProvider = FutureProvider((ref) async {
   final result = await ref.watch(httpClientProvider).get(
         Uri.parse(
-            'https://run.mocky.io/v3/6ee7295a-065b-4014-9040-db533ad1389c'),
+          'https://run.mocky.io/v3/6ee7295a-065b-4014-9040-db533ad1389c',
+        ),
       );
   final json =
       (await jsonDecode(result.body) as List).cast<Map<String, dynamic>>();
@@ -18,9 +19,11 @@ final itemStocksProvider = FutureProvider((ref) async {
 
 final itemStockMapProvider = Provider((ref) {
   final stocks = ref.watch(itemStocksProvider).value ?? [];
-  return Map.fromEntries(stocks.map((stock) {
-    return MapEntry(stock.item.id, stock);
-  }));
+  return Map.fromEntries(
+    stocks.map((stock) {
+      return MapEntry(stock.item.id, stock);
+    }),
+  );
 });
 
 final itemMapProvider = Provider(
@@ -39,7 +42,8 @@ final itemStockProviders =
     Provider.family((ref, String id) => ref.watch(itemStockMapProvider)[id]);
 
 final itemsProviders = Provider.family(
-    (ref, String id) => ref.watch(itemStockProviders(id))?.item);
+  (ref, String id) => ref.watch(itemStockProviders(id))?.item,
+);
 
 final itemQuantityProviders = Provider.family((ref, String id) {
   final stock = ref.watch(itemStockProviders(id));
