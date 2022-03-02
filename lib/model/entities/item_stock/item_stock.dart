@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:wdb106_sample/util/util.dart';
 
 import '../entities.dart';
 
@@ -15,7 +16,7 @@ class ItemStock with _$ItemStock {
   ItemStock._();
 
   // ignore: prefer_constructors_over_static_methods
-  static ItemStock fromJson(Map<String, dynamic> json) => ItemStock(
+  static ItemStock fromJson(JsonMap json) => ItemStock(
         item: Item.fromJson(json),
         quantity: json['quantity'] as int,
       );

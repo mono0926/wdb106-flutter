@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wdb106_sample/model/model.dart';
+import 'package:wdb106_sample/util/util.dart';
 
 void main() {
   test('ItemStock.fromJson test', () async {
@@ -15,7 +16,7 @@ void main() {
     }
     ''';
 
-    final json = jsonDecode(source) as Map<String, dynamic>;
+    final json = jsonDecode(source) as JsonMap;
     final target = ItemStock.fromJson(json);
     final item = target.item;
     expect(item.id, '100');

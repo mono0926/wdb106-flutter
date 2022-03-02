@@ -11,8 +11,7 @@ final itemStocksProvider = FutureProvider((ref) async {
           'https://run.mocky.io/v3/6ee7295a-065b-4014-9040-db533ad1389c',
         ),
       );
-  final json =
-      (await jsonDecode(result.body) as List).cast<Map<String, dynamic>>();
+  final json = (await jsonDecode(result.body) as List).cast<JsonMap>();
   final list = json.map(ItemStock.fromJson).toList();
   return list;
 });
