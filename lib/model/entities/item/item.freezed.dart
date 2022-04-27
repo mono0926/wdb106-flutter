@@ -12,36 +12,11 @@ part of 'item.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Item _$ItemFromJson(Map<String, dynamic> json) {
   return _Item.fromJson(json);
 }
-
-/// @nodoc
-class _$ItemTearOff {
-  const _$ItemTearOff();
-
-  _Item call(
-      {required String id,
-      required int price,
-      required String title,
-      required String imageUrl}) {
-    return _Item(
-      id: id,
-      price: price,
-      title: title,
-      imageUrl: imageUrl,
-    );
-  }
-
-  Item fromJson(Map<String, Object?> json) {
-    return Item.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Item = _$ItemTearOff();
 
 /// @nodoc
 mixin _$Item {
@@ -191,6 +166,7 @@ class _$_Item extends _Item with DiagnosticableTreeMixin {
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -212,22 +188,22 @@ class _$_Item extends _Item with DiagnosticableTreeMixin {
 
 abstract class _Item extends Item {
   factory _Item(
-      {required String id,
-      required int price,
-      required String title,
-      required String imageUrl}) = _$_Item;
+      {required final String id,
+      required final int price,
+      required final String title,
+      required final String imageUrl}) = _$_Item;
   _Item._() : super._();
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  int get price;
+  int get price => throw _privateConstructorUsedError;
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  String get imageUrl;
+  String get imageUrl => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ItemCopyWith<_Item> get copyWith => throw _privateConstructorUsedError;

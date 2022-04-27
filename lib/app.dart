@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wdb106_sample/router.dart';
+import 'package:wdb106_sample/router/router.dart';
 
 class App extends ConsumerWidget {
   const App({Key? key}) : super(key: key);

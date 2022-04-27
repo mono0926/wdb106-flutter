@@ -12,22 +12,7 @@ part of 'item_stock.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ItemStockTearOff {
-  const _$ItemStockTearOff();
-
-  _ItemStock call({required Item item, required int quantity}) {
-    return _ItemStock(
-      item: item,
-      quantity: quantity,
-    );
-  }
-}
-
-/// @nodoc
-const $ItemStock = _$ItemStockTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ItemStock {
@@ -166,14 +151,14 @@ class _$_ItemStock extends _ItemStock with DiagnosticableTreeMixin {
 }
 
 abstract class _ItemStock extends ItemStock {
-  factory _ItemStock({required Item item, required int quantity}) =
+  factory _ItemStock({required final Item item, required final int quantity}) =
       _$_ItemStock;
   _ItemStock._() : super._();
 
   @override
-  Item get item;
+  Item get item => throw _privateConstructorUsedError;
   @override
-  int get quantity;
+  int get quantity => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ItemStockCopyWith<_ItemStock> get copyWith =>

@@ -1,11 +1,22 @@
 // TODO(mono): アニメーション
 import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
 import 'cart_header.dart';
 import 'cart_tile.dart';
+
+class CartRoute extends GoRouteData {
+  const CartRoute();
+
+  @override
+  Page<void> buildPage(BuildContext context) => const CupertinoPage(
+        fullscreenDialog: true,
+        child: CartPage(),
+      );
+}
 
 class CartPage extends ConsumerWidget {
   const CartPage({Key? key}) : super(key: key);
