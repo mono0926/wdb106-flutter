@@ -19,7 +19,7 @@ class CartRoute extends GoRouteData {
 }
 
 class CartPage extends ConsumerWidget {
-  const CartPage({Key? key}) : super(key: key);
+  const CartPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

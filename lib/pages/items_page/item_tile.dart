@@ -45,9 +45,8 @@ class ItemTile extends ConsumerWidget {
 
 class _AddButton extends ConsumerWidget {
   const _AddButton({
-    Key? key,
     required this.id,
-  }) : super(key: key);
+  });
 
   final String id;
 

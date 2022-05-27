@@ -2,11 +2,10 @@ import 'package:flutter/cupertino.dart';
 
 class NavigationBarButton extends StatelessWidget {
   NavigationBarButton({
-    Key? key,
+    super.key,
     @required this.onPressed,
     required String text,
-  })  : child = Text(text),
-        super(key: key);
+  })  : child = Text(text);
 
   final Widget child;
   final VoidCallback? onPressed;

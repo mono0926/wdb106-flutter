@@ -8,7 +8,7 @@ import 'package:wdb106_sample/widgets/widgets.dart';
 import 'item_tile.dart';
 
 class ItemsPage extends StatelessWidget {
-  const ItemsPage({Key? key}) : super(key: key);
+  const ItemsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class _ListView extends ConsumerWidget {
 }
 
 class _CartButton extends ConsumerWidget {
-  const _CartButton({Key? key}) : super(key: key);
+  const _CartButton();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
