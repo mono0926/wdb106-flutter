@@ -24,7 +24,7 @@ class CartPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     void pop() => Navigator.of(context).pop();
-    ref.listen<bool>(cartEmptyProvider, (_, shouldPop) {
+    ref.listen<bool>(cartProvider.select((s) => s.isEmpty), (_, shouldPop) {
       pop();
     });
     return Scaffold(
@@ -49,7 +49,7 @@ class _ListView extends ConsumerWidget {
   const _ListView();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ids = ref.watch(cartItemIdsProvider);
+    final ids = ref.watch(cartProvider.select((s) => s.itemIds));
     return ListView.builder(
       padding: const EdgeInsets.symmetric(vertical: 8),
       itemCount: ids.length,

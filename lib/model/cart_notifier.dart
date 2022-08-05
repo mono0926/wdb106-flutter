@@ -1,65 +1,69 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
 
-final cartEmptyProvider = Provider(
-  (ref) => ref.watch(cartTotalQuantityProvider.select((s) => s <= 0)),
-);
-
-final cartTotalQuantityProvider = Provider((ref) {
-  return ref.watch(cartMapProvider).values.fold<int>(
-    0,
-    (sum, quantity) {
-      return sum + quantity;
-    },
-  );
-});
+part 'cart_notifier.freezed.dart';
 
 final cartTotalPriceLabelProvider = Provider(
   (ref) => '合計金額 ${ref.watch(cartTotalPriceProvider)}円+税',
 );
 
 final cartTotalPriceProvider = Provider((ref) {
-  final itemMap = ref.watch(itemMapProvider);
-  final cartMap = ref.watch(cartMapProvider);
-  return cartMap.keys.fold<int>(
+  final itemMap =
+      ref.watch(itemStocksProvider.select((s) => s.value?.itemMap)) ?? {};
+  final cart = ref.watch(cartProvider);
+  return cart.itemIds.fold<int>(
     0,
     (sum, id) {
       final item = itemMap[id]!;
-      final quantity = cartMap[id]!;
+      final quantity = cart.quantity(id);
       return sum + item.price * quantity;
     },
   );
 });
 
-final cartQuantityProviders = Provider.family<int, String>(
-  (ref, id) => ref.watch(cartMapProvider.select((s) => s[id] ?? 0)),
-);
-
-final cartItemIdsProvider = Provider(
-  (ref) =>
-      ref.watch(cartMapProvider).keys.toList()..sort((a, b) => a.compareTo(b)),
-);
-
-final cartMapProvider = StateNotifierProvider<CartNotifier, CartMap>(
+final cartProvider = StateNotifierProvider<CartNotifier, CartStorage>(
   (ref) => CartNotifier(),
 );
 
-typedef CartMap = Map<String, int>;
+class CartNotifier extends StateNotifier<CartStorage> {
+  CartNotifier() : super(CartStorage());
 
-class CartNotifier extends StateNotifier<CartMap> {
-  CartNotifier() : super({});
+  void add(String id) => state = state.added(id);
 
-  void add(String id) {
-    state = {
-      ...state,
-      id: (state[id] ?? 0) + 1,
-    };
+  void delete(String id) => state = state.deleted(id);
+}
+
+@freezed
+class CartStorage with _$CartStorage {
+  factory CartStorage([@Default(<String, int>{}) Map<String, int> map]) =
+      _CartStorage;
+  CartStorage._();
+
+  CartStorage added(String id) {
+    return CartStorage({
+      ...map,
+      id: (map[id] ?? 0) + 1,
+    });
   }
 
-  void delete(String id) {
-    state = {
-      ...state,
-      id: state[id]! - 1,
-    }..removeWhere((key, quantity) => quantity <= 0);
+  CartStorage deleted(String id) {
+    return CartStorage(
+      {
+        ...map,
+        id: map[id]! - 1,
+      }..removeWhere((key, quantity) => quantity <= 0),
+    );
   }
+
+  late final itemIds = map.keys.toList()..sort((a, b) => a.compareTo(b));
+  late final totalQuantity = map.values.fold<int>(
+    0,
+    (sum, quantity) {
+      return sum + quantity;
+    },
+  );
+  late final isEmpty = totalQuantity <= 0;
+
+  int quantity(String id) => map[id] ?? 0;
 }

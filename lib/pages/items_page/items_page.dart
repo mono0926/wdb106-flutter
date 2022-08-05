@@ -27,7 +27,7 @@ class _ListView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ids = ref.watch(itemIdsProvider).value;
+    final ids = ref.watch(itemStocksProvider.select((s) => s.value?.itemIds));
     return ids == null
         ? const Center(child: CircularProgressIndicator())
         : ListView.builder(
@@ -45,9 +45,9 @@ class _CartButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return NavigationBarButton(
       text: ref.watch(
-        cartTotalQuantityProvider.select((quantity) => 'カート($quantity)'),
+        cartProvider.select((s) => 'カート(${s.totalQuantity})'),
       ),
-      onPressed: ref.watch(cartEmptyProvider)
+      onPressed: ref.watch(cartProvider.select((s) => s.isEmpty))
           ? null
           : () => const CartRoute().go(context),
     );

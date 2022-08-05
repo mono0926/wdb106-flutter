@@ -5,9 +5,9 @@ import 'package:wdb106_sample/model/item_stocks.dart';
 void main() {
   test('items fetcher test', () async {
     final container = ProviderContainer();
-    final stocks = await container.read(itemStocks.future);
-    expect(stocks.length, 5);
-    final stock = stocks.first;
+    final stocks = await container.read(itemStocksProvider.future);
+    expect(stocks.itemIds.length, 5);
+    final stock = stocks.stocks.first;
     final item = stock.item;
     expect(item.id, '100');
     expect(item.price, 1480);

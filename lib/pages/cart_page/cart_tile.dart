@@ -15,7 +15,8 @@ class CartTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
-    final item = ref.watch(itemsProviders(id))!;
+    final item =
+        ref.watch(itemStocksProvider.select((s) => s.value!.item(id)))!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -30,13 +31,13 @@ class CartTile extends ConsumerWidget {
                 title: item.title,
                 price: item.priceWithUnit,
                 info: Text(
-                  '数量 ${ref.watch(cartQuantityProviders(id))}',
+                  '数量 ${ref.watch(cartProvider.select((s) => s.quantity(id)))}',
                   style: theme.textTheme.caption,
                 ),
               ),
               CupertinoButton(
                 onPressed: () {
-                  ref.read(cartMapProvider.notifier).delete(item.id);
+                  ref.read(cartProvider.notifier).delete(item.id);
                 },
                 child: Text(
                   '削除',

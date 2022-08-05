@@ -8,28 +8,28 @@ void main() {
   test('CartController test', () async {
     final container = ProviderContainer(
       overrides: [
-        itemStocks.overrideWithValue(
-          AsyncValue.data(dummyItems),
+        itemStocksProvider.overrideWithValue(
+          AsyncValue.data(dummyItemStocks),
         ),
       ],
     );
-    final target = container.read(cartMapProvider.notifier);
-    expect(container.read(cartEmptyProvider), isTrue);
-    expect(container.read(cartTotalQuantityProvider), 0);
+    final target = container.read(cartProvider.notifier);
+    expect(container.read(cartProvider).isEmpty, isTrue);
+    expect(container.read(cartProvider).totalQuantity, 0);
     expect(container.read(cartTotalPriceLabelProvider), '合計金額 0円+税');
 
     target.add('1');
 
-    expect(container.read(cartEmptyProvider), isFalse);
-    expect(container.read(cartTotalQuantityProvider), 1);
-    expect(container.read(cartItemIdsProvider).first, '1');
-    expect(container.read(cartTotalQuantityProvider), 1);
+    expect(container.read(cartProvider).isEmpty, isFalse);
+    expect(container.read(cartProvider).totalQuantity, 1);
+    expect(container.read(cartProvider).itemIds.first, '1');
+    expect(container.read(cartProvider).totalQuantity, 1);
     expect(container.read(cartTotalPriceLabelProvider), '合計金額 100円+税');
 
     target.delete('1');
 
-    expect(container.read(cartEmptyProvider), isTrue);
-    expect(container.read(cartTotalQuantityProvider), 0);
+    expect(container.read(cartProvider).isEmpty, isTrue);
+    expect(container.read(cartProvider).totalQuantity, 0);
     expect(container.read(cartTotalPriceLabelProvider), '合計金額 0円+税');
   });
 }
