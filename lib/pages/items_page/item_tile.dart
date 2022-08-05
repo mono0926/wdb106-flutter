@@ -55,7 +55,7 @@ class _AddButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return CupertinoButton(
-      onPressed: ref.watch(hasStockProviders(id))
+      onPressed: ref.watch(hasStockProviders(id)).value == true
           ? () => ref.read(cartProvider.notifier).add(id)
           : null,
       child: const Text('追加'),

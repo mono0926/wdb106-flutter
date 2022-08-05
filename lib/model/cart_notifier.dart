@@ -5,21 +5,23 @@ import 'package:wdb106_sample/model/model.dart';
 part 'cart_notifier.freezed.dart';
 
 final cartTotalPriceLabelProvider = Provider(
-  (ref) => '合計金額 ${ref.watch(cartTotalPriceProvider)}円+税',
+  (ref) => ref.watch(cartTotalPriceProvider).whenData(
+        (price) => '合計金額 $price円+税',
+      ),
 );
 
 final cartTotalPriceProvider = Provider((ref) {
-  final itemMap =
-      ref.watch(itemStocksProvider.select((s) => s.value?.itemMap)) ?? {};
   final cart = ref.watch(cartProvider);
-  return cart.itemIds.fold<int>(
-    0,
-    (sum, id) {
-      final item = itemMap[id]!;
-      final quantity = cart.quantity(id);
-      return sum + item.price * quantity;
-    },
-  );
+  return ref.watch(itemStocksProvider).whenData((itemStocks) {
+    return cart.itemIds.fold<int>(
+      0,
+      (sum, id) {
+        final item = itemStocks.item(id)!;
+        final quantity = cart.quantity(id);
+        return sum + item.price * quantity;
+      },
+    );
+  });
 });
 
 final cartProvider = StateNotifierProvider<CartNotifier, CartStorage>(

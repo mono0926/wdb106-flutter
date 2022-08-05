@@ -39,16 +39,20 @@ class ItemStockStorage with _$ItemStockStorage {
 }
 
 final itemQuantityProviders = Provider.family((ref, String id) {
-  final stock = ref.watch(itemStocksProvider).value?.itemStock(id);
-  if (stock == null) {
-    return 0;
-  }
-  final cartItemQuantity = ref.watch(
-    cartProvider.select((s) => s.quantity(id)),
-  );
-  return stock.quantity - cartItemQuantity;
+  return ref.watch(itemStocksProvider).whenData((itemStocks) {
+    final stock = itemStocks.itemStock(id);
+    if (stock == null) {
+      return 0;
+    }
+    final cartItemQuantity = ref.watch(
+      cartProvider.select((s) => s.quantity(id)),
+    );
+    return stock.quantity - cartItemQuantity;
+  });
 });
 
 final hasStockProviders = Provider.family(
-  (ref, String id) => ref.watch(itemQuantityProviders(id)) > 0,
+  (ref, String id) => ref.watch(itemQuantityProviders(id)).whenData(
+        (quantity) => quantity > 0,
+      ),
 );
