@@ -15,29 +15,27 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$CartStorage {
+mixin _$Cart {
   Map<String, int> get map => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CartStorageCopyWith<CartStorage> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CartCopyWith<Cart> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CartStorageCopyWith<$Res> {
-  factory $CartStorageCopyWith(
-          CartStorage value, $Res Function(CartStorage) then) =
-      _$CartStorageCopyWithImpl<$Res>;
+abstract class $CartCopyWith<$Res> {
+  factory $CartCopyWith(Cart value, $Res Function(Cart) then) =
+      _$CartCopyWithImpl<$Res>;
   $Res call({Map<String, int> map});
 }
 
 /// @nodoc
-class _$CartStorageCopyWithImpl<$Res> implements $CartStorageCopyWith<$Res> {
-  _$CartStorageCopyWithImpl(this._value, this._then);
+class _$CartCopyWithImpl<$Res> implements $CartCopyWith<$Res> {
+  _$CartCopyWithImpl(this._value, this._then);
 
-  final CartStorage _value;
+  final Cart _value;
   // ignore: unused_field
-  final $Res Function(CartStorage) _then;
+  final $Res Function(Cart) _then;
 
   @override
   $Res call({
@@ -53,30 +51,27 @@ class _$CartStorageCopyWithImpl<$Res> implements $CartStorageCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_CartStorageCopyWith<$Res>
-    implements $CartStorageCopyWith<$Res> {
-  factory _$$_CartStorageCopyWith(
-          _$_CartStorage value, $Res Function(_$_CartStorage) then) =
-      __$$_CartStorageCopyWithImpl<$Res>;
+abstract class _$$_CartCopyWith<$Res> implements $CartCopyWith<$Res> {
+  factory _$$_CartCopyWith(_$_Cart value, $Res Function(_$_Cart) then) =
+      __$$_CartCopyWithImpl<$Res>;
   @override
   $Res call({Map<String, int> map});
 }
 
 /// @nodoc
-class __$$_CartStorageCopyWithImpl<$Res> extends _$CartStorageCopyWithImpl<$Res>
-    implements _$$_CartStorageCopyWith<$Res> {
-  __$$_CartStorageCopyWithImpl(
-      _$_CartStorage _value, $Res Function(_$_CartStorage) _then)
-      : super(_value, (v) => _then(v as _$_CartStorage));
+class __$$_CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res>
+    implements _$$_CartCopyWith<$Res> {
+  __$$_CartCopyWithImpl(_$_Cart _value, $Res Function(_$_Cart) _then)
+      : super(_value, (v) => _then(v as _$_Cart));
 
   @override
-  _$_CartStorage get _value => super._value as _$_CartStorage;
+  _$_Cart get _value => super._value as _$_Cart;
 
   @override
   $Res call({
     Object? map = freezed,
   }) {
-    return _then(_$_CartStorage(
+    return _then(_$_Cart(
       map == freezed
           ? _value._map
           : map // ignore: cast_nullable_to_non_nullable
@@ -87,8 +82,8 @@ class __$$_CartStorageCopyWithImpl<$Res> extends _$CartStorageCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CartStorage extends _CartStorage {
-  _$_CartStorage([final Map<String, int> map = const <String, int>{}])
+class _$_Cart extends _Cart {
+  _$_Cart([final Map<String, int> map = const <String, int>{}])
       : _map = map,
         super._();
 
@@ -102,14 +97,14 @@ class _$_CartStorage extends _CartStorage {
 
   @override
   String toString() {
-    return 'CartStorage(map: $map)';
+    return 'Cart(map: $map)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CartStorage &&
+            other is _$_Cart &&
             const DeepCollectionEquality().equals(other._map, _map));
   }
 
@@ -119,18 +114,17 @@ class _$_CartStorage extends _CartStorage {
 
   @JsonKey(ignore: true)
   @override
-  _$$_CartStorageCopyWith<_$_CartStorage> get copyWith =>
-      __$$_CartStorageCopyWithImpl<_$_CartStorage>(this, _$identity);
+  _$$_CartCopyWith<_$_Cart> get copyWith =>
+      __$$_CartCopyWithImpl<_$_Cart>(this, _$identity);
 }
 
-abstract class _CartStorage extends CartStorage {
-  factory _CartStorage([final Map<String, int> map]) = _$_CartStorage;
-  _CartStorage._() : super._();
+abstract class _Cart extends Cart {
+  factory _Cart([final Map<String, int> map]) = _$_Cart;
+  _Cart._() : super._();
 
   @override
   Map<String, int> get map;
   @override
   @JsonKey(ignore: true)
-  _$$_CartStorageCopyWith<_$_CartStorage> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_CartCopyWith<_$_Cart> get copyWith => throw _privateConstructorUsedError;
 }

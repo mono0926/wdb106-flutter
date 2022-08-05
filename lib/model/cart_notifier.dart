@@ -24,12 +24,12 @@ final cartTotalPriceProvider = Provider((ref) {
   });
 });
 
-final cartProvider = StateNotifierProvider<CartNotifier, CartStorage>(
+final cartProvider = StateNotifierProvider<CartNotifier, Cart>(
   (ref) => CartNotifier(),
 );
 
-class CartNotifier extends StateNotifier<CartStorage> {
-  CartNotifier() : super(CartStorage());
+class CartNotifier extends StateNotifier<Cart> {
+  CartNotifier() : super(Cart());
 
   void add(String id) => state = state.added(id);
 
@@ -37,20 +37,19 @@ class CartNotifier extends StateNotifier<CartStorage> {
 }
 
 @freezed
-class CartStorage with _$CartStorage {
-  factory CartStorage([@Default(<String, int>{}) Map<String, int> map]) =
-      _CartStorage;
-  CartStorage._();
+class Cart with _$Cart {
+  factory Cart([@Default(<String, int>{}) Map<String, int> map]) = _Cart;
+  Cart._();
 
-  CartStorage added(String id) {
-    return CartStorage({
+  Cart added(String id) {
+    return Cart({
       ...map,
       id: (map[id] ?? 0) + 1,
     });
   }
 
-  CartStorage deleted(String id) {
-    return CartStorage(
+  Cart deleted(String id) {
+    return Cart(
       {
         ...map,
         id: map[id]! - 1,

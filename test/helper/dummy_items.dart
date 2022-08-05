@@ -1,6 +1,6 @@
 import 'package:wdb106_sample/model/model.dart';
 
-final dummyItemStocks = ItemStockStorage(
+final dummyItemStocks = ItemStocks(
   stocks: [
     ItemStock(
       quantity: 2,

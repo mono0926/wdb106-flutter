@@ -15,30 +15,29 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ItemStockStorage {
+mixin _$ItemStocks {
   List<ItemStock> get stocks => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ItemStockStorageCopyWith<ItemStockStorage> get copyWith =>
+  $ItemStocksCopyWith<ItemStocks> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ItemStockStorageCopyWith<$Res> {
-  factory $ItemStockStorageCopyWith(
-          ItemStockStorage value, $Res Function(ItemStockStorage) then) =
-      _$ItemStockStorageCopyWithImpl<$Res>;
+abstract class $ItemStocksCopyWith<$Res> {
+  factory $ItemStocksCopyWith(
+          ItemStocks value, $Res Function(ItemStocks) then) =
+      _$ItemStocksCopyWithImpl<$Res>;
   $Res call({List<ItemStock> stocks});
 }
 
 /// @nodoc
-class _$ItemStockStorageCopyWithImpl<$Res>
-    implements $ItemStockStorageCopyWith<$Res> {
-  _$ItemStockStorageCopyWithImpl(this._value, this._then);
+class _$ItemStocksCopyWithImpl<$Res> implements $ItemStocksCopyWith<$Res> {
+  _$ItemStocksCopyWithImpl(this._value, this._then);
 
-  final ItemStockStorage _value;
+  final ItemStocks _value;
   // ignore: unused_field
-  final $Res Function(ItemStockStorage) _then;
+  final $Res Function(ItemStocks) _then;
 
   @override
   $Res call({
@@ -54,31 +53,30 @@ class _$ItemStockStorageCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$_ItemStockStorageCopyWith<$Res>
-    implements $ItemStockStorageCopyWith<$Res> {
-  factory _$$_ItemStockStorageCopyWith(
-          _$_ItemStockStorage value, $Res Function(_$_ItemStockStorage) then) =
-      __$$_ItemStockStorageCopyWithImpl<$Res>;
+abstract class _$$_ItemStocksCopyWith<$Res>
+    implements $ItemStocksCopyWith<$Res> {
+  factory _$$_ItemStocksCopyWith(
+          _$_ItemStocks value, $Res Function(_$_ItemStocks) then) =
+      __$$_ItemStocksCopyWithImpl<$Res>;
   @override
   $Res call({List<ItemStock> stocks});
 }
 
 /// @nodoc
-class __$$_ItemStockStorageCopyWithImpl<$Res>
-    extends _$ItemStockStorageCopyWithImpl<$Res>
-    implements _$$_ItemStockStorageCopyWith<$Res> {
-  __$$_ItemStockStorageCopyWithImpl(
-      _$_ItemStockStorage _value, $Res Function(_$_ItemStockStorage) _then)
-      : super(_value, (v) => _then(v as _$_ItemStockStorage));
+class __$$_ItemStocksCopyWithImpl<$Res> extends _$ItemStocksCopyWithImpl<$Res>
+    implements _$$_ItemStocksCopyWith<$Res> {
+  __$$_ItemStocksCopyWithImpl(
+      _$_ItemStocks _value, $Res Function(_$_ItemStocks) _then)
+      : super(_value, (v) => _then(v as _$_ItemStocks));
 
   @override
-  _$_ItemStockStorage get _value => super._value as _$_ItemStockStorage;
+  _$_ItemStocks get _value => super._value as _$_ItemStocks;
 
   @override
   $Res call({
     Object? stocks = freezed,
   }) {
-    return _then(_$_ItemStockStorage(
+    return _then(_$_ItemStocks(
       stocks: stocks == freezed
           ? _value._stocks
           : stocks // ignore: cast_nullable_to_non_nullable
@@ -89,8 +87,8 @@ class __$$_ItemStockStorageCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ItemStockStorage extends _ItemStockStorage {
-  _$_ItemStockStorage({required final List<ItemStock> stocks})
+class _$_ItemStocks extends _ItemStocks {
+  _$_ItemStocks({required final List<ItemStock> stocks})
       : _stocks = stocks,
         super._();
 
@@ -103,14 +101,14 @@ class _$_ItemStockStorage extends _ItemStockStorage {
 
   @override
   String toString() {
-    return 'ItemStockStorage(stocks: $stocks)';
+    return 'ItemStocks(stocks: $stocks)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ItemStockStorage &&
+            other is _$_ItemStocks &&
             const DeepCollectionEquality().equals(other._stocks, _stocks));
   }
 
@@ -120,19 +118,18 @@ class _$_ItemStockStorage extends _ItemStockStorage {
 
   @JsonKey(ignore: true)
   @override
-  _$$_ItemStockStorageCopyWith<_$_ItemStockStorage> get copyWith =>
-      __$$_ItemStockStorageCopyWithImpl<_$_ItemStockStorage>(this, _$identity);
+  _$$_ItemStocksCopyWith<_$_ItemStocks> get copyWith =>
+      __$$_ItemStocksCopyWithImpl<_$_ItemStocks>(this, _$identity);
 }
 
-abstract class _ItemStockStorage extends ItemStockStorage {
-  factory _ItemStockStorage({required final List<ItemStock> stocks}) =
-      _$_ItemStockStorage;
-  _ItemStockStorage._() : super._();
+abstract class _ItemStocks extends ItemStocks {
+  factory _ItemStocks({required final List<ItemStock> stocks}) = _$_ItemStocks;
+  _ItemStocks._() : super._();
 
   @override
   List<ItemStock> get stocks;
   @override
   @JsonKey(ignore: true)
-  _$$_ItemStockStorageCopyWith<_$_ItemStockStorage> get copyWith =>
+  _$$_ItemStocksCopyWith<_$_ItemStocks> get copyWith =>
       throw _privateConstructorUsedError;
 }

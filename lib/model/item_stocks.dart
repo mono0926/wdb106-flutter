@@ -15,16 +15,15 @@ final itemStocksProvider = FutureProvider((ref) async {
         ),
       );
   final json = (await jsonDecode(result.body) as List).cast<JsonMap>();
-  return ItemStockStorage(
+  return ItemStocks(
     stocks: json.map(ItemStock.fromJson).toList(),
   );
 });
 
 @freezed
-class ItemStockStorage with _$ItemStockStorage {
-  factory ItemStockStorage({required List<ItemStock> stocks}) =
-      _ItemStockStorage;
-  ItemStockStorage._();
+class ItemStocks with _$ItemStocks {
+  factory ItemStocks({required List<ItemStock> stocks}) = _ItemStocks;
+  ItemStocks._();
 
   late final map = Map.fromEntries(
     stocks.map((stock) {
