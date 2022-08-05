@@ -67,10 +67,10 @@ class _$ItemStockCopyWithImpl<$Res> implements $ItemStockCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ItemStockCopyWith<$Res> implements $ItemStockCopyWith<$Res> {
-  factory _$ItemStockCopyWith(
-          _ItemStock value, $Res Function(_ItemStock) then) =
-      __$ItemStockCopyWithImpl<$Res>;
+abstract class _$$_ItemStockCopyWith<$Res> implements $ItemStockCopyWith<$Res> {
+  factory _$$_ItemStockCopyWith(
+          _$_ItemStock value, $Res Function(_$_ItemStock) then) =
+      __$$_ItemStockCopyWithImpl<$Res>;
   @override
   $Res call({Item item, int quantity});
 
@@ -79,20 +79,21 @@ abstract class _$ItemStockCopyWith<$Res> implements $ItemStockCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ItemStockCopyWithImpl<$Res> extends _$ItemStockCopyWithImpl<$Res>
-    implements _$ItemStockCopyWith<$Res> {
-  __$ItemStockCopyWithImpl(_ItemStock _value, $Res Function(_ItemStock) _then)
-      : super(_value, (v) => _then(v as _ItemStock));
+class __$$_ItemStockCopyWithImpl<$Res> extends _$ItemStockCopyWithImpl<$Res>
+    implements _$$_ItemStockCopyWith<$Res> {
+  __$$_ItemStockCopyWithImpl(
+      _$_ItemStock _value, $Res Function(_$_ItemStock) _then)
+      : super(_value, (v) => _then(v as _$_ItemStock));
 
   @override
-  _ItemStock get _value => super._value as _ItemStock;
+  _$_ItemStock get _value => super._value as _$_ItemStock;
 
   @override
   $Res call({
     Object? item = freezed,
     Object? quantity = freezed,
   }) {
-    return _then(_ItemStock(
+    return _then(_$_ItemStock(
       item: item == freezed
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
@@ -133,7 +134,7 @@ class _$_ItemStock extends _ItemStock with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ItemStock &&
+            other is _$_ItemStock &&
             const DeepCollectionEquality().equals(other.item, item) &&
             const DeepCollectionEquality().equals(other.quantity, quantity));
   }
@@ -146,8 +147,8 @@ class _$_ItemStock extends _ItemStock with DiagnosticableTreeMixin {
 
   @JsonKey(ignore: true)
   @override
-  _$ItemStockCopyWith<_ItemStock> get copyWith =>
-      __$ItemStockCopyWithImpl<_ItemStock>(this, _$identity);
+  _$$_ItemStockCopyWith<_$_ItemStock> get copyWith =>
+      __$$_ItemStockCopyWithImpl<_$_ItemStock>(this, _$identity);
 }
 
 abstract class _ItemStock extends ItemStock {
@@ -156,11 +157,11 @@ abstract class _ItemStock extends ItemStock {
   _ItemStock._() : super._();
 
   @override
-  Item get item => throw _privateConstructorUsedError;
+  Item get item;
   @override
-  int get quantity => throw _privateConstructorUsedError;
+  int get quantity;
   @override
   @JsonKey(ignore: true)
-  _$ItemStockCopyWith<_ItemStock> get copyWith =>
+  _$$_ItemStockCopyWith<_$_ItemStock> get copyWith =>
       throw _privateConstructorUsedError;
 }

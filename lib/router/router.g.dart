@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: type=lint, implicit_dynamic_parameter, implicit_dynamic_type, implicit_dynamic_method, strict_raw_type
+
 part of 'router.dart';
 
 // **************************************************************************
@@ -28,7 +30,9 @@ extension $ItemsRouteExtension on ItemsRoute {
         '/',
       );
 
-  void go(BuildContext buildContext) => buildContext.go(location, extra: this);
+  void go(BuildContext context) => context.go(location, extra: this);
+
+  void push(BuildContext context) => context.push(location, extra: this);
 }
 
 extension $CartRouteExtension on CartRoute {
@@ -38,5 +42,7 @@ extension $CartRouteExtension on CartRoute {
         '/cart',
       );
 
-  void go(BuildContext buildContext) => buildContext.go(location, extra: this);
+  void go(BuildContext context) => context.go(location, extra: this);
+
+  void push(BuildContext context) => context.push(location, extra: this);
 }

@@ -74,21 +74,21 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
-  factory _$ItemCopyWith(_Item value, $Res Function(_Item) then) =
-      __$ItemCopyWithImpl<$Res>;
+abstract class _$$_ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
+  factory _$$_ItemCopyWith(_$_Item value, $Res Function(_$_Item) then) =
+      __$$_ItemCopyWithImpl<$Res>;
   @override
   $Res call({String id, int price, String title, String imageUrl});
 }
 
 /// @nodoc
-class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
-    implements _$ItemCopyWith<$Res> {
-  __$ItemCopyWithImpl(_Item _value, $Res Function(_Item) _then)
-      : super(_value, (v) => _then(v as _Item));
+class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
+    implements _$$_ItemCopyWith<$Res> {
+  __$$_ItemCopyWithImpl(_$_Item _value, $Res Function(_$_Item) _then)
+      : super(_value, (v) => _then(v as _$_Item));
 
   @override
-  _Item get _value => super._value as _Item;
+  _$_Item get _value => super._value as _$_Item;
 
   @override
   $Res call({
@@ -97,7 +97,7 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
     Object? title = freezed,
     Object? imageUrl = freezed,
   }) {
-    return _then(_Item(
+    return _then(_$_Item(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -159,7 +159,7 @@ class _$_Item extends _Item with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Item &&
+            other is _$_Item &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality().equals(other.title, title) &&
@@ -177,12 +177,14 @@ class _$_Item extends _Item with DiagnosticableTreeMixin {
 
   @JsonKey(ignore: true)
   @override
-  _$ItemCopyWith<_Item> get copyWith =>
-      __$ItemCopyWithImpl<_Item>(this, _$identity);
+  _$$_ItemCopyWith<_$_Item> get copyWith =>
+      __$$_ItemCopyWithImpl<_$_Item>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ItemToJson(this);
+    return _$$_ItemToJson(
+      this,
+    );
   }
 }
 
@@ -197,14 +199,14 @@ abstract class _Item extends Item {
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  int get price => throw _privateConstructorUsedError;
+  int get price;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get imageUrl => throw _privateConstructorUsedError;
+  String get imageUrl;
   @override
   @JsonKey(ignore: true)
-  _$ItemCopyWith<_Item> get copyWith => throw _privateConstructorUsedError;
+  _$$_ItemCopyWith<_$_Item> get copyWith => throw _privateConstructorUsedError;
 }

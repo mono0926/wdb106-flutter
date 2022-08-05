@@ -1,8 +1,2 @@
 # https://pub.dev/packages/pedantic_mono
 include: package:pedantic_mono/analysis_options.yaml
-analyzer:
-  exclude:
-    - lib/**/*.g.dart
-linter:
-  rules:
-    top_level_function_literal_block: false
