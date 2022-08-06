@@ -52,14 +52,14 @@ flowchart TB
   itemStocksProvider ==> ItemTile;
   itemQuantityProviders ==> ItemTile;
   _AddButton((_AddButton));
-  hasStockProviders ==> _AddButton;
+  itemQuantityProviders ==> _AddButton;
   cartProvider -.-> _AddButton;
   CartPage((CartPage));
   cartProvider --> CartPage;
   _ListView((_ListView));
   cartProvider ==> _ListView;
   CartHeader((CartHeader));
-  cartTotalPriceLabelProvider ==> CartHeader;
+  cartPriceProvider ==> CartHeader;
   CartTile((CartTile));
   itemStocksProvider ==> CartTile;
   cartProvider ==> CartTile;
@@ -73,12 +73,8 @@ flowchart TB
   itemStocksProvider ==> itemQuantityProviders;
   cartProvider ==> itemQuantityProviders;
   cartProvider[[cartProvider]];
-  hasStockProviders[[hasStockProviders]];
-  itemQuantityProviders ==> hasStockProviders;
-  cartTotalPriceLabelProvider[[cartTotalPriceLabelProvider]];
-  cartTotalPriceProvider ==> cartTotalPriceLabelProvider;
-  cartTotalPriceProvider[[cartTotalPriceProvider]];
-  cartProvider ==> cartTotalPriceProvider;
-  itemStocksProvider ==> cartTotalPriceProvider;
+  cartPriceProvider[[cartPriceProvider]];
+  cartProvider ==> cartPriceProvider;
+  itemStocksProvider ==> cartPriceProvider;
   routerProvider[[routerProvider]];
   ```
