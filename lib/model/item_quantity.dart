@@ -6,16 +6,11 @@ import 'model.dart';
 part 'item_quantity.freezed.dart';
 
 final itemQuantityProviders = Provider.family((ref, String id) {
-  return ref.watch(itemStocksProvider).whenData((itemStocks) {
-    final stock = itemStocks.itemStock(id);
-    if (stock == null) {
-      return ItemQuantity(0);
-    }
-    final cartItemQuantity = ref.watch(
-      cartProvider.select((s) => s.quantity(id)),
-    );
-    return ItemQuantity(stock.quantity - cartItemQuantity);
-  });
+  final cartItemQuantity = ref.watch(
+    cartProvider.select((s) => s.quantity(id)),
+  );
+  final stock = ref.watch(itemStocksProvider).value?.itemStock(id);
+  return ItemQuantity(stock == null ? 0 : stock.quantity - cartItemQuantity);
 });
 
 @freezed

@@ -18,7 +18,7 @@ void main() {
       'https://gihyo.jp/assets/images/gdp/2017/978-4-7741-9229-1.jpg',
     );
     expect(stock.quantity, 5);
-    final quantity = container.read(itemQuantityProviders('100')).value!;
+    final quantity = container.read(itemQuantityProviders('100'));
     expect(
       quantity.hasStock,
       isTrue,

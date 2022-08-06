@@ -6,18 +6,19 @@ part 'cart_price.freezed.dart';
 
 final cartPriceProvider = Provider((ref) {
   final cart = ref.watch(cartProvider);
-  return ref.watch(itemStocksProvider).whenData((itemStocks) {
-    return CartPrice(
-      cart.itemIds.fold<int>(
-        0,
-        (sum, id) {
-          final item = itemStocks.item(id)!;
-          final quantity = cart.quantity(id);
-          return sum + item.price * quantity;
-        },
-      ),
-    );
-  });
+  final itemStocks = ref.watch(itemStocksProvider).value;
+  return CartPrice(
+    itemStocks == null
+        ? 0
+        : cart.itemIds.fold<int>(
+            0,
+            (sum, id) {
+              final item = itemStocks.item(id)!;
+              final quantity = cart.quantity(id);
+              return sum + item.price * quantity;
+            },
+          ),
+  );
 });
 
 @freezed

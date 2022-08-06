@@ -12,7 +12,7 @@ class CartHeader extends ConsumerWidget {
       color: Colors.grey[300],
       child: Center(
         child: Text(
-          ref.watch(cartPriceProvider.select((s) => s.value!.label)),
+          ref.watch(cartPriceProvider.select((s) => s.label)),
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600,
