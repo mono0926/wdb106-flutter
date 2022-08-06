@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:wdb106_sample/model/cart_price.dart';
 import 'package:wdb106_sample/model/model.dart';
 
-import '../../helper/dummy_items.dart';
+import '../helper/dummy_items.dart';
 
 void main() {
   setUpAll(() {
@@ -19,9 +19,11 @@ void main() {
       ],
     );
     final target = container.read(cartProvider.notifier);
+    final itemQuantityProvider = itemQuantityProviders('1');
     expect(container.read(cartProvider).isEmpty, isTrue);
     expect(container.read(cartProvider).totalQuantity, 0);
     expect(container.read(cartPriceProvider).value!.label, '合計金額 0円+税');
+    expect(container.read(itemQuantityProvider).value!.quantity, 2);
 
     target.add('1');
 
@@ -30,11 +32,13 @@ void main() {
     expect(container.read(cartProvider).itemIds.first, '1');
     expect(container.read(cartProvider).totalQuantity, 1);
     expect(container.read(cartPriceProvider).value!.label, '合計金額 100円+税');
+    expect(container.read(itemQuantityProvider).value!.quantity, 1);
 
     target.delete('1');
 
     expect(container.read(cartProvider).isEmpty, isTrue);
     expect(container.read(cartProvider).totalQuantity, 0);
     expect(container.read(cartPriceProvider).value!.label, '合計金額 0円+税');
+    expect(container.read(itemQuantityProvider).value!.quantity, 2);
   });
 }
