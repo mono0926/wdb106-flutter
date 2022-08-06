@@ -17,13 +17,13 @@ class ItemsPage extends StatelessWidget {
         middle: Text('商品リスト'),
         leading: _CartButton(),
       ),
-      body: _ListView(),
+      body: _ItemListView(),
     );
   }
 }
 
-class _ListView extends ConsumerWidget {
-  const _ListView();
+class _ItemListView extends ConsumerWidget {
+  const _ItemListView();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -43,8 +43,8 @@ flowchart TB
     ConsumerWidget((widget));
     Provider[[provider]];
   end
-  _ListView((_ListView));
-  itemStocksProvider ==> _ListView;
+  _ItemListView((_ItemListView));
+  itemStocksProvider ==> _ItemListView;
   _CartButton((_CartButton));
   cartProvider ==> _CartButton;
   cartProvider ==> _CartButton;
