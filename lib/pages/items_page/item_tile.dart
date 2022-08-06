@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:wdb106_sample/model/model.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
@@ -26,7 +27,7 @@ class ItemTile extends ConsumerWidget {
           child: Row(
             children: [
               ItemImage(imageUrl: item.imageUrl),
-              const SizedBox(width: 8),
+              const Gap(8),
               ItemInfo(
                 title: item.title,
                 price: item.priceWithUnit,
