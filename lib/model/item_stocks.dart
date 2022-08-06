@@ -1,7 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/util/util.dart';
 
 import 'model.dart';

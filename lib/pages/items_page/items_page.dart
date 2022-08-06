@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
 import 'package:wdb106_sample/pages/cart_page/cart_page.dart';
 import 'package:wdb106_sample/router.dart';

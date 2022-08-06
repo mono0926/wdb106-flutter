@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/pages/cart_page/cart_page.dart';
 import 'package:wdb106_sample/pages/items_page/items_page.dart';
 

@@ -1,5 +1,5 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
 
 part 'cart_notifier.freezed.dart';

@@ -7,9 +7,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_riverpod:
   freezed_annotation:
   go_router:
-  hooks_riverpod:
   http:
   meta:
   simple_logger:
