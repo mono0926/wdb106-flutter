@@ -18,7 +18,7 @@ class Item with _$Item {
 
   factory Item.fromJson(JsonMap json) => _$ItemFromJson(json);
 
-  late final priceWithUnit = formatPrice(price);
+  late final priceLabel = formatPrice(price);
   static final _priceFormat = NumberFormat();
   static String formatPrice(int price) => '${_priceFormat.format(price)}円+税';
 }

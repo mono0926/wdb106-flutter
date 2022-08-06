@@ -30,7 +30,7 @@ class ItemTile extends ConsumerWidget {
               const Gap(8),
               ItemInfo(
                 title: item.title,
-                price: item.priceWithUnit,
+                price: item.priceLabel,
                 info: Text(
                   '在庫 ${ref.watch(itemQuantityProviders(id)).value?.quantity}',
                   style: theme.textTheme.caption,
