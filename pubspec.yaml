@@ -12,6 +12,7 @@ dependencies:
   gap:
   go_router:
   http:
+  intl:
   meta:
   simple_logger:
 dev_dependencies:

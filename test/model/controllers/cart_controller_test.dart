@@ -1,11 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:intl/intl.dart';
 import 'package:wdb106_sample/model/cart_price.dart';
 import 'package:wdb106_sample/model/model.dart';
 
 import '../../helper/dummy_items.dart';
 
 void main() {
+  setUpAll(() {
+    Intl.defaultLocale = 'ja';
+  });
   test('CartController test', () async {
     final container = ProviderContainer(
       overrides: [

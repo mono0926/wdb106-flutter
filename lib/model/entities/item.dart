@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:intl/intl.dart';
 import 'package:wdb106_sample/util/util.dart';
 
 part 'item.freezed.dart';
@@ -17,5 +18,7 @@ class Item with _$Item {
 
   factory Item.fromJson(JsonMap json) => _$ItemFromJson(json);
 
-  late final priceWithUnit = '$price円+税';
+  late final priceWithUnit = formatPrice(price);
+  static final _priceFormat = NumberFormat();
+  static String formatPrice(int price) => '${_priceFormat.format(price)}円+税';
 }
