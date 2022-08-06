@@ -1,28 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:wdb106_sample/model/model.dart';
 
 part 'cart_notifier.freezed.dart';
-
-final cartTotalPriceLabelProvider = Provider(
-  (ref) => ref.watch(cartTotalPriceProvider).whenData(
-        (price) => '合計金額 $price円+税',
-      ),
-);
-
-final cartTotalPriceProvider = Provider((ref) {
-  final cart = ref.watch(cartProvider);
-  return ref.watch(itemStocksProvider).whenData((itemStocks) {
-    return cart.itemIds.fold<int>(
-      0,
-      (sum, id) {
-        final item = itemStocks.item(id)!;
-        final quantity = cart.quantity(id);
-        return sum + item.price * quantity;
-      },
-    );
-  });
-});
 
 final cartProvider = StateNotifierProvider<CartNotifier, Cart>(
   (ref) => CartNotifier(),
