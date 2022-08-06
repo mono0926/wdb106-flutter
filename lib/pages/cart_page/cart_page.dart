@@ -38,15 +38,15 @@ class CartPage extends ConsumerWidget {
       body: Column(
         children: const [
           CartHeader(),
-          Expanded(child: _ListView()),
+          Expanded(child: _CartListView()),
         ],
       ),
     );
   }
 }
 
-class _ListView extends ConsumerWidget {
-  const _ListView();
+class _CartListView extends ConsumerWidget {
+  const _CartListView();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ids = ref.watch(cartProvider.select((s) => s.itemIds));

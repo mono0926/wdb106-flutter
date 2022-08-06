@@ -56,8 +56,8 @@ flowchart TB
   cartProvider -.-> _AddButton;
   CartPage((CartPage));
   cartProvider --> CartPage;
-  _ListView((_ListView));
-  cartProvider ==> _ListView;
+  _CartListView((_CartListView));
+  cartProvider ==> _CartListView;
   CartHeader((CartHeader));
   cartPriceProvider ==> CartHeader;
   CartTile((CartTile));
