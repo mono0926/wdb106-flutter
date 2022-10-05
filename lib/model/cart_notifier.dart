@@ -3,15 +3,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'cart_notifier.freezed.dart';
 
-final cartProvider = StateNotifierProvider<CartNotifier, Cart>(
-  (ref) => CartNotifier(),
-);
+final cartProvider = NotifierProvider<CartNotifier, Cart>(CartNotifier.new);
 
-class CartNotifier extends StateNotifier<Cart> {
-  CartNotifier() : super(Cart());
+class CartNotifier extends Notifier<Cart> {
+  @override
+  Cart build() => Cart();
 
   void add(String id) => state = state.added(id);
-
   void delete(String id) => state = state.deleted(id);
 }
 
