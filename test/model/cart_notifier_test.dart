@@ -13,11 +13,12 @@ void main() {
   test('CartController test', () async {
     final container = ProviderContainer(
       overrides: [
-        itemStocksProvider.overrideWithValue(
-          AsyncValue.data(dummyItemStocks),
-        ),
+        itemStocksProvider.overrideWithProvider(dummyItemStocksProvider),
       ],
     );
+    // overrideWithValue に戻したら不要になる
+    await container.read(itemStocksProvider.future);
+
     final target = container.read(cartProvider.notifier);
     final itemQuantityProvider = itemQuantityProviders('1');
     expect(container.read(cartProvider).isEmpty, isTrue);

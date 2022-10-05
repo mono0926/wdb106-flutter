@@ -1,4 +1,10 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wdb106_sample/model/model.dart';
+
+// riverpod 2.0.0でoverrideWithValueが未実装のため
+final dummyItemStocksProvider = FutureProvider((ref) async {
+  return dummyItemStocks;
+});
 
 final dummyItemStocks = ItemStocks(
   stocks: [
