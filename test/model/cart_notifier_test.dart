@@ -13,7 +13,7 @@ void main() {
   test('CartController test', () async {
     final container = ProviderContainer(
       overrides: [
-        itemStocksProvider.overrideWithProvider(dummyItemStocksProvider),
+        itemStocksProvider.overrideWith(dummyItemStocks),
       ],
     );
     // overrideWithValue に戻したら不要になる

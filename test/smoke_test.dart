@@ -15,7 +15,7 @@ void main() {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
-            itemStocksProvider.overrideWithProvider(dummyItemStocksProvider),
+            itemStocksProvider.overrideWith(dummyItemStocks),
           ],
           child: const App(),
         ),
