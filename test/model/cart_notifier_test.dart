@@ -16,8 +16,6 @@ void main() {
         itemStocksProvider.overrideWith(dummyItemStocks),
       ],
     );
-    // overrideWithValue に戻したら不要になる
-    await container.read(itemStocksProvider.future);
 
     final target = container.read(cartProvider.notifier);
     final itemQuantityProvider = itemQuantityProviders('1');
