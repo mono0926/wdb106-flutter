@@ -7,7 +7,8 @@ void main() {
     final container = ProviderContainer();
     addTearDown(container.dispose);
 
-    final stocks = await container.read(itemStocksProvider.future);
+    final stocks =
+        await container.listen(itemStocksProvider.future, (_, __) {}).read();
     expect(stocks.itemIds.length, 5);
     final stock = stocks.stocks.first;
     final item = stock.item;
