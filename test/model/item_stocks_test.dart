@@ -5,6 +5,8 @@ import 'package:wdb106_sample/model/model.dart';
 void main() {
   test('items stocks test', () async {
     final container = ProviderContainer();
+    addTearDown(container.dispose);
+
     final stocks = await container.read(itemStocksProvider.future);
     expect(stocks.itemIds.length, 5);
     final stock = stocks.stocks.first;
