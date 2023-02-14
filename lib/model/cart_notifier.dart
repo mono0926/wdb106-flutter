@@ -1,32 +1,33 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'cart_notifier.freezed.dart';
+part 'cart_notifier.g.dart';
 
-final cartProvider = NotifierProvider<CartNotifier, Cart>(CartNotifier.new);
-
-class CartNotifier extends Notifier<Cart> {
+@riverpod
+class Cart extends _$Cart {
   @override
-  Cart build() => Cart();
+  CartState build() => CartState();
 
   void add(String id) => state = state.added(id);
   void delete(String id) => state = state.deleted(id);
 }
 
 @freezed
-class Cart with _$Cart {
-  factory Cart([@Default(<String, int>{}) Map<String, int> map]) = _Cart;
-  Cart._();
+class CartState with _$CartState {
+  factory CartState([@Default(<String, int>{}) Map<String, int> map]) =
+      _CartState;
+  CartState._();
 
-  Cart added(String id) {
-    return Cart({
+  CartState added(String id) {
+    return CartState({
       ...map,
       id: (map[id] ?? 0) + 1,
     });
   }
 
-  Cart deleted(String id) {
-    return Cart(
+  CartState deleted(String id) {
+    return CartState(
       {
         ...map,
         id: map[id]! - 1,

@@ -32,7 +32,7 @@ class ItemTile extends ConsumerWidget {
                 title: item.title,
                 price: item.priceLabel,
                 info: Text(
-                  '在庫 ${ref.watch(itemQuantityProviders(id)).quantity}',
+                  '在庫 ${ref.watch(itemQuantityProvider(id)).quantity}',
                   style: theme.textTheme.bodySmall,
                 ),
               ),
@@ -56,7 +56,7 @@ class _AddButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final hasStock = ref.watch(
-      itemQuantityProviders(id).select((s) => s.hasStock == true),
+      itemQuantityProvider(id).select((s) => s.hasStock == true),
     );
     return CupertinoButton(
       onPressed:

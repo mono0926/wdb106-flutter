@@ -14,6 +14,7 @@ dependencies:
   http:
   intl:
   meta:
+  riverpod_annotation:
   simple_logger:
 dev_dependencies:
   build_runner:
@@ -29,6 +30,7 @@ dev_dependencies:
   json_serializable:
   mocktail:
   pedantic_mono:
+  riverpod_generator:
   riverpod_lint:
 flutter:
   uses-material-design: true

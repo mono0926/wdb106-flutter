@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'item_stock.dart';
 
@@ -27,41 +27,46 @@ mixin _$ItemStock {
 /// @nodoc
 abstract class $ItemStockCopyWith<$Res> {
   factory $ItemStockCopyWith(ItemStock value, $Res Function(ItemStock) then) =
-      _$ItemStockCopyWithImpl<$Res>;
+      _$ItemStockCopyWithImpl<$Res, ItemStock>;
+  @useResult
   $Res call({Item item, int quantity});
 
   $ItemCopyWith<$Res> get item;
 }
 
 /// @nodoc
-class _$ItemStockCopyWithImpl<$Res> implements $ItemStockCopyWith<$Res> {
+class _$ItemStockCopyWithImpl<$Res, $Val extends ItemStock>
+    implements $ItemStockCopyWith<$Res> {
   _$ItemStockCopyWithImpl(this._value, this._then);
 
-  final ItemStock _value;
   // ignore: unused_field
-  final $Res Function(ItemStock) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? item = freezed,
-    Object? quantity = freezed,
+    Object? item = null,
+    Object? quantity = null,
   }) {
     return _then(_value.copyWith(
-      item: item == freezed
+      item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as Item,
-      quantity: quantity == freezed
+      quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ItemCopyWith<$Res> get item {
     return $ItemCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
+      return _then(_value.copyWith(item: value) as $Val);
     });
   }
 }
@@ -72,6 +77,7 @@ abstract class _$$_ItemStockCopyWith<$Res> implements $ItemStockCopyWith<$Res> {
           _$_ItemStock value, $Res Function(_$_ItemStock) then) =
       __$$_ItemStockCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Item item, int quantity});
 
   @override
@@ -79,26 +85,25 @@ abstract class _$$_ItemStockCopyWith<$Res> implements $ItemStockCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ItemStockCopyWithImpl<$Res> extends _$ItemStockCopyWithImpl<$Res>
+class __$$_ItemStockCopyWithImpl<$Res>
+    extends _$ItemStockCopyWithImpl<$Res, _$_ItemStock>
     implements _$$_ItemStockCopyWith<$Res> {
   __$$_ItemStockCopyWithImpl(
       _$_ItemStock _value, $Res Function(_$_ItemStock) _then)
-      : super(_value, (v) => _then(v as _$_ItemStock));
+      : super(_value, _then);
 
-  @override
-  _$_ItemStock get _value => super._value as _$_ItemStock;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? item = freezed,
-    Object? quantity = freezed,
+    Object? item = null,
+    Object? quantity = null,
   }) {
     return _then(_$_ItemStock(
-      item: item == freezed
+      item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as Item,
-      quantity: quantity == freezed
+      quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
@@ -135,18 +140,17 @@ class _$_ItemStock extends _ItemStock with DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ItemStock &&
-            const DeepCollectionEquality().equals(other.item, item) &&
-            const DeepCollectionEquality().equals(other.quantity, quantity));
+            (identical(other.item, item) || other.item == item) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(item),
-      const DeepCollectionEquality().hash(quantity));
+  int get hashCode => Object.hash(runtimeType, item, quantity);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ItemStockCopyWith<_$_ItemStock> get copyWith =>
       __$$_ItemStockCopyWithImpl<_$_ItemStock>(this, _$identity);
 }

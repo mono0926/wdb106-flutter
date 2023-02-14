@@ -1,10 +1,12 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'model.dart';
 part 'cart_price.freezed.dart';
+part 'cart_price.g.dart';
 
-final cartPriceProvider = Provider((ref) {
+@riverpod
+CartPrice cartPrice(CartPriceRef ref) {
   final cart = ref.watch(cartProvider);
   final itemStocks = ref.watch(itemStocksProvider).value;
   return CartPrice(
@@ -19,7 +21,7 @@ final cartPriceProvider = Provider((ref) {
             },
           ),
   );
-});
+}
 
 @freezed
 class CartPrice with _$CartPrice {

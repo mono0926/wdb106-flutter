@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'item_quantity.dart';
 
@@ -27,28 +27,32 @@ mixin _$ItemQuantity {
 abstract class $ItemQuantityCopyWith<$Res> {
   factory $ItemQuantityCopyWith(
           ItemQuantity value, $Res Function(ItemQuantity) then) =
-      _$ItemQuantityCopyWithImpl<$Res>;
+      _$ItemQuantityCopyWithImpl<$Res, ItemQuantity>;
+  @useResult
   $Res call({int quantity});
 }
 
 /// @nodoc
-class _$ItemQuantityCopyWithImpl<$Res> implements $ItemQuantityCopyWith<$Res> {
+class _$ItemQuantityCopyWithImpl<$Res, $Val extends ItemQuantity>
+    implements $ItemQuantityCopyWith<$Res> {
   _$ItemQuantityCopyWithImpl(this._value, this._then);
 
-  final ItemQuantity _value;
   // ignore: unused_field
-  final $Res Function(ItemQuantity) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? quantity = freezed,
+    Object? quantity = null,
   }) {
     return _then(_value.copyWith(
-      quantity: quantity == freezed
+      quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -59,26 +63,25 @@ abstract class _$$_ItemQuantityCopyWith<$Res>
           _$_ItemQuantity value, $Res Function(_$_ItemQuantity) then) =
       __$$_ItemQuantityCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int quantity});
 }
 
 /// @nodoc
 class __$$_ItemQuantityCopyWithImpl<$Res>
-    extends _$ItemQuantityCopyWithImpl<$Res>
+    extends _$ItemQuantityCopyWithImpl<$Res, _$_ItemQuantity>
     implements _$$_ItemQuantityCopyWith<$Res> {
   __$$_ItemQuantityCopyWithImpl(
       _$_ItemQuantity _value, $Res Function(_$_ItemQuantity) _then)
-      : super(_value, (v) => _then(v as _$_ItemQuantity));
+      : super(_value, _then);
 
-  @override
-  _$_ItemQuantity get _value => super._value as _$_ItemQuantity;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? quantity = freezed,
+    Object? quantity = null,
   }) {
     return _then(_$_ItemQuantity(
-      quantity == freezed
+      null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
@@ -104,15 +107,16 @@ class _$_ItemQuantity extends _ItemQuantity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ItemQuantity &&
-            const DeepCollectionEquality().equals(other.quantity, quantity));
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(quantity));
+  int get hashCode => Object.hash(runtimeType, quantity);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ItemQuantityCopyWith<_$_ItemQuantity> get copyWith =>
       __$$_ItemQuantityCopyWithImpl<_$_ItemQuantity>(this, _$identity);
 }

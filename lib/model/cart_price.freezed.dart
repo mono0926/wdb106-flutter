@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'cart_price.dart';
 
@@ -26,28 +26,32 @@ mixin _$CartPrice {
 /// @nodoc
 abstract class $CartPriceCopyWith<$Res> {
   factory $CartPriceCopyWith(CartPrice value, $Res Function(CartPrice) then) =
-      _$CartPriceCopyWithImpl<$Res>;
+      _$CartPriceCopyWithImpl<$Res, CartPrice>;
+  @useResult
   $Res call({int price});
 }
 
 /// @nodoc
-class _$CartPriceCopyWithImpl<$Res> implements $CartPriceCopyWith<$Res> {
+class _$CartPriceCopyWithImpl<$Res, $Val extends CartPrice>
+    implements $CartPriceCopyWith<$Res> {
   _$CartPriceCopyWithImpl(this._value, this._then);
 
-  final CartPrice _value;
   // ignore: unused_field
-  final $Res Function(CartPrice) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? price = freezed,
+    Object? price = null,
   }) {
     return _then(_value.copyWith(
-      price: price == freezed
+      price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -57,25 +61,25 @@ abstract class _$$_CartPriceCopyWith<$Res> implements $CartPriceCopyWith<$Res> {
           _$_CartPrice value, $Res Function(_$_CartPrice) then) =
       __$$_CartPriceCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int price});
 }
 
 /// @nodoc
-class __$$_CartPriceCopyWithImpl<$Res> extends _$CartPriceCopyWithImpl<$Res>
+class __$$_CartPriceCopyWithImpl<$Res>
+    extends _$CartPriceCopyWithImpl<$Res, _$_CartPrice>
     implements _$$_CartPriceCopyWith<$Res> {
   __$$_CartPriceCopyWithImpl(
       _$_CartPrice _value, $Res Function(_$_CartPrice) _then)
-      : super(_value, (v) => _then(v as _$_CartPrice));
+      : super(_value, _then);
 
-  @override
-  _$_CartPrice get _value => super._value as _$_CartPrice;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? price = freezed,
+    Object? price = null,
   }) {
     return _then(_$_CartPrice(
-      price == freezed
+      null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
@@ -101,15 +105,15 @@ class _$_CartPrice extends _CartPrice {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CartPrice &&
-            const DeepCollectionEquality().equals(other.price, price));
+            (identical(other.price, price) || other.price == price));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(price));
+  int get hashCode => Object.hash(runtimeType, price);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CartPriceCopyWith<_$_CartPrice> get copyWith =>
       __$$_CartPriceCopyWithImpl<_$_CartPrice>(this, _$identity);
 }

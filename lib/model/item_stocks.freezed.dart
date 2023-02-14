@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'item_stocks.dart';
 
@@ -27,28 +27,32 @@ mixin _$ItemStocks {
 abstract class $ItemStocksCopyWith<$Res> {
   factory $ItemStocksCopyWith(
           ItemStocks value, $Res Function(ItemStocks) then) =
-      _$ItemStocksCopyWithImpl<$Res>;
+      _$ItemStocksCopyWithImpl<$Res, ItemStocks>;
+  @useResult
   $Res call({List<ItemStock> stocks});
 }
 
 /// @nodoc
-class _$ItemStocksCopyWithImpl<$Res> implements $ItemStocksCopyWith<$Res> {
+class _$ItemStocksCopyWithImpl<$Res, $Val extends ItemStocks>
+    implements $ItemStocksCopyWith<$Res> {
   _$ItemStocksCopyWithImpl(this._value, this._then);
 
-  final ItemStocks _value;
   // ignore: unused_field
-  final $Res Function(ItemStocks) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? stocks = freezed,
+    Object? stocks = null,
   }) {
     return _then(_value.copyWith(
-      stocks: stocks == freezed
+      stocks: null == stocks
           ? _value.stocks
           : stocks // ignore: cast_nullable_to_non_nullable
               as List<ItemStock>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -59,25 +63,25 @@ abstract class _$$_ItemStocksCopyWith<$Res>
           _$_ItemStocks value, $Res Function(_$_ItemStocks) then) =
       __$$_ItemStocksCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<ItemStock> stocks});
 }
 
 /// @nodoc
-class __$$_ItemStocksCopyWithImpl<$Res> extends _$ItemStocksCopyWithImpl<$Res>
+class __$$_ItemStocksCopyWithImpl<$Res>
+    extends _$ItemStocksCopyWithImpl<$Res, _$_ItemStocks>
     implements _$$_ItemStocksCopyWith<$Res> {
   __$$_ItemStocksCopyWithImpl(
       _$_ItemStocks _value, $Res Function(_$_ItemStocks) _then)
-      : super(_value, (v) => _then(v as _$_ItemStocks));
+      : super(_value, _then);
 
-  @override
-  _$_ItemStocks get _value => super._value as _$_ItemStocks;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? stocks = freezed,
+    Object? stocks = null,
   }) {
     return _then(_$_ItemStocks(
-      stocks: stocks == freezed
+      stocks: null == stocks
           ? _value._stocks
           : stocks // ignore: cast_nullable_to_non_nullable
               as List<ItemStock>,
@@ -95,6 +99,7 @@ class _$_ItemStocks extends _ItemStocks {
   final List<ItemStock> _stocks;
   @override
   List<ItemStock> get stocks {
+    if (_stocks is EqualUnmodifiableListView) return _stocks;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_stocks);
   }
@@ -118,6 +123,7 @@ class _$_ItemStocks extends _ItemStocks {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ItemStocksCopyWith<_$_ItemStocks> get copyWith =>
       __$$_ItemStocksCopyWithImpl<_$_ItemStocks>(this, _$identity);
 }

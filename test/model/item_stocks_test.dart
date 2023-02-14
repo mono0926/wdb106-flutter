@@ -20,7 +20,7 @@ void main() {
       ),
     );
     expect(stock.quantity, 5);
-    final quantity = container.read(itemQuantityProviders('100'));
+    final quantity = container.read(itemQuantityProvider('100'));
     expect(quantity.hasStock, isTrue);
     expect(quantity.quantity, 5);
   });

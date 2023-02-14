@@ -18,11 +18,11 @@ void main() {
     );
 
     final target = container.read(cartProvider.notifier);
-    final itemQuantityProvider = itemQuantityProviders('1');
+    final provider = itemQuantityProvider('1');
     expect(container.read(cartProvider).isEmpty, isTrue);
     expect(container.read(cartProvider).totalQuantity, 0);
     expect(container.read(cartPriceProvider).label, '合計金額 0円+税');
-    expect(container.read(itemQuantityProvider).quantity, 2);
+    expect(container.read(provider).quantity, 2);
 
     target.add('1');
 
@@ -31,13 +31,13 @@ void main() {
     expect(container.read(cartProvider).itemIds.first, '1');
     expect(container.read(cartProvider).totalQuantity, 1);
     expect(container.read(cartPriceProvider).label, '合計金額 100円+税');
-    expect(container.read(itemQuantityProvider).quantity, 1);
+    expect(container.read(provider).quantity, 1);
 
     target.delete('1');
 
     expect(container.read(cartProvider).isEmpty, isTrue);
     expect(container.read(cartProvider).totalQuantity, 0);
     expect(container.read(cartPriceProvider).label, '合計金額 0円+税');
-    expect(container.read(itemQuantityProvider).quantity, 2);
+    expect(container.read(provider).quantity, 2);
   });
 }

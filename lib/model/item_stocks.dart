@@ -1,14 +1,16 @@
 import 'dart:convert';
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:wdb106_sample/util/util.dart';
 
 import 'model.dart';
 
 part 'item_stocks.freezed.dart';
+part 'item_stocks.g.dart';
 
-final itemStocksProvider = FutureProvider((ref) async {
+@riverpod
+Future<ItemStocks> itemStocks(ItemStocksRef ref) async {
   final result = await ref.watch(httpClientProvider).get(
         Uri.parse(
           'https://run.mocky.io/v3/6ee7295a-065b-4014-9040-db533ad1389c',
@@ -18,7 +20,7 @@ final itemStocksProvider = FutureProvider((ref) async {
   return ItemStocks(
     stocks: json.map(ItemStock.fromJson).toList(),
   );
-});
+}
 
 @freezed
 class ItemStocks with _$ItemStocks {
