@@ -23,5 +23,5 @@ final routerProvider = Provider(
 class ItemsRoute extends GoRouteData {
   const ItemsRoute();
   @override
-  Widget build(BuildContext context) => const ItemsPage();
+  Widget build(BuildContext context, GoRouterState state) => const ItemsPage();
 }

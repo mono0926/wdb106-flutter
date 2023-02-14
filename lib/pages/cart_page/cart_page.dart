@@ -12,7 +12,8 @@ class CartRoute extends GoRouteData {
   const CartRoute();
 
   @override
-  Page<void> buildPage(BuildContext context) => const CupertinoPage(
+  Page<void> buildPage(BuildContext context, GoRouterState state) =>
+      const CupertinoPage(
         fullscreenDialog: true,
         child: CartPage(),
       );

@@ -5,7 +5,7 @@ class NavigationBarButton extends StatelessWidget {
     super.key,
     @required this.onPressed,
     required String text,
-  })  : child = Text(text);
+  }) : child = Text(text);
 
   final Widget child;
   final VoidCallback? onPressed;

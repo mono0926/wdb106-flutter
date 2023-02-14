@@ -1,15 +1,16 @@
 // image_test_utilsが非対応で、かつmockitoの追従が難しかったので
-// @dart=2.11
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:image_test_utils/image_test_utils.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:wdb106_sample/app.dart';
 import 'package:wdb106_sample/model/model.dart';
 
 import 'helper/dummy_items.dart';
 
 void main() {
+  setUpAll(() => registerFallbackValue(Uri.parse('')));
   testWidgets('Smoke test', (tester) async {
     await provideMockedNetworkImages(() async {
       await tester.pumpWidget(

@@ -33,7 +33,7 @@ class ItemTile extends ConsumerWidget {
                 price: item.priceLabel,
                 info: Text(
                   '在庫 ${ref.watch(itemQuantityProviders(id)).quantity}',
-                  style: theme.textTheme.caption,
+                  style: theme.textTheme.bodySmall,
                 ),
               ),
               _AddButton(id: id),

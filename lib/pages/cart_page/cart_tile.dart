@@ -16,6 +16,7 @@ class CartTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     final item =
         ref.watch(itemStocksProvider.select((s) => s.value!.item(id)))!;
     return Column(
@@ -33,7 +34,7 @@ class CartTile extends ConsumerWidget {
                 price: item.priceLabel,
                 info: Text(
                   '数量 ${ref.watch(cartProvider.select((s) => s.quantity(id)))}',
-                  style: theme.textTheme.caption,
+                  style: theme.textTheme.bodySmall,
                 ),
               ),
               CupertinoButton(
@@ -43,7 +44,7 @@ class CartTile extends ConsumerWidget {
                 child: Text(
                   '削除',
                   style: TextStyle(
-                    color: Theme.of(context).errorColor,
+                    color: colorScheme.error,
                   ),
                 ),
               ),
