@@ -36,8 +36,8 @@ class CartPage extends ConsumerWidget {
           onPressed: pop,
         ),
       ),
-      body: Column(
-        children: const [
+      body: const Column(
+        children: [
           CartHeader(),
           Expanded(child: _CartListView()),
         ],

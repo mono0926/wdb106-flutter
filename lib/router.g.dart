@@ -8,11 +8,11 @@ part of 'router.dart';
 // GoRouterGenerator
 // **************************************************************************
 
-List<GoRoute> get $appRoutes => [
+List<RouteBase> get $appRoutes => [
       $itemsRoute,
     ];
 
-GoRoute get $itemsRoute => GoRouteData.$route(
+RouteBase get $itemsRoute => GoRouteData.$route(
       path: '/',
       factory: $ItemsRouteExtension._fromState,
       routes: [
@@ -32,7 +32,7 @@ extension $ItemsRouteExtension on ItemsRoute {
 
   void go(BuildContext context) => context.go(location);
 
-  void push(BuildContext context) => context.push(location);
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
@@ -47,7 +47,7 @@ extension $CartRouteExtension on CartRoute {
 
   void go(BuildContext context) => context.go(location);
 
-  void push(BuildContext context) => context.push(location);
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
@@ -57,7 +57,7 @@ extension $CartRouteExtension on CartRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'c9ea91de790dd67b3bf2a82562022e49e09905b9';
+String _$routerHash() => r'c9305446ea372eafba1e7c3043043faf7574a107';
 
 /// See also [router].
 @ProviderFor(router)

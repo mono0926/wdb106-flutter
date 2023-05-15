@@ -8,7 +8,7 @@ import 'package:wdb106_sample/pages/items_page/items_page.dart';
 part 'router.g.dart';
 
 @riverpod
-GoRouter router(RouterRef ref) => GoRouter(
+Raw<GoRouter> router(RouterRef ref) => GoRouter(
       routes: $appRoutes,
       debugLogDiagnostics: kDebugMode,
     );
