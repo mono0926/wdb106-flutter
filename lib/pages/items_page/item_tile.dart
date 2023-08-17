@@ -56,7 +56,7 @@ class _AddButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final hasStock = ref.watch(
-      itemQuantityProvider(id).select((s) => s.hasStock == true),
+      itemQuantityProvider(id).select((s) => s.hasStock),
     );
     return CupertinoButton(
       onPressed:

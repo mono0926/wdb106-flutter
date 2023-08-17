@@ -20,6 +20,6 @@ ItemStocks dummyItemStocks(Ref ref) => ItemStocks(
             price: 101,
             imageUrl: 'https://mono0926.com/images/love_logo.png',
           ),
-        )
+        ),
       ],
     );
