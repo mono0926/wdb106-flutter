@@ -1,5 +1,10 @@
 # https://pub.dev/packages/pedantic_mono
 include: package:pedantic_mono/analysis_options.yaml
 analyzer:
+  errors:
+    # https://github.com/rrousselGit/freezed/issues/488
+    invalid_annotation_target: ignore
+    # riverpod_generatorの影響でg.dart末尾に不要な指定が付くので
+    duplicate_ignore: ignore
   plugins:
     - custom_lint
