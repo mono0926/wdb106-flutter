@@ -1,12 +1,12 @@
 // TODO(mono): アニメーション
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wdb106_sample/features/items/items.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
 import 'cart.dart';
-import 'cart_header.dart';
-import 'cart_tile.dart';
 
 class CartRoute extends GoRouteData {
   const CartRoute();
@@ -28,6 +28,7 @@ class CartPage extends ConsumerWidget {
     ref.listen<bool>(cartProvider.select((s) => s.isEmpty), (_, shouldPop) {
       pop();
     });
+    final ids = ref.watch(cartProvider.select((s) => s.itemIds));
     return Scaffold(
       appBar: CupertinoNavigationBar(
         middle: const Text('カート'),
@@ -36,25 +37,71 @@ class CartPage extends ConsumerWidget {
           onPressed: pop,
         ),
       ),
-      body: const Column(
+      body: Column(
         children: [
-          CartHeader(),
-          Expanded(child: _CartListView()),
+          const CartHeader(),
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              itemCount: ids.length,
+              itemBuilder: (_, index) => _Tile(id: ids[index]),
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
-class _CartListView extends ConsumerWidget {
-  const _CartListView();
+class _Tile extends ConsumerWidget {
+  _Tile({
+    required this.id,
+  }) : super(key: ValueKey(id));
+
+  final String id;
+
+  static const _indent = 16.0;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ids = ref.watch(cartProvider.select((s) => s.itemIds));
-    return ListView.builder(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      itemCount: ids.length,
-      itemBuilder: (_, index) => CartTile(id: ids[index]),
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final item =
+        ref.watch(itemStocksProvider.select((s) => s.value!.item(id)))!;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: _indent),
+          height: 96,
+          child: Row(
+            children: [
+              ItemImage(imageUrl: item.imageUrl),
+              const Gap(8),
+              ItemInfo(
+                title: item.title,
+                price: item.priceLabel,
+                info: Text(
+                  '数量 ${ref.watch(cartProvider.select((s) => s.quantity(id)))}',
+                  style: theme.textTheme.bodySmall,
+                ),
+              ),
+              CupertinoButton(
+                onPressed: () {
+                  ref.read(cartProvider.notifier).delete(item.id);
+                },
+                child: Text(
+                  '削除',
+                  style: TextStyle(
+                    color: colorScheme.error,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const Divider(indent: _indent),
+      ],
     );
   }
 }

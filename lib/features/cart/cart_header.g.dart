@@ -2,7 +2,7 @@
 
 // ignore_for_file: type=lint, implicit_dynamic_parameter, implicit_dynamic_type, implicit_dynamic_method, strict_raw_type
 
-part of 'cart_price.dart';
+part of 'cart_header.dart';
 
 // **************************************************************************
 // RiverpodGenerator

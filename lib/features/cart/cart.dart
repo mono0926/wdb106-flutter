@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+export 'cart_header.dart';
 export 'cart_page.dart';
-export 'cart_price.dart';
 
 part 'cart.freezed.dart';
 part 'cart.g.dart';
