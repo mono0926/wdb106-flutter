@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:wdb106_sample/util/util.dart';
 
-import 'entities.dart';
+import 'item.dart';
 
 part 'item_stock.freezed.dart';
 

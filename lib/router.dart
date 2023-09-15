@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:wdb106_sample/pages/cart_page/cart_page.dart';
-import 'package:wdb106_sample/pages/items_page/items_page.dart';
+
+import 'features/cart/cart.dart';
+import 'features/items/items.dart';
 
 part 'router.g.dart';
 

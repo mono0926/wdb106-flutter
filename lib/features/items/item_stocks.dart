@@ -4,7 +4,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:wdb106_sample/util/util.dart';
 
-import 'model.dart';
+import 'item.dart';
+import 'item_stock.dart';
 
 part 'item_stocks.freezed.dart';
 part 'item_stocks.g.dart';

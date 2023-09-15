@@ -2,9 +2,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:wdb106_sample/model/model.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
+import 'cart.dart';
 import 'cart_header.dart';
 import 'cart_tile.dart';
 

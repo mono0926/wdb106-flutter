@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:wdb106_sample/model/model.dart';
+import 'package:wdb106_sample/features/items/items.dart';
 
 void main() {
   test('items stocks test', () async {

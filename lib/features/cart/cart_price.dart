@@ -1,7 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:wdb106_sample/features/items/items.dart';
 
-import 'model.dart';
+import 'cart.dart';
+
 part 'cart_price.freezed.dart';
 part 'cart_price.g.dart';
 

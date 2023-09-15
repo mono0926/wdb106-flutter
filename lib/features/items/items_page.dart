@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:wdb106_sample/model/model.dart';
-import 'package:wdb106_sample/pages/cart_page/cart_page.dart';
+import 'package:wdb106_sample/features/cart/cart.dart';
 import 'package:wdb106_sample/router.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
+import 'item_stocks.dart';
 import 'item_tile.dart';
 
 class ItemsPage extends StatelessWidget {

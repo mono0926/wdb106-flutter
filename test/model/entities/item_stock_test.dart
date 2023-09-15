@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:wdb106_sample/model/model.dart';
+import 'package:wdb106_sample/features/items/items.dart';
 import 'package:wdb106_sample/util/util.dart';
 
 void main() {

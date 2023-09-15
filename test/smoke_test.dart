@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:image_test_utils/image_test_utils.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:wdb106_sample/app.dart';
-import 'package:wdb106_sample/model/model.dart';
+import 'package:wdb106_sample/features/items/items.dart';
 
 import 'helper/dummy_items.dart';
 

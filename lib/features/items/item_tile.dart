@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:wdb106_sample/model/model.dart';
+import 'package:wdb106_sample/features/cart/cart.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
+
+import 'item_image.dart';
+import 'item_info.dart';
+import 'item_quantity.dart';
+import 'item_stocks.dart';
 
 class ItemTile extends ConsumerWidget {
   ItemTile({

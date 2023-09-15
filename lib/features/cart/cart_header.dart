@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:wdb106_sample/model/cart_price.dart';
+
+import 'cart_price.dart';
 
 class CartHeader extends ConsumerWidget {
   const CartHeader({super.key});

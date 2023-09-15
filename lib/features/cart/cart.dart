@@ -1,8 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'cart_notifier.freezed.dart';
-part 'cart_notifier.g.dart';
+export 'cart_page.dart';
+export 'cart_price.dart';
+
+part 'cart.freezed.dart';
+part 'cart.g.dart';
 
 @riverpod
 class Cart extends _$Cart {
