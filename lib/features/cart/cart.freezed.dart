@@ -12,7 +12,7 @@ part of 'cart.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CartState {
@@ -56,21 +56,22 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
 }
 
 /// @nodoc
-abstract class _$$_CartStateCopyWith<$Res> implements $CartStateCopyWith<$Res> {
-  factory _$$_CartStateCopyWith(
-          _$_CartState value, $Res Function(_$_CartState) then) =
-      __$$_CartStateCopyWithImpl<$Res>;
+abstract class _$$CartStateImplCopyWith<$Res>
+    implements $CartStateCopyWith<$Res> {
+  factory _$$CartStateImplCopyWith(
+          _$CartStateImpl value, $Res Function(_$CartStateImpl) then) =
+      __$$CartStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Map<String, int> map});
 }
 
 /// @nodoc
-class __$$_CartStateCopyWithImpl<$Res>
-    extends _$CartStateCopyWithImpl<$Res, _$_CartState>
-    implements _$$_CartStateCopyWith<$Res> {
-  __$$_CartStateCopyWithImpl(
-      _$_CartState _value, $Res Function(_$_CartState) _then)
+class __$$CartStateImplCopyWithImpl<$Res>
+    extends _$CartStateCopyWithImpl<$Res, _$CartStateImpl>
+    implements _$$CartStateImplCopyWith<$Res> {
+  __$$CartStateImplCopyWithImpl(
+      _$CartStateImpl _value, $Res Function(_$CartStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -78,7 +79,7 @@ class __$$_CartStateCopyWithImpl<$Res>
   $Res call({
     Object? map = null,
   }) {
-    return _then(_$_CartState(
+    return _then(_$CartStateImpl(
       null == map
           ? _value._map
           : map // ignore: cast_nullable_to_non_nullable
@@ -89,8 +90,8 @@ class __$$_CartStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CartState extends _CartState {
-  _$_CartState([final Map<String, int> map = const <String, int>{}])
+class _$CartStateImpl extends _CartState {
+  _$CartStateImpl([final Map<String, int> map = const <String, int>{}])
       : _map = map,
         super._();
 
@@ -109,10 +110,10 @@ class _$_CartState extends _CartState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CartState &&
+            other is _$CartStateImpl &&
             const DeepCollectionEquality().equals(other._map, _map));
   }
 
@@ -123,18 +124,18 @@ class _$_CartState extends _CartState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CartStateCopyWith<_$_CartState> get copyWith =>
-      __$$_CartStateCopyWithImpl<_$_CartState>(this, _$identity);
+  _$$CartStateImplCopyWith<_$CartStateImpl> get copyWith =>
+      __$$CartStateImplCopyWithImpl<_$CartStateImpl>(this, _$identity);
 }
 
 abstract class _CartState extends CartState {
-  factory _CartState([final Map<String, int> map]) = _$_CartState;
+  factory _CartState([final Map<String, int> map]) = _$CartStateImpl;
   _CartState._() : super._();
 
   @override
   Map<String, int> get map;
   @override
   @JsonKey(ignore: true)
-  _$$_CartStateCopyWith<_$_CartState> get copyWith =>
+  _$$CartStateImplCopyWith<_$CartStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -8,14 +8,15 @@ part of 'item_stocks.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Item _$$_ItemFromJson(Map<String, dynamic> json) => _$_Item(
+_$ItemImpl _$$ItemImplFromJson(Map<String, dynamic> json) => _$ItemImpl(
       id: json['id'] as String,
       price: json['price'] as int,
       title: json['title'] as String,
       imageUrl: json['imageUrl'] as String,
     );
 
-Map<String, dynamic> _$$_ItemToJson(_$_Item instance) => <String, dynamic>{
+Map<String, dynamic> _$$ItemImplToJson(_$ItemImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'price': instance.price,
       'title': instance.title,
@@ -41,4 +42,4 @@ final itemStocksProvider = AutoDisposeFutureProvider<ItemStocks>.internal(
 
 typedef ItemStocksRef = AutoDisposeFutureProviderRef<ItemStocks>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

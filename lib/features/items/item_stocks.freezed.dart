@@ -12,7 +12,7 @@ part of 'item_stocks.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ItemStocks {
@@ -57,22 +57,22 @@ class _$ItemStocksCopyWithImpl<$Res, $Val extends ItemStocks>
 }
 
 /// @nodoc
-abstract class _$$_ItemStocksCopyWith<$Res>
+abstract class _$$ItemStocksImplCopyWith<$Res>
     implements $ItemStocksCopyWith<$Res> {
-  factory _$$_ItemStocksCopyWith(
-          _$_ItemStocks value, $Res Function(_$_ItemStocks) then) =
-      __$$_ItemStocksCopyWithImpl<$Res>;
+  factory _$$ItemStocksImplCopyWith(
+          _$ItemStocksImpl value, $Res Function(_$ItemStocksImpl) then) =
+      __$$ItemStocksImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<ItemStock> stocks});
 }
 
 /// @nodoc
-class __$$_ItemStocksCopyWithImpl<$Res>
-    extends _$ItemStocksCopyWithImpl<$Res, _$_ItemStocks>
-    implements _$$_ItemStocksCopyWith<$Res> {
-  __$$_ItemStocksCopyWithImpl(
-      _$_ItemStocks _value, $Res Function(_$_ItemStocks) _then)
+class __$$ItemStocksImplCopyWithImpl<$Res>
+    extends _$ItemStocksCopyWithImpl<$Res, _$ItemStocksImpl>
+    implements _$$ItemStocksImplCopyWith<$Res> {
+  __$$ItemStocksImplCopyWithImpl(
+      _$ItemStocksImpl _value, $Res Function(_$ItemStocksImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_ItemStocksCopyWithImpl<$Res>
   $Res call({
     Object? stocks = null,
   }) {
-    return _then(_$_ItemStocks(
+    return _then(_$ItemStocksImpl(
       stocks: null == stocks
           ? _value._stocks
           : stocks // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_ItemStocksCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ItemStocks extends _ItemStocks {
-  _$_ItemStocks({required final List<ItemStock> stocks})
+class _$ItemStocksImpl extends _ItemStocks {
+  _$ItemStocksImpl({required final List<ItemStock> stocks})
       : _stocks = stocks,
         super._();
 
@@ -110,10 +110,10 @@ class _$_ItemStocks extends _ItemStocks {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ItemStocks &&
+            other is _$ItemStocksImpl &&
             const DeepCollectionEquality().equals(other._stocks, _stocks));
   }
 
@@ -124,19 +124,20 @@ class _$_ItemStocks extends _ItemStocks {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ItemStocksCopyWith<_$_ItemStocks> get copyWith =>
-      __$$_ItemStocksCopyWithImpl<_$_ItemStocks>(this, _$identity);
+  _$$ItemStocksImplCopyWith<_$ItemStocksImpl> get copyWith =>
+      __$$ItemStocksImplCopyWithImpl<_$ItemStocksImpl>(this, _$identity);
 }
 
 abstract class _ItemStocks extends ItemStocks {
-  factory _ItemStocks({required final List<ItemStock> stocks}) = _$_ItemStocks;
+  factory _ItemStocks({required final List<ItemStock> stocks}) =
+      _$ItemStocksImpl;
   _ItemStocks._() : super._();
 
   @override
   List<ItemStock> get stocks;
   @override
   @JsonKey(ignore: true)
-  _$$_ItemStocksCopyWith<_$_ItemStocks> get copyWith =>
+  _$$ItemStocksImplCopyWith<_$ItemStocksImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -198,10 +199,11 @@ class _$ItemStockCopyWithImpl<$Res, $Val extends ItemStock>
 }
 
 /// @nodoc
-abstract class _$$_ItemStockCopyWith<$Res> implements $ItemStockCopyWith<$Res> {
-  factory _$$_ItemStockCopyWith(
-          _$_ItemStock value, $Res Function(_$_ItemStock) then) =
-      __$$_ItemStockCopyWithImpl<$Res>;
+abstract class _$$ItemStockImplCopyWith<$Res>
+    implements $ItemStockCopyWith<$Res> {
+  factory _$$ItemStockImplCopyWith(
+          _$ItemStockImpl value, $Res Function(_$ItemStockImpl) then) =
+      __$$ItemStockImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Item item, int quantity});
@@ -211,11 +213,11 @@ abstract class _$$_ItemStockCopyWith<$Res> implements $ItemStockCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ItemStockCopyWithImpl<$Res>
-    extends _$ItemStockCopyWithImpl<$Res, _$_ItemStock>
-    implements _$$_ItemStockCopyWith<$Res> {
-  __$$_ItemStockCopyWithImpl(
-      _$_ItemStock _value, $Res Function(_$_ItemStock) _then)
+class __$$ItemStockImplCopyWithImpl<$Res>
+    extends _$ItemStockCopyWithImpl<$Res, _$ItemStockImpl>
+    implements _$$ItemStockImplCopyWith<$Res> {
+  __$$ItemStockImplCopyWithImpl(
+      _$ItemStockImpl _value, $Res Function(_$ItemStockImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -224,7 +226,7 @@ class __$$_ItemStockCopyWithImpl<$Res>
     Object? item = null,
     Object? quantity = null,
   }) {
-    return _then(_$_ItemStock(
+    return _then(_$ItemStockImpl(
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
@@ -239,8 +241,8 @@ class __$$_ItemStockCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ItemStock extends _ItemStock {
-  _$_ItemStock({required this.item, required this.quantity}) : super._();
+class _$ItemStockImpl extends _ItemStock {
+  _$ItemStockImpl({required this.item, required this.quantity}) : super._();
 
   @override
   final Item item;
@@ -253,10 +255,10 @@ class _$_ItemStock extends _ItemStock {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ItemStock &&
+            other is _$ItemStockImpl &&
             (identical(other.item, item) || other.item == item) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity));
@@ -268,13 +270,13 @@ class _$_ItemStock extends _ItemStock {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ItemStockCopyWith<_$_ItemStock> get copyWith =>
-      __$$_ItemStockCopyWithImpl<_$_ItemStock>(this, _$identity);
+  _$$ItemStockImplCopyWith<_$ItemStockImpl> get copyWith =>
+      __$$ItemStockImplCopyWithImpl<_$ItemStockImpl>(this, _$identity);
 }
 
 abstract class _ItemStock extends ItemStock {
   factory _ItemStock({required final Item item, required final int quantity}) =
-      _$_ItemStock;
+      _$ItemStockImpl;
   _ItemStock._() : super._();
 
   @override
@@ -283,7 +285,7 @@ abstract class _ItemStock extends ItemStock {
   int get quantity;
   @override
   @JsonKey(ignore: true)
-  _$$_ItemStockCopyWith<_$_ItemStock> get copyWith =>
+  _$$ItemStockImplCopyWith<_$ItemStockImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -351,18 +353,20 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
 }
 
 /// @nodoc
-abstract class _$$_ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
-  factory _$$_ItemCopyWith(_$_Item value, $Res Function(_$_Item) then) =
-      __$$_ItemCopyWithImpl<$Res>;
+abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
+  factory _$$ItemImplCopyWith(
+          _$ItemImpl value, $Res Function(_$ItemImpl) then) =
+      __$$ItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, int price, String title, String imageUrl});
 }
 
 /// @nodoc
-class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res, _$_Item>
-    implements _$$_ItemCopyWith<$Res> {
-  __$$_ItemCopyWithImpl(_$_Item _value, $Res Function(_$_Item) _then)
+class __$$ItemImplCopyWithImpl<$Res>
+    extends _$ItemCopyWithImpl<$Res, _$ItemImpl>
+    implements _$$ItemImplCopyWith<$Res> {
+  __$$ItemImplCopyWithImpl(_$ItemImpl _value, $Res Function(_$ItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -373,7 +377,7 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res, _$_Item>
     Object? title = null,
     Object? imageUrl = null,
   }) {
-    return _then(_$_Item(
+    return _then(_$ItemImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -396,15 +400,16 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res, _$_Item>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Item extends _Item {
-  _$_Item(
+class _$ItemImpl extends _Item {
+  _$ItemImpl(
       {required this.id,
       required this.price,
       required this.title,
       required this.imageUrl})
       : super._();
 
-  factory _$_Item.fromJson(Map<String, dynamic> json) => _$$_ItemFromJson(json);
+  factory _$ItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ItemImplFromJson(json);
 
   @override
   final String id;
@@ -421,10 +426,10 @@ class _$_Item extends _Item {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Item &&
+            other is _$ItemImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.title, title) || other.title == title) &&
@@ -439,12 +444,12 @@ class _$_Item extends _Item {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ItemCopyWith<_$_Item> get copyWith =>
-      __$$_ItemCopyWithImpl<_$_Item>(this, _$identity);
+  _$$ItemImplCopyWith<_$ItemImpl> get copyWith =>
+      __$$ItemImplCopyWithImpl<_$ItemImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ItemToJson(
+    return _$$ItemImplToJson(
       this,
     );
   }
@@ -455,10 +460,10 @@ abstract class _Item extends Item {
       {required final String id,
       required final int price,
       required final String title,
-      required final String imageUrl}) = _$_Item;
+      required final String imageUrl}) = _$ItemImpl;
   _Item._() : super._();
 
-  factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
+  factory _Item.fromJson(Map<String, dynamic> json) = _$ItemImpl.fromJson;
 
   @override
   String get id;
@@ -470,5 +475,6 @@ abstract class _Item extends Item {
   String get imageUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_ItemCopyWith<_$_Item> get copyWith => throw _privateConstructorUsedError;
+  _$$ItemImplCopyWith<_$ItemImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

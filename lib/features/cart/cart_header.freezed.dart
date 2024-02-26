@@ -12,7 +12,7 @@ part of 'cart_header.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CartPrice {
@@ -56,21 +56,22 @@ class _$CartPriceCopyWithImpl<$Res, $Val extends CartPrice>
 }
 
 /// @nodoc
-abstract class _$$_CartPriceCopyWith<$Res> implements $CartPriceCopyWith<$Res> {
-  factory _$$_CartPriceCopyWith(
-          _$_CartPrice value, $Res Function(_$_CartPrice) then) =
-      __$$_CartPriceCopyWithImpl<$Res>;
+abstract class _$$CartPriceImplCopyWith<$Res>
+    implements $CartPriceCopyWith<$Res> {
+  factory _$$CartPriceImplCopyWith(
+          _$CartPriceImpl value, $Res Function(_$CartPriceImpl) then) =
+      __$$CartPriceImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int price});
 }
 
 /// @nodoc
-class __$$_CartPriceCopyWithImpl<$Res>
-    extends _$CartPriceCopyWithImpl<$Res, _$_CartPrice>
-    implements _$$_CartPriceCopyWith<$Res> {
-  __$$_CartPriceCopyWithImpl(
-      _$_CartPrice _value, $Res Function(_$_CartPrice) _then)
+class __$$CartPriceImplCopyWithImpl<$Res>
+    extends _$CartPriceCopyWithImpl<$Res, _$CartPriceImpl>
+    implements _$$CartPriceImplCopyWith<$Res> {
+  __$$CartPriceImplCopyWithImpl(
+      _$CartPriceImpl _value, $Res Function(_$CartPriceImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -78,7 +79,7 @@ class __$$_CartPriceCopyWithImpl<$Res>
   $Res call({
     Object? price = null,
   }) {
-    return _then(_$_CartPrice(
+    return _then(_$CartPriceImpl(
       null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -89,8 +90,8 @@ class __$$_CartPriceCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CartPrice extends _CartPrice {
-  _$_CartPrice(this.price) : super._();
+class _$CartPriceImpl extends _CartPrice {
+  _$CartPriceImpl(this.price) : super._();
 
   @override
   final int price;
@@ -101,10 +102,10 @@ class _$_CartPrice extends _CartPrice {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CartPrice &&
+            other is _$CartPriceImpl &&
             (identical(other.price, price) || other.price == price));
   }
 
@@ -114,18 +115,18 @@ class _$_CartPrice extends _CartPrice {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CartPriceCopyWith<_$_CartPrice> get copyWith =>
-      __$$_CartPriceCopyWithImpl<_$_CartPrice>(this, _$identity);
+  _$$CartPriceImplCopyWith<_$CartPriceImpl> get copyWith =>
+      __$$CartPriceImplCopyWithImpl<_$CartPriceImpl>(this, _$identity);
 }
 
 abstract class _CartPrice extends CartPrice {
-  factory _CartPrice(final int price) = _$_CartPrice;
+  factory _CartPrice(final int price) = _$CartPriceImpl;
   _CartPrice._() : super._();
 
   @override
   int get price;
   @override
   @JsonKey(ignore: true)
-  _$$_CartPriceCopyWith<_$_CartPrice> get copyWith =>
+  _$$CartPriceImplCopyWith<_$CartPriceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

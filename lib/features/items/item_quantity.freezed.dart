@@ -12,7 +12,7 @@ part of 'item_quantity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ItemQuantity {
@@ -57,22 +57,22 @@ class _$ItemQuantityCopyWithImpl<$Res, $Val extends ItemQuantity>
 }
 
 /// @nodoc
-abstract class _$$_ItemQuantityCopyWith<$Res>
+abstract class _$$ItemQuantityImplCopyWith<$Res>
     implements $ItemQuantityCopyWith<$Res> {
-  factory _$$_ItemQuantityCopyWith(
-          _$_ItemQuantity value, $Res Function(_$_ItemQuantity) then) =
-      __$$_ItemQuantityCopyWithImpl<$Res>;
+  factory _$$ItemQuantityImplCopyWith(
+          _$ItemQuantityImpl value, $Res Function(_$ItemQuantityImpl) then) =
+      __$$ItemQuantityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int quantity});
 }
 
 /// @nodoc
-class __$$_ItemQuantityCopyWithImpl<$Res>
-    extends _$ItemQuantityCopyWithImpl<$Res, _$_ItemQuantity>
-    implements _$$_ItemQuantityCopyWith<$Res> {
-  __$$_ItemQuantityCopyWithImpl(
-      _$_ItemQuantity _value, $Res Function(_$_ItemQuantity) _then)
+class __$$ItemQuantityImplCopyWithImpl<$Res>
+    extends _$ItemQuantityCopyWithImpl<$Res, _$ItemQuantityImpl>
+    implements _$$ItemQuantityImplCopyWith<$Res> {
+  __$$ItemQuantityImplCopyWithImpl(
+      _$ItemQuantityImpl _value, $Res Function(_$ItemQuantityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_ItemQuantityCopyWithImpl<$Res>
   $Res call({
     Object? quantity = null,
   }) {
-    return _then(_$_ItemQuantity(
+    return _then(_$ItemQuantityImpl(
       null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_ItemQuantityCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ItemQuantity extends _ItemQuantity {
-  _$_ItemQuantity(this.quantity) : super._();
+class _$ItemQuantityImpl extends _ItemQuantity {
+  _$ItemQuantityImpl(this.quantity) : super._();
 
   @override
   final int quantity;
@@ -103,10 +103,10 @@ class _$_ItemQuantity extends _ItemQuantity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ItemQuantity &&
+            other is _$ItemQuantityImpl &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity));
   }
@@ -117,18 +117,18 @@ class _$_ItemQuantity extends _ItemQuantity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ItemQuantityCopyWith<_$_ItemQuantity> get copyWith =>
-      __$$_ItemQuantityCopyWithImpl<_$_ItemQuantity>(this, _$identity);
+  _$$ItemQuantityImplCopyWith<_$ItemQuantityImpl> get copyWith =>
+      __$$ItemQuantityImplCopyWithImpl<_$ItemQuantityImpl>(this, _$identity);
 }
 
 abstract class _ItemQuantity extends ItemQuantity {
-  factory _ItemQuantity(final int quantity) = _$_ItemQuantity;
+  factory _ItemQuantity(final int quantity) = _$ItemQuantityImpl;
   _ItemQuantity._() : super._();
 
   @override
   int get quantity;
   @override
   @JsonKey(ignore: true)
-  _$$_ItemQuantityCopyWith<_$_ItemQuantity> get copyWith =>
+  _$$ItemQuantityImplCopyWith<_$ItemQuantityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

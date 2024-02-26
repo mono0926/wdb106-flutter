@@ -31,8 +31,6 @@ class _SystemHash {
   }
 }
 
-typedef ItemQuantityRef = AutoDisposeProviderRef<ItemQuantity>;
-
 /// See also [itemQuantity].
 @ProviderFor(itemQuantity)
 const itemQuantityProvider = ItemQuantityFamily();
@@ -79,10 +77,10 @@ class ItemQuantityFamily extends Family<ItemQuantity> {
 class ItemQuantityProvider extends AutoDisposeProvider<ItemQuantity> {
   /// See also [itemQuantity].
   ItemQuantityProvider(
-    this.id,
-  ) : super.internal(
+    String id,
+  ) : this._internal(
           (ref) => itemQuantity(
-            ref,
+            ref as ItemQuantityRef,
             id,
           ),
           from: itemQuantityProvider,
@@ -94,9 +92,43 @@ class ItemQuantityProvider extends AutoDisposeProvider<ItemQuantity> {
           dependencies: ItemQuantityFamily._dependencies,
           allTransitiveDependencies:
               ItemQuantityFamily._allTransitiveDependencies,
+          id: id,
         );
 
+  ItemQuantityProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.id,
+  }) : super.internal();
+
   final String id;
+
+  @override
+  Override overrideWith(
+    ItemQuantity Function(ItemQuantityRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: ItemQuantityProvider._internal(
+        (ref) => create(ref as ItemQuantityRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        id: id,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeProviderElement<ItemQuantity> createElement() {
+    return _ItemQuantityProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -111,5 +143,18 @@ class ItemQuantityProvider extends AutoDisposeProvider<ItemQuantity> {
     return _SystemHash.finish(hash);
   }
 }
+
+mixin ItemQuantityRef on AutoDisposeProviderRef<ItemQuantity> {
+  /// The parameter `id` of this provider.
+  String get id;
+}
+
+class _ItemQuantityProviderElement
+    extends AutoDisposeProviderElement<ItemQuantity> with ItemQuantityRef {
+  _ItemQuantityProviderElement(super.provider);
+
+  @override
+  String get id => (origin as ItemQuantityProvider).id;
+}
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
