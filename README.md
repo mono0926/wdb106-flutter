@@ -12,6 +12,7 @@
 - 自動テストをほぼ網羅
   - 自動スモークテスト(Widget テスト)も対応
 - JSON API は http://www.mocky.io で用意
+  - https://github.com/mono0926/wdb106-flutter/blob/main/response.jsonc
 
 | 商品リスト                       | カート                       |
 | -------------------------------- | ---------------------------- |

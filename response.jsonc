@@ -1,0 +1,38 @@
+// https://run.mocky.io/v3/cc1388bf-b198-4cb6-bb9c-7891a8776cb2 で返るレスポンス
+[
+  {
+    "id": "100",
+    "price": 1480,
+    "title": "WEB+DB PRESS 100",
+    "imageUrl": "https://gihyo.jp/assets/images/gdp/2017/978-4-7741-9229-1.jpg",
+    "quantity": 5
+  },
+  {
+    "id": "101",
+    "price": 1480,
+    "title": "WEB+DB PRESS 101",
+    "imageUrl": "https://gihyo.jp/assets/images/gdp/2017/978-4-7741-9392-2.jpg",
+    "quantity": 5
+  },
+  {
+    "id": "102",
+    "price": 1480,
+    "title": "WEB+DB PRESS 102",
+    "imageUrl": "https://gihyo.jp/assets/images/gdp/2017/978-4-7741-9533-9.jpg",
+    "quantity": 5
+  },
+  {
+    "id": "103",
+    "price": 1480,
+    "title": "WEB+DB PRESS 103",
+    "imageUrl": "https://gihyo.jp/assets/images/gdp/2018/978-4-7741-9668-8.jpg",
+    "quantity": 5
+  },
+  {
+    "id": "104",
+    "price": 1480,
+    "title": "WEB+DB PRESS 104",
+    "imageUrl": "https://gihyo.jp/assets/images/gdp/2018/978-4-7741-9792-0.jpg",
+    "quantity": 5
+  }
+]
