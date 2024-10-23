@@ -13,7 +13,7 @@ part 'item_stocks.g.dart';
 Future<ItemStocks> itemStocks(Ref ref) async {
   final result = await ref.watch(httpClientProvider).get(
         Uri.parse(
-          'https://run.mocky.io/v3/cc1388bf-b198-4cb6-bb9c-7891a8776cb2',
+          'https://run.mocky.io/v3/cc80ec9e-f998-4d54-b3f8-c29b5594fcb6',
         ),
       );
   final json = (jsonDecode(result.body) as List).cast<JsonMap>();

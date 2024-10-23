@@ -27,7 +27,7 @@ Map<String, dynamic> _$$ItemImplToJson(_$ItemImpl instance) =>
 // RiverpodGenerator
 // **************************************************************************
 
-String _$itemStocksHash() => r'4be7634997be37aa53ebd4fcc788c1f7e1d3a97f';
+String _$itemStocksHash() => r'06ffd101eda675b3ccf73f8b0b953a781c348553';
 
 /// See also [itemStocks].
 @ProviderFor(itemStocks)
