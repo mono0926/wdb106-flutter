@@ -1,3 +1,4 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:wdb106_sample/features/cart/cart.dart';
@@ -8,7 +9,7 @@ part 'item_quantity.freezed.dart';
 part 'item_quantity.g.dart';
 
 @riverpod
-ItemQuantity itemQuantity(ItemQuantityRef ref, String id) {
+ItemQuantity itemQuantity(Ref ref, String id) {
   final cartItemQuantity = ref.watch(
     cartProvider.select((s) => s.quantity(id)),
   );

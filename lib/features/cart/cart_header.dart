@@ -31,7 +31,7 @@ class CartHeader extends ConsumerWidget {
 }
 
 @riverpod
-CartPrice cartPrice(CartPriceRef ref) {
+CartPrice cartPrice(Ref ref) {
   final cart = ref.watch(cartProvider);
   final itemStocks = ref.watch(itemStocksProvider).value;
   return CartPrice(

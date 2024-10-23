@@ -8,7 +8,7 @@ part of 'item_quantity.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$itemQuantityHash() => r'1cef6c2e19aeccd817b99dcc1181f795aa8e4aef';
+String _$itemQuantityHash() => r'51daaf3c4c364f348e09c490fe3d3a206e8cec9a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -144,6 +144,8 @@ class ItemQuantityProvider extends AutoDisposeProvider<ItemQuantity> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin ItemQuantityRef on AutoDisposeProviderRef<ItemQuantity> {
   /// The parameter `id` of this provider.
   String get id;
@@ -157,4 +159,4 @@ class _ItemQuantityProviderElement
   String get id => (origin as ItemQuantityProvider).id;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

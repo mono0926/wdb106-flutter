@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -9,7 +10,7 @@ part 'item_stocks.freezed.dart';
 part 'item_stocks.g.dart';
 
 @riverpod
-Future<ItemStocks> itemStocks(ItemStocksRef ref) async {
+Future<ItemStocks> itemStocks(Ref ref) async {
   final result = await ref.watch(httpClientProvider).get(
         Uri.parse(
           'https://run.mocky.io/v3/cc1388bf-b198-4cb6-bb9c-7891a8776cb2',

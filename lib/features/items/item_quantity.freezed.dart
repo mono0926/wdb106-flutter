@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ItemQuantity {
   int get quantity => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ItemQuantity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ItemQuantityCopyWith<ItemQuantity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$ItemQuantityCopyWithImpl<$Res, $Val extends ItemQuantity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ItemQuantity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$ItemQuantityImplCopyWithImpl<$Res>
       _$ItemQuantityImpl _value, $Res Function(_$ItemQuantityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ItemQuantity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,7 +120,9 @@ class _$ItemQuantityImpl extends _ItemQuantity {
   @override
   int get hashCode => Object.hash(runtimeType, quantity);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ItemQuantity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ItemQuantityImplCopyWith<_$ItemQuantityImpl> get copyWith =>
@@ -127,8 +135,11 @@ abstract class _ItemQuantity extends ItemQuantity {
 
   @override
   int get quantity;
+
+  /// Create a copy of ItemQuantity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ItemQuantityImplCopyWith<_$ItemQuantityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -9,7 +10,7 @@ import 'features/items/items.dart';
 part 'router.g.dart';
 
 @riverpod
-Raw<GoRouter> router(RouterRef ref) => GoRouter(
+Raw<GoRouter> router(Ref ref) => GoRouter(
       routes: $appRoutes,
       debugLogDiagnostics: kDebugMode,
     );

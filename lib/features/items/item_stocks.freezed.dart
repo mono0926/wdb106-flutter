@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ItemStocks {
   List<ItemStock> get stocks => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ItemStocks
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ItemStocksCopyWith<ItemStocks> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$ItemStocksCopyWithImpl<$Res, $Val extends ItemStocks>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ItemStocks
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$ItemStocksImplCopyWithImpl<$Res>
       _$ItemStocksImpl _value, $Res Function(_$ItemStocksImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ItemStocks
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -121,7 +127,9 @@ class _$ItemStocksImpl extends _ItemStocks {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_stocks));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ItemStocks
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ItemStocksImplCopyWith<_$ItemStocksImpl> get copyWith =>
@@ -135,8 +143,11 @@ abstract class _ItemStocks extends ItemStocks {
 
   @override
   List<ItemStock> get stocks;
+
+  /// Create a copy of ItemStocks
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ItemStocksImplCopyWith<_$ItemStocksImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -146,7 +157,9 @@ mixin _$ItemStock {
   Item get item => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ItemStock
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ItemStockCopyWith<ItemStock> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -171,6 +184,8 @@ class _$ItemStockCopyWithImpl<$Res, $Val extends ItemStock>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ItemStock
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -189,6 +204,8 @@ class _$ItemStockCopyWithImpl<$Res, $Val extends ItemStock>
     ) as $Val);
   }
 
+  /// Create a copy of ItemStock
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ItemCopyWith<$Res> get item {
@@ -220,6 +237,8 @@ class __$$ItemStockImplCopyWithImpl<$Res>
       _$ItemStockImpl _value, $Res Function(_$ItemStockImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ItemStock
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -267,7 +286,9 @@ class _$ItemStockImpl extends _ItemStock {
   @override
   int get hashCode => Object.hash(runtimeType, item, quantity);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ItemStock
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ItemStockImplCopyWith<_$ItemStockImpl> get copyWith =>
@@ -283,8 +304,11 @@ abstract class _ItemStock extends ItemStock {
   Item get item;
   @override
   int get quantity;
+
+  /// Create a copy of ItemStock
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ItemStockImplCopyWith<_$ItemStockImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -300,8 +324,12 @@ mixin _$Item {
   String get title => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
 
+  /// Serializes this Item to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Item
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ItemCopyWith<Item> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -323,6 +351,8 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Item
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -369,6 +399,8 @@ class __$$ItemImplCopyWithImpl<$Res>
   __$$ItemImplCopyWithImpl(_$ItemImpl _value, $Res Function(_$ItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Item
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -437,11 +469,13 @@ class _$ItemImpl extends _Item {
                 other.imageUrl == imageUrl));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, price, title, imageUrl);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Item
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ItemImplCopyWith<_$ItemImpl> get copyWith =>
@@ -473,8 +507,11 @@ abstract class _Item extends Item {
   String get title;
   @override
   String get imageUrl;
+
+  /// Create a copy of Item
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ItemImplCopyWith<_$ItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

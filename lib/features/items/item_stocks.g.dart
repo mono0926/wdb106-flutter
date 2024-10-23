@@ -10,7 +10,7 @@ part of 'item_stocks.dart';
 
 _$ItemImpl _$$ItemImplFromJson(Map<String, dynamic> json) => _$ItemImpl(
       id: json['id'] as String,
-      price: json['price'] as int,
+      price: (json['price'] as num).toInt(),
       title: json['title'] as String,
       imageUrl: json['imageUrl'] as String,
     );
@@ -27,7 +27,7 @@ Map<String, dynamic> _$$ItemImplToJson(_$ItemImpl instance) =>
 // RiverpodGenerator
 // **************************************************************************
 
-String _$itemStocksHash() => r'd99101d218dde6f2da2ff95a46df171c52ef198f';
+String _$itemStocksHash() => r'4be7634997be37aa53ebd4fcc788c1f7e1d3a97f';
 
 /// See also [itemStocks].
 @ProviderFor(itemStocks)
@@ -40,6 +40,8 @@ final itemStocksProvider = AutoDisposeFutureProvider<ItemStocks>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef ItemStocksRef = AutoDisposeFutureProviderRef<ItemStocks>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

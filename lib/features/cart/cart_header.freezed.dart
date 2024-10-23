@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CartPrice {
   int get price => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartPrice
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CartPriceCopyWith<CartPrice> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -41,6 +43,8 @@ class _$CartPriceCopyWithImpl<$Res, $Val extends CartPrice>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CartPrice
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -74,6 +78,8 @@ class __$$CartPriceImplCopyWithImpl<$Res>
       _$CartPriceImpl _value, $Res Function(_$CartPriceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CartPrice
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -112,7 +118,9 @@ class _$CartPriceImpl extends _CartPrice {
   @override
   int get hashCode => Object.hash(runtimeType, price);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartPrice
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CartPriceImplCopyWith<_$CartPriceImpl> get copyWith =>
@@ -125,8 +133,11 @@ abstract class _CartPrice extends CartPrice {
 
   @override
   int get price;
+
+  /// Create a copy of CartPrice
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CartPriceImplCopyWith<_$CartPriceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
