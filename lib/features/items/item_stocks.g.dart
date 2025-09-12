@@ -65,4 +65,4 @@ final class ItemStocksProvider
   }
 }
 
-String _$itemStocksHash() => r'8f7d171ed6d2b77eb4796bc8ec5149730f81b26f';
+String _$itemStocksHash() => r'0177246ca6cb686729c4bc5ee6b3d0af7b4539b9';

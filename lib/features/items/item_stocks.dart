@@ -14,7 +14,7 @@ Future<ItemStocks> itemStocks(Ref ref) async {
       .watch(httpClientProvider)
       .get(
         Uri.parse(
-          'https://run.mocky.io/v3/915e39ae-2d67-4895-9217-cdf2bca3c03f',
+          'https://dummyjson.com/c/55c7-ca84-4c18-8a8f',
         ),
       );
   final json = (jsonDecode(result.body) as List).cast<JsonMap>();
