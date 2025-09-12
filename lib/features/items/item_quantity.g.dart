@@ -8,155 +8,82 @@ part of 'item_quantity.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$itemQuantityHash() => r'51daaf3c4c364f348e09c490fe3d3a206e8cec9a';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [itemQuantity].
 @ProviderFor(itemQuantity)
-const itemQuantityProvider = ItemQuantityFamily();
+const itemQuantityProvider = ItemQuantityFamily._();
 
-/// See also [itemQuantity].
-class ItemQuantityFamily extends Family<ItemQuantity> {
-  /// See also [itemQuantity].
-  const ItemQuantityFamily();
+final class ItemQuantityProvider
+    extends $FunctionalProvider<ItemQuantity, ItemQuantity, ItemQuantity>
+    with $Provider<ItemQuantity> {
+  const ItemQuantityProvider._({
+    required ItemQuantityFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'itemQuantityProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [itemQuantity].
-  ItemQuantityProvider call(
-    String id,
-  ) {
-    return ItemQuantityProvider(
-      id,
-    );
+  @override
+  String debugGetCreateSourceHash() => _$itemQuantityHash();
+
+  @override
+  String toString() {
+    return r'itemQuantityProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  ItemQuantityProvider getProviderOverride(
-    covariant ItemQuantityProvider provider,
-  ) {
-    return call(
-      provider.id,
-    );
+  $ProviderElement<ItemQuantity> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  ItemQuantity create(Ref ref) {
+    final argument = this.argument as String;
+    return itemQuantity(ref, argument);
   }
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'itemQuantityProvider';
-}
-
-/// See also [itemQuantity].
-class ItemQuantityProvider extends AutoDisposeProvider<ItemQuantity> {
-  /// See also [itemQuantity].
-  ItemQuantityProvider(
-    String id,
-  ) : this._internal(
-          (ref) => itemQuantity(
-            ref as ItemQuantityRef,
-            id,
-          ),
-          from: itemQuantityProvider,
-          name: r'itemQuantityProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$itemQuantityHash,
-          dependencies: ItemQuantityFamily._dependencies,
-          allTransitiveDependencies:
-              ItemQuantityFamily._allTransitiveDependencies,
-          id: id,
-        );
-
-  ItemQuantityProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.id,
-  }) : super.internal();
-
-  final String id;
-
-  @override
-  Override overrideWith(
-    ItemQuantity Function(ItemQuantityRef provider) create,
-  ) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(ItemQuantity value) {
+    return $ProviderOverride(
       origin: this,
-      override: ItemQuantityProvider._internal(
-        (ref) => create(ref as ItemQuantityRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        id: id,
-      ),
+      providerOverride: $SyncValueProvider<ItemQuantity>(value),
     );
-  }
-
-  @override
-  AutoDisposeProviderElement<ItemQuantity> createElement() {
-    return _ItemQuantityProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is ItemQuantityProvider && other.id == id;
+    return other is ItemQuantityProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, id.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ItemQuantityRef on AutoDisposeProviderRef<ItemQuantity> {
-  /// The parameter `id` of this provider.
-  String get id;
-}
+String _$itemQuantityHash() => r'51daaf3c4c364f348e09c490fe3d3a206e8cec9a';
 
-class _ItemQuantityProviderElement
-    extends AutoDisposeProviderElement<ItemQuantity> with ItemQuantityRef {
-  _ItemQuantityProviderElement(super.provider);
+final class ItemQuantityFamily extends $Family
+    with $FunctionalFamilyOverride<ItemQuantity, String> {
+  const ItemQuantityFamily._()
+    : super(
+        retry: null,
+        name: r'itemQuantityProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ItemQuantityProvider call(String id) =>
+      ItemQuantityProvider._(argument: id, from: this);
 
   @override
-  String get id => (origin as ItemQuantityProvider).id;
+  String toString() => r'itemQuantityProvider';
 }
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

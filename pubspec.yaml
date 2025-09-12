@@ -2,7 +2,7 @@ name: wdb106_sample
 description: A new Flutter project.
 version: 1.0.0+1
 environment:
-  sdk: ^3.1.0
+  sdk: ^3.9.0
 dependencies:
   flutter:
     sdk: flutter

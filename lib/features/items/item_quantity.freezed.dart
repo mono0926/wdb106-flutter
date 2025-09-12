@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,137 +9,263 @@ part of 'item_quantity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$ItemQuantity {
-  int get quantity => throw _privateConstructorUsedError;
 
-  /// Create a copy of ItemQuantity
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ItemQuantityCopyWith<ItemQuantity> get copyWith =>
-      throw _privateConstructorUsedError;
+ bool get hasStock; int get quantity;
+/// Create a copy of ItemQuantity
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ItemQuantityCopyWith<ItemQuantity> get copyWith => _$ItemQuantityCopyWithImpl<ItemQuantity>(this as ItemQuantity, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ItemQuantity&&(identical(other.hasStock, hasStock) || other.hasStock == hasStock)&&(identical(other.quantity, quantity) || other.quantity == quantity));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,hasStock,quantity);
+
+@override
+String toString() {
+  return 'ItemQuantity(hasStock: $hasStock, quantity: $quantity)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ItemQuantityCopyWith<$Res> {
-  factory $ItemQuantityCopyWith(
-          ItemQuantity value, $Res Function(ItemQuantity) then) =
-      _$ItemQuantityCopyWithImpl<$Res, ItemQuantity>;
-  @useResult
-  $Res call({int quantity});
-}
+abstract mixin class $ItemQuantityCopyWith<$Res>  {
+  factory $ItemQuantityCopyWith(ItemQuantity value, $Res Function(ItemQuantity) _then) = _$ItemQuantityCopyWithImpl;
+@useResult
+$Res call({
+ int quantity
+});
 
+
+
+
+}
 /// @nodoc
-class _$ItemQuantityCopyWithImpl<$Res, $Val extends ItemQuantity>
+class _$ItemQuantityCopyWithImpl<$Res>
     implements $ItemQuantityCopyWith<$Res> {
-  _$ItemQuantityCopyWithImpl(this._value, this._then);
+  _$ItemQuantityCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ItemQuantity _self;
+  final $Res Function(ItemQuantity) _then;
 
-  /// Create a copy of ItemQuantity
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? quantity = null,
-  }) {
-    return _then(_value.copyWith(
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
+/// Create a copy of ItemQuantity
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? quantity = null,}) {
+  return _then(_self.copyWith(
+quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [ItemQuantity].
+extension ItemQuantityPatterns on ItemQuantity {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ItemQuantity value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ItemQuantity() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ItemQuantity value)  $default,){
+final _that = this;
+switch (_that) {
+case _ItemQuantity():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ItemQuantity value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ItemQuantity() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int quantity)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ItemQuantity() when $default != null:
+return $default(_that.quantity);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int quantity)  $default,) {final _that = this;
+switch (_that) {
+case _ItemQuantity():
+return $default(_that.quantity);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int quantity)?  $default,) {final _that = this;
+switch (_that) {
+case _ItemQuantity() when $default != null:
+return $default(_that.quantity);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$ItemQuantityImplCopyWith<$Res>
-    implements $ItemQuantityCopyWith<$Res> {
-  factory _$$ItemQuantityImplCopyWith(
-          _$ItemQuantityImpl value, $Res Function(_$ItemQuantityImpl) then) =
-      __$$ItemQuantityImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int quantity});
+
+
+class _ItemQuantity extends ItemQuantity {
+   _ItemQuantity(this.quantity): super._();
+  
+
+@override final  int quantity;
+
+/// Create a copy of ItemQuantity
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ItemQuantityCopyWith<_ItemQuantity> get copyWith => __$ItemQuantityCopyWithImpl<_ItemQuantity>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ItemQuantity&&(identical(other.quantity, quantity) || other.quantity == quantity));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,quantity);
+
+@override
+String toString() {
+  return 'ItemQuantity(quantity: $quantity)';
+}
+
+
 }
 
 /// @nodoc
-class __$$ItemQuantityImplCopyWithImpl<$Res>
-    extends _$ItemQuantityCopyWithImpl<$Res, _$ItemQuantityImpl>
-    implements _$$ItemQuantityImplCopyWith<$Res> {
-  __$$ItemQuantityImplCopyWithImpl(
-      _$ItemQuantityImpl _value, $Res Function(_$ItemQuantityImpl) _then)
-      : super(_value, _then);
+abstract mixin class _$ItemQuantityCopyWith<$Res> implements $ItemQuantityCopyWith<$Res> {
+  factory _$ItemQuantityCopyWith(_ItemQuantity value, $Res Function(_ItemQuantity) _then) = __$ItemQuantityCopyWithImpl;
+@override @useResult
+$Res call({
+ int quantity
+});
 
-  /// Create a copy of ItemQuantity
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? quantity = null,
-  }) {
-    return _then(_$ItemQuantityImpl(
-      null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
+
+
+
 }
-
 /// @nodoc
+class __$ItemQuantityCopyWithImpl<$Res>
+    implements _$ItemQuantityCopyWith<$Res> {
+  __$ItemQuantityCopyWithImpl(this._self, this._then);
 
-class _$ItemQuantityImpl extends _ItemQuantity {
-  _$ItemQuantityImpl(this.quantity) : super._();
+  final _ItemQuantity _self;
+  final $Res Function(_ItemQuantity) _then;
 
-  @override
-  final int quantity;
-
-  @override
-  String toString() {
-    return 'ItemQuantity(quantity: $quantity)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ItemQuantityImpl &&
-            (identical(other.quantity, quantity) ||
-                other.quantity == quantity));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, quantity);
-
-  /// Create a copy of ItemQuantity
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ItemQuantityImplCopyWith<_$ItemQuantityImpl> get copyWith =>
-      __$$ItemQuantityImplCopyWithImpl<_$ItemQuantityImpl>(this, _$identity);
+/// Create a copy of ItemQuantity
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? quantity = null,}) {
+  return _then(_ItemQuantity(
+null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-abstract class _ItemQuantity extends ItemQuantity {
-  factory _ItemQuantity(final int quantity) = _$ItemQuantityImpl;
-  _ItemQuantity._() : super._();
 
-  @override
-  int get quantity;
-
-  /// Create a copy of ItemQuantity
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ItemQuantityImplCopyWith<_$ItemQuantityImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+// dart format on

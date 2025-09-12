@@ -8,19 +8,57 @@ part of 'cart.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(Cart)
+const cartProvider = CartProvider._();
+
+final class CartProvider extends $NotifierProvider<Cart, CartState> {
+  const CartProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'cartProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$cartHash();
+
+  @$internal
+  @override
+  Cart create() => Cart();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(CartState value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<CartState>(value),
+    );
+  }
+}
+
 String _$cartHash() => r'1cde356c83fc08e58b59addf1f9300e3ec752124';
 
-/// See also [Cart].
-@ProviderFor(Cart)
-final cartProvider = AutoDisposeNotifierProvider<Cart, CartState>.internal(
-  Cart.new,
-  name: r'cartProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$cartHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef _$Cart = AutoDisposeNotifier<CartState>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$Cart extends $Notifier<CartState> {
+  CartState build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<CartState, CartState>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<CartState, CartState>,
+              CartState,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

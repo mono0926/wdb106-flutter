@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:wdb106_sample/features/cart/cart.dart';
-import 'package:wdb106_sample/router.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
 import 'item_image.dart';

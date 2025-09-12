@@ -8,21 +8,46 @@ part of 'http_client.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$httpClientHash() => r'aae3ea20b13f00718ee9b118e167b5be51b94879';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [httpClient].
 @ProviderFor(httpClient)
-final httpClientProvider = AutoDisposeProvider<Client>.internal(
-  httpClient,
-  name: r'httpClientProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$httpClientHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const httpClientProvider = HttpClientProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef HttpClientRef = AutoDisposeProviderRef<Client>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class HttpClientProvider
+    extends $FunctionalProvider<Client, Client, Client>
+    with $Provider<Client> {
+  const HttpClientProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'httpClientProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$httpClientHash();
+
+  @$internal
+  @override
+  $ProviderElement<Client> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  Client create(Ref ref) {
+    return httpClient(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Client value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<Client>(value),
+    );
+  }
+}
+
+String _$httpClientHash() => r'aae3ea20b13f00718ee9b118e167b5be51b94879';

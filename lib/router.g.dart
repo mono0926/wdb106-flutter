@@ -8,52 +8,51 @@ part of 'router.dart';
 // GoRouterGenerator
 // **************************************************************************
 
-List<RouteBase> get $appRoutes => [
-      $itemsRoute,
-    ];
+List<RouteBase> get $appRoutes => [$itemsRoute];
 
 RouteBase get $itemsRoute => GoRouteData.$route(
-      path: '/',
-      factory: $ItemsRouteExtension._fromState,
-      routes: [
-        GoRouteData.$route(
-          path: 'cart',
-          factory: $CartRouteExtension._fromState,
-        ),
-      ],
-    );
+  path: '/',
+  factory: $ItemsRoute._fromState,
+  routes: [GoRouteData.$route(path: 'cart', factory: $CartRoute._fromState)],
+);
 
-extension $ItemsRouteExtension on ItemsRoute {
+mixin $ItemsRoute on GoRouteData {
   static ItemsRoute _fromState(GoRouterState state) => const ItemsRoute();
 
-  String get location => GoRouteData.$location(
-        '/',
-      );
+  @override
+  String get location => GoRouteData.$location('/');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $CartRouteExtension on CartRoute {
+mixin $CartRoute on GoRouteData {
   static CartRoute _fromState(GoRouterState state) => const CartRoute();
 
-  String get location => GoRouteData.$location(
-        '/cart',
-      );
+  @override
+  String get location => GoRouteData.$location('/cart');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
@@ -61,21 +60,46 @@ extension $CartRouteExtension on CartRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'a16b21516783a2c29d858723f733559c26f4c878';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [router].
 @ProviderFor(router)
-final routerProvider = AutoDisposeProvider<Raw<GoRouter>>.internal(
-  router,
-  name: r'routerProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$routerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const routerProvider = RouterProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef RouterRef = AutoDisposeProviderRef<Raw<GoRouter>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class RouterProvider
+    extends $FunctionalProvider<Raw<GoRouter>, Raw<GoRouter>, Raw<GoRouter>>
+    with $Provider<Raw<GoRouter>> {
+  const RouterProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'routerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$routerHash();
+
+  @$internal
+  @override
+  $ProviderElement<Raw<GoRouter>> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  Raw<GoRouter> create(Ref ref) {
+    return router(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Raw<GoRouter> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<Raw<GoRouter>>(value),
+    );
+  }
+}
+
+String _$routerHash() => r'a16b21516783a2c29d858723f733559c26f4c878';

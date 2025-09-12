@@ -18,9 +18,10 @@ ItemQuantity itemQuantity(Ref ref, String id) {
 }
 
 @freezed
-class ItemQuantity with _$ItemQuantity {
+abstract class ItemQuantity with _$ItemQuantity {
   factory ItemQuantity(int quantity) = _ItemQuantity;
   ItemQuantity._();
 
-  late final hasStock = quantity > 0;
+  @override
+  late final bool hasStock = quantity > 0;
 }

@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -11,7 +10,9 @@ part 'item_stocks.g.dart';
 
 @riverpod
 Future<ItemStocks> itemStocks(Ref ref) async {
-  final result = await ref.watch(httpClientProvider).get(
+  final result = await ref
+      .watch(httpClientProvider)
+      .get(
         Uri.parse(
           'https://run.mocky.io/v3/915e39ae-2d67-4895-9217-cdf2bca3c03f',
         ),
@@ -23,24 +24,29 @@ Future<ItemStocks> itemStocks(Ref ref) async {
 }
 
 @freezed
-class ItemStocks with _$ItemStocks {
+abstract class ItemStocks with _$ItemStocks {
   factory ItemStocks({required List<ItemStock> stocks}) = _ItemStocks;
   ItemStocks._();
 
-  late final map = Map.fromEntries(
+  @override
+  late final Map<String, ItemStock> map = Map.fromEntries(
     stocks.map((stock) {
       return MapEntry(stock.item.id, stock);
     }),
   );
 
+  @override
   late final itemMap = map.map((key, value) => MapEntry(key, value.item));
-  late final itemIds = stocks.map((stock) => stock.item.id).toList();
+  @override
+  late final List<String> itemIds = stocks
+      .map((stock) => stock.item.id)
+      .toList();
   ItemStock? itemStock(String id) => map[id];
   Item? item(String id) => itemStock(id)?.item;
 }
 
 @freezed
-class ItemStock with _$ItemStock {
+abstract class ItemStock with _$ItemStock {
   factory ItemStock({
     required Item item,
     required int quantity,
@@ -50,13 +56,13 @@ class ItemStock with _$ItemStock {
 
   // ignore: prefer_constructors_over_static_methods
   static ItemStock fromJson(JsonMap json) => ItemStock(
-        item: Item.fromJson(json),
-        quantity: json['quantity'] as int,
-      );
+    item: Item.fromJson(json),
+    quantity: json['quantity'] as int,
+  );
 }
 
 @freezed
-class Item with _$Item {
+abstract class Item with _$Item {
   factory Item({
     required String id,
     required int price,
@@ -67,7 +73,8 @@ class Item with _$Item {
 
   factory Item.fromJson(JsonMap json) => _$ItemFromJson(json);
 
-  late final priceLabel = formatPrice(price);
+  @override
+  late final String priceLabel = formatPrice(price);
   static final _priceFormat = NumberFormat();
   static String formatPrice(int price) => '${_priceFormat.format(price)}円+税';
 }

@@ -10,7 +10,7 @@ void main() {
   setUpAll(() {
     Intl.defaultLocale = 'ja';
   });
-  test('CartController test', () async {
+  test('CartController test', () {
     final container = ProviderContainer(
       overrides: [
         itemStocksProvider.overrideWith(dummyItemStocks),

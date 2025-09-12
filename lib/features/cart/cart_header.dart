@@ -49,9 +49,10 @@ CartPrice cartPrice(Ref ref) {
 }
 
 @freezed
-class CartPrice with _$CartPrice {
+abstract class CartPrice with _$CartPrice {
   factory CartPrice(int price) = _CartPrice;
   CartPrice._();
 
-  late final label = '合計金額 ${Item.formatPrice(price)}';
+  @override
+  late final String label = '合計金額 ${Item.formatPrice(price)}';
 }

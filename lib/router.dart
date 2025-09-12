@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -11,9 +10,9 @@ part 'router.g.dart';
 
 @riverpod
 Raw<GoRouter> router(Ref ref) => GoRouter(
-      routes: $appRoutes,
-      debugLogDiagnostics: kDebugMode,
-    );
+  routes: $appRoutes,
+  debugLogDiagnostics: kDebugMode,
+);
 
 @TypedGoRoute<ItemsRoute>(
   path: '/',
@@ -21,7 +20,7 @@ Raw<GoRouter> router(Ref ref) => GoRouter(
     TypedGoRoute<CartRoute>(path: 'cart'),
   ],
 )
-class ItemsRoute extends GoRouteData {
+class ItemsRoute extends GoRouteData with $ItemsRoute {
   const ItemsRoute();
   @override
   Widget build(BuildContext context, GoRouterState state) => const ItemsPage();

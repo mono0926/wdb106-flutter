@@ -17,7 +17,7 @@ class Cart extends _$Cart {
 }
 
 @freezed
-class CartState with _$CartState {
+abstract class CartState with _$CartState {
   factory CartState([@Default(<String, int>{}) Map<String, int> map]) =
       _CartState;
   CartState._();
@@ -38,14 +38,18 @@ class CartState with _$CartState {
     );
   }
 
-  late final itemIds = map.keys.toList()..sort((a, b) => a.compareTo(b));
-  late final totalQuantity = map.values.fold<int>(
+  @override
+  late final List<String> itemIds = map.keys.toList()
+    ..sort((a, b) => a.compareTo(b));
+  @override
+  late final int totalQuantity = map.values.fold<int>(
     0,
     (sum, quantity) {
       return sum + quantity;
     },
   );
-  late final isEmpty = totalQuantity <= 0;
+  @override
+  late final bool isEmpty = totalQuantity <= 0;
 
   int quantity(String id) => map[id] ?? 0;
 }

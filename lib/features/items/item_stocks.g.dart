@@ -8,40 +8,61 @@ part of 'item_stocks.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ItemImpl _$$ItemImplFromJson(Map<String, dynamic> json) => _$ItemImpl(
-      id: json['id'] as String,
-      price: (json['price'] as num).toInt(),
-      title: json['title'] as String,
-      imageUrl: json['imageUrl'] as String,
-    );
+_Item _$ItemFromJson(Map<String, dynamic> json) => _Item(
+  id: json['id'] as String,
+  price: (json['price'] as num).toInt(),
+  title: json['title'] as String,
+  imageUrl: json['imageUrl'] as String,
+);
 
-Map<String, dynamic> _$$ItemImplToJson(_$ItemImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'price': instance.price,
-      'title': instance.title,
-      'imageUrl': instance.imageUrl,
-    };
+Map<String, dynamic> _$ItemToJson(_Item instance) => <String, dynamic>{
+  'id': instance.id,
+  'price': instance.price,
+  'title': instance.title,
+  'imageUrl': instance.imageUrl,
+};
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$itemStocksHash() => r'06ffd101eda675b3ccf73f8b0b953a781c348553';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [itemStocks].
 @ProviderFor(itemStocks)
-final itemStocksProvider = AutoDisposeFutureProvider<ItemStocks>.internal(
-  itemStocks,
-  name: r'itemStocksProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$itemStocksHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const itemStocksProvider = ItemStocksProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef ItemStocksRef = AutoDisposeFutureProviderRef<ItemStocks>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class ItemStocksProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<ItemStocks>,
+          ItemStocks,
+          FutureOr<ItemStocks>
+        >
+    with $FutureModifier<ItemStocks>, $FutureProvider<ItemStocks> {
+  const ItemStocksProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'itemStocksProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$itemStocksHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<ItemStocks> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<ItemStocks> create(Ref ref) {
+    return itemStocks(ref);
+  }
+}
+
+String _$itemStocksHash() => r'8f7d171ed6d2b77eb4796bc8ec5149730f81b26f';

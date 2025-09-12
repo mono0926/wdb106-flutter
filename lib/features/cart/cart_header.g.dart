@@ -8,21 +8,46 @@ part of 'cart_header.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$cartPriceHash() => r'cba2aba83499ab6310ebedae1f01311fd8d931bd';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [cartPrice].
 @ProviderFor(cartPrice)
-final cartPriceProvider = AutoDisposeProvider<CartPrice>.internal(
-  cartPrice,
-  name: r'cartPriceProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$cartPriceHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const cartPriceProvider = CartPriceProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef CartPriceRef = AutoDisposeProviderRef<CartPrice>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class CartPriceProvider
+    extends $FunctionalProvider<CartPrice, CartPrice, CartPrice>
+    with $Provider<CartPrice> {
+  const CartPriceProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'cartPriceProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$cartPriceHash();
+
+  @$internal
+  @override
+  $ProviderElement<CartPrice> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  CartPrice create(Ref ref) {
+    return cartPrice(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(CartPrice value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<CartPrice>(value),
+    );
+  }
+}
+
+String _$cartPriceHash() => r'cba2aba83499ab6310ebedae1f01311fd8d931bd';

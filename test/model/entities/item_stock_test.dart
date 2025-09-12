@@ -5,7 +5,7 @@ import 'package:wdb106_sample/features/items/items.dart';
 import 'package:wdb106_sample/util/util.dart';
 
 void main() {
-  test('ItemStock.fromJson test', () async {
+  test('ItemStock.fromJson test', () {
     const source = '''
     {
       "id": "100",

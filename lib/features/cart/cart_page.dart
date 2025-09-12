@@ -4,11 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wdb106_sample/features/items/items.dart';
+import 'package:wdb106_sample/router.dart';
 import 'package:wdb106_sample/widgets/widgets.dart';
 
 import 'cart.dart';
 
-class CartRoute extends GoRouteData {
+class CartRoute extends GoRouteData with $CartRoute {
   const CartRoute();
 
   @override
@@ -66,8 +67,9 @@ class _Tile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final item =
-        ref.watch(itemStocksProvider.select((s) => s.value!.item(id)))!;
+    final item = ref.watch(
+      itemStocksProvider.select((s) => s.value!.item(id)),
+    )!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
